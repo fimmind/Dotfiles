@@ -1,0 +1,272 @@
+" *******************************************
+"
+"  ██▒   █▓ ██▓ ███▄ ▄███▓ ██▀███   ▄████▄
+" ▓██░   █▒▓██▒▓██▒▀█▀ ██▒▓██ ▒ ██▒▒██▀ ▀█
+"  ▓██  █▒░▒██▒▓██    ▓██░▓██ ░▄█ ▒▒▓█    ▄
+"   ▒██ █░░░██░▒██    ▒██ ▒██▀▀█▄  ▒▓▓▄ ▄██▒
+"    ▒▀█░  ░██░▒██▒   ░██▒░██▓ ▒██▒▒ ▓███▀ ░
+"    ░ ▐░  ░▓  ░ ▒░   ░  ░░ ▒▓ ░▒▓░░ ░▒ ▒  ░
+"    ░ ░░   ▒ ░░  ░      ░  ░▒ ░ ▒░  ░  ▒
+"      ░░   ▒ ░░      ░     ░░   ░ ░
+"
+" *******************************************
+
+
+call plug#begin('~/.vim/plugged')
+  Plug 'morhetz/gruvbox'
+  Plug 'suy/vim-qmake'
+  Plug 'justinmk/vim-syntax-extra'
+  Plug 'PotatoesMaster/i3-vim-syntax'
+
+  Plug 'SidOfc/mkdx'
+  Plug 'dhruvasagar/vim-table-mode'
+
+  Plug 'scrooloose/nerdtree'
+  Plug 'airblade/vim-gitgutter'
+  Plug 'Xuyuanp/nerdtree-git-plugin'
+  Plug 'jistr/vim-nerdtree-tabs'
+
+  Plug 'matze/vim-move'
+  Plug 'godlygeek/tabular'
+  Plug 'easymotion/vim-easymotion'
+
+  Plug 'cohama/lexima.vim'
+
+  Plug 'lervag/vimtex'
+  Plug 'SirVer/ultisnips'
+  Plug 'vim-scripts/vim-auto-save'
+
+  function! BuildYCM(info)
+    if(has("unix"))
+      if(system("uname -o") == "Android\n") 
+        !./install.py --clang-completer --system-libclang
+      else
+        !./install.py --clangd-completer
+      endif
+    else
+      !echo "Only Unix is supported" && exit 1
+    endif
+  endfunction
+  Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
+
+  Plug 'davidhalter/jedi-vim'
+  Plug 'majutsushi/tagbar'
+  Plug 'derekwyatt/vim-fswitch'
+  Plug 'kien/ctrlp.vim'
+  Plug 'vim-scripts/a.vim'
+
+" Plug 'mattn/emmet-vim'
+call plug#end()
+
+" Number lines
+" ================================================
+set number
+set relativenumber
+autocmd! CmdlineLeave * 
+      \   if &number 
+      \ |   set relativenumber
+      \ | fi
+nnoremap : :set norelativenumber<CR>:
+
+" UltiSnips
+" ===============================================
+let g:UltiSnipsEditSplit='vertical'
+let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
+
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<tab>"
+let g:UltiSnipsJumpForwardTrigger = "<C-j>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
+
+" YouCompleteMe
+" ================================================
+let g:ycm_min_num_of_chars_for_completion = 2
+
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-n>']
+let g:ycm_key_list_previous_completion = ['<C-p>']
+
+" Indent
+" ================================================
+filetype indent on
+set autoindent
+set expandtab
+autocmd! FileType *
+      \ set tabstop=2
+      \ | set shiftwidth=2
+autocmd! FileType cpp
+      \ set tabstop=4
+      \ | set shiftwidth=4
+
+" Other settings
+" ================================================
+set splitright
+set wrap
+set hlsearch
+set showmatch
+set termencoding=utf-8
+set ch=1
+set title
+set wildmenu
+set splitbelow
+set colorcolumn=110
+set nobackup
+filetype plugin on
+
+" Theme
+" ================================================
+colorscheme gruvbox
+set background=dark
+syntax on
+set iskeyword+=-
+highlight Search ctermfg=white
+
+" Qt
+" ================================================
+" TODO: move to plugin
+command! RefreshCompileCommands !bear make && ~/.vim/plugged/YCM-Generator/config_gen.py -F cc -b make -f ./
+
+nmap <Leader>qt :emenu Qt.<Tab>
+nmenu Qt.Mode.Debug      :!qmake ./ CONFIG+=debug<CR>
+nmenu Qt.Mode.Release    :!qmake ./ CONFIG+=release<CR>
+nmenu Qt.Build           :!make<CR> | " TODO: run qmake, if necessary
+nmenu Qt.Create.Project  :call Qt_Create_Project()<CR>
+nmenu Qt.Create.Source   :call Qt_Create("cpp")<CR>
+nmenu Qt.Create.Header   :call Qt_Create("h")<CR>
+nmenu Qt.Create.Ui       :call Qt_Create("ui")<CR>
+nmenu Qt.Create.Class    :call Qt_Create_Class<CR>
+
+function! Qt_Create_Project()
+  let ProjectName = input("Enter project name: ")
+  " TODO
+endfunction
+
+function! Qt_Create(fileType, ...)
+  let fileName = get(a:, 1, input("Enter file name: "))
+  " TODO
+endfunction
+
+function! Qt_Create_Class()
+  " TODO:
+  " Create class with given name, ui(optionaly), parent calss(optionaly). Add
+  " created files to PRO file(optionaly)
+endfunction
+
+" LaTeX
+" ================================================
+let g:tex_flavor='latex'
+let g:Tex_GotoError = 0
+let g:vimtex_view_method = 'zathura'
+let g:AutoPairsIgnorePrefixes = ['\', 'lr', '\left']
+
+if !exists('g:ycm_semantic_triggers')
+  let g:ycm_semantic_triggers = {}
+endif
+let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
+
+" Markdown
+" ================================================
+let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
+                        \ 'enter': { 'shift': 1 },
+                        \ 'links': { 'external': { 'enable': 1 } },
+                        \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
+                        \ }
+let g:polyglot_disabled = ['markdown']
+
+" Lexima
+" ================================================
+let pairs = {'(':')', '\\\\{':'\\\\}', '[':']', '<':'>'}
+for i in keys(pairs)
+  call lexima#add_rule({
+        \ 'char': i[-1:], 
+        \ 'at': 'lr\%#', 
+        \ 'filetype': 'tex', 
+        \ 'input': '<BS><BS> <Esc>:call UltiSnips#Anon("\\left'.i.' $1 \\right'.pairs[i].'$0")<CR>'
+        \ })
+endfor
+
+" Mappings
+" ================================================
+let g:move_key_modifier='S'
+
+let g:mapleader=','
+map <Leader> <Plug>(easymotion-prefix)
+
+" NERDTree
+" ================================================
+command! CloseTree :NERDTreeClose
+noremap <C-\> :NERDTreeToggle<CR>
+inoremap <C-\> <Esc>:NERDTreeToggle<CR>a
+command! -nargs=1 Where :NERDTreeFind <args>
+
+function! StartUp()
+  if argc() == 0
+    NERDTree
+  endif
+endfunction
+
+autocmd! VimEnter * call StartUp()
+
+" let g:NERDTreeIndicatorMapCustom = {
+" \ "Modified"  : "✹",
+" \ "Staged"    : "✚",
+" \ "Untracked" : "✭",
+" \ "Renamed"   : "➜",
+" \ "Unmerged"  : "═",
+" \ "Deleted"   : "✖",
+" \ "Dirty"     : "✗",
+" \ "Clean"     : "✔︎",
+" \ "Ignored"   : "☒",
+" \ "Unknown"   : "?"
+" \ }
+
+" Build
+" ================================================
+command! WatchScss  ! gnome-terminal --
+      \ sass --watch '%:p:h/:%:p:h:h/' --scss --style compressed --no-cache --sourcemap=none
+      \ && echo "Start listening for changes"
+
+let s:buildCommands = {
+      \ "cpp": "make -f %:p:h/Makefile",
+      \ "scss": "sass --watch '%:p:%:p:r.css' --scss --style compressed --no-cache --sourcemap=none"
+      \ }
+let s:buildCommands["h"] = s:buildCommands["cpp"]
+
+command! Build execute Build()
+function! Build()
+  let FileType = expand("%:e")
+  if has_key(s:buildCommands, FileType)
+    execute "! " . s:buildCommands[FileType]
+  else
+    echo "Cant build .".FileType." file"
+  endif
+endfunction
+
+" Run
+" ================================================
+let s:runCommands = {
+      \ "cpp": "test -f '%:p:r' && '%:p:r' || '%:p:h/main'",
+      \ "py" : "python3 '%:p'",
+      \ "js" : "node '%:p'"
+      \ }
+let s:runCommands["h"] = s:runCommands["cpp"]
+
+nnoremap <Leader>e :call Run()<CR>
+command! Run execute Run()
+function! Run()
+  wa
+  let FileType = expand("%:e")
+  if has_key(s:runCommands, FileType)
+    if has_key(s:buildCommands, FileType)
+      execute "!".
+            \ "clear && ".
+            \ s:buildCommands[FileType]." && ".
+            \ "clear && ".
+            \ s:runCommands[FileType]
+    else
+      execute "!clear && ".s:runCommands[FileType]
+    endif
+  else
+    echo "cant run .".FileType." file"
+  endif
+endfunction

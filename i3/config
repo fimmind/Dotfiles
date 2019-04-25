@@ -1,0 +1,183 @@
+# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+set $mod Mod4
+font pango:Clear Sans 10
+
+########## Autolaunch ##########
+exec --no-startup-id nm-applet
+exec --no-startup-id /usr/lib64/polkit-gnome/polkit-gnome-authentication-agent-1
+exec --no-startup-id setxkbmap "us,ru" ",winkeys" "grp:alt_shift_toggle"
+
+### Backlight ###
+bindsym XF86MonBrightnessUp exec light -A 10 # Increase Brightness
+bindsym XF86MonBrightnessDown exec light -U 10 # Decrease Brightness
+
+### Media Player ###
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioNext exec playerctl next
+
+### Other ###
+bindsym Print exec scrot -q 100
+bindsym $mod+Shift+s exec "i3lock-fancy || i3lock"
+
+### Sound ###
+# Raise Volume
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+# Lower Volume
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- && paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle-mute # Toggle muting
+
+
+floating_modifier $mod
+
+bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Shift+q kill
+bindsym $mod+d exec "rofi -modi drun -show drun"
+bindsym $mod+c exec "rofi -modi run -show run"
+
+
+########## Focus ##########
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+
+########## Move window ##########
+mode "move" {
+    bindsym h move left
+    bindsym j move down
+    bindsym k move up
+    bindsym l move right
+
+    bindsym Left move left
+    bindsym Down move down
+    bindsym Up move up
+    bindsym Right move right
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+m mode "default"
+}
+
+bindsym $mod+m mode "move"
+
+########## Layout ##########
+bindsym $mod+g split h
+bindsym $mod+v split v
+
+bindsym $mod+f fullscreen toggle
+
+bindsym $mod+s layout stacking
+bindsym $mod+w layout tabbed
+bindsym $mod+e layout toggle split
+
+bindsym $mod+Shift+space floating toggle
+bindsym $mod+space focus mode_toggle
+
+bindsym $mod+a focus parent
+focus_follows_mouse no
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+bindsym $mod+minus scratchpad show
+
+########## Resize ##########
+mode "resize" {
+    bindsym l resize grow width 40 px
+    bindsym Right resize grow width 10 px
+
+    bindsym h resize shrink width 40 px
+    bindsym Left resize shrink width 10 px
+
+    bindsym k resize grow height 40 px
+    bindsym Up resize grow height 10 px
+
+    bindsym j resize shrink height 40 px
+    bindsym Down resize shrink height 10 px
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
+}
+bindsym $mod+r mode "resize"
+
+########## Workspaces ##########
+set $ws1 "1"
+set $ws2 "2"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+set $ws6 "6"
+set $ws7 "7"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+bindsym $mod+z move workspace to output left
+bindsym $mod+x move workspace to output right
+
+########## Power off ##########
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+e exec ~/.config/i3/exit.sh
+
+########## View ##########
+bar {
+    status_command i3status
+    position top
+
+    colors {
+        background #404552
+
+        focused_workspace #3685e2 #3685e2 #fafafa
+        active_workspace #5294e2 #5294e2 #fafafa
+        inactive_workspace #404552 #404552 #fafafa
+        urgent_workspace #ff5757 #ff5757 #fafafa
+    }
+}
+
+########## Styling ##########
+client.focused          #404552 #404552 #fafafa #ff5757 #fafafa
+client.focused_inactive #666666 #404552 #eeeeee #666666 #666666
+client.unfocused        #404552 #484b52 #eeeeee #ff5757 #404552
+client.urgent           #ff5757 #404552 #ffffff #555757 #404552
+client.background       #404552
+
+########## i3-gaps integration ##########
+for_window [class="^.*"] border pixel 2
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [title="Preferences$"] floating enable
+
+smart_borders no_gaps
+smart_gaps on
+gaps inner 2
+gaps outer 0

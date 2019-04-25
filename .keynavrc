@@ -1,0 +1,42 @@
+ctrl+space start, grid 4x3
+ctrl+semicolon start, grid 4x3
+q cell-select 1x1
+w cell-select 2x1
+e cell-select 3x1
+r cell-select 4x1
+a cell-select 1x2
+s cell-select 2x2
+d cell-select 3x2
+f cell-select 4x2
+z cell-select 1x3
+x cell-select 2x3
+c cell-select 3x3
+v cell-select 4x3
+
+Escape end
+ctrl+bracketleft end
+space warp, click 1, end
+shift+space warp, doubleclick 1, end
+
+h move-left
+j move-down
+k move-up
+l move-right
+
+shift+w move-up
+shift+s move-down
+shift+a move-left
+shift+d move-right
+shift+q end
+
+# scroll
+1 warp, click 6 # left
+2 warp, click 5 # up
+3 warp, click 4 # down
+4 warp, click 7 # right
+
+t warp, click 1
+g warp, click 3
+b warp, click 2
+5 warp, drag 1
+Tab warp
