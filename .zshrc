@@ -1,4 +1,4 @@
-export ZSH="/home/fimmind/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 ZSH_THEME="robbyrussell"
 HIST_STAMPS="dd.mm.yy"
@@ -12,9 +12,8 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR='vim'
 setopt +o nomatch
 
-autoload bashcompinit
-bashcompinit
-source /usr/share/bash-completion/completions/eopkg
-
-
-alias calc=gnome-calculator
+if [ $(bash -c "compgen -c | grep -w eopkg") ]; then
+  autoload bashcompinit
+  bashcompinit
+  source /usr/share/bash-completion/completions/eopkg
+fi
