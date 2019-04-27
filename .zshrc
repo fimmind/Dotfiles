@@ -12,7 +12,7 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR='vim'
 setopt +o nomatch
 
-if [ $(bash -c "compgen -c | grep -w eopkg") ]; then
+if [[ -n $(bash -c "compgen -c | grep -w eopkg") ]]; then
   autoload bashcompinit
   bashcompinit
   source /usr/share/bash-completion/completions/eopkg
