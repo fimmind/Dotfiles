@@ -5,7 +5,7 @@ font pango:Clear Sans 10
 ########## Autolaunch ##########
 exec --no-startup-id nm-applet
 exec --no-startup-id /usr/lib64/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id setxkbmap "us,ru" ",winkeys" "grp:alt_shift_toggle"
+exec --no-startup-id setxkbmap "us,ru" ",winkeys" "grp:shifts_toggle"
 
 ### Backlight ###
 bindsym XF86MonBrightnessUp exec light -A 10 # Increase Brightness
@@ -22,9 +22,7 @@ bindsym Print exec scrot -q 100
 bindsym $mod+Shift+s exec "i3lock-fancy || i3lock"
 
 ### Sound ###
-# Raise Volume
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
-# Lower Volume
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- && paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
 bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle-mute # Toggle muting
 
@@ -50,25 +48,6 @@ bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
-
-########## Move window ##########
-mode "move" {
-    bindsym h move left
-    bindsym j move down
-    bindsym k move up
-    bindsym l move right
-
-    bindsym Left move left
-    bindsym Down move down
-    bindsym Up move up
-    bindsym Right move right
-
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-    bindsym $mod+m mode "default"
-}
-
-bindsym $mod+m mode "move"
 
 ########## Layout ##########
 bindsym $mod+g split h
@@ -132,19 +111,37 @@ bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
 
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
-
 bindsym $mod+z move workspace to output left
 bindsym $mod+x move workspace to output right
+
+########## Move window ##########
+mode "move" {
+    bindsym h move left
+    bindsym j move down
+    bindsym k move up
+    bindsym l move right
+
+    bindsym Left move left
+    bindsym Down move down
+    bindsym Up move up
+    bindsym Right move right
+
+    bindsym 1 move container to workspace $ws1, workspace $ws1
+    bindsym 2 move container to workspace $ws2, workspace $ws2
+    bindsym 3 move container to workspace $ws3, workspace $ws3
+    bindsym 4 move container to workspace $ws4, workspace $ws4
+    bindsym 5 move container to workspace $ws5, workspace $ws5
+    bindsym 6 move container to workspace $ws6, workspace $ws6
+    bindsym 7 move container to workspace $ws7, workspace $ws7
+    bindsym 8 move container to workspace $ws8, workspace $ws8
+    bindsym 9 move container to workspace $ws9, workspace $ws9
+    bindsym 0 move container to workspace $ws10, workspace $ws10
+
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+m mode "default"
+}
+bindsym $mod+m mode "move"
 
 ########## Power off ##########
 bindsym $mod+Shift+c reload
@@ -155,6 +152,13 @@ bindsym $mod+Shift+e exec ~/.config/i3/exit.sh
 bar {
     status_command i3status
     position top
+    workspace_buttons yes
+    binding_mode_indicator yes
+    tray_output HDMI1
+
+    mode hide
+    hidden_state hide
+    modifier $mod
 
     colors {
         background #404552
@@ -174,12 +178,12 @@ client.urgent           #ff5757 #404552 #ffffff #555757 #404552
 client.background       #404552
 
 ########## i3-gaps integration ##########
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 1
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="task_dialog"] floating enable
 for_window [title="Preferences$"] floating enable
 
-smart_borders no_gaps
-smart_gaps on
-gaps inner 2
-gaps outer 0
+# smart_borders no_gaps
+# smart_gaps on
+# gaps inner 0
+# gaps outer 0

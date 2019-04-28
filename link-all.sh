@@ -9,6 +9,7 @@ if [ ! -d ~/.config/gtk-3.0 ]; then
 fi
 
 ln -s $1 $curDir/i3                   ~/.config/
+ln -s $1 $curDir/i3status             ~/.config/
 ln -s $1 $curDir/gtk-3.0/settings.ini ~/.config/gtk-3.0/
 ln -s $1 $curDir/.vim                 ~/
 ln -s $1 $curDir/.Xresources          ~/
