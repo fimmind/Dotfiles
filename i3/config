@@ -156,9 +156,9 @@ bar {
     binding_mode_indicator yes
     tray_output HDMI1
 
-    mode hide
-    hidden_state hide
-    modifier $mod
+    # mode hide
+    # hidden_state hide
+    # modifier $mod
 
     colors {
         background #404552
