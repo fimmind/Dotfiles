@@ -15,3 +15,4 @@ ln -s $1 $curDir/.vim                 ~/
 ln -s $1 $curDir/.Xresources          ~/
 ln -s $1 $curDir/.zshrc               ~/
 ln -s $1 $curDir/.keynavrc            ~/
+ln -s $1 $curDir/deezer.desktop       ~/.local/share/applications/
