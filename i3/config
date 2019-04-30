@@ -35,6 +35,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec rofi -show drun
 bindsym $mod+c exec rofi -show run
 bindsym Mod1+Tab exec rofi -show window
+bindsym Mod4+Tab exec i3-msg workspace $(~/.config/i3/inputWorkspaceName.py)
 
 
 ########## Focus ##########
@@ -136,6 +137,7 @@ mode "move" {
     bindsym 8 move container to workspace $ws8, workspace $ws8
     bindsym 9 move container to workspace $ws9, workspace $ws9
     bindsym 0 move container to workspace $ws10, workspace $ws10
+    bindsym Tab exec ~/.config/i3/inputWorkspaceName.py
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
@@ -146,7 +148,6 @@ bindsym $mod+m mode "move"
 ########## Power off ##########
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+e exec ~/.config/i3/exit.sh
 
 ########## View ##########
 bar {
@@ -179,11 +180,11 @@ client.background       #404552
 
 ########## i3-gaps integration ##########
 for_window [class="^.*"] border pixel 1
-for_window [window_role="pop-up"] floating enable
-for_window [window_role="task_dialog"] floating enable
-for_window [title="Preferences$"] floating enable
+# for_window [window_role="pop-up"] floating enable
+# for_window [window_role="task_dialog"] floating enable
+# for_window [title="Preferences$"] floating enable
 
-# smart_borders no_gaps
-# smart_gaps on
-# gaps inner 0
-# gaps outer 0
+smart_borders no_gaps
+smart_gaps on
+gaps inner 2
+gaps outer 0
