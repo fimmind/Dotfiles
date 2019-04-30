@@ -5,7 +5,7 @@ font pango:Clear Sans 10
 ########## Autolaunch ##########
 exec --no-startup-id nm-applet
 exec --no-startup-id /usr/lib64/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id setxkbmap "us,ru" ",winkeys" "grp:shifts_toggle"
+exec --no-startup-id setxkbmap us,ru ,winkeys grp:caps_toggle
 
 ### Backlight ###
 bindsym XF86MonBrightnessUp exec light -A 10 # Increase Brightness
