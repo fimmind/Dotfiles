@@ -13,28 +13,38 @@
 
 
 call plug#begin('~/.vim/plugged')
+  " Syntax, style
   Plug 'morhetz/gruvbox'
   Plug 'suy/vim-qmake'
   Plug 'justinmk/vim-syntax-extra'
   Plug 'PotatoesMaster/i3-vim-syntax'
 
+  " Markdown
   Plug 'SidOfc/mkdx'
   Plug 'dhruvasagar/vim-table-mode'
+  Plug 'iamcco/markdown-preview.vim'
 
+  " NERDTree
   Plug 'scrooloose/nerdtree'
-  Plug 'airblade/vim-gitgutter'
   Plug 'Xuyuanp/nerdtree-git-plugin'
   Plug 'jistr/vim-nerdtree-tabs'
 
-  Plug 'matze/vim-move'
+  " Tools
+  Plug 'airblade/vim-gitgutter'
   Plug 'godlygeek/tabular'
+
+  " Motion
+  Plug 'matze/vim-move'
   Plug 'easymotion/vim-easymotion'
+  Plug 'kien/ctrlp.vim'
+  Plug 'vim-scripts/a.vim'
 
+  " Autocompletion
   Plug 'cohama/lexima.vim'
-
   Plug 'lervag/vimtex'
   Plug 'SirVer/ultisnips'
   Plug 'vim-scripts/vim-auto-save'
+  Plug 'davidhalter/jedi-vim'
 
   function! BuildYCM(info)
     if(has("unix"))
@@ -49,13 +59,6 @@ call plug#begin('~/.vim/plugged')
   endfunction
   Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
 
-  Plug 'davidhalter/jedi-vim'
-  Plug 'majutsushi/tagbar'
-  Plug 'derekwyatt/vim-fswitch'
-  Plug 'kien/ctrlp.vim'
-  Plug 'vim-scripts/a.vim'
-
-" Plug 'mattn/emmet-vim'
 call plug#end()
 
 " Number lines
