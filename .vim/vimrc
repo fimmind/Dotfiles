@@ -22,7 +22,7 @@ call plug#begin('~/.vim/plugged')
   " Markdown
   Plug 'SidOfc/mkdx'
   Plug 'dhruvasagar/vim-table-mode'
-  Plug 'iamcco/markdown-preview.vim'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
   " NERDTree
   Plug 'scrooloose/nerdtree'
