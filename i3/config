@@ -34,7 +34,7 @@ bindsym $mod+Shift+q kill
 
 bindsym $mod+d exec rofi -modi drun -show drun
 bindsym $mod+x exec rofi -modi run -show run
-bindsym $mod+c exec ~/.config/i3/calc.py
+bindsym $mod+c exec ~/.config/i3/rofiCalc.py
 bindsym $mod+Tab exec i3-msg workspace $(~/.config/i3/inputWorkspaceName.py)
 bindsym Mod1+Tab exec rofi -show window
 
