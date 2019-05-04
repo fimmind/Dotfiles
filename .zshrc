@@ -25,8 +25,6 @@ fi
 = () {
     local IFS=' '
     local eq="$*"
-    # Uncomment the below for (p → +) and (x → *)
-    #calc="${eq//p/+}"
-    #calc="${eq//x/*}"
+    eq="${eq//x/*}"
     qalc $eq
 }
