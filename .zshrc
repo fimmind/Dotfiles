@@ -19,12 +19,14 @@ if [[ -n $(bash -c "compgen -c | grep -w eopkg") ]]; then
 fi
 
 # Calculator
-# Need gnome-calculator
+# Need:
+# * Android: qalc
+# * Other  : qalculate-gtk
 = () {
     local IFS=' '
-    local calc="$*"
+    local eq="$*"
     # Uncomment the below for (p → +) and (x → *)
-    #calc="${calc//p/+}"
-    #calc="${calc//x/*}"
-    printf '%s\n quit' "$calc" | gcalccmd | sed 's:^> ::g'
+    #calc="${eq//p/+}"
+    #calc="${eq//x/*}"
+    qalc $eq
 }
