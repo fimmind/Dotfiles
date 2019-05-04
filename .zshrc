@@ -17,3 +17,13 @@ if [[ -n $(bash -c "compgen -c | grep -w eopkg") ]]; then
   bashcompinit
   source /usr/share/bash-completion/completions/eopkg
 fi
+
+# Calculator
+= () {
+    local IFS=' '
+    local calc="$*"
+    # Uncomment the below for (p → +) and (x → *)
+    #calc="${calc//p/+}"
+    #calc="${calc//x/*}"
+    printf '%s\n quit' "$calc" | gcalccmd | sed 's:^> ::g'
+}
