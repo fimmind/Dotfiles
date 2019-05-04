@@ -19,6 +19,7 @@ if [[ -n $(bash -c "compgen -c | grep -w eopkg") ]]; then
 fi
 
 # Calculator
+# Need gnome-calculator
 = () {
     local IFS=' '
     local calc="$*"
