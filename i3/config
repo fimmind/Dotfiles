@@ -64,7 +64,8 @@ bindsym $mod+e layout toggle split
 bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
-bindsym $mod+a focus parent
+bindsym $mod+p focus parent
+bindsym $mod+o focus child
 focus_follows_mouse no
 
 # Show the next scratchpad window or hide the focused scratchpad window.
