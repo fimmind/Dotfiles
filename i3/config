@@ -1,5 +1,6 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 set $mod Mod4
+floating_modifier $mod
 font pango:Clear Sans 10
 
 ########## Autolaunch ##########
@@ -7,37 +8,35 @@ exec --no-startup-id nm-applet
 exec --no-startup-id /usr/lib64/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id setxkbmap us,ru ,winkeys grp:caps_toggle
 
-### Backlight ###
+########## Backlight ##########
 bindsym XF86MonBrightnessUp exec light -A 10 # Increase Brightness
 bindsym XF86MonBrightnessDown exec light -U 10 # Decrease Brightness
 
-### Media Player ###
+########## Media Player ##########
 bindsym XF86AudioPlay exec playerctl play-pause
 bindsym XF86AudioPause exec playerctl pause
 bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioNext exec playerctl next
 
-### Other ###
-bindsym Print exec scrot -q 100
-bindsym $mod+Shift+s exec "i3lock-fancy || i3lock"
+########## Screenshots ##########
+bindsym --release Print exec import -window root ~/Pictures/$(date +"%d.%m.%y_%T:%N").png
+bindsym --release Shift+Print exec import -window $(xdotool getactivewindow) ~/Pictures/$(date +"%d.%m.%y_%T:%N").png
+bindsym --release Control+Print exec import ~/Pictures/$(date +"%d.%m.%y_%T:%N").png
 
-### Sound ###
+########## Sound ##########
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+ && paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
 bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%- && paplay /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
 bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle-mute # Toggle muting
 
-
-floating_modifier $mod
-
+########## Other ##########
+bindsym $mod+Shift+l exec i3lock-fancy || i3lock
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 bindsym $mod+d exec rofi -modi drun -show drun
 bindsym $mod+x exec rofi -modi run -show run
-bindsym $mod+c exec ~/.config/i3/rofiCalc.py
-bindsym $mod+Tab exec i3-msg workspace $(~/.config/i3/inputWorkspaceName.py)
 bindsym Mod1+Tab exec rofi -show window
-
+bindsym $mod+c exec ~/.config/i3/rofiCalc.py
 
 ########## Focus ##########
 bindsym $mod+h focus left
@@ -49,7 +48,6 @@ bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-
 
 ########## Layout ##########
 bindsym $mod+g split h
@@ -136,7 +134,6 @@ mode "move" {
     bindsym 8 move container to workspace $ws8, workspace $ws8
     bindsym 9 move container to workspace $ws9, workspace $ws9
     bindsym 0 move container to workspace $ws10, workspace $ws10
-    bindsym Tab exec ~/.config/i3/inputWorkspaceName.py
 
     bindsym Return mode "default"
     bindsym Escape mode "default"
