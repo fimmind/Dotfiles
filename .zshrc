@@ -17,14 +17,3 @@ if [[ -n $(bash -c "compgen -c | grep -w eopkg") ]]; then
   bashcompinit
   source /usr/share/bash-completion/completions/eopkg
 fi
-
-# Calculator
-# Need:
-# * Android: qalc
-# * Other  : qalculate-gtk
-= () {
-    local IFS=' '
-    local eq="$*"
-    eq="${eq//x/*}"
-    qalc $eq
-}
