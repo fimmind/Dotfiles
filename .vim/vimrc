@@ -32,6 +32,8 @@ call plug#begin('~/.vim/plugged')
   " Tools
   Plug 'airblade/vim-gitgutter'
   Plug 'godlygeek/tabular'
+  Plug 'mattn/webapi-vim'
+  Plug 'mattn/gist-vim'
 
   " Motion
   Plug 'matze/vim-move'
