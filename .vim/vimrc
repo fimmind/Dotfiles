@@ -34,12 +34,18 @@ call plug#begin('~/.vim/plugged')
   Plug 'godlygeek/tabular'
   Plug 'mattn/webapi-vim'
   Plug 'mattn/gist-vim'
+  Plug 'markonm/traces.vim'
 
   " Motion
   Plug 'matze/vim-move'
   Plug 'easymotion/vim-easymotion'
   Plug 'kien/ctrlp.vim'
   Plug 'vim-scripts/a.vim'
+
+  " Format code
+  Plug 'google/vim-maktaba'
+  Plug 'google/vim-codefmt'
+  Plug 'google/vim-glaive'
 
   " Autocompletion
   Plug 'cohama/lexima.vim'
@@ -116,6 +122,7 @@ set wildmenu
 set splitbelow
 set colorcolumn=110
 set nobackup
+set showcmd
 filetype plugin on
 
 " Theme
