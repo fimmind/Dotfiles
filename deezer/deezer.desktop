@@ -3,5 +3,5 @@ Type=Application
 Version=0
 Name=Deezer
 Path=/usr/bin
-Exec=google-chrome-stable '-app=https://deezer.com/ru/'
+Exec=deezer
 Terminal=false

@@ -7,6 +7,8 @@ font pango:Clear Sans 10
 exec --no-startup-id nm-applet
 exec --no-startup-id /usr/lib64/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id setxkbmap us,ru ,winkeys grp:caps_toggle
+exec keynav
+exec ~/.fehbg
 
 ########## Backlight ##########
 bindsym XF86MonBrightnessUp exec light -A 10 # Increase Brightness
@@ -175,7 +177,7 @@ client.urgent           #ff5757 #404552 #ffffff #555757 #404552
 client.background       #404552
 
 ########## i3-gaps integration ##########
-for_window [class="^.*"] border pixel 2
+for_window [class="^.*"] border pixel 1
 new_window 1pixel
 # for_window [window_role="pop-up"] floating enable
 # for_window [window_role="task_dialog"] floating enable
