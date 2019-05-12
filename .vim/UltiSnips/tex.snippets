@@ -1,10 +1,10 @@
 snippet start "Basic template" b
-\documentclass[14pt, a4paper]{article}
+\documentclass[12pt, a4paper]{article}
 
-\usepackage[${1:14pt}]{extsizes}
-\usepackage[english, russian]{babel}                                   % Русский язык
-\usepackage[utf8]{inputenc}                                            % Кодировка
-\usepackage[left=1.5cm, right=1.5cm, top=3cm, bottom=2cm]{geometry}    % Отступы по краям
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+\usepackage[left=1.5cm, right=1.5cm, top=3cm, bottom=2cm]{geometry}
 
 % Настройка ссылок
 \usepackage[
@@ -21,12 +21,12 @@ $2fancyhf{}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{cancel}
 \usepackage{hhline}
-${3:% }\usepackage{listings}
-${4:% }\usepackage{ifthen}
-${5:% }\usepackage{xparse}
-${6:% }\usepackage{tikz, pgfplots}
+${3:% }\usepackage{cancel}
+${4:% }\usepackage{listings}
+${5:% }\usepackage{ifthen}
+${6:% }\usepackage{xparse}
+${7:% }\usepackage{tikz, pgfplots}
 
 
 \begin{document}
