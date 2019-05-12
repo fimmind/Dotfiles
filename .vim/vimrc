@@ -31,7 +31,7 @@ call plug#begin('~/.vim/plugged')
 
   " Tools
   Plug 'airblade/vim-gitgutter'
-  Plug 'godlygeek/tabular'
+  Plug 'junegunn/vim-easy-align'
   Plug 'mattn/webapi-vim'
   Plug 'mattn/gist-vim'
   Plug 'markonm/traces.vim'
@@ -79,8 +79,13 @@ autocmd! CmdlineLeave *
       \ | fi
 nnoremap : :set norelativenumber<CR>:
 
+" Easy-align
+" ================================================
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
+
 " UltiSnips
-" ===============================================
+" ================================================
 let g:UltiSnipsEditSplit='vertical'
 let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 
@@ -120,7 +125,6 @@ set ch=1
 set title
 set wildmenu
 set splitbelow
-set colorcolumn=110
 set nobackup
 set showcmd
 filetype plugin on
