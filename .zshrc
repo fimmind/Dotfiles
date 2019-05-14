@@ -17,3 +17,5 @@ if [[ -n $(bash -c "compgen -c | grep -w eopkg") ]]; then
   bashcompinit
   source /usr/share/bash-completion/completions/eopkg
 fi
+
+PATH="$PATH:$HOME/.local/bin:$HOME/bin"

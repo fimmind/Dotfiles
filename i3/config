@@ -36,7 +36,7 @@ bindsym $mod+Shift+l exec i3exit lock
 bindsym $mod+Return exec gnome-terminal || i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
-bindsym $mod+d exec rofi -modi drun -show drun
+bindsym $mod+d exec rofi -modi drun -show drun -show-icons
 bindsym $mod+x exec rofi -modi run -show run
 bindsym Mod1+Tab exec rofi -show window
 bindsym $mod+c exec ~/.config/i3/rofiCalc.py

@@ -18,10 +18,8 @@ link-all:
 	ln -s $$1 $$curDir/.zshrc                  ~/
 	ln -s $$1 $$curDir/.keynavrc               ~/
 	ln -s $$1 $$curDir/deezer/deezer.desktop   ~/.local/share/applications/
+	ln -s $$1 $$curDir/deezer/deezer           ~/.local/bin/
 	ln -s $$1 $$curDir/.fehbg                  ~/
-	echo
-	echo sudo ln -s $$1 $$curDir/deezer/deezer /usr/bin/
-	sudo ln -s $$1 $$curDir/deezer/deezer       /usr/bin/
 
 .ONESHELL:
 link-Xresourses:
