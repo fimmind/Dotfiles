@@ -1,5 +1,5 @@
+clear
 ctrl+shift+space start, grid 4x3
-ctrl+semicolon start, grid 4x3
 q cell-select 1x1
 w cell-select 2x1
 e cell-select 3x1
