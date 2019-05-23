@@ -1,0 +1,7 @@
+snippet start "start template" b
+project($1 CXX)
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS on)
+
+add_executable(main main.cpp $3)
+endsnippet

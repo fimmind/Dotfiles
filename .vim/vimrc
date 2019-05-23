@@ -192,7 +192,7 @@ let g:mkdp_auto_start = 1
 let g:mkdp_auto_close = 1
 
 function MDOpen(url)
-  exec "!google-chrome-stable '--app=".a:url."'" | redraw!
+  exec "!google-chrome-stable '--app=".a:url."' || chromium '--app=".a:url."'" | redraw!
 endfunction
 let g:mkdp_browserfunc = 'MDOpen'
 
