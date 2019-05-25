@@ -3,8 +3,9 @@ ifndef VERBOSE
 .SILENT:
 endif
 
-installOhMyZsh:
-	sh -c "`curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh`"
+default: link-all
+
+all: link-all link-Xresources installOhMyZsh installHaskellPlatform
 
 .ONESHELL:
 link-all:
@@ -22,7 +23,7 @@ link-all:
 	ln -s $$1 $$curDir/.fehbg                  ~/
 
 .ONESHELL:
-link-Xresourses:
+link-Xresources:
 	curDir=$$(pwd)
 	if [ -f ~/.Xresources ] && [ ! -L ~/.Xresources ]; then
 		echo ".Xresources file already exists. Would you like to replace it? (y/n)"
@@ -33,3 +34,9 @@ link-Xresourses:
 	if [ "$$answer" = "y" ]; then
 		ln -sf $$1 $$curDir/.Xresources ~/
 	fi
+
+installOhMyZsh:
+	sh -c "`curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh`"
+
+installHaskellPlatform:
+	curl https://get-ghcup.haskell.org -sSf | sh

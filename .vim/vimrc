@@ -19,6 +19,9 @@ call plug#begin('~/.vim/plugged')
   Plug 'justinmk/vim-syntax-extra'
   Plug 'PotatoesMaster/i3-vim-syntax'
 
+  " Haskell
+  Plug 'neovimhaskell/haskell-vim'
+
   " Markdown
   Plug 'SidOfc/mkdx'
   Plug 'dhruvasagar/vim-table-mode'
@@ -128,6 +131,7 @@ set splitbelow
 set nobackup
 set showcmd
 filetype plugin on
+filetype plugin indent on
 
 " Theme
 " ================================================
@@ -270,9 +274,11 @@ endfunction
 let s:runCommands = {
       \ "cpp": "test -f '%:p:r' && '%:p:r' || '%:p:h/main'",
       \ "py" : "python3 '%:p'",
-      \ "js" : "node '%:p'"
+      \ "js" : "node '%:p'",
+      \ "hs" : "runhaskell '%:p'"
       \ }
 let s:runCommands["h"] = s:runCommands["cpp"]
+let s:runCommands["lhs"] = s:runCommands["hs"]
 
 nnoremap <Leader>e :call Run()<CR>
 command! Run execute Run()

@@ -8,6 +8,7 @@ HIST_STAMPS="dd.mm.yy"
 plugins=(git python pip vim-interaction)
 
 source $ZSH/oh-my-zsh.sh
+source /home/fimmind/.ghcup/env # Haskell
 
 export EDITOR='vim'
 setopt +o nomatch
