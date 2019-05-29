@@ -9,7 +9,7 @@ all: link-all link-Xresources installOhMyZsh installHaskellPlatform
 link-all: link-Xresources
 	curDir=$$(pwd)
 	if [ ! -d ~/.config ]; then
-		 mkdir ~/.config
+		mkdir ~/.config
 	fi
 	ln -s $$1 $$curDir/i3                      ~/.config/
 	ln -s $$1 $$curDir/i3status                ~/.config/
