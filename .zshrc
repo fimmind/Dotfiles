@@ -5,7 +5,7 @@ HIST_STAMPS="dd.mm.yy"
 
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-plugins=(git python pip vim-interaction)
+plugins=(git vim-interaction stack)
 
 source $ZSH/oh-my-zsh.sh
 source /home/fimmind/.ghcup/env # Haskell

@@ -1,17 +1,15 @@
 SHELL = /usr/bin/bash
-ifndef VERBOSE
-.SILENT:
-endif
+.SILENT: link-Xresources
 
 default: link-all
 
 all: link-all link-Xresources installOhMyZsh installHaskellPlatform
 
 .ONESHELL:
-link-all:
+link-all: link-Xresources
 	curDir=$$(pwd)
 	if [ ! -d ~/.config ]; then
-		mkdir ~/.config
+		 mkdir ~/.config
 	fi
 	ln -s $$1 $$curDir/i3                      ~/.config/
 	ln -s $$1 $$curDir/i3status                ~/.config/
@@ -40,3 +38,6 @@ installOhMyZsh:
 
 installHaskellPlatform:
 	curl https://get-ghcup.haskell.org -sSf | sh
+
+installTheHaskellToolStack:
+	curl -sSL https://get.haskellstack.org/ | sh
