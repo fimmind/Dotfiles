@@ -266,7 +266,7 @@ command! Build execute Build()
 function! Build()
   let FileType = expand("%:e")
   if has_key(s:buildCommands, FileType)
-    wa; cd %:p:h
+    wa | cd %:p:h
     execute "! " . s:buildCommands[FileType]
   else
     echo "Cant build .".FileType." file"
@@ -286,9 +286,9 @@ let s:runCommands["h"] = s:runCommands["cpp"]
 nnoremap <Leader>e :call Run()<CR>
 command! Run execute Run()
 function! Run()
-  wa; cd %:p:h
   let FileType = expand("%:e")
   if has_key(s:runCommands, FileType)
+    wa | cd %:p:h
     if has_key(s:buildCommands, FileType)
       execute "!".
             \ "clear && ".
