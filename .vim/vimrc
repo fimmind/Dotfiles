@@ -21,6 +21,10 @@ call plug#begin('~/.vim/plugged')
 
   " Haskell
   Plug 'neovimhaskell/haskell-vim'
+  Plug 'autozimu/LanguageClient-neovim', {
+        \ 'branch': 'next',
+        \ 'do': './install.sh'
+        \ }
 
   " Markdown
   Plug 'SidOfc/mkdx'
@@ -87,6 +91,11 @@ nnoremap : :set norelativenumber<CR>:
 " ================================================
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
+
+" Haskell
+" ================================================
+let g:LanguageClient_serverCommands = { 'haskell': ['hie-wrapper'] }
+let g:LanguageClient_rootMarkers = ['*.cabal', 'stack.yaml']
 
 " UltiSnips
 " ================================================
