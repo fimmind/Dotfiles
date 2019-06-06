@@ -5,7 +5,6 @@ font pango:Clear Sans 10
 
 ########## Autolaunch ##########
 exec --no-startup-id nm-applet
-exec --no-startup-id /usr/lib64/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id setxkbmap us,ru ,winkeys grp:caps_toggle
 exec keynav
 exec ~/.fehbg
@@ -144,10 +143,6 @@ mode "move" {
 }
 bindsym $mod+m mode "move"
 
-########## Power off ##########
-bindsym $mod+Shift+c reload
-bindsym $mod+Shift+r restart
-
 ########## View ##########
 bar {
     status_command i3status
@@ -155,10 +150,6 @@ bar {
     workspace_buttons yes
     binding_mode_indicator yes
     tray_output HDMI1
-
-    # mode hide
-    # hidden_state hide
-    # modifier $mod
 
     colors {
         background #404552
