@@ -1,24 +1,30 @@
 SHELL = /usr/bin/bash
 .SILENT: link-Xresources
 
-default: link-all
+default:
+	sudo make all
 
-all: link-all link-Xresources installOhMyZsh installHaskellPlatform
+all: enableBluetooth link-all installPackets installOhMyZsh installTheHaskellToolStack installHIE installVimPlugins link-Xresources
+# link-Xresources mast be last, becouse it may ask confirmation
 
+enableBluetooth:
+	systemctl enable bluetooth
+
+LN_ARGS ?= -s
+LN = ln ${LN_ARGS} $$curDir
 .ONESHELL:
-link-all: link-Xresources
+link-all:
 	curDir=$$(pwd)
-	if [ ! -d ~/.config ]; then
-		mkdir ~/.config
-	fi
-	ln -s $$curDir/i3                      ~/.config/
-	ln -s $$curDir/i3status                ~/.config/
-	ln -s $$curDir/.vim                    ~/
-	ln -s $$curDir/.zshrc                  ~/
-	ln -s $$curDir/.keynavrc               ~/
-	ln -s $$curDir/deezer/deezer.desktop   ~/.local/share/applications/
-	ln -s $$curDir/deezer/deezer           ~/.local/bin/
-	ln -s $$curDir/.fehbg                  ~/
+	test -d ~/.config || mkdir ~/.config
+	test -d ~/.local/bin || mkdir ~/.local/bin
+	${LN}/i3                      ~/.config/
+	${LN}/i3status                ~/.config/
+	${LN}/.vim                    ~/
+	${LN}/.zshrc                  ~/
+	${LN}/.keynavrc               ~/
+	${LN}/deezer/deezer.desktop   ~/.local/share/applications/
+	${LN}/deezer/deezer           ~/.local/bin/
+	${LN}/.fehbg                  ~/
 
 .ONESHELL:
 link-Xresources:
@@ -34,7 +40,23 @@ link-Xresources:
 	fi
 
 installOhMyZsh:
-	sh -c "`curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh`"
+	sh -c "`curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh` --unattended"
 
 installTheHaskellToolStack:
 	curl -sSL https://get.haskellstack.org/ | sh
+	stack setup
+
+installHIE:
+	git clone https://github.com/haskell/haskell-ide-engine --recurse-submodules
+	cd haskell-ide-engine
+	stack ./install.hs hie-8.4.4
+	stack ./install.hs build-doc
+	stack install
+
+installPackets:
+	pacman -S --noconfirm \
+		curl git cmake make gnome-terminal chromium python3 bluez bluez-utils \
+		gcc qt5-base qtcreator vim rofi htop ranger pcmanfm zathura shake keynav
+
+installVimPlugins:
+	vim -c ":PlugInstall | :qa"
