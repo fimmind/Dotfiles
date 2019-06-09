@@ -56,7 +56,8 @@ installHIE:
 installPackets:
 	pacman -S --noconfirm \
 		curl git cmake make gnome-terminal chromium python3 bluez bluez-utils \
-		gcc qt5-base qtcreator vim rofi htop ranger pcmanfm zathura shake keynav
+		gcc qt5-base qtcreator vim rofi htop ranger pcmanfm zathura shake keynav \
+		qalculate-gtk
 
 installVimPlugins:
 	vim -c ":PlugInstall | :qa"
