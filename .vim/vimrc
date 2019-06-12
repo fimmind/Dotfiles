@@ -269,7 +269,7 @@ let s:runCommands["h"]   = s:runCommands["cpp"]
 " Build
 " ================================================
 command! Build execute Build()
-  function! Build()
+function! Build()
   let FileType = expand("%:e")
   if has_key(s:buildCommands, FileType)
     wa | cd %:p:h
