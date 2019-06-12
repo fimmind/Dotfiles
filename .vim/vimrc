@@ -21,10 +21,6 @@ call plug#begin('~/.vim/plugged')
 
   " Haskell
   Plug 'neovimhaskell/haskell-vim'
-  Plug 'autozimu/LanguageClient-neovim', {
-        \ 'branch': 'next',
-        \ 'do': './install.sh'
-        \ }
 
   " Markdown
   Plug 'SidOfc/mkdx'
@@ -91,11 +87,6 @@ nnoremap : :set norelativenumber<CR>:
 " ================================================
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
-
-" Haskell
-" ================================================
-let g:LanguageClient_serverCommands = { 'haskell': ['hie-wrapper'] }
-let g:LanguageClient_rootMarkers = ['*.cabal', 'stack.yaml']
 
 " UltiSnips
 " ================================================
@@ -228,7 +219,7 @@ endfor
 let g:move_key_modifier='S'
 
 let g:mapleader=','
-map <Leader> <Plug>(easymotion-prefix)
+map \ <Plug>(easymotion-prefix)
 
 " NERDTree
 " ================================================
@@ -258,21 +249,27 @@ autocmd! VimEnter * call StartUp()
 " \ "Unknown"   : "?"
 " \ }
 
-" Build
+" Build & Run
 " ================================================
-command! WatchScss  ! gnome-terminal --
-      \ sass --watch '%:p:h/:%:p:h:h/' --scss --style compressed --no-cache --sourcemap=none
-      \ && echo "Start listening for changes"
-
 let s:buildCommands = {
       \ "cpp": "make -f %:p:h/Makefile",
       \ "scss": "sass --watch '%:p:%:p:r.css' --scss --style compressed --no-cache --sourcemap=none",
       \ "hs": "stack build"
       \ }
-let s:buildCommands["h"] = s:buildCommands["cpp"]
+let s:runCommands = {
+      \ "cpp": "test -f '%:p:r' && '%:p:r' || '%:p:h/main'",
+      \ "py" : "python3 '%:p'",
+      \ "js" : "node '%:p'",
+      \ "hs" : "stack run"
+      \ }
 
+let s:buildCommands["h"] = s:buildCommands["cpp"]
+let s:runCommands["h"]   = s:runCommands["cpp"]
+
+" Build
+" ================================================
 command! Build execute Build()
-function! Build()
+  function! Build()
   let FileType = expand("%:e")
   if has_key(s:buildCommands, FileType)
     wa | cd %:p:h
@@ -284,14 +281,6 @@ endfunction
 
 " Run
 " ================================================
-let s:runCommands = {
-      \ "cpp": "test -f '%:p:r' && '%:p:r' || '%:p:h/main'",
-      \ "py" : "python3 '%:p'",
-      \ "js" : "node '%:p'",
-      \ "hs" : "stack run"
-      \ }
-let s:runCommands["h"] = s:runCommands["cpp"]
-
 nnoremap <Leader>e :call Run()<CR>
 command! Run execute Run()
 function! Run()

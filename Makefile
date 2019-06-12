@@ -1,10 +1,12 @@
 SHELL = /usr/bin/bash
 .SILENT: link-Xresources
 
-default:
+setup-manjaro:
+	sudo pacman -R manjaro-i3-settings 
 	sudo make all
+	i3exit logout
 
-all: enableBluetooth link-all installPackets installOhMyZsh installTheHaskellToolStack installHIE installVimPlugins link-Xresources
+all: enableBluetooth link-all installPackets installOhMyZsh installTheHaskellToolStack installVimPlugins link-Xresources
 # link-Xresources mast be last, becouse it may ask confirmation
 
 enableBluetooth:
@@ -46,18 +48,11 @@ installTheHaskellToolStack:
 	curl -sSL https://get.haskellstack.org/ | sh
 	stack setup
 
-installHIE:
-	git clone https://github.com/haskell/haskell-ide-engine --recurse-submodules
-	cd haskell-ide-engine
-	stack ./install.hs hie-8.4.4
-	stack ./install.hs build-doc
-	stack install
-
 installPackets:
 	pacman -S --noconfirm \
 		curl git cmake make gnome-terminal chromium python3 bluez bluez-utils \
-		gcc qt5-base qtcreator vim rofi htop ranger pcmanfm zathura shake keynav \
-		qalculate-gtk
+		gcc qt5-base qtcreator gvim rofi htop ranger pcmanfm zathura shake keynav \
+		qalculate-gtk i3-gaps i3lock i3exit i3status zsh
 
 installVimPlugins:
 	vim -c ":PlugInstall | :qa"
