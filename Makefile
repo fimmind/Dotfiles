@@ -52,7 +52,7 @@ installPackets:
 	pacman -S --noconfirm \
 		curl git cmake make gnome-terminal chromium python3 bluez bluez-utils \
 		gcc qt5-base qtcreator gvim rofi htop ranger pcmanfm zathura shake keynav \
-		qalculate-gtk i3-gaps i3lock i3exit i3status zsh \
+		qalculate-gtk i3-gaps i3lock i3exit i3status zsh zathura-pdf-mupdf \
 		texlive-core texlive-bin texlive-core texlive-langcyrillic
 
 installVimPlugins:
