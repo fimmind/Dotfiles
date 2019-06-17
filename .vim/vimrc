@@ -114,7 +114,7 @@ set expandtab
 autocmd! FileType *
       \ set tabstop=2
       \ | set shiftwidth=2
-autocmd! FileType cpp
+autocmd! FileType cpp,c
       \ set tabstop=4
       \ | set shiftwidth=4
 
@@ -140,39 +140,6 @@ set termguicolors
 colorscheme gruvbox
 set background=dark
 syntax on
-set iskeyword+=-
-highlight Search ctermfg=white
-
-" Qt
-" ================================================
-" TODO: move to plugin
-command! RefreshCompileCommands !bear make && ~/.vim/plugged/YCM-Generator/config_gen.py -F cc -b make -f ./
-
-nmap <Leader>qt :emenu Qt.<Tab>
-nmenu Qt.Mode.Debug      :!qmake ./ CONFIG+=debug<CR>
-nmenu Qt.Mode.Release    :!qmake ./ CONFIG+=release<CR>
-nmenu Qt.Build           :!make<CR> | " TODO: run qmake, if necessary
-nmenu Qt.Create.Project  :call Qt_Create_Project()<CR>
-nmenu Qt.Create.Source   :call Qt_Create("cpp")<CR>
-nmenu Qt.Create.Header   :call Qt_Create("h")<CR>
-nmenu Qt.Create.Ui       :call Qt_Create("ui")<CR>
-nmenu Qt.Create.Class    :call Qt_Create_Class<CR>
-
-function! Qt_Create_Project()
-  let ProjectName = input("Enter project name: ")
-  " TODO
-endfunction
-
-function! Qt_Create(fileType, ...)
-  let fileName = get(a:, 1, input("Enter file name: "))
-  " TODO
-endfunction
-
-function! Qt_Create_Class()
-  " TODO:
-  " Create class with given name, ui(optionaly), parent calss(optionaly). Add
-  " created files to PRO file(optionaly)
-endfunction
 
 " LaTeX
 " ================================================
@@ -252,19 +219,26 @@ autocmd! VimEnter * call StartUp()
 " Build & Run
 " ================================================
 let s:buildCommands = {
-      \ "cpp": "make -f %:p:h/Makefile",
-      \ "scss": "sass --watch '%:p:%:p:r.css' --scss --style compressed --no-cache --sourcemap=none",
-      \ "hs": "stack build"
+      \ "c"    : "(test -f '%:p:h/Makefile' || cmake '%:p:h') && make -f '%:p:h/Makefile'",
+      \ "scss" : "sass --watch '%:p:%:p:r.css' --scss --style compressed --no-cache --sourcemap=none",
+      \ "hs"   : "stack build"
       \ }
 let s:runCommands = {
-      \ "cpp": "test -f '%:p:r' && '%:p:r' || '%:p:h/main'",
+      \ "c"  : "test -f '%:p:r' && '%:p:r' || '%:p:h/main'",
       \ "py" : "python3 '%:p'",
       \ "js" : "node '%:p'",
       \ "hs" : "stack run"
       \ }
 
-let s:buildCommands["h"] = s:buildCommands["cpp"]
-let s:runCommands["h"]   = s:runCommands["cpp"]
+function! Eq(fst, snd)
+  let s:buildCommands[a:fst] = s:buildCommands[a:snd]
+  let s:runCommands[a:fst]   = s:runCommands[a:snd]
+endfunction
+
+call Eq("h",   "c" )
+call Eq("cpp", "c" )
+call Eq("hpp", "c" )
+call Eq("hsl", "hs")
 
 " Build
 " ================================================
