@@ -77,10 +77,7 @@ call plug#end()
 " ================================================
 set number
 set relativenumber
-autocmd! CmdlineLeave * 
-      \   if &number 
-      \ |   set relativenumber
-      \ | fi
+autocmd! CmdlineLeave * set relativenumber
 nnoremap : :set norelativenumber<CR>:
 
 " Easy-align
