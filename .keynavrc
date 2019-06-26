@@ -38,5 +38,10 @@ shift+q end
 t warp, click 1
 g warp, click 3
 b warp, click 2
-5 warp, drag 1
+Shift+v warp, drag 1
+
+Shift+t click 1
+Shift+g click 3
+Shift+b click 2
+
 Tab warp
