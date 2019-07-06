@@ -60,7 +60,7 @@ call plug#begin('~/.vim/plugged')
 
   function! BuildYCM(info)
     if(has("unix"))
-      if(system("uname -o") == "Android\n") 
+      if(system("uname -o") == "Android\n")
         !./install.py --clang-completer --system-libclang
       else
         !./install.py --clangd-completer
@@ -77,8 +77,49 @@ call plug#end()
 " ================================================
 set number
 set relativenumber
-autocmd! CmdlineLeave * set relativenumber
-nnoremap : :set norelativenumber<CR>:
+autocmd! CmdlineLeave * call SetRelativenumber(1)
+nnoremap : :call SetRelativenumber(0)<CR>:
+inoremap <C-o>: <C-o>:call SetRelativenumber(0)<CR><C-o>:
+inoremap <C-o> <C-o>
+
+function SetRelativenumber(yes)
+  if &number
+    if a:yes
+      set relativenumber
+    else
+      set norelativenumber
+    endif
+  endif
+endfunction
+
+
+" Haskell
+" ================================================
+let chars = {
+      \ '-': ['{\%#}'],
+      \ '#': ['{-\%#-}'],
+      \ '<Space>': ['{-\%#-}', '{-#\%##-}']
+      \ }
+
+for char in keys(chars)
+  for at in chars[char]
+    call lexima#add_rule({
+          \ 'filetype': 'haskell',
+          \ 'char': char,
+          \ 'at': at,
+          \ 'input_after': char
+          \ })
+  endfor
+endfor
+
+for at in ['{-\%#-}', '{-#\%##-}', '{- \%# -}', '{-# \%# #-}']
+  call lexima#add_rule({
+        \ 'filetype': 'haskell',
+        \ 'char': '<BS>',
+        \ 'at': at,
+        \ 'delete': 1
+        \ })
+endfor
 
 " Easy-align
 " ================================================
@@ -90,7 +131,6 @@ xmap ga <Plug>(EasyAlign)
 let g:UltiSnipsEditSplit='vertical'
 let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
 
-" better key bindings for UltiSnipsExpandTrigger
 let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<C-j>"
 let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
@@ -99,7 +139,6 @@ let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 " ================================================
 let g:ycm_min_num_of_chars_for_completion = 2
 
-" make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-n>']
 let g:ycm_key_list_previous_completion = ['<C-p>']
 
@@ -150,6 +189,16 @@ if !exists('g:ycm_semantic_triggers')
 endif
 let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
 
+let pairs = {'(':')', '\\\\{':'\\\\}', '[':']', '<':'>'}
+for i in keys(pairs)
+  call lexima#add_rule({
+        \ 'char': i[-1:],
+        \ 'at': 'lr\%#',
+        \ 'filetype': 'tex',
+        \ 'input': '<BS><BS> <Esc>:call UltiSnips#Anon("\\left'.i.' $1 \\right'.pairs[i].'$0")<CR>'
+        \ })
+endfor
+
 " Markdown
 " ================================================
 let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
@@ -165,18 +214,6 @@ function MDOpen(url)
   exec "!google-chrome-stable '--app=".a:url."' || chromium '--app=".a:url."'" | redraw!
 endfunction
 let g:mkdp_browserfunc = 'MDOpen'
-
-" Lexima
-" ================================================
-let pairs = {'(':')', '\\\\{':'\\\\}', '[':']', '<':'>'}
-for i in keys(pairs)
-  call lexima#add_rule({
-        \ 'char': i[-1:], 
-        \ 'at': 'lr\%#', 
-        \ 'filetype': 'tex', 
-        \ 'input': '<BS><BS> <Esc>:call UltiSnips#Anon("\\left'.i.' $1 \\right'.pairs[i].'$0")<CR>'
-        \ })
-endfor
 
 " Mappings
 " ================================================
