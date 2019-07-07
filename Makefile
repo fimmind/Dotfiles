@@ -12,21 +12,21 @@ all: enableBluetooth link-all installPackets installOhMyZsh installTheHaskellToo
 enableBluetooth:
 	systemctl enable bluetooth
 
-LN_ARGS ?= -s
+LN_ARGS ?= -sT
 LN = ln ${LN_ARGS} $$curDir
 .ONESHELL:
 link-all:
 	curDir=$$(pwd)
-	test -d ~/.config || mkdir ~/.config
+	test -d ~/.config    || mkdir ~/.config
 	test -d ~/.local/bin || mkdir ~/.local/bin
-	${LN}/i3                      ~/.config/
-	${LN}/i3status                ~/.config/
-	${LN}/.vim                    ~/
-	${LN}/.zshrc                  ~/
-	${LN}/.keynavrc               ~/
-	${LN}/deezer/deezer.desktop   ~/.local/share/applications/
-	${LN}/deezer/deezer           ~/.local/bin/
-	${LN}/.fehbg                  ~/
+	${LN}/i3                      ~/.config/i3
+	${LN}/i3status                ~/.config/i3status
+	${LN}/vim                     ~/.vim
+	${LN}/zshrc                   ~/.zshrc
+	${LN}/keynavrc                ~/.keynavrc
+	${LN}/deezer/deezer.desktop   ~/.local/share/applications/deezer.desktop
+	${LN}/deezer/deezer           ~/.local/bin/deezer
+	${LN}/fehbg                   ~/.fehbg
 
 .ONESHELL:
 link-Xresources:
@@ -38,7 +38,7 @@ link-Xresources:
 		answer=y
 	fi
 	if [ "$$answer" = "y" ]; then
-		ln -sf $$curDir/.Xresources ~/
+		ln -sf $$curDir/Xresources ~/.Xresources
 	fi
 
 installOhMyZsh:
@@ -46,6 +46,7 @@ installOhMyZsh:
 
 installTheHaskellToolStack:
 	curl -sSL https://get.haskellstack.org/ | sh
+	cd ~
 	stack setup
 
 installPackets:
