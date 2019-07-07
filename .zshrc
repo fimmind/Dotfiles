@@ -18,4 +18,6 @@ if [[ -n $(bash -c "compgen -c | grep -w eopkg") ]]; then
   source /usr/share/bash-completion/completions/eopkg
 fi
 
+alias ru="setxkbmap us,ru ,winkeys grp:caps_toggle"
+
 PATH="$PATH:$HOME/.local/bin:$HOME/bin"
