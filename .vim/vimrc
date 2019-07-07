@@ -73,6 +73,11 @@ call plug#begin('~/.vim/plugged')
 
 call plug#end()
 
+" Terminal
+" ================================================
+tnoremap <Esc> <C-w><S-n>
+tnoremap <C-[> <C-w><S-n>
+
 " Number lines
 " ================================================
 set number
