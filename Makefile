@@ -9,7 +9,7 @@ setup-manjaro-i3:
 	sudo make enableBluetooth link-all installPackets installOhMyZsh installTheHaskellToolStack installVimPlugins link-Xresources
 	i3exit logout
 
-setup-termux: installPackets link-all installOhMyZsh installVimPlugins installHugs
+setup-termux: installPackets link-all installOhMyZsh installHugs installVimPlugins
 
 enableBluetooth:
 	systemctl enable bluetooth
@@ -47,6 +47,7 @@ link-Xresources:
 
 installOhMyZsh:
 	sh -c "`curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh` --unattended"
+	mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
 
 installTheHaskellToolStack:
 	curl -sSL https://get.haskellstack.org/ | sh
@@ -70,8 +71,7 @@ installVimPlugins:
 
 .ONESHELL:
 installHugs:
-	termux-chroot
-	cd
-	git clone https://github.com/trenttobler/android-termux-hugs.git
-	cd android-termux-hugs
-	make install
+	termux-chroot "cd ~ \
+		&& git clone https://github.com/trenttobler/android-termux-hugs.git \
+		&& cd android-termux-hugs \
+		&& make install"

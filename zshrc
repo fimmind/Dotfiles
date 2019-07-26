@@ -24,4 +24,6 @@ PATH="$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/bin"
 
 if [ "`uname -o`" == "Android" ]; then
   alias chroot="termux-chroot && exit"
+  alias hugs="termux-chroot hugs"
+  alias runhugs="termux-chroot runhugs"
 fi
