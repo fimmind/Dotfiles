@@ -6,10 +6,10 @@ SYSTEM := $(shell uname -o)
 setup-manjaro-i3:
 	sudo pacman -R manjaro-i3-settings 
 # link-Xresources mast be last, becouse it may ask confirmation
-	sudo make enableBluetooth link-all installPackets installOhMyZsh installTheHaskellToolStack installVimPlugins link-Xresources
+	sudo make enableBluetooth link-all installPackets gitConfig installOhMyZsh installTheHaskellToolStack installVimPlugins link-Xresources
 	i3exit logout
 
-setup-termux: installPackets link-all installOhMyZsh installHugs installVimPlugins
+setup-termux: link-all installPackets gitConfig installOhMyZsh installHugs installVimPlugins
 
 enableBluetooth:
 	systemctl enable bluetooth
@@ -68,6 +68,10 @@ endif
 
 installVimPlugins:
 	vim -c ":PlugInstall | :qa"
+
+gitConfig:
+	git config --global user.name fimmind
+	git config --global user.email "grayfox19@mail.ru"
 
 .ONESHELL:
 installHugs:
