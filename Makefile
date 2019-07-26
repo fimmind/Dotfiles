@@ -56,7 +56,7 @@ installTheHaskellToolStack:
 .ONESHELL:
 installPackets:
 ifeq ($(SYSTEM), Android)
-	pkg install cmake proot python curl vim htop zsh
+	pkg install build-essential cmake libclang proot python python-dev curl vim-python htop zsh
 else
 	pacman -S --noconfirm \
 		curl git cmake make gnome-terminal chromium python3 bluez bluez-utils \
