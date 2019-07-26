@@ -1,13 +1,15 @@
 SHELL = /usr/bin/bash
 .SILENT: link-Xresources
 
-setup-manjaro:
+SYSTEM := $(shell uname -o)
+
+setup-manjaro-i3:
 	sudo pacman -R manjaro-i3-settings 
-	sudo make all
+# link-Xresources mast be last, becouse it may ask confirmation
+	sudo make enableBluetooth link-all installPackets installOhMyZsh installTheHaskellToolStack installVimPlugins link-Xresources
 	i3exit logout
 
-all: enableBluetooth link-all installPackets installOhMyZsh installTheHaskellToolStack installVimPlugins link-Xresources
-# link-Xresources mast be last, becouse it may ask confirmation
+setup-termux: installPackets link-all installOhMyZsh installVimPlugins installHugs
 
 enableBluetooth:
 	systemctl enable bluetooth
@@ -17,16 +19,18 @@ LN = ln ${LN_ARGS} $$curDir
 .ONESHELL:
 link-all:
 	curDir=$$(pwd)
+	${LN}/vim                     ~/.vim
+	${LN}/zshrc                   ~/.zshrc
+ifneq ($(SYSTEM), Android)
 	test -d ~/.config    || mkdir ~/.config
 	test -d ~/.local/bin || mkdir ~/.local/bin
 	${LN}/i3                      ~/.config/i3
 	${LN}/i3status                ~/.config/i3status
-	${LN}/vim                     ~/.vim
-	${LN}/zshrc                   ~/.zshrc
 	${LN}/keynavrc                ~/.keynavrc
 	${LN}/deezer/deezer.desktop   ~/.local/share/applications/deezer.desktop
 	${LN}/deezer/deezer           ~/.local/bin/deezer
 	${LN}/fehbg                   ~/.fehbg
+endif
 
 .ONESHELL:
 link-Xresources:
@@ -49,12 +53,25 @@ installTheHaskellToolStack:
 	cd ~
 	stack setup
 
+.ONESHELL:
 installPackets:
+ifeq ($(SYSTEM), Android)
+	pkg install cmake proot python curl vim htop zsh
+else
 	pacman -S --noconfirm \
 		curl git cmake make gnome-terminal chromium python3 bluez bluez-utils \
 		gcc qt5-base qtcreator gvim rofi htop ranger pcmanfm zathura shake keynav \
 		qalculate-gtk i3-gaps i3lock i3exit i3status zsh zathura-pdf-mupdf \
 		texlive-core texlive-bin texlive-core texlive-langcyrillic
+endif
 
 installVimPlugins:
 	vim -c ":PlugInstall | :qa"
+
+.ONESHELL:
+installHugs:
+	termux-chroot
+	cd
+	git clone https://github.com/trenttobler/android-termux-hugs.git
+	cd android-termux-hugs
+	make install

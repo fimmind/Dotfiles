@@ -20,4 +20,8 @@ fi
 
 alias ru="setxkbmap us,ru ,winkeys grp:caps_toggle"
 
-PATH="$PATH:$HOME/.local/bin:$HOME/bin"
+PATH="$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/bin"
+
+if [ "`uname -o`" == "Android" ]; then
+  alias chroot="termux-chroot && exit"
+fi
