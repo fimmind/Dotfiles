@@ -227,6 +227,10 @@ let g:move_key_modifier='S'
 let g:mapleader=','
 map \ <Plug>(easymotion-prefix)
 
+nmap va ggVG
+nmap ya ggyG<C-o><C-o>
+nmap da ggdG
+
 " NERDTree
 " ================================================
 command! CloseTree :NERDTreeClose
