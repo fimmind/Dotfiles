@@ -270,7 +270,7 @@ let s:runCommands = {
       \ "c"  : "test -f '%:p:r' && '%:p:r' || '%:p:h/main'",
       \ "py" : "python3 '%:p'",
       \ "js" : "node '%:p'",
-      \ "hs" : "stack run"
+      \ "hs" : "stack run || clear && termux-chroot runhugs '%:p'"
       \ }
 
 function! Eq(fst, snd)
