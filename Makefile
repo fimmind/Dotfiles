@@ -48,6 +48,7 @@ link-Xresources:
 installOhMyZsh:
 	sh -c "`curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh` --unattended"
 	mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
+	chsh -s zsh
 
 installTheHaskellToolStack:
 	curl -sSL https://get.haskellstack.org/ | sh
@@ -57,7 +58,7 @@ installTheHaskellToolStack:
 .ONESHELL:
 installPackets:
 ifeq ($(SYSTEM), Android)
-	pkg install build-essential cmake libclang proot python python-dev curl vim-python htop zsh
+	pkg install -y build-essential cmake libclang proot python python-dev curl vim-python htop zsh
 else
 	pacman -S --noconfirm \
 		curl git cmake make gnome-terminal chromium python3 bluez bluez-utils \
