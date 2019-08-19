@@ -216,7 +216,7 @@ let g:mkdp_auto_start = 1
 let g:mkdp_auto_close = 1
 
 function MDOpen(url)
-  exec "!google-chrome-stable '--app=".a:url."' || chromium '--app=".a:url."'" | redraw!
+  exec "!echo 'start preview...' && chromium '--app=".a:url."' 2>> /dev/null" | redraw!
 endfunction
 let g:mkdp_browserfunc = 'MDOpen'
 
@@ -270,7 +270,7 @@ let s:runCommands = {
       \ "c"  : "test -f '%:p:r' && '%:p:r' || '%:p:h/main'",
       \ "py" : "python3 '%:p'",
       \ "js" : "node '%:p'",
-      \ "hs" : "stack run || clear && termux-chroot runhugs '%:p'"
+      \ "hs" : "stack run"
       \ }
 
 function! Eq(fst, snd)
@@ -317,3 +317,5 @@ function! Run()
     echo "cant run .".FileType." file"
   endif
 endfunction
+
+command! Hugsrun = !clear && termux-chroot runhugs '%:p'
