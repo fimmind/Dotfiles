@@ -161,6 +161,7 @@ autocmd! FileType cpp,c
 
 " Other settings
 " ================================================
+set colorcolumn=81
 set splitright
 set wrap
 set hlsearch
