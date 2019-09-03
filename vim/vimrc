@@ -262,38 +262,52 @@ autocmd! VimEnter * call StartUp()
 
 " Build & Run
 " ================================================
-let s:buildCommands = {
-      \ "c"    : "(test -f '%:p:h/Makefile' || cmake '%:p:h') && make -f '%:p:h/Makefile'",
-      \ "scss" : "sass --watch '%:p:%:p:r.css' --scss --style compressed --no-cache --sourcemap=none",
-      \ "hs"   : "stack build"
-      \ }
-let s:runCommands = {
-      \ "c"  : "test -f '%:p:r' && '%:p:r' || '%:p:h/main'",
-      \ "py" : "python3 '%:p'",
-      \ "js" : "node '%:p'",
-      \ "hs" : "stack run"
+let g:buildAndRunSetup = {
+      \ "c": {
+      \   "buildCMD"      : "test -f '%:p:h/Makefile' && make -f '%:p:h/Makefile' || cmake '%:p:h'",
+      \   "runCMD"        : "test -f '%:p:r' && '%:p:r' || '%:p:h/main'",
+      \   "buildBeforeRun": 1
+      \   },
+      \ "py": {
+      \   "runCMD"        : "python3 '%:p'",
+      \   "buildBeforeRun": 0
+      \   },
+      \ "js": {
+      \   "runCMD"        : "node '%:p'",
+      \   "buildBeforeRun": 0
+      \   },
+      \ "hs": {
+      \   "buildCMD"      : "stack build",
+      \   "runCMD"        : "stack test && clear && stack run",
+      \   "buildBeforeRun": 0
+      \   }
       \ }
 
+
 function! Eq(fst, snd)
-  let s:buildCommands[a:fst] = s:buildCommands[a:snd]
-  let s:runCommands[a:fst]   = s:runCommands[a:snd]
+  let g:buildAndRunSetup[a:fst] = g:buildAndRunSetup[a:snd]
 endfunction
 
 call Eq("h",   "c" )
 call Eq("cpp", "c" )
 call Eq("hpp", "c" )
-call Eq("hsl", "hs")
 
 " Build
 " ================================================
+nnoremap <Leader>b :call Build()<CR>
 command! Build execute Build()
 function! Build()
-  let FileType = expand("%:e")
-  if has_key(s:buildCommands, FileType)
-    wa | cd %:p:h
-    execute "! " . s:buildCommands[FileType]
+  wa | cd %:p:h
+  let fileType = expand("%:e")
+  if has_key(g:buildAndRunSetup, fileType)
+    let setup = g:buildAndRunSetup[fileType]
+    if has_key(setup, "buildCMD")
+      execute "! ".setup["buildCMD"]
+    else
+      echo fileType." has not \"buildCMD\" field"
+    endif
   else
-    echo "Cant build .".FileType." file"
+    echo "There's no \"".fileType."\" in g:buildAndRunSetup"
   endif
 endfunction
 
@@ -302,20 +316,21 @@ endfunction
 nnoremap <Leader>e :call Run()<CR>
 command! Run execute Run()
 function! Run()
-  let FileType = expand("%:e")
-  if has_key(s:runCommands, FileType)
-    wa | cd %:p:h
-    if has_key(s:buildCommands, FileType)
+  wa | cd %:p:h
+  let fileType = expand("%:e")
+  if has_key(g:buildAndRunSetup, fileType)
+    let setup = g:buildAndRunSetup[fileType]
+    if setup["buildBeforeRun"]
       execute "!".
             \ "clear && ".
-            \ s:buildCommands[FileType]." && ".
+            \ setup["buildCMD"]." && ".
             \ "clear && ".
-            \ s:runCommands[FileType]
+            \ setup["runCMD"]
     else
-      execute "!clear && ".s:runCommands[FileType]
+      execute "!clear && " . setup["runCMD"]
     endif
   else
-    echo "cant run .".FileType." file"
+    echo "There's no \"".fileType."\" in g:buildAndRunSetup"
   endif
 endfunction
 
