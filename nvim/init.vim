@@ -298,4 +298,4 @@ function! Run()
   endif
 endfunction
 
-command! Hugsrun = !clear && termux-chroot runhugs '%:p'
+command! Hugsrun w | !clear && termux-chroot runhugs '%:p'
