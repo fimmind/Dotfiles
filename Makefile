@@ -73,6 +73,7 @@ installNeoVimPlugins:
 gitConfig:
 	git config --global user.name fimmind
 	git config --global user.email "grayfox19@mail.ru"
+	git config --global core.editor nvim
 
 .ONESHELL:
 installHugs:
