@@ -11,8 +11,9 @@
 "
 " *******************************************
 
+source ~/.config/nvim/plug.vim
 
-call plug#begin('~/.vim/plugged')
+call plug#begin('~/.config/nvim/plugged')
   " Syntax, style
   Plug 'phaazon/gruvbox' " Not original, couse of haskell-vim support
   Plug 'suy/vim-qmake'
@@ -56,47 +57,20 @@ call plug#begin('~/.vim/plugged')
   Plug 'lervag/vimtex'
   Plug 'SirVer/ultisnips'
   Plug 'vim-scripts/vim-auto-save'
-  Plug 'davidhalter/jedi-vim'
+  Plug 'deoplete-plugins/deoplete-jedi'
 
-  function! BuildYCM(info)
-    if(has("unix"))
-      if(system("uname -o") == "Android\n")
-        !./install.py --clang-completer --system-libclang
-      else
-        !./install.py --clangd-completer
-      endif
-    else
-      !echo "Only Unix is supported" && exit 1
-    endif
-  endfunction
-  Plug 'Valloric/YouCompleteMe', { 'do': function('BuildYCM') }
-
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
+
+" Autocompletion
+" ================================================
+let g:deoplete#enable_at_startup = 1
 
 " Terminal
 " ================================================
-tnoremap <Esc> <C-w><S-n>
-tnoremap <C-[> <C-w><S-n>
-
-" Number lines
-" ================================================
-set number
-set relativenumber
-autocmd! CmdlineLeave * call SetRelativenumber(1)
-nnoremap : :call SetRelativenumber(0)<CR>:
-inoremap <C-o>: <C-o>:call SetRelativenumber(0)<CR><C-o>:
-inoremap <C-o> <C-o>
-
-function SetRelativenumber(yes)
-  if &number
-    if a:yes
-      set relativenumber
-    else
-      set norelativenumber
-    endif
-  endif
-endfunction
-
+tnoremap <Esc> <C-\><C-n>
+au TermOpen * setlocal nonumber norelativenumber modifiable
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
 " Haskell
 " ================================================
@@ -134,18 +108,11 @@ xmap ga <Plug>(EasyAlign)
 " UltiSnips
 " ================================================
 let g:UltiSnipsEditSplit='vertical'
-let g:UltiSnipsSnippetDirectories = ['~/.vim/UltiSnips', 'UltiSnips']
+let g:UltiSnipsSnippetDirectories = ['~/.config/nvim/UltiSnips']
 
-let g:UltiSnipsExpandTrigger = "<tab>"
-let g:UltiSnipsJumpForwardTrigger = "<C-j>"
-let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
-
-" YouCompleteMe
-" ================================================
-let g:ycm_min_num_of_chars_for_completion = 2
-
-let g:ycm_key_list_select_completion = ['<C-n>']
-let g:ycm_key_list_previous_completion = ['<C-p>']
+let g:UltiSnipsExpandTrigger = "<Tab>"
+let g:UltiSnipsJumpForwardTrigger = "<C-n>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-p>"
 
 " Indent
 " ================================================
@@ -173,6 +140,8 @@ set wildmenu
 set splitbelow
 set nobackup
 set showcmd
+set number
+set relativenumber
 filetype plugin on
 filetype plugin indent on
 
@@ -216,7 +185,7 @@ let g:polyglot_disabled = ['markdown']
 let g:mkdp_auto_start = 1
 let g:mkdp_auto_close = 1
 
-function MDOpen(url)
+function! MDOpen(url)
   exec "!echo 'start preview...' && chromium '--app=".a:url."' 2>> /dev/null" | redraw!
 endfunction
 let g:mkdp_browserfunc = 'MDOpen'
@@ -302,7 +271,7 @@ function! Build()
   if has_key(g:buildAndRunSetup, fileType)
     let setup = g:buildAndRunSetup[fileType]
     if has_key(setup, "buildCMD")
-      execute "! ".setup["buildCMD"]
+      execute "!".setup["buildCMD"]
     else
       echo fileType." has not \"buildCMD\" field"
     endif
@@ -321,14 +290,9 @@ function! Run()
   if has_key(g:buildAndRunSetup, fileType)
     let setup = g:buildAndRunSetup[fileType]
     if setup["buildBeforeRun"]
-      execute "!".
-            \ "clear && ".
-            \ setup["buildCMD"]." && ".
-            \ "clear && ".
-            \ setup["runCMD"]
-    else
-      execute "!clear && " . setup["runCMD"]
+      execute "!".setup["buildCMD"]
     endif
+    execute "split | terminal ".setup["runCMD"]
   else
     echo "There's no \"".fileType."\" in g:buildAndRunSetup"
   endif

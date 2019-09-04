@@ -6,10 +6,10 @@ SYSTEM := $(shell uname -o)
 setup-manjaro-i3:
 	sudo pacman -R manjaro-i3-settings 
 # link-Xresources mast be last, becouse it may ask confirmation
-	sudo make enableBluetooth link-all installPackets gitConfig installOhMyZsh installTheHaskellToolStack installVimPlugins link-Xresources
+	sudo make enableBluetooth link-all installPackets gitConfig installOhMyZsh installTheHaskellToolStack installNeoVimPlugins link-Xresources
 	i3exit logout
 
-setup-termux: link-all installPackets gitConfig installOhMyZsh installHugs installVimPlugins
+setup-termux: link-all installPackets gitConfig installOhMyZsh installHugs installNeoVimPlugins
 
 enableBluetooth:
 	systemctl enable bluetooth
@@ -19,10 +19,10 @@ LN = ln ${LN_ARGS} $$curDir
 .ONESHELL:
 link-all:
 	curDir=$$(pwd)
-	${LN}/vim                     ~/.vim
+	test -d ~/.config    || mkdir ~/.config
+	${LN}/nvim                    ~/.config/nvim
 	${LN}/zshrc                   ~/.zshrc
 ifneq ($(SYSTEM), Android)
-	test -d ~/.config    || mkdir ~/.config
 	test -d ~/.local/bin || mkdir ~/.local/bin
 	${LN}/i3                      ~/.config/i3
 	${LN}/i3status                ~/.config/i3status
@@ -58,17 +58,17 @@ installTheHaskellToolStack:
 .ONESHELL:
 installPackets:
 ifeq ($(SYSTEM), Android)
-	pkg install -y build-essential cmake libclang proot python python-dev curl vim-python htop zsh
+	pkg install -y build-essential cmake libclang proot python python-dev curl neovim htop zsh
 else
 	pacman -S --noconfirm \
 		curl git cmake make gnome-terminal chromium python3 bluez bluez-utils \
-		gcc qt5-base qtcreator gvim rofi htop ranger pcmanfm zathura shake keynav \
-		qalculate-gtk i3-gaps i3lock i3exit i3status zsh zathura-pdf-mupdf \
+		gcc qt5-base qtcreator neovim rofi htop ranger pcmanfm zathura shake \
+		keynav qalculate-gtk i3-gaps i3lock i3exit i3status zsh zathura-pdf-mupdf \
 		texlive-core texlive-bin texlive-core texlive-langcyrillic
 endif
 
-installVimPlugins:
-	vim -c ":PlugInstall | :qa"
+installNeoVimPlugins:
+	nvim -c ":PlugInstall | :qa"
 
 gitConfig:
 	git config --global user.name fimmind
