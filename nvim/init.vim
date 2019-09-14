@@ -22,6 +22,8 @@ call plug#begin('~/.config/nvim/plugged')
 
   " Haskell
   Plug 'neovimhaskell/haskell-vim'
+  Plug 'jaspervdj/stylish-haskell'
+  Plug 'Chiel92/vim-autoformat'
 
   " Markdown
   Plug 'SidOfc/mkdx'
@@ -70,10 +72,19 @@ let g:deoplete#enable_at_startup = 1
 " ================================================
 tnoremap <Esc> <C-\><C-n>
 au TermOpen * setlocal nonumber norelativenumber modifiable
-au BufEnter * if &buftype == 'terminal' | :startinsert | endif
 
 " Haskell
 " ================================================
+let g:haskell_indent_if = 2
+let g:haskell_indent_case = 2
+let g:haskell_indent_let = 4
+let g:haskell_indent_where = 6
+let g:haskell_indent_before_where = 2
+let g:haskell_indent_after_bare_where = 2
+let g:haskell_indent_do = 3
+let g:haskell_indent_in = 0
+let g:haskell_indent_guard = 2
+
 let chars = {
       \ '-': ['{\%#}'],
       \ '#': ['{-\%#-}'],
@@ -99,6 +110,12 @@ for at in ['{-\%#-}', '{-#\%##-}', '{- \%# -}', '{-# \%# #-}']
         \ 'delete': 1
         \ })
 endfor
+
+command! Ghci vsplit term://stack ghci | :startinsert
+
+autocmd BufWrite *.hs :Autoformat
+" Don't automatically indent on save, since vim's autoindent for haskell is buggy
+autocmd FileType haskell let b:autoformat_autoindent=0
 
 " Easy-align
 " ================================================
@@ -197,10 +214,6 @@ let g:move_key_modifier='S'
 let g:mapleader=','
 map \ <Plug>(easymotion-prefix)
 
-nmap va ggVG
-nmap ya ggyG<C-o><C-o>
-nmap da ggdG
-
 " NERDTree
 " ================================================
 command! CloseTree :NERDTreeClose
@@ -292,7 +305,7 @@ function! Run()
     if setup["buildBeforeRun"]
       execute "!".setup["buildCMD"]
     endif
-    execute "split | terminal ".setup["runCMD"]
+    execute ":split term://".setup["runCMD"]." | :startinsert"
   else
     echo "There's no \"".fileType."\" in g:buildAndRunSetup"
   endif
