@@ -221,14 +221,6 @@ noremap <C-\> :NERDTreeToggle<CR>
 inoremap <C-\> <Esc>:NERDTreeToggle<CR>a
 command! -nargs=1 Where :NERDTreeFind <args>
 
-function! StartUp()
-  if argc() == 0
-    NERDTree
-  endif
-endfunction
-
-autocmd! VimEnter * call StartUp()
-
 " let g:NERDTreeIndicatorMapCustom = {
 " \ "Modified"  : "✹",
 " \ "Staged"    : "✚",
