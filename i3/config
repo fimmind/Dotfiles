@@ -39,7 +39,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 bindsym $mod+d exec rofi -modi drun -show drun -show-icons
-bindsym $mod+x exec rofi -modi run -show run
+bindsym $mod+x exec rofi -dmenu -p "run" -l 0 | zsh
 bindsym Mod1+Tab exec rofi -show window
 bindsym $mod+c exec ~/.config/i3/rofiCalc.py
 
