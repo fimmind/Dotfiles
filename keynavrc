@@ -1,5 +1,6 @@
 clear
 ctrl+shift+space start, grid 4x3
+Super_L+semicolon start, grid 4x3
 q cell-select 1x1
 w cell-select 2x1
 e cell-select 3x1
@@ -15,6 +16,7 @@ v cell-select 4x3
 
 Escape end
 ctrl+bracketleft end
+Super_L+bracketleft end
 space warp, click 1, end
 shift+space warp, doubleclick 1, end
 
@@ -39,9 +41,5 @@ t warp, click 1
 g warp, click 3
 b warp, click 2
 Shift+v warp, drag 1
-
-Shift+t click 1
-Shift+g click 3
-Shift+b click 2
 
 Tab warp
