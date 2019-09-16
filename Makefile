@@ -14,6 +14,10 @@ setup-termux: link-all installPackets gitConfig installOhMyZsh installHugs insta
 enableBluetooth:
 	systemctl enable bluetooth
 
+fixTime:
+	sudo ntpd -qg
+	systemctl enable ntpd
+
 LN_ARGS ?= -sT
 LN = ln ${LN_ARGS} $$curDir
 .ONESHELL:
