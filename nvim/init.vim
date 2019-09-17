@@ -271,6 +271,7 @@ call Eq("hpp", "c" )
 nnoremap <Leader>b :call Build()<CR>
 command! Build execute Build()
 function! Build()
+  let workDir = system("pwd")
   wa | cd %:p:h
   let fileType = expand("%:e")
   if has_key(g:buildAndRunSetup, fileType)
@@ -283,6 +284,7 @@ function! Build()
   else
     echo "There's no \"".fileType."\" in g:buildAndRunSetup"
   endif
+  execute "cd ".workDir
 endfunction
 
 " Run
@@ -290,6 +292,7 @@ endfunction
 nnoremap <Leader>e :call Run()<CR>
 command! Run execute Run()
 function! Run()
+  let workDir = system("pwd")
   wa | cd %:p:h
   let fileType = expand("%:e")
   if has_key(g:buildAndRunSetup, fileType)
@@ -301,6 +304,7 @@ function! Run()
   else
     echo "There's no \"".fileType."\" in g:buildAndRunSetup"
   endif
+  execute "cd ".workDir
 endfunction
 
 command! Hugsrun w | !clear && termux-chroot runhugs '%:p'
