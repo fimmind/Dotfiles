@@ -42,8 +42,9 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'mattn/webapi-vim'
   Plug 'mattn/gist-vim'
   Plug 'markonm/traces.vim'
-  " Motion
+  Plug 'jeffkreeftmeijer/vim-numbertoggle'
 
+  " Motion
   Plug 'matze/vim-move'
   Plug 'easymotion/vim-easymotion'
   Plug 'kien/ctrlp.vim'
