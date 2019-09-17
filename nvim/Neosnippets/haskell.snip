@@ -1,0 +1,21 @@
+snippet      import
+abbr         import qualified ... as ...
+	import qualified ${1} as ${2}
+
+snippet lang
+abbr    {-# LANGUAGE ... #-}
+	{-# LANGUAGE ${1} #-}
+
+snippet extention
+abbr    {-# ... #-}
+	{-# %uc(${1}) ${2} #-}
+
+snippet main
+abbr    main :: IO ()
+	main :: IO ()
+	main = ${1}
+
+snippet func
+abbr    func :: ...
+	${1} :: ${2}
+	$1 ${3}

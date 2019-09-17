@@ -42,8 +42,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'mattn/webapi-vim'
   Plug 'mattn/gist-vim'
   Plug 'markonm/traces.vim'
-
   " Motion
+
   Plug 'matze/vim-move'
   Plug 'easymotion/vim-easymotion'
   Plug 'kien/ctrlp.vim'
@@ -57,7 +57,7 @@ call plug#begin('~/.config/nvim/plugged')
   " Autocompletion
   Plug 'cohama/lexima.vim'
   Plug 'lervag/vimtex'
-  Plug 'SirVer/ultisnips'
+  Plug 'Shougo/neosnippet.vim'
   Plug 'vim-scripts/vim-auto-save'
   Plug 'deoplete-plugins/deoplete-jedi'
 
@@ -68,10 +68,29 @@ call plug#end()
 " ================================================
 let g:deoplete#enable_at_startup = 1
 
+" Neosnippets
+" ================================================
+let g:neosnippet#snippets_directory = "~/.config/nvim/Neosnippets"
+
+let g:neosnippet#disable_runtime_snippets = {
+      \ '_' : 1,
+      \ }
+
+" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
+smap <C-k>  <Plug>(neosnippet_expand_or_jump)
+imap <C-k>  <Plug>(neosnippet_expand_or_jump)
+xmap <C-k>  <Plug>(neosnippet_expand_target)
+
+if has('conceal')
+  set conceallevel=2 concealcursor=niv
+endif
+
+autocmd FileType neosnippet setlocal noexpandtab
+
 " Terminal
 " ================================================
 tnoremap <Esc> <C-\><C-n>
-au TermOpen * setlocal nonumber norelativenumber modifiable
+autocmd TermOpen * setlocal nonumber norelativenumber
 
 " Haskell
 " ================================================
@@ -121,15 +140,6 @@ autocmd FileType haskell let b:autoformat_autoindent=0
 " ================================================
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
-
-" UltiSnips
-" ================================================
-let g:UltiSnipsEditSplit='vertical'
-let g:UltiSnipsSnippetDirectories = ['~/.config/nvim/UltiSnips']
-
-let g:UltiSnipsExpandTrigger = "<Tab>"
-let g:UltiSnipsJumpForwardTrigger = "<C-n>"
-let g:UltiSnipsJumpBackwardTrigger = "<C-p>"
 
 " Indent
 " ================================================
@@ -204,7 +214,7 @@ let g:mkdp_auto_start = 1
 let g:mkdp_auto_close = 1
 
 function! MDOpen(url)
-  exec "!echo 'start preview...' && chromium '--app=".a:url."' 2>> /dev/null" | redraw!
+  exec "!echo start preview... && chromium '--app=".a:url."' 2>> /dev/null" | redraw!
 endfunction
 let g:mkdp_browserfunc = 'MDOpen'
 
