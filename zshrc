@@ -9,7 +9,7 @@ plugins=(git vim-interaction stack)
 
 source $ZSH/oh-my-zsh.sh
 
-export EDITOR='vim'
+export EDITOR='nvim'
 setopt +o nomatch
 
 if [[ -n $(bash -c "compgen -c | grep -w eopkg") ]]; then
