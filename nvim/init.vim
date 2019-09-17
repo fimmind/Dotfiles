@@ -159,6 +159,7 @@ set nobackup
 set showcmd
 set number
 set relativenumber
+set mouse=a
 filetype plugin on
 filetype plugin indent on
 
