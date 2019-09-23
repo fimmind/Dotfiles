@@ -69,6 +69,10 @@ call plug#end()
 " ================================================
 let g:deoplete#enable_at_startup = 1
 
+call deoplete#custom#var('omni', 'input_patterns', {
+      \ 'tex': g:vimtex#re#deoplete
+      \})
+
 " Neosnippets
 " ================================================
 let g:neosnippet#snippets_directory = "~/.config/nvim/Neosnippets"
@@ -171,6 +175,7 @@ set showcmd
 set number
 set relativenumber
 set mouse=a
+set conceallevel=0
 filetype plugin on
 filetype plugin indent on
 
@@ -188,11 +193,6 @@ let g:Tex_GotoError = 0
 let g:vimtex_view_method = 'zathura'
 let g:AutoPairsIgnorePrefixes = ['\', 'lr', '\left']
 
-if !exists('g:ycm_semantic_triggers')
-  let g:ycm_semantic_triggers = {}
-endif
-let g:ycm_semantic_triggers.tex = g:vimtex#re#youcompleteme
-
 let pairs = {'(':')', '\\\\{':'\\\\}', '[':']', '<':'>'}
 for i in keys(pairs)
   call lexima#add_rule({
@@ -202,6 +202,12 @@ for i in keys(pairs)
         \ 'input': '<BS><BS> <Esc>:call UltiSnips#Anon("\\left'.i.' $1 \\right'.pairs[i].'$0")<CR>'
         \ })
 endfor
+
+call lexima#add_rule({'char': '$', 'input_after': '$', 'filetype': 'latex'})
+call lexima#add_rule({'char': '$', 'at': '\%#\$', 'leave': 1, 'filetype': 'latex'})
+call lexima#add_rule({'char': '<BS>', 'at': '\$\%#\$', 'delete': 1, 'filetype': 'latex'})
+
+call lexima#add_rule({'char': '<Space>', 'at': '\$\%#\$', 'input_after': '<Space>', 'filetype': 'latex'})
 
 " Markdown
 " ================================================
