@@ -73,7 +73,7 @@ endif
 
 installNeoVimPlugins:
 	nvim -c ":PlugInstall | :qa"
-	pip install pynvim
+	pip3 install pynvim
 
 gitConfig:
 	git config --global user.name fimmind

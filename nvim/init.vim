@@ -38,11 +38,11 @@ call plug#begin('~/.config/nvim/plugged')
   " Tools
   Plug 'airblade/vim-gitgutter'
   Plug 'junegunn/vim-easy-align'
-  Plug 'godlygeek/tabular'
-  Plug 'mattn/webapi-vim'
-  Plug 'mattn/gist-vim'
   Plug 'markonm/traces.vim'
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
+
+  " Frontend
+  Plug 'mattn/emmet-vim'
 
   " Motion
   Plug 'matze/vim-move'
@@ -58,14 +58,18 @@ call plug#begin('~/.config/nvim/plugged')
   " Autocompletion
   Plug 'cohama/lexima.vim'
   Plug 'lervag/vimtex'
-  Plug 'Shougo/neosnippet.vim'
   Plug 'vim-scripts/vim-auto-save'
   Plug 'deoplete-plugins/deoplete-jedi'
+  Plug 'SirVer/ultisnips'
 
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 call plug#end()
 
-" Autocompletion
+" Mappings
+" ================================================
+command! Vimrc e ~/.config/nvim/init.vim
+
+" Deoplete
 " ================================================
 let g:deoplete#enable_at_startup = 1
 
@@ -73,24 +77,20 @@ call deoplete#custom#var('omni', 'input_patterns', {
       \ 'tex': g:vimtex#re#deoplete
       \})
 
-" Neosnippets
+" UltiSnips
 " ================================================
-let g:neosnippet#snippets_directory = "~/.config/nvim/Neosnippets"
+let g:UltiSnipsEditSplit          ='vertical'
+let g:UltiSnipsSnippetDirectories = ['UltiSnips']
+let g:UltiSnipsUsePythonVersion   = 3
 
-let g:neosnippet#disable_runtime_snippets = {
-      \ '_' : 1,
-      \ }
+let g:UltiSnipsExpandTrigger       = "<Tab>"
+let g:UltiSnipsJumpForwardTrigger  = "<Tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 
-" Note: It must be "imap" and "smap".  It uses <Plug> mappings.
-smap <C-k>  <Plug>(neosnippet_expand_or_jump)
-imap <C-k>  <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>  <Plug>(neosnippet_expand_target)
-
-if has('conceal')
-  set conceallevel=2 concealcursor=niv
-endif
-
-autocmd FileType neosnippet setlocal noexpandtab
+" Emmet
+" ================================================
+let g:user_emmet_mode='a'
+let g:user_emmet_leader_key='<C-e>'
 
 " Terminal
 " ================================================
@@ -154,9 +154,11 @@ set expandtab
 autocmd! FileType *
       \ set tabstop=2
       \ | set shiftwidth=2
+      \ | set softtabstop=2
 autocmd! FileType cpp,c
       \ set tabstop=4
       \ | set shiftwidth=4
+      \ | set softtabstop=4
 
 " Other settings
 " ================================================
@@ -256,22 +258,26 @@ command! -nargs=1 Where :NERDTreeFind <args>
 " ================================================
 let g:buildAndRunSetup = {
       \ "c": {
-      \   "buildCMD"      : "test -f '%:p:h/Makefile' && make -f '%:p:h/Makefile' || cmake '%:p:h'",
-      \   "runCMD"        : "test -f '%:p:r' && '%:p:r' || '%:p:h/main'",
-      \   "buildBeforeRun": 1
+      \   "build"    : "test -f '%:p:h/Makefile' && make -f '%:p:h/Makefile' || cmake '%:p:h'",
+      \   "run"      : "test -f '%:p:r' && '%:p:r' || '%:p:h/main'",
+      \   "needBuild": 1
       \   },
       \ "py": {
-      \   "runCMD"        : "python3 '%:p'",
-      \   "buildBeforeRun": 0
+      \   "run"      : "python3 '%:p'",
+      \   "needBuild": 0
       \   },
       \ "js": {
-      \   "runCMD"        : "node '%:p'",
-      \   "buildBeforeRun": 0
+      \   "run"      : "node '%:p'",
+      \   "needBuild": 0
       \   },
       \ "hs": {
-      \   "buildCMD"      : "stack build",
-      \   "runCMD"        : "stack test && clear && stack run",
-      \   "buildBeforeRun": 0
+      \   "build"    : "stack build",
+      \   "run"      : "stack test && clear && stack run",
+      \   "needBuild": 0
+      \   },
+      \ "php": {
+      \   "run"      : "php -f '%:p'",
+      \   "needBuild": 0
       \   }
       \ }
 
@@ -294,10 +300,10 @@ function! Build()
   let fileType = expand("%:e")
   if has_key(g:buildAndRunSetup, fileType)
     let setup = g:buildAndRunSetup[fileType]
-    if has_key(setup, "buildCMD")
-      execute "!".setup["buildCMD"]
+    if has_key(setup, "build")
+      execute "!".setup["build"]
     else
-      echo fileType." has not \"buildCMD\" field"
+      echo fileType." has not \"build\" field"
     endif
   else
     echo "There's no \"".fileType."\" in g:buildAndRunSetup"
@@ -315,10 +321,10 @@ function! Run()
   let fileType = expand("%:e")
   if has_key(g:buildAndRunSetup, fileType)
     let setup = g:buildAndRunSetup[fileType]
-    if setup["buildBeforeRun"]
-      execute "!".setup["buildCMD"]
+    if setup["needBuild"]
+      execute "!".setup["build"]
     endif
-    execute ":split term://".setup["runCMD"]." | :startinsert"
+    execute ":split term://".setup["run"]." | :startinsert"
   else
     echo "There's no \"".fileType."\" in g:buildAndRunSetup"
   endif
