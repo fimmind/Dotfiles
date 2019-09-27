@@ -20,6 +20,7 @@ fi
 
 alias ru="setxkbmap us,ru ,winkeys grp:caps_toggle"
 alias fix_time="sudo ntpd -qg"
+alias vimrc="nvim -c Vimrc"
 
 PATH="$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/bin"
 
