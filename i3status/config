@@ -14,6 +14,7 @@ general {
         color_bad = "#ff7770" # Light red
 }
 
+order += "memory"
 order += "volume master"
 order += "tztime local"
 
@@ -27,4 +28,10 @@ volume master {
 
 tztime local {
         format = "%H:%M %d.%m.%Y"
+}
+
+memory {
+       format = "%used"
+       threshold_degraded = "10%"
+       format_degraded = "MEMORY: %free"
 }
