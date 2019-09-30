@@ -219,13 +219,11 @@ let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
                         \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
                         \ }
 let g:polyglot_disabled = ['markdown']
+
 let g:mkdp_auto_start = 1
 let g:mkdp_auto_close = 1
 
-function! MDOpen(url)
-  exec "!echo start preview... && chromium '--app=".a:url."' 2>> /dev/null" | redraw!
-endfunction
-let g:mkdp_browserfunc = 'MDOpen'
+let g:mkdp_browser = "qutebrowser"
 
 " Mappings
 " ================================================

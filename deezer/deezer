@@ -1,2 +1,0 @@
-#!/usr/bin/bash
-google-chrome-stable --app=https://deezer.com/ru || chromium --app=https://deezer.com/ru

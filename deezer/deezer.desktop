@@ -1,7 +1,0 @@
-[Desktop Entry]
-Type=Application
-Version=0
-Name=Deezer
-Exec=/bin/zsh -c ~/.local/bin/deezer
-Terminal=false
-Icon=deezer
