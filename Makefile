@@ -65,7 +65,7 @@ ifeq ($(SYSTEM), Android)
 	pkg install -y build-essential cmake libclang proot python python-dev curl neovim htop zsh
 else
 	pacman -S --noconfirm \
-		curl git cmake make gnome-terminal chromium python3 bluez bluez-utils \
+		curl git cmake make gnome-terminal qutebrowser python3 bluez bluez-utils \
 		gcc qt5-base qtcreator neovim rofi htop ranger pcmanfm zathura shake \
 		keynav qalculate-gtk i3-gaps i3lock i3exit i3status zsh zathura-pdf-mupdf \
 		texlive-core texlive-bin texlive-core texlive-langcyrillic
