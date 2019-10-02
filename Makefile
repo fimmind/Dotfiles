@@ -34,6 +34,7 @@ ifneq ($(SYSTEM), Android)
 	${LN}/deezer/deezer.desktop   ~/.local/share/applications/deezer.desktop
 	${LN}/deezer/deezer           ~/.local/bin/deezer
 	${LN}/fehbg                   ~/.fehbg
+	${LN}/qutebrowser             ~/.config/qutebrowser
 endif
 
 .ONESHELL:
