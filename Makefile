@@ -51,7 +51,7 @@ link-Xresources:
 installOhMyZsh:
 	sh -c "`curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh` --unattended"
 	mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
-	chsh -s zsh
+	chsh -s `which zsh`
 
 installTheHaskellToolStack:
 	curl -sSL https://get.haskellstack.org/ | sh
