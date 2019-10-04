@@ -40,6 +40,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'junegunn/vim-easy-align'
   Plug 'markonm/traces.vim'
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
+  Plug 'tpope/vim-surround'
 
   " Frontend
   Plug 'mattn/emmet-vim'
@@ -76,6 +77,25 @@ let g:deoplete#enable_at_startup = 1
 call deoplete#custom#var('omni', 'input_patterns', {
       \ 'tex': g:vimtex#re#deoplete
       \})
+
+" Selction of indent block
+" ================================================
+function SelectIndent()
+  let cur_line = line(".")
+  let cur_ind = indent(cur_line)
+  let line = cur_line
+  while indent(line - 1) >= cur_ind
+    let line = line - 1
+  endw
+  exe "normal " . line . "G"
+  exe "normal V"
+  let line = cur_line
+  while indent(line + 1) >= cur_ind
+    let line = line + 1
+  endw
+  exe "normal " . line . "G"
+endfunction
+nnoremap vii :call SelectIndent()<CR>
 
 " UltiSnips
 " ================================================
@@ -276,7 +296,11 @@ let g:buildAndRunSetup = {
       \ "php": {
       \   "run"      : "php -f '%:p'",
       \   "needBuild": 0
-      \   }
+      \   },
+      \ "lisp": {
+      \   "run"      : "clisp '%:p'",
+      \   "needBuild": 0
+      \ }
       \ }
 
 
