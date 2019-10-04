@@ -78,24 +78,32 @@ call deoplete#custom#var('omni', 'input_patterns', {
       \ 'tex': g:vimtex#re#deoplete
       \})
 
-" Selction of indent block
+" Indented block text obgect
 " ================================================
-function SelectIndent()
-  let cur_line = line(".")
-  let cur_ind = indent(cur_line)
-  let line = cur_line
-  while indent(line - 1) >= cur_ind
-    let line = line - 1
+function! SelectInnerIndent(inner)
+  let start_line = line(".")
+  let start_ind = indent(start_line)
+
+  let top = start_line - 1
+  while indent(top) >= start_ind  || (!a:inner && getline(top) =~ "^[	 ]*$")
+    let top = top - 1
   endw
-  exe "normal " . line . "G"
-  exe "normal V"
-  let line = cur_line
-  while indent(line + 1) >= cur_ind
-    let line = line + 1
+  let top = top + 1
+
+  let bottom = start_line + 1
+  while indent(bottom) >= start_ind || (!a:inner && getline(bottom) =~ "^[ 	]*$")
+    let bottom = bottom + 1
   endw
-  exe "normal " . line . "G"
+  let bottom = bottom - 1
+
+  exe "normal " . top . "GV" . bottom . "G"
 endfunction
-nnoremap vii :call SelectIndent()<CR>
+
+vnoremap ii :<C-U>silent! call SelectInnerIndent(1)<CR>
+onoremap ii :normal vii<CR>
+
+vnoremap ai :<C-U>silent! call SelectInnerIndent(0)<CR>
+onoremap ai :normal vai<CR>
 
 " UltiSnips
 " ================================================
