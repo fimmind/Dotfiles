@@ -80,29 +80,41 @@ call deoplete#custom#var('omni', 'input_patterns', {
 
 " Indented block text obgect
 " ================================================
-function! SelectInnerIndent(inner)
+function! SelectIndent(inner)
   let start_line = line(".")
   let start_ind = indent(start_line)
 
-  let top = start_line - 1
-  while indent(top) >= start_ind  || (!a:inner && getline(top) =~ "^[	 ]*$")
-    let top = top - 1
-  endw
-  let top = top + 1
+  if start_ind == 0
+    exe "normal ggVG"
+  elseif start_ind > 0
+    let top = start_line
+    let next_indent = indent(top - 1)
+    while next_indent >= start_ind 
+          \ || ( !a:inner 
+          \ && next_indent >= 0
+          \ && getline(top - 1) =~ "^[ 	]*$" )
+      let top = top - 1
+      let next_indent = indent(top - 1)
+    endw
 
-  let bottom = start_line + 1
-  while indent(bottom) >= start_ind || (!a:inner && getline(bottom) =~ "^[ 	]*$")
-    let bottom = bottom + 1
-  endw
-  let bottom = bottom - 1
+    let bottom = start_line
+    let next_indent = indent(bottom + 1)
+    while next_indent >= start_ind 
+          \ || ( !a:inner 
+          \ && next_indent >= 0
+          \ && getline(bottom + 1) =~ "^[	 ]*$" )
+      let bottom = bottom + 1
+      let next_indent = indent(bottom + 1)
+    endw
 
-  exe "normal " . top . "GV" . bottom . "G"
+    exe "normal " . top . "GV" . bottom . "G"
+  endif
 endfunction
 
-vnoremap ii :<C-U>silent! call SelectInnerIndent(1)<CR>
+vnoremap ii :<C-U>silent! call SelectIndent(1)<CR>
 onoremap ii :normal vii<CR>
 
-vnoremap ai :<C-U>silent! call SelectInnerIndent(0)<CR>
+vnoremap ai :<C-U>silent! call SelectIndent(0)<CR>
 onoremap ai :normal vai<CR>
 
 " UltiSnips
