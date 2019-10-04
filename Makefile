@@ -9,7 +9,7 @@ ifeq ($(SYSTEM), manjaro)
 endif
 	sudo make enableBluetooth installPackets gitConfig installOhMyZsh \
 		installTheHaskellToolStack link-all installNeoVimPlugins
-	i3exit logout
+	i3exit lock
 # link-Xresources mast be last, becouse it may ask confirmation
 	make link-Xresources
 
