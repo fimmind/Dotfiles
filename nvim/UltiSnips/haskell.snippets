@@ -12,13 +12,13 @@ main = $1
 endsnippet
 
 snippet module "module" b
-module ${1:`!v expand("%:t:r")`} ( $2
-       ${1/./ /g} ) where
+module ${1:`!v expand("%:t:r")`}${2: ( $3
+       ${1/./ /g} ) }where
 
 $0
 endsnippet
 
 snippet tododef "TODO Function" b
---| TODO
+-- | TODO
 ${1:func} = undefined$0
 endsnippet
