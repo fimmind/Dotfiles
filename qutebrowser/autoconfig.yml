@@ -5,6 +5,9 @@ config_version: 2
 settings:
   auto_save.session:
     global: true
+  content.notifications:
+    https://onlinemultfilmy.ru: false
+    https://www.reddit.com: false
   url.searchengines:
     global:
       DEFAULT: https://duckduckgo.com/?q={}
