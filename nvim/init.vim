@@ -267,7 +267,7 @@ let g:mkdp_browser = "qutebrowser"
 
 " Mappings
 " ================================================
-let g:move_key_modifier='S'
+let g:move_key_modifier='C'
 
 let g:mapleader=','
 map \ <Plug>(easymotion-prefix)
