@@ -65,7 +65,8 @@ ifeq ($(SYSTEM), manjaro)
 		curl git cmake make gnome-terminal qutebrowser python3 bluez bluez-utils \
 		gcc qt5-base qtcreator neovim rofi htop ranger pcmanfm zathura shake \
 		keynav qalculate-gtk i3-gaps i3lock i3exit i3status zsh zathura-pdf-mupdf \
-		texlive-core texlive-bin texlive-core texlive-langcyrillic clisp
+		texlive-core texlive-bin texlive-core texlive-langcyrillic clisp \
+		libreoffice-fresh libreoffice-fresh-ru
 else
 	echo "can't install packets on this system ($(SYSTEM))"
 endif
