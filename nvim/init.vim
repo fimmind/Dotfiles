@@ -260,7 +260,6 @@ let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
                         \ }
 let g:polyglot_disabled = ['markdown']
 
-let g:mkdp_auto_start = 1
 let g:mkdp_auto_close = 1
 
 let g:mkdp_browser = "qutebrowser"
@@ -328,9 +327,9 @@ function! Eq(fst, snd)
   let g:buildAndRunSetup[a:fst] = g:buildAndRunSetup[a:snd]
 endfunction
 
-call Eq("h",   "c" )
-call Eq("cpp", "c" )
-call Eq("hpp", "c" )
+call Eq("h",   "c")
+call Eq("cpp", "c")
+call Eq("hpp", "c")
 
 " Build
 " ================================================
