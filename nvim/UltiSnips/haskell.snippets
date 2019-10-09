@@ -17,3 +17,26 @@ module ${1:`!v expand("%:t:r")`}${2: ( $3
 
 $0
 endsnippet
+
+snippet gigtk "gi-gtk start" b
+{-# LANGUAGE OverloadedLabels  #-}
+{-# LANGUAGE OverloadedStrings #-}
+
+module Main where
+
+import           Data.GI.Base
+import qualified GI.Gtk       as Gtk
+
+main = do
+	Gtk.init Nothing
+
+	win <- new Gtk.Window [#title := "$2"]
+	on win #destroy Gtk.mainQuit
+	#resize win ${3:640} ${4:480}
+
+	$0
+
+	$showAll win
+
+	Gtk.main
+endsnippet
