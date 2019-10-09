@@ -83,3 +83,10 @@ gitConfig:
 	git config --global user.name fimmind
 	git config --global user.email "grayfox19@mail.ru"
 	git config --global core.editor nvim
+
+.ONESHELL:
+setupHIE:
+	git clone https://github.com/haskell/haskell-ide-engine --recurse-submodules
+	cd haskell-ide-engine
+	stack ./install.hs stack-build
+	stack ./install.hs build-data
