@@ -8,7 +8,7 @@ ifeq ($(SYSTEM), manjaro)
 	sudo pacman -R manjaro-i3-settings 
 endif
 	sudo make enableBluetooth installPackets gitConfig installOhMyZsh \
-		installTheHaskellToolStack link-all installNeoVimPlugins
+		installTheHaskellToolStack link-all installNeoVimPlugins ldconfig
 	i3exit lock
 # link-Xresources mast be last, becouse it may ask confirmation
 	make link-Xresources
@@ -61,15 +61,19 @@ installTheHaskellToolStack:
 .ONESHELL:
 installPackets:
 ifeq ($(SYSTEM), manjaro)
+	pacman -Syu --noconfirm
 	pacman -S --noconfirm \
 		curl git cmake make gnome-terminal qutebrowser python3 bluez bluez-utils \
 		gcc qt5-base qtcreator neovim rofi htop ranger pcmanfm zathura shake \
 		keynav qalculate-gtk i3-gaps i3lock i3exit i3status zsh zathura-pdf-mupdf \
 		texlive-core texlive-bin texlive-core texlive-langcyrillic clisp \
-		libreoffice-fresh libreoffice-fresh-ru
+		libreoffice-fresh libreoffice-fresh-ru ghc-libs ghc-static pandoc
 else
 	echo "can't install packets on this system ($(SYSTEM))"
 endif
+
+ldconfig:
+	sudo ldconfig
 
 installNeoVimPlugins:
 	nvim -c ":PlugInstall | :qa"
