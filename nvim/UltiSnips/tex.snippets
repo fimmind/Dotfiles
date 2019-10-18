@@ -16,18 +16,19 @@ snippet start "Basic template" b
 
 % Колонтитул
 ${2:% }\usepackage{fancyhdr}
-$2pagestyle{fancy}
-$2fancyhf{}
+$2\pagestyle{fancy}
+$2\fancyhf{}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{hhline}
-${3:% }\usepackage{cancel}
-${4:% }\usepackage{listings}
-${5:% }\usepackage{ifthen}
-${6:% }\usepackage{xparse}
-${7:% }\usepackage{tikz, pgfplots}
+\usepackage{indentfirst}
+\usepackage{enumitem}
 
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{}
+\renewcommand{\thesubsubsection}{}
+\renewcommand{\theparagraph}{}
 
 \begin{document}
 	$0
@@ -145,27 +146,27 @@ $0
 endsnippet
 
 
-snippet prtnl "Part no label" bA
+snippet prtnl "Part no label" b
 \part{$1}$0
 endsnippet
 
-snippet scnl "Section no label" bA
+snippet scnl "Section no label" b
 \section{$1}$0
 endsnippet
 
-snippet subnl "Subsection no label" bA
+snippet subnl "Subsection no label" b
 \subsection{$1}$0
 endsnippet
 
-snippet ssubnl "Subsubsection no label" bA
+snippet ssubnl "Subsubsection no label" b
 \subsubsection{$1}$0
 endsnippet
 
-snippet parnl "Paragraph no label" bA
+snippet parnl "Paragraph no label" b
 \paragraph{$1}$0
 endsnippet
 
-snippet subpnl "Subparagraph no label" bA
+snippet subpnl "Subparagraph no label" b
 \subparagraph{$1}$0
 endsnippet
 
@@ -214,15 +215,41 @@ snippet cases "Cases" b
 \end{cases}$0
 endsnippet
 
-snippet casesset "Set of equations"
+snippet casesset "Set of equations" b
 \left[ {
 	\def\arraystretch{1.2}
 	\begin{array}{@{}l@{\quad}l@{}}
-		$1
+		${1:${VISUAL}}
 	\end{array}
 } \right.$0
 endsnippet
 
+snippet gath "gathered" b
+\begin{gathered}
+	${1:${VISUAL}}
+\end{gathered}$0
+endsnippet
+
+##############
+# Tikz Trees #
+##############
+
+snippet tree "Tikz tree" b
+\begin{tikzpicture}[level/.style={sibling distance=${1:100}mm/#1}, scale=0.6]
+\node [circle, draw=black] {$2}
+	child { 
+		$0
+	};
+\end{tikzpicture}
+endsnippet
+
+snippet tnode "Tree node"
+node [circle, draw=black] {$1}
+endsnippet
+
+snippet tedge "Tree edge"
+edge from parent node[$1] {$0}
+endsnippet
 
 #############
 # Fractions #
@@ -390,11 +417,14 @@ endsnippet
 # Power #
 #########
 
+priority 0
 snippet sr "\sqrt{}" iA
 \sqrt{${1:${VISUAL}}} $0
 endsnippet
+
+priority 1
 snippet nsr "sqrt" iA
-\sqrt[$1]{$21:${VISUAL}}} $0
+\sqrt[$1]{${2:${VISUAL}}} $0
 endsnippet
 
 snippet sq "^2" iA
@@ -544,7 +574,7 @@ endsnippet
 snippet CA "cap" iA
 \cap 
 endsnippet
-snippet | "mid" i
+snippet || "mid" i
 \mid 
 endsnippet
 
@@ -602,11 +632,6 @@ snippet <==> "equivalent" iA
 \Longleftrightarrow 
 endsnippet
 
-snippet mod "mod" i
-\mod 
-endsnippet
-
-
 ################
 # Trigonometry #
 ################
@@ -653,31 +678,31 @@ endsnippet
 # GK #
 ######
 
-snippet a "alpha" w
+snippet aG "alpha" w
 \alpha 
 endsnippet
-snippet b "beta" w
+snippet bG "beta" w
 \beta 
 endsnippet
-snippet y "gamma" w
+snippet yG "gamma" w
 \gamma 
 endsnippet
-snippet PI "pi" wA
+snippet PI "pi" w
 \pi 
 endsnippet
-snippet p "rho" w
+snippet pG "rho" w
 \rho 
 endsnippet
-snippet v "nu" w
+snippet vG "nu" w
 \nu 
 endsnippet
-snippet n "eta" w
+snippet nG "eta" w
 \eta 
 endsnippet
-snippet m "mu" w
+snippet mG "mu" w
 \mu 
 endsnippet
-snippet w "omega" w
+snippet wG "omega" w
 \omega 
 endsnippet
 
