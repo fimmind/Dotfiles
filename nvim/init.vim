@@ -41,6 +41,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'markonm/traces.vim'
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
   Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-repeat'
 
   " Frontend
   Plug 'mattn/emmet-vim'
@@ -267,6 +268,7 @@ let g:mkdp_browser = "qutebrowser"
 " ================================================
 let g:move_key_modifier='C'
 
+let g:maplocalleader=','
 let g:mapleader=','
 map \ <Plug>(easymotion-prefix)
 
@@ -294,31 +296,31 @@ command! -nargs=1 Where :NERDTreeFind <args>
 " ================================================
 let g:buildAndRunSetup = {
       \ "c": {
-      \   "build"    : "test -f '%:p:h/Makefile' && make -f '%:p:h/Makefile' || cmake '%:p:h'",
-      \   "run"      : "test -f '%:p:r' && '%:p:r' || '%:p:h/main'",
-      \   "needBuild": 1
-      \   },
+        \ "build"    : "test -f '%:p:h/Makefile' && make -f '%:p:h/Makefile' || cmake '%:p:h'",
+        \ "run"      : "test -f '%:p:r' && '%:p:r' || '%:p:h/main'",
+        \ "needBuild": 1
+        \ },
       \ "py": {
-      \   "run"      : "python3 '%:p'",
-      \   "needBuild": 0
-      \   },
+        \ "run"      : "python3 '%:p'",
+        \ "needBuild": 0
+        \ },
       \ "js": {
-      \   "run"      : "node '%:p'",
-      \   "needBuild": 0
-      \   },
+        \ "run"      : "node '%:p'",
+        \ "needBuild": 0
+        \ },
       \ "hs": {
-      \   "build"    : "stack build",
-      \   "run"      : "stack test && clear && stack run",
-      \   "needBuild": 0
-      \   },
+        \ "build"    : "stack build",
+        \ "run"      : "stack test && clear && stack run",
+        \ "needBuild": 0
+        \ },
       \ "php": {
-      \   "run"      : "php -f '%:p'",
-      \   "needBuild": 0
-      \   },
+        \ "run"      : "php -f '%:p'",
+        \ "needBuild": 0
+        \ },
       \ "lisp": {
-      \   "run"      : "clisp '%:p'",
-      \   "needBuild": 0
-      \ }
+        \ "run"      : "clisp '%:p'",
+        \ "needBuild": 0
+        \ }
       \ }
 
 
