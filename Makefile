@@ -77,7 +77,7 @@ ldconfig:
 
 installNeoVimPlugins:
 	nvim -c ":PlugInstall | :qa"
-	pip3 install pynvim
+	pip3 install pynvim unicode
 
 gitConfig:
 	git config --global user.name fimmind
