@@ -42,6 +42,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
+  Plug 'scrooloose/nerdcommenter'
 
   " Frontend
   Plug 'mattn/emmet-vim'
@@ -291,6 +292,10 @@ command! -nargs=1 Where :NERDTreeFind <args>
 " \ "Ignored"   : "☒",
 " \ "Unknown"   : "?"
 " \ }
+
+" NERDComment
+" ================================================
+let g:NERDSpaceDelims = 1
 
 " Build & Run
 " ================================================
