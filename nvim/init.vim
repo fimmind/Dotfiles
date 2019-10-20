@@ -82,6 +82,10 @@ let g:ale_fixers = {
       \   'haskell': ['stylish-haskell'],
       \ }
 
+let g:ale_linters = {
+      \   'haskell': ['hdevtools'],
+      \ }
+
 " Indented block text obgect
 " ================================================
 function! SelectIndent(inner)
