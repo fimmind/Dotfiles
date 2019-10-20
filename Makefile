@@ -78,7 +78,7 @@ ldconfig:
 setupNeoVim:
 	nvim -c ":PlugInstall | :qa"
 	pip3 install pynvim unicode
-	stack install stylish-haskell hdevtools brittany
+	stack install stylish-haskell hdevtools
 
 gitConfig:
 	git config --global user.name fimmind
