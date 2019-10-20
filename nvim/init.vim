@@ -78,12 +78,14 @@ call deoplete#custom#var('omni', 'input_patterns', {
 " ================================================
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
-      \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \   '*':       ['remove_trailing_lines', 'trim_whitespace'],
       \   'haskell': ['stylish-haskell'],
+      \   'python':  ['yapf'],
       \ }
 
 let g:ale_linters = {
       \   'haskell': ['hdevtools'],
+      \   'python':  ['flake8'],
       \ }
 
 " Indented block text obgect
@@ -199,7 +201,7 @@ autocmd! FileType *
       \ set tabstop=2
       \ | set shiftwidth=2
       \ | set softtabstop=2
-autocmd! FileType cpp,c
+autocmd! FileType cpp,c,python
       \ set tabstop=4
       \ | set shiftwidth=4
       \ | set softtabstop=4
