@@ -16,14 +16,10 @@ source ~/.config/nvim/plug.vim
 call plug#begin('~/.config/nvim/plugged')
   " Syntax, style
   Plug 'phaazon/gruvbox' " Not original, couse of haskell-vim support
+  Plug 'neovimhaskell/haskell-vim'
   Plug 'suy/vim-qmake'
   Plug 'justinmk/vim-syntax-extra'
   Plug 'PotatoesMaster/i3-vim-syntax'
-
-  " Haskell
-  Plug 'neovimhaskell/haskell-vim'
-  Plug 'jaspervdj/stylish-haskell'
-  Plug 'Chiel92/vim-autoformat'
 
   " Markdown
   Plug 'SidOfc/mkdx'
@@ -43,8 +39,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
   Plug 'scrooloose/nerdcommenter'
-
-  " Frontend
   Plug 'mattn/emmet-vim'
 
   " Motion
@@ -80,6 +74,14 @@ call deoplete#custom#var('omni', 'input_patterns', {
       \ 'tex': g:vimtex#re#deoplete
       \ })
 
+" Ale
+" ================================================
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+      \   '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \   'haskell': ['stylish-haskell'],
+      \ }
+
 " Indented block text obgect
 " ================================================
 function! SelectIndent(inner)
@@ -91,8 +93,8 @@ function! SelectIndent(inner)
   elseif start_ind > 0
     let top = start_line
     let next_indent = indent(top - 1)
-    while next_indent >= start_ind 
-          \ || ( !a:inner 
+    while next_indent >= start_ind
+          \ || ( !a:inner
           \ && next_indent >= 0
           \ && getline(top - 1) =~ "^[ 	]*$" )
       let top = top - 1
@@ -101,8 +103,8 @@ function! SelectIndent(inner)
 
     let bottom = start_line
     let next_indent = indent(bottom + 1)
-    while next_indent >= start_ind 
-          \ || ( !a:inner 
+    while next_indent >= start_ind
+          \ || ( !a:inner
           \ && next_indent >= 0
           \ && getline(bottom + 1) =~ "^[	 ]*$" )
       let bottom = bottom + 1
@@ -178,10 +180,6 @@ for at in ['{-\%#-}', '{-#\%##-}', '{- \%# -}', '{-# \%# #-}']
 endfor
 
 command! Ghci vsplit term://stack ghci | :startinsert
-
-autocmd BufWrite *.hs :Autoformat
-" Don't automatically indent on save, since vim's autoindent for haskell is buggy
-autocmd FileType haskell let b:autoformat_autoindent=0
 
 " Easy-align
 " ================================================
