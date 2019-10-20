@@ -8,7 +8,7 @@ ifeq ($(SYSTEM), manjaro)
 	sudo pacman -R manjaro-i3-settings 
 endif
 	sudo make enableBluetooth installPackets gitConfig installOhMyZsh \
-		installTheHaskellToolStack link-all installNeoVimPlugins ldconfig
+		installTheHaskellToolStack link-all setupNeoVim ldconfig
 	i3exit lock
 # link-Xresources mast be last, becouse it may ask confirmation
 	make link-Xresources
@@ -75,10 +75,10 @@ endif
 ldconfig:
 	sudo ldconfig
 
-installNeoVimPlugins:
+setupNeoVim:
 	nvim -c ":PlugInstall | :qa"
 	pip3 install pynvim unicode
-	stack install stylish-haskell
+	stack install stylish-haskell hdevtools
 
 gitConfig:
 	git config --global user.name fimmind
