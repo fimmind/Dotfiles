@@ -5,7 +5,7 @@ SYSTEM := $(shell sed -n "s/^ID=//p" /etc/os-release)
 
 setup:
 ifeq ($(SYSTEM), manjaro)
-	sudo pacman -R manjaro-i3-settings 
+	sudo pacman -R manjaro-i3-settings
 endif
 	sudo make enableBluetooth installPackets gitConfig installOhMyZsh \
 		installTheHaskellToolStack link-all setupNeoVim ldconfig
@@ -78,7 +78,7 @@ ldconfig:
 setupNeoVim:
 	nvim -c ":PlugInstall | :qa"
 	pip3 install pynvim unicode
-	stack install stylish-haskell hdevtools
+	stack install stylish-haskell hdevtools brittany
 
 gitConfig:
 	git config --global user.name fimmind

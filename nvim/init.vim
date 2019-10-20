@@ -79,7 +79,7 @@ call deoplete#custom#var('omni', 'input_patterns', {
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
       \   '*': ['remove_trailing_lines', 'trim_whitespace'],
-      \   'haskell': ['stylish-haskell'],
+      \   'haskell': ['stylish-haskell', 'brittany'],
       \ }
 
 " Indented block text obgect
