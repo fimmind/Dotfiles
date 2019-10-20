@@ -38,7 +38,7 @@ call plug#begin('~/.config/nvim/plugged')
   " Tools
   Plug 'airblade/vim-gitgutter'
   Plug 'junegunn/vim-easy-align'
-  Plug 'markonm/traces.vim'
+  Plug 'markonm/traces.vim'                " :substitute prewiew
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
@@ -59,6 +59,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'google/vim-glaive'
 
   " Autocompletion
+  Plug 'dense-analysis/ale'
   Plug 'cohama/lexima.vim'
   Plug 'lervag/vimtex'
   Plug 'vim-scripts/vim-auto-save'
@@ -77,7 +78,7 @@ let g:deoplete#enable_at_startup = 1
 
 call deoplete#custom#var('omni', 'input_patterns', {
       \ 'tex': g:vimtex#re#deoplete
-      \})
+      \ })
 
 " Indented block text obgect
 " ================================================
