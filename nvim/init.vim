@@ -16,10 +16,13 @@ source ~/.config/nvim/plug.vim
 call plug#begin('~/.config/nvim/plugged')
   " Syntax, style
   Plug 'phaazon/gruvbox' " Not original, couse of haskell-vim support
-  Plug 'neovimhaskell/haskell-vim'
   Plug 'suy/vim-qmake'
   Plug 'justinmk/vim-syntax-extra'
   Plug 'PotatoesMaster/i3-vim-syntax'
+
+  " Haskell
+  Plug 'neovimhaskell/haskell-vim'
+  Plug 'dan-t/vim-hsimport'
 
   " Markdown
   Plug 'SidOfc/mkdx'
@@ -65,6 +68,12 @@ call plug#end()
 " Mappings
 " ================================================
 command! Vimrc e ~/.config/nvim/init.vim
+
+let g:move_key_modifier='C'
+
+let g:maplocalleader=','
+let g:mapleader=','
+map \ <Plug>(easymotion-prefix)
 
 " Deoplete
 " ================================================
@@ -187,6 +196,17 @@ endfor
 
 command! Ghci vsplit term://stack ghci | :startinsert
 
+command! HsType
+        \ :exec ":w | :!hdevtools type -s .hdevtools.sock"
+        \ . " % "
+        \ . line(".") . " "
+        \ . col(".")
+
+nnoremap <Leader>ht :HsType<CR>
+
+nnoremap <Leader>him :w<CR>:HsimportModule<CR>
+nnoremap <Leader>his :w<CR>:HsimportSymbol<CR>
+
 " Easy-align
 " ================================================
 nmap ga <Plug>(EasyAlign)
@@ -269,14 +289,6 @@ let g:polyglot_disabled = ['markdown']
 let g:mkdp_auto_close = 1
 
 let g:mkdp_browser = "qutebrowser"
-
-" Mappings
-" ================================================
-let g:move_key_modifier='C'
-
-let g:maplocalleader=','
-let g:mapleader=','
-map \ <Plug>(easymotion-prefix)
 
 " NERDTree
 " ================================================
