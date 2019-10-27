@@ -68,7 +68,7 @@ ifeq ($(SYSTEM), manjaro)
 		keynav qalculate-gtk i3-gaps i3lock i3exit i3status zsh zathura-pdf-mupdf \
 		texlive-bin texlive-core texlive-langcyrillic clisp libreoffice-fresh \
 		libreoffice-fresh-ru ghc-libs ghc-static pandoc nodejs npm php rlwrap \
-		clojure
+		clojure cargo
 else
 	echo "can't install packets on this system ($(SYSTEM))"
 endif

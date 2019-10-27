@@ -21,7 +21,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'PotatoesMaster/i3-vim-syntax'
 
   " Clojure
-  Plug 'bhurlow/vim-parinfer'
+  Plug 'eraserhd/parinfer-rust', { 'do': 'cargo build --release' }
 
   " Haskell
   Plug 'neovimhaskell/haskell-vim'
@@ -160,6 +160,10 @@ autocmd TermOpen * setlocal nonumber norelativenumber
 " ================================================
 command! Clj :vsplit term://clj
 autocmd FileType clojure let b:lexima_disabled=1
+
+" Lisp
+" ================================================
+autocmd FileType lisp let b:lexima_disabled=1
 
 " Haskell
 " ================================================
