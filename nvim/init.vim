@@ -93,7 +93,7 @@ let g:ale_fixers = {
       \ }
 
 let g:ale_linters = {
-      \   'haskell': ['hdevtools'],
+      \   'haskell': ['hdevtools', 'hlint'],
       \   'python':  ['flake8'],
       \ }
 
