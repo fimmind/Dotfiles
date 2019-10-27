@@ -32,6 +32,9 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'dhruvasagar/vim-table-mode'
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
+  " Html
+  Plug 'mattn/emmet-vim'
+
   " NERDTree
   Plug 'scrooloose/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -45,18 +48,12 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
   Plug 'scrooloose/nerdcommenter'
-  Plug 'mattn/emmet-vim'
 
   " Motion
   Plug 'matze/vim-move'
   Plug 'easymotion/vim-easymotion'
   Plug 'kien/ctrlp.vim'
   Plug 'vim-scripts/a.vim'
-
-  " Format code
-  Plug 'google/vim-maktaba'
-  Plug 'google/vim-codefmt'
-  Plug 'google/vim-glaive'
 
   " Autocompletion
   Plug 'dense-analysis/ale'
