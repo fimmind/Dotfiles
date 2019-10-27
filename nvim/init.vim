@@ -20,6 +20,9 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'justinmk/vim-syntax-extra'
   Plug 'PotatoesMaster/i3-vim-syntax'
 
+  " Clojure
+  Plug 'bhurlow/vim-parinfer'
+
   " Haskell
   Plug 'neovimhaskell/haskell-vim'
   Plug 'dan-t/vim-hsimport'
@@ -155,6 +158,11 @@ let g:user_emmet_leader_key='<C-e>'
 " ================================================
 tnoremap <Esc> <C-\><C-n>
 autocmd TermOpen * setlocal nonumber norelativenumber
+
+" Clojure
+" ================================================
+command! Clj :vsplit term://clj
+autocmd FileType clojure let b:lexima_disabled=1
 
 " Haskell
 " ================================================
@@ -341,6 +349,10 @@ let g:buildAndRunSetup = {
         \ },
       \ "lisp": {
         \ "run"      : "clisp '%:p'",
+        \ "needBuild": 0
+        \ },
+      \ "clj": {
+        \ "run":       "clojure '%:p'",
         \ "needBuild": 0
         \ }
       \ }
