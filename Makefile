@@ -25,15 +25,15 @@ LN = ln ${LN_ARGS} $$curDir
 .ONESHELL:
 link-all:
 	curDir=$$(pwd)
-	test -d ~/.config    || mkdir ~/.config
-	test -d ~/.local/bin || mkdir ~/.local/bin
-	${LN}/nvim                    ~/.config/nvim
-	${LN}/zshrc                   ~/.zshrc
-	${LN}/i3                      ~/.config/i3
-	${LN}/i3status                ~/.config/i3status
-	${LN}/keynavrc                ~/.keynavrc
-	${LN}/fehbg                   ~/.fehbg
-	${LN}/qutebrowser             ~/.config/qutebrowser
+	test -d ~/.config    || mkdir    ~/.config
+	test -d ~/.local/bin || mkdir -p ~/.local/bin
+	${LN}/nvim                       ~/.config/nvim
+	${LN}/zshrc                      ~/.zshrc
+	${LN}/i3                         ~/.config/i3
+	${LN}/i3status                   ~/.config/i3status
+	${LN}/keynavrc                   ~/.keynavrc
+	${LN}/fehbg                      ~/.fehbg
+	${LN}/qutebrowser                ~/.config/qutebrowser
 
 .ONESHELL:
 link-Xresources:
