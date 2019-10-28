@@ -66,9 +66,8 @@ ifeq ($(SYSTEM), manjaro)
 		curl git cmake make gnome-terminal qutebrowser python3 bluez bluez-utils \
 		gcc qt5-base qtcreator neovim rofi htop ranger pcmanfm zathura shake \
 		keynav qalculate-gtk i3-gaps i3lock i3exit i3status zsh zathura-pdf-mupdf \
-		texlive-bin texlive-core texlive-langcyrillic clisp libreoffice-fresh \
-		libreoffice-fresh-ru ghc-libs ghc-static pandoc nodejs npm php rlwrap \
-		clojure cargo
+		clisp libreoffice-fresh libreoffice-fresh-ru ghc-libs ghc-static pandoc \
+		nodejs npm php rlwrap clojure cargo
 else
 	echo "can't install packets on this system ($(SYSTEM))"
 endif
@@ -85,3 +84,10 @@ gitConfig:
 	git config --global user.name fimmind
 	git config --global user.email "fimmind@mail.ru"
 	git config --global core.editor nvim
+
+.ONESHELL:
+installTexLive:
+	test -f texlive.tar.gz || \
+		wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz -O texlive.tar.gz
+	tar -xf texlive.tar.gz
+	cd `ls | grep install-tl-*` && ./install-tl -profile ../texlive.profile
