@@ -20,7 +20,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'justinmk/vim-syntax-extra'
   Plug 'PotatoesMaster/i3-vim-syntax'
 
-  " Clojure
+  " Lisp
   Plug 'eraserhd/parinfer-rust', { 'do': 'cargo build --release' }
 
   " Haskell
@@ -322,6 +322,7 @@ command! -nargs=1 Where :NERDTreeFind <args>
 " NERDComment
 " ================================================
 let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = 'left'
 
 " Build & Run
 " ================================================
