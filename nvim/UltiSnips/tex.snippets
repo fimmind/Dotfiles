@@ -15,23 +15,39 @@ snippet start "Basic template" b
 	]{hyperref}
 
 % Колонтитул
-${2:% }\usepackage{fancyhdr}
-$2\pagestyle{fancy}
-$2\fancyhf{}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\lhead{\thetitle}
+\rhead{\theauthor}
+\rfoot{Стр.~\thepage~из~\pageref{LastPage}}
 
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{hhline}
 \usepackage{indentfirst}
 \usepackage{enumitem}
+\usepackage{lastpage}
 
 \renewcommand{\thesection}{}
 \renewcommand{\thesubsection}{}
 \renewcommand{\thesubsubsection}{}
 \renewcommand{\theparagraph}{}
 
+\author{\theauthor}
+\title{\thetitle}
+
+\newcommand{\thetitle}{$1}
+\newcommand{\theauthor}{Виногродский Серафим}
+
 \begin{document}
-	$0
+	\begin{titlepage}
+		\maketitle
+		\thispagestyle{empty}
+	\end{titlepage}
+
+	$2
+
 \end{document}
 endsnippet
 
