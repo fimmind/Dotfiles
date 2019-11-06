@@ -8,11 +8,11 @@ snippet start "Basic template" b
 
 % Настройка ссылок
 \usepackage[
-	unicode, pdftex, 
-	colorlinks=true, 
-	linkcolor=black, 
+	unicode, pdftex,
+	colorlinks=true,
+	linkcolor=black,
 	pdfhighlight=/P
-	]{hyperref} 
+	]{hyperref}
 
 % Колонтитул
 ${2:% }\usepackage{fancyhdr}
@@ -111,7 +111,7 @@ endsnippet
 
 snippet cha "Chapter" b
 \chapter{$1}
-\label{cha:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}   
+\label{cha:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 $0
 endsnippet
 
@@ -230,6 +230,26 @@ snippet gath "gathered" b
 \end{gathered}$0
 endsnippet
 
+snippet phex "phisics problem" b
+\begin{wrapfigure}{l}{4.5cm}
+	\begin{tabular}{p{4cm}|}
+		\makecell[l]{
+			\textbf{Дано:} \\
+			$1
+		} \\ \hhline{-|}
+
+		\makecell[l]{
+			\textbf{Найти:} \\
+			R2
+		} \\ \hhline{-|}
+	\end{tabular}
+\end{wrapfigure}
+
+\textbf{Решение:} \\
+$0
+
+endsnippet
+
 ##############
 # Tikz Trees #
 ##############
@@ -237,7 +257,7 @@ endsnippet
 snippet tree "Tikz tree" b
 \begin{tikzpicture}[level/.style={sibling distance=${1:100}mm/#1}, scale=0.6]
 \node [circle, draw=black] {$2}
-	child { 
+	child {
 		$0
 	};
 \end{tikzpicture}
@@ -524,112 +544,112 @@ endsnippet
 ###########
 
 snippet sim "similar" i
-\sim 
+\sim
 endsnippet
 
 snippet +- "Plus Minus" iA
-\pm 
+\pm
 endsnippet
 snippet -+ "Minus Plus" iA
-\mp 
+\mp
 endsnippet
 
 snippet deg "Degrees" i
-^\circ 
+^\circ
 endsnippet
 
 snippet xx "Times" iA
-\times 
+\times
 endsnippet
 
 snippet ** "cdot" iA
-\cdot 
+\cdot
 endsnippet
 snippet *.. "cdots" iA
-\cdots 
+\cdots
 endsnippet
 
 snippet ... "\dots" iA
-\ldots 
+\ldots
 endsnippet
 
 snippet to "to" i
-\to 
+\to
 endsnippet
 
 snippet ~~ "approx" iA
-\approx 
+\approx
 endsnippet
 
 snippet notin "not in" iA
-\not\in 
+\not\in
 endsnippet
 snippet in "in" i
-\in 
+\in
 endsnippet
 
 snippet UU "U" iA
-\cup 
+\cup
 endsnippet
 snippet CA "cap" iA
-\cap 
+\cap
 endsnippet
 snippet || "mid" i
-\mid 
+\mid
 endsnippet
 
 snippet NN "Natural" iA
-\mathbb N 
+\mathbb N
 endsnippet
 snippet ZZ "Integer" iA
-\mathbb Z 
+\mathbb Z
 endsnippet
 snippet QQ "Rational" iA
-\mathbb Q 
+\mathbb Q
 endsnippet
 snippet RR "Real" iA
-\mathbb R 
+\mathbb R
 endsnippet
 snippet CC "Complex" iA
-\mathbb C 
+\mathbb C
 endsnippet
 
 snippet set- "set minus" iA
-\setminus 
+\setminus
 endsnippet
 
 snippet prp "perpendicular" iA
-\perp 
+\perp
 endsnippet
 snippet prl "parallel" iA
-\parallel 
+\parallel
 endsnippet
 
 snippet ooo "\infty" iA
-\infty 
+\infty
 endsnippet
 snippet <= "leq" i
-\le 
+\le
 endsnippet
 
 snippet >= "geq" i
-\ge 
+\ge
 endsnippet
 
 snippet EE "exist" iA
-\exists 
+\exists
 endsnippet
 
 snippet AA "forall" iA
-\forall 
+\forall
 endsnippet
 
 snippet "(?<!<)==>" "implies" irA
-\implies 
+\implies
 endsnippet
 
 snippet <==> "equivalent" iA
-\Longleftrightarrow 
+\Longleftrightarrow
 endsnippet
 
 ################
@@ -637,40 +657,40 @@ endsnippet
 ################
 
 snippet '(?<!\\)arcsin' "arcsin" rw
-\arcsin 
+\arcsin
 endsnippet
 snippet '(?<!arc)(?<!\\)sin' "sin" rw
-\sin 
+\sin
 endsnippet
 snippet '(?<!\\)arccos' "arccos" rw
-\arccos 
+\arccos
 endsnippet
 snippet '(?<!arc)(?<!\\)cos' "cos" rw
-\cos 
+\cos
 endsnippet
 snippet '(?<!\\)arctan' "arctan" rw
-\arctan 
+\arctan
 endsnippet
 snippet '(?<!arc)(?<!\\)tan' "tan" rw
-\tan 
+\tan
 endsnippet
 snippet '(?<!\\)arccot' "cot" rw
-\arccot 
+\arccot
 endsnippet
 snippet '(?<!arc)(?<!\\)cot' "cot" rw
-\cot 
+\cot
 endsnippet
 snippet '(?<!\\)arccsc' "csc" rw
-\arccsc 
+\arccsc
 endsnippet
 snippet '(?<!arc)(?<!\\)csc' "csc" rw
-\csc 
+\csc
 endsnippet
 snippet '(?<!\\)arcsec' "arcsec" rw
-\arcsec 
+\arcsec
 endsnippet
 snippet '(?<!arc)(?<!\\)sec' "sec" rw
-\sec 
+\sec
 endsnippet
 
 
@@ -679,35 +699,35 @@ endsnippet
 ######
 
 snippet aG "alpha" w
-\alpha 
+\alpha
 endsnippet
 snippet bG "beta" w
-\beta 
+\beta
 endsnippet
 snippet yG "gamma" w
-\gamma 
+\gamma
 endsnippet
 snippet PI "pi" w
-\pi 
+\pi
 endsnippet
 snippet pG "rho" w
-\rho 
+\rho
 endsnippet
 snippet vG "nu" w
-\nu 
+\nu
 endsnippet
 snippet nG "eta" w
-\eta 
+\eta
 endsnippet
 snippet mG "mu" w
-\mu 
+\mu
 endsnippet
 snippet wG "omega" w
-\omega 
+\omega
 endsnippet
 
 snippet DD "Delta" wA
-\Delta 
+\Delta
 endsnippet
 
 
@@ -719,24 +739,24 @@ snippet '\)(\d)' "bracket auto subscript" wrA
 )_`!p snip.rv = match.group(1)`
 endsnippet
 snippet '\)_(\d\d)' "bracket auto subscript2" wrA
-)_{`!p snip.rv = match.group(1)`$1}$0 
+)_{`!p snip.rv = match.group(1)`$1}$0
 endsnippet
 
 priority 10
 snippet --> "longrightarrow" i
-\longrightarrow 
+\longrightarrow
 endsnippet
 priority 100
 snippet tC--> "longrightarrow with tempetarure" i
-\stackrel{\mathit t,^\circ \mathrm C}{\longrightarrow} 
+\stackrel{\mathit t,^\circ \mathrm C}{\longrightarrow}
 endsnippet
 priority 100
 snippet t--> "longrightarrow with tempetarure" i
-\stackrel{\mathit t}{\longrightarrow} 
+\stackrel{\mathit t}{\longrightarrow}
 endsnippet
 
 snippet texstr "sectionw with math" iA
-\texorpdfstring{$ \mathrm{ $1 } $}{ `!p 
+\texorpdfstring{$ \mathrm{ $1 } $}{ `!p
 snip.rv = t[2].replace('_', '\\_').replace('^', '\\^').replace('{', '\\{').replace('}', '\\}').replace('\\', '\\\\')
 ` }
 endsnippet
@@ -751,19 +771,19 @@ endsnippet
 #################
 
 snippet and "Logical and" i
-\land 
+\land
 endsnippet
 snippet or "Logical or" i
-\lor 
+\lor
 endsnippet
 snippet not "Logial not" i
-\lnot 
+\lnot
 endsnippet
 snippet "(?<![=<])=>" "Logical implies" ri
-\Rightarrow 
+\Rightarrow
 endsnippet
 snippet <=> "Logical eqivalent" i
-\Leftrightarrow 
+\Leftrightarrow
 endsnippet
 
 # vim:ft=snippets

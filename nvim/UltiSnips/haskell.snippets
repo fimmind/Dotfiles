@@ -18,6 +18,13 @@ module ${1:`!v expand("%:t:r")`}${2: ( $3
 $0
 endsnippet
 
+snippet Main "Main module" b
+module Main where
+
+main :: IO ()
+main = ${1:pure ()}
+endsnippet
+
 snippet gigtk "gi-gtk start" b
 {-# LANGUAGE OverloadedLabels  #-}
 {-# LANGUAGE OverloadedStrings #-}
