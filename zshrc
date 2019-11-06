@@ -25,6 +25,9 @@ alias vimrc="nvim -c Vimrc"
 PATH="$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/bin"
 PATH="$PATH:/usr/local/texlive/2019/bin/x86_64-linux"
 
+MANPATH="$MANPATH:/usr/local/texlive/2019/texmf-dist/doc/man"
+INFOPATH="$INFOPATH:/usr/local/texlive/2019/texmf-dist/doc/info"
+
 if [ "`uname -o`" == "Android" ]; then
   alias chroot="termux-chroot && exit"
   alias hugs="termux-chroot hugs"
