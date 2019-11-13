@@ -357,6 +357,10 @@ let g:buildAndRunSetup = {
       \ "clj": {
         \ "run":       "clojure '%:p'",
         \ "needBuild": 0
+        \ },
+      \ "scala": {
+        \ "run":       "scala '%:p'",
+        \ "needBuild": 0
         \ }
       \ }
 
