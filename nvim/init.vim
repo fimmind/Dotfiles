@@ -407,11 +407,11 @@ function! Run()
     if setup["needBuild"]
       execute "!".setup["build"]
     endif
-    execute ":split term://".setup["run"]." | :startinsert"
+    split 
+    execute "terminal ".setup["run"]
+    startinsert
   else
     echo "There's no \"".fileType."\" in g:buildAndRunSetup"
   endif
   execute "cd ".workDir
 endfunction
-
-command! Hugsrun w | !clear && termux-chroot runhugs '%:p'
