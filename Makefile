@@ -77,7 +77,7 @@ ldconfig:
 
 setupNeoVim:
 	nvim -c ":PlugInstall | :qa"
-	pip3 install pynvim unicode flake8 yapf
+	pip3 install pynvim unicode flake8 yapf sympy
 	stack install stylish-haskell hdevtools hsimport hlint
 
 gitConfig:
