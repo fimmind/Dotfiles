@@ -295,18 +295,27 @@ snippet // "Fraction" iA
 \\frac{$1}{$2}$0
 endsnippet
 
-priority 100
-snippet '((\d+)?(\\)?([A-Za-z]+)(\^((\{\d+\})|(\d)))?)/' "symbol frac" wrA
+snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
 \\frac{`!p snip.rv = match.group(1)`}{$1}$0
 endsnippet
 
-priority 10
-snippet '(\d+)/' "number frac" wrA
-\\frac{`!p snip.rv = match.group(1)`}{$1}$0
+priority 1000
+snippet '^.*\)/' "() Fraction" wrA
+`!p
+stripped = match.string[:-1]
+depth = 0
+i = len(stripped) - 1
+while True:
+	if stripped[i] == ')': depth += 1
+	if stripped[i] == '(': depth -= 1
+	if depth == 0: break;
+	i -= 1
+snip.rv = stripped[0:i] + "\\frac{" + stripped[i+1:-1] + "}"
+`{$1}$0
 endsnippet
 
-snippet '\(([^(]*)\)/' "() frac" wrA
-\\frac{`!p snip.rv = match.group(1)`}{$1}$0
+snippet / "Fraction" i
+\\frac{${VISUAL}}{$1}$0
 endsnippet
 
 
@@ -340,19 +349,22 @@ endsnippet
 # sympy #
 #########
 
-snippet sympy "sympyblock " w
+snippet sympy "sympy block " w
 sympy $1 sympy$0
 endsnippet
 
 priority 10000
-snippet 'sympy(.*)sympy' "sympy" wr
+snippet 'sympy(.*)sympy' "evaluate sympy" wr
 `!p
 from sympy import *
 x, y, z, t = symbols('x y z t')
 k, m, n = symbols('k m n', integer=True)
 f, g, h = symbols('f g h', cls=Function)
 init_printing()
-snip.rv = eval('latex(' + match.group(1).replace('\\', '').replace('^', '**').replace('{', '(').replace('}', ')') + ')')
+snip.rv = eval('latex(' + match.group(1).replace('\\', '') \
+    .replace('^', '**') \
+    .replace('{', '(') \
+    .replace('}', ')') + ')')
 `
 endsnippet
 

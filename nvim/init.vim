@@ -253,7 +253,7 @@ set showcmd
 set number
 set relativenumber
 set mouse=a
-set conceallevel=0
+set conceallevel=1
 filetype plugin on
 filetype plugin indent on
 
@@ -264,10 +264,12 @@ colorscheme gruvbox
 set background=dark
 syntax on
 
-" LaTeX
+" LaTeX  |latex|
 " ================================================
 let g:tex_flavor='latex'
+let g:tex_conseal='abdmg'
 let g:Tex_GotoError = 0
+let g:vimtex_quickfix_mode=0
 let g:vimtex_view_method = 'zathura'
 let g:AutoPairsIgnorePrefixes = ['\', 'lr', '\left']
 
@@ -407,7 +409,7 @@ function! Run()
     if setup["needBuild"]
       execute "!".setup["build"]
     endif
-    split 
+    split
     execute "terminal ".setup["run"]
     startinsert
   else
