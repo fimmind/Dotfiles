@@ -253,7 +253,6 @@ set showcmd
 set number
 set relativenumber
 set mouse=a
-set conceallevel=1
 filetype plugin on
 filetype plugin indent on
 
@@ -267,7 +266,6 @@ syntax on
 " LaTeX  |latex|
 " ================================================
 let g:tex_flavor='latex'
-let g:tex_conseal='abdmg'
 let g:Tex_GotoError = 0
 let g:vimtex_quickfix_mode=0
 let g:vimtex_view_method = 'zathura'
