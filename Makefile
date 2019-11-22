@@ -67,7 +67,7 @@ ifeq ($(SYSTEM), manjaro)
 		gcc qt5-base qtcreator neovim rofi htop ranger pcmanfm zathura shake \
 		keynav qalculate-gtk i3-gaps i3lock i3exit i3status zsh zathura-pdf-mupdf \
 		clisp libreoffice-fresh libreoffice-fresh-ru ghc-libs ghc-static pandoc \
-		nodejs npm php rlwrap clojure cargo rogue nethack scala
+		nodejs npm php rlwrap clojure cargo rogue nethack scala inkscape
 else
 	echo "can't install packets on this system ($(SYSTEM))"
 endif
@@ -77,7 +77,7 @@ ldconfig:
 
 setupNeoVim:
 	nvim -c ":PlugInstall | :qa"
-	pip3 install pynvim unicode flake8 yapf sympy
+	pip3 install pynvim unicode flake8 yapf sympy inkscape-figures
 	stack install stylish-haskell hdevtools hsimport hlint
 
 gitConfig:

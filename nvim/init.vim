@@ -273,6 +273,10 @@ let g:vimtex_quickfix_mode=0
 let g:vimtex_view_method = 'zathura'
 let g:AutoPairsIgnorePrefixes = ['\', 'lr', '\left']
 
+" inkscape-figures
+inoremap <C-f> <Esc>: silent exec '.!inkscape-figures create "'.getline('.').'" "'.b:vimtex.root.'/figures/"'<CR><CR>:w<CR>
+nnoremap <C-f> : silent exec '!inkscape-figures edit "'.b:vimtex.root.'/figures/" > /dev/null 2>&1 &'<CR><CR>:redraw!<CR>
+
 let pairs = {'(':')', '\\\\{':'\\\\}', '[':']', '<':'>'}
 for i in keys(pairs)
   call lexima#add_rule({

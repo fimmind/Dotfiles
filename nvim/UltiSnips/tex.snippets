@@ -1,3 +1,23 @@
+global !p
+texMathZones = ['texMathZone'+x for x in ['A', 'AS', 'B', 'BS', 'C', 'CS', 'D', 'DS', 'E', 'ES', 'F', 'FS', 'G', 'GS', 'H', 'HS', 'I', 'IS', 'J', 'JS', 'K', 'KS', 'L', 'LS', 'DS', 'V', 'W', 'X', 'Y', 'Z']]
+
+texIgnoreMathZones = ['texMathText']
+
+texMathZoneIds = vim.eval('map('+str(texMathZones)+", 'hlID(v:val)')")
+texIgnoreMathZoneIds = vim.eval('map('+str(texIgnoreMathZones)+", 'hlID(v:val)')")
+
+ignore = texIgnoreMathZoneIds[0]
+
+def math():
+	synstackids = vim.eval("synstack(line('.'), col('.') - (col('.')>=2 ? 1 : 0))")
+	try:
+		first = next(i for i in reversed(synstackids) if i in texIgnoreMathZoneIds or i in texMathZoneIds)
+		return first != ignore
+	except StopIteration:
+		return False
+endglobal
+
+
 snippet start "Basic template" b
 \documentclass[12pt, a4paper]{article}
 
@@ -22,11 +42,23 @@ snippet start "Basic template" b
 \rhead{\theauthor}
 \rfoot{Стр.~\thepage~из~\pageref{LastPage}}
 
+% figure support
+\usepackage{import}
+\usepackage{xifthen}
+\pdfminorversion=7
+\usepackage{pdfpages}
+\usepackage{transparent}
+\newcommand{\incfig}[1]{%
+	\def\svgwidth{\columnwidth}
+	\import{./figures/}{#1.pdf_tex}
+}
+\pdfsuppresswarningpagegroup=1
+
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{hhline}
 \usepackage{indentfirst}
-\usepackage{enumitem}
+\usepackage{xcolor}
 \usepackage{lastpage}
 
 \renewcommand{\thesection}{}
@@ -52,14 +84,9 @@ snippet start "Basic template" b
 endsnippet
 
 snippet beg "begin{} / end{}" b
-\begin{${1:something}}
+\\begin{${1:something}}
 	${0:${VISUAL}}
-\end{$1}
-endsnippet
-
-snippet margin "margin note" w
-\\marginpar{$1}
-$0
+\\end{$1}
 endsnippet
 
 
@@ -201,8 +228,13 @@ endsnippet
 # Environments #
 ################
 
-snippet $$ "Inline math" iA
-$ ${1:${VISUAL}} $$0
+snippet mk "Inline math" wA
+$ ${1:${VISUAL}} $`!p
+if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
+	snip.rv = ' '
+else:
+	snip.rv = ''
+`$2
 endsnippet
 
 snippet eq "Equation" b
@@ -212,7 +244,7 @@ snippet eq "Equation" b
 \end{equation}
 endsnippet
 
-snippet eqnn "Equation without number" b
+snippet eqnn "Equation without number" bA
 \begin{equation*}
 	$0
 \end{equation*}
@@ -225,7 +257,8 @@ snippet align "Align" b
 $0
 endsnippet
 
-snippet cases "Cases" b
+context "math()"
+snippet cases "Cases" wA
 \begin{cases}
 	${1:${VISUAL}}
 \end{cases}$0
@@ -246,25 +279,6 @@ snippet gath "gathered" b
 \end{gathered}$0
 endsnippet
 
-snippet phex "phisics problem" b
-\begin{wrapfigure}{l}{4.5cm}
-	\begin{tabular}{p{4cm}|}
-		\makecell[l]{
-			\textbf{Дано:} \\
-			$1
-		} \\ \hhline{-|}
-
-		\makecell[l]{
-			\textbf{Найти:} \\
-			R2
-		} \\ \hhline{-|}
-	\end{tabular}
-\end{wrapfigure}
-
-\textbf{Решение:} \\
-$0
-
-endsnippet
 
 ##############
 # Tikz Trees #
@@ -291,15 +305,18 @@ endsnippet
 # Fractions #
 #############
 
+context "math()"
 snippet // "Fraction" iA
 \\frac{$1}{$2}$0
 endsnippet
 
+context "math()"
 snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
 \\frac{`!p snip.rv = match.group(1)`}{$1}$0
 endsnippet
 
 priority 1000
+context "math()"
 snippet '^.*\)/' "() Fraction" wrA
 `!p
 stripped = match.string[:-1]
@@ -323,25 +340,18 @@ endsnippet
 # Subscript #
 #############
 
+context "math()"
 snippet '([A-Za-z])(\d)' "auto subscript" wrA
 `!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
 endsnippet
 
+context "math()"
 snippet '([A-Za-z])_(\d\d)' "auto subscript2" wrA
-`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
+`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`$1}$0
 endsnippet
-
-snippet '([A-Za-z])_(\d)' "disable auto subscript" wr
-`!p snip.rv = match.group(1) + match.group(2)`
-endsnippet
-
 
 snippet __ "subscript" iA
 _{${1:${VISUAL}}}$0
-endsnippet
-
-snippet stx "text subsctipt" iA
-_\text{${1:${VISUAL}}}$0
 endsnippet
 
 
@@ -441,7 +451,7 @@ endsnippet
 
 
 snippet ddx "d/dx" wA
-\frac{d$1}{dx} $0
+\frac{d$2}{d${1:x}} $0
 endsnippet
 
 snippet ddt "d/dt" wA
@@ -460,29 +470,34 @@ snippet xcncl "xcancel" iA
 \xcancel{${1:${VISUAL}}}$0
 endsnippet
 
+context "math()"
+snippet tt "text" iA
+\text{${1:${VISUAL}}}$0
+endsnippet
+
 
 #########
 # Power #
 #########
 
 priority 0
+context "math()"
 snippet sr "\sqrt{}" iA
 \sqrt{${1:${VISUAL}}} $0
 endsnippet
 
 priority 1
+context "math()"
 snippet nsr "sqrt" iA
 \sqrt[$1]{${2:${VISUAL}}} $0
 endsnippet
 
+context "math()"
 snippet sq "^2" iA
 ^2
 endsnippet
 
-snippet cb "^3" iA
-^3
-endsnippet
-
+context "math()"
 snippet tp "to the power" iA
 ^{$1}$0
 endsnippet
@@ -571,8 +586,17 @@ endsnippet
 # Symbols #
 ###########
 
-snippet sim "similar" i
-\sim
+context "math()"
+snippet "(?<!\\)(sim|pi|perp|to)" "Symbols" riA
+\\`!p snip.rv = match.group(0)`
+endsnippet
+
+snippet -> "to" iA
+\to
+endsnippet
+
+snippet |> "mapsto" iA
+\mapsto
 endsnippet
 
 snippet +- "Plus Minus" iA
@@ -582,10 +606,12 @@ snippet -+ "Minus Plus" iA
 \mp
 endsnippet
 
-snippet deg "Degrees" i
+context "math()"
+snippet deg "Degrees" iA
 ^\circ
 endsnippet
 
+context "math()"
 snippet xx "Times" iA
 \times
 endsnippet
@@ -601,10 +627,6 @@ snippet ... "\dots" iA
 \ldots
 endsnippet
 
-snippet to "to" i
-\to
-endsnippet
-
 snippet ~~ "approx" iA
 \approx
 endsnippet
@@ -616,14 +638,21 @@ snippet in "in" i
 \in
 endsnippet
 
+context "math()"
 snippet UU "U" iA
 \cup
 endsnippet
+context "math()"
 snippet CA "cap" iA
 \cap
 endsnippet
-snippet || "mid" i
+context "math()"
+snippet || "mid" iA
 \mid
+endsnippet
+context "math()"
+snippet cc "subset" iA
+\subset
 endsnippet
 
 snippet NN "Natural" iA
@@ -680,45 +709,45 @@ snippet <==> "equivalent" iA
 \Longleftrightarrow
 endsnippet
 
+
+priority 10
+context "math()"
+snippet "bar" "bar" riA
+\overline{$1}$0
+endsnippet
+
+priority 100
+context "math()"
+snippet "([a-zA-Z](_[\d\w\W]+)?)bar" "bar" riA
+\overline{`!p snip.rv=match.group(1)`}
+endsnippet
+
+priority 10
+context "math()"
+snippet "hat" "hat" riA
+\hat{$1}$0
+endsnippet
+
+priority 100
+context "math()"
+snippet "([a-zA-Z](_[\d\w\W]+)?)hat" "hat" riA
+\hat{`!p snip.rv=match.group(1)`}
+endsnippet
+
 ################
 # Trigonometry #
 ################
 
-snippet '(?<!\\)arcsin' "arcsin" rw
-\arcsin
+priority 100
+context "math()"
+snippet '(?<!\\)(lg|ln|log|exp|star|perp)' "ln" rwA
+\\`!p snip.rv = match.group(1)`
 endsnippet
-snippet '(?<!arc)(?<!\\)sin' "sin" rw
-\sin
-endsnippet
-snippet '(?<!\\)arccos' "arccos" rw
-\arccos
-endsnippet
-snippet '(?<!arc)(?<!\\)cos' "cos" rw
-\cos
-endsnippet
-snippet '(?<!\\)arctan' "arctan" rw
-\arctan
-endsnippet
-snippet '(?<!arc)(?<!\\)tan' "tan" rw
-\tan
-endsnippet
-snippet '(?<!\\)arccot' "cot" rw
-\arccot
-endsnippet
-snippet '(?<!arc)(?<!\\)cot' "cot" rw
-\cot
-endsnippet
-snippet '(?<!\\)arccsc' "csc" rw
-\arccsc
-endsnippet
-snippet '(?<!arc)(?<!\\)csc' "csc" rw
-\csc
-endsnippet
-snippet '(?<!\\)arcsec' "arcsec" rw
-\arcsec
-endsnippet
-snippet '(?<!arc)(?<!\\)sec' "sec" rw
-\sec
+
+priority 100
+context "math()"
+snippet '(?<!\\)((arc)?(sin|cos|tan|cot|sec|csc))' "trigonometry" rwA
+\\`!p snip.rv = match.group(1)`
 endsnippet
 
 
@@ -726,34 +755,44 @@ endsnippet
 # GK #
 ######
 
-snippet aG "alpha" w
+context "math()"
+snippet aG "alpha" wA
 \alpha
 endsnippet
-snippet bG "beta" w
+context "math()"
+snippet bG "beta" wA
 \beta
 endsnippet
-snippet yG "gamma" w
+context "math()"
+snippet yG "gamma" wA
 \gamma
 endsnippet
-snippet PI "pi" w
+context "math()"
+snippet pi "pi" wA
 \pi
 endsnippet
-snippet pG "rho" w
+context "math()"
+snippet pG "rho" wA
 \rho
 endsnippet
-snippet vG "nu" w
+context "math()"
+snippet vG "nu" wA
 \nu
 endsnippet
-snippet nG "eta" w
+context "math()"
+snippet nG "eta" wA
 \eta
 endsnippet
-snippet mG "mu" w
+context "math()"
+snippet mG "mu" wA
 \mu
 endsnippet
-snippet wG "omega" w
+context "math()"
+snippet wG "omega" wA
 \omega
 endsnippet
 
+context "math()"
 snippet DD "Delta" wA
 \Delta
 endsnippet
