@@ -64,11 +64,10 @@ ifeq ($(SYSTEM), manjaro)
 	pacman -Syu --noconfirm
 	pacman -S --noconfirm \
 		curl git cmake make gnome-terminal qutebrowser python3 bluez bluez-utils \
-		gcc qt5-base qtcreator neovim rofi htop ranger pcmanfm zathura shake \
+		gcc neovim rofi htop ranger pcmanfm zathura shake telegram-desktop \
 		keynav qalculate-gtk i3-gaps i3lock i3exit i3status zsh zathura-pdf-mupdf \
 		clisp libreoffice-fresh libreoffice-fresh-ru ghc-libs ghc-static pandoc \
 		nodejs npm php rlwrap clojure cargo rogue nethack scala inkscape \
-		telegram-desktop
 else
 	echo "can't install packets on this system ($(SYSTEM))"
 endif
