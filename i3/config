@@ -9,6 +9,7 @@ exec --no-startup-id setxkbmap us,ru ,winkeys grp:caps_toggle
 exec keynav
 exec ~/.fehbg
 exec amixer sset Master 100
+exec telegram-desktop -startintray
 
 ########## Backlight ##########
 bindsym XF86MonBrightnessUp exec light -A 10 # Increase Brightness
