@@ -149,7 +149,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 " Emmet
 " ================================================
 let g:user_emmet_mode='a'
-let g:user_emmet_leader_key='<C-e>'
+let g:user_emmet_leader_key='<C-m>'
 
 " Terminal
 " ================================================
