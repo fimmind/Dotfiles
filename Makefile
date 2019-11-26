@@ -78,7 +78,7 @@ ldconfig:
 setupNeoVim:
 	nvim -c ":PlugInstall | :qa"
 	pip3 install pynvim unicode flake8 yapf sympy inkscape-figures
-	stack install stylish-haskell hdevtools hsimport hlint
+	stack install stylish-haskell hdevtools hsimport hlint jedi
 
 gitConfig:
 	git config --global user.name fimmind
