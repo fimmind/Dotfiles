@@ -63,6 +63,11 @@ snippet start "Basic template" b
 \usepackage{tikz}
 \usepackage{pgfplots}
 
+\usepackage{enumitem}
+\makeatletter
+\AddEnumerateCounter{\asbuk}{\russian@alph}{щ}
+\makeatother
+
 \renewcommand{\thesection}{}
 \renewcommand{\thesubsection}{}
 \renewcommand{\thesubsubsection}{}
@@ -130,10 +135,15 @@ snippet enum "Enumerate" b
 \end{enumerate}
 endsnippet
 
+snippet enumru "Cirilic letters enumerate" b
+	\begin{enumerate}[label=\asbuk*)]
+		\item $0
+	\end{enumerate}
+endsnippet
+
 snippet item "Itemize" b
 \begin{itemize}
-	\item $1
-	$0
+	\item $0
 \end{itemize}
 endsnippet
 
@@ -593,6 +603,12 @@ snippet "(?<!\\)(sim|pi|perp|to)" "Symbols" riA
 \\`!p snip.rv = match.group(0)`
 endsnippet
 
+priority 100
+snippet <-> "<->" iA
+\leftrightarrow
+endsnippet
+
+priority 10
 snippet -> "to" iA
 \to
 endsnippet
