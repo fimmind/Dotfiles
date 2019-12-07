@@ -23,6 +23,9 @@ call plug#begin('~/.config/nvim/plugged')
   " Lisp
   Plug 'eraserhd/parinfer-rust', { 'do': 'cargo build --release' }
 
+  " Clojure
+  Plug 'clojure-vim/acid.nvim', { 'do': ':UpdateRemotePlugins' }
+
   " Haskell
   Plug 'neovimhaskell/haskell-vim'
   Plug 'dan-t/vim-hsimport'
@@ -161,12 +164,21 @@ command! Zsh vsplit term://zsh | :startinsert
 
 " Clojure
 " ================================================
-command! Clj :vsplit term://clj
-autocmd FileType clojure let b:lexima_disabled=1
+command! Repl :vsplit term://lein repl
+autocmd BufWrite *.clj :AcidClearVtext
+
+let g:acid_no_default_keymappings = 1
+
+autocmd FileType clojure
+      \   nmap <buffer> <silent> <Leader>ad     <Plug>(acid-docs)
+      \ | nmap <buffer> <silent> <Leader>aec    <Plug>(acid-eval-cmdline)
+      \ | nmap <buffer> <silent> <Leader>amo    <Plug>(acid-motion-op)
+      \ | nmap <buffer> <silent> <Leader>aee    <Plug>(acid-eval-expr)
+      \ | nmap <buffer> <silent> <Leader>aep    <Plug>(acid-eval-print)
 
 " Lisp
 " ================================================
-autocmd FileType lisp let b:lexima_disabled=1
+autocmd FileType lisp,clojure let b:lexima_disabled=1
 
 " Haskell
 " ================================================
@@ -361,7 +373,7 @@ let g:buildAndRunSetup = {
         \ "needBuild": 0
         \ },
       \ "clj": {
-        \ "run":       "clojure '%:p'",
+        \ "run":       "lein run",
         \ "needBuild": 0
         \ },
       \ "scala": {

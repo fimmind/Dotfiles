@@ -8,7 +8,8 @@ ifeq ($(SYSTEM), manjaro)
 	sudo pacman -R manjaro-i3-settings
 endif
 	sudo make enableBluetooth installPackets gitConfig installOhMyZsh \
-		installTheHaskellToolStack link-all setupNeoVim ldconfig
+		installTheHaskellToolStack link-all setupNeoVim ldconfig \
+		installLeiningen
 	i3exit lock
 # link-Xresources mast be last, becouse it may ask confirmation
 	make link-Xresources
@@ -91,3 +92,9 @@ installTexLive:
 		wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz -O texlive.tar.gz
 	tar -xf texlive.tar.gz
 	cd `ls | grep install-tl-*` && ./install-tl -profile ../texlive.profile
+
+installLeiningen:
+	wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein \
+		-O ~/.local/bin/lein
+	chmod ug+x ~/.local/bin/lein
+	lein
