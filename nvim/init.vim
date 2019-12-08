@@ -51,6 +51,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
   Plug 'scrooloose/nerdcommenter'
+  Plug 'skywind3000/asyncrun.vim'
 
   " Motion
   Plug 'matze/vim-move'
@@ -164,17 +165,19 @@ command! Zsh vsplit term://zsh | :startinsert
 
 " Clojure
 " ================================================
-command! Repl :vsplit term://lein repl
-autocmd BufWrite *.clj :AcidClearVtext
+command! Repl :vsplit term://lein repl :connect
+autocmd CursorMoved,CursorMovedI *.clj :AcidClearVtext
 
 let g:acid_no_default_keymappings = 1
 
 autocmd FileType clojure
-      \   nmap <buffer> <silent> <Leader>ad     <Plug>(acid-docs)
-      \ | nmap <buffer> <silent> <Leader>aec    <Plug>(acid-eval-cmdline)
-      \ | nmap <buffer> <silent> <Leader>amo    <Plug>(acid-motion-op)
-      \ | nmap <buffer> <silent> <Leader>aee    <Plug>(acid-eval-expr)
-      \ | nmap <buffer> <silent> <Leader>aep    <Plug>(acid-eval-print)
+      \   nmap <buffer> <silent> <Leader>c    <Plug>(acid-eval-cmdline)
+      \ | nmap <buffer> <silent> <Leader>e    <Plug>(acid-eval-expr)
+      \ | vmap <buffer> <silent> <Leader>e    <Plug>(acid-eval-visual)
+      \ | nmap <buffer> <silent> <Leader>E    <Plug>(acid-eval-top-expr)
+      \ | nmap <buffer> <silent> <Leader>p    <Plug>(acid-eval-print)
+      \ | nmap <buffer> <silent> <Leader>g    <Plug>(acid-go-to)
+      \ | AsyncRun lein repl :headless
 
 " Lisp
 " ================================================
@@ -414,7 +417,7 @@ endfunction
 
 " Run
 " ================================================
-nnoremap <Leader>e :call Run()<CR>
+nnoremap <Leader>r :call Run()<CR>
 command! Run execute Run()
 function! Run()
   let workDir = system("pwd")
