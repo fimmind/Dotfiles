@@ -99,6 +99,7 @@ let g:ale_fixers = {
 let g:ale_linters = {
       \   'haskell': ['hdevtools', 'hlint'],
       \   'python':  ['flake8'],
+      \   'clojure': ['clj-kondo'],
       \ }
 
 " Indented block text obgect
