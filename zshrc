@@ -21,6 +21,7 @@ fi
 alias ru="setxkbmap us,ru ,winkeys grp:caps_toggle"
 alias fix_time="sudo ntpd -qg"
 alias vimrc="nvim -c Vimrc"
+alias getamsterdam="cp ~/Dotfiles/beamerthemeAmsterdam.sty ./"
 
 PATH="$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/bin"
 PATH="$PATH:/usr/local/texlive/2019/bin/x86_64-linux"
