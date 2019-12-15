@@ -22,6 +22,7 @@ call plug#begin('~/.config/nvim/plugged')
 
   " Lisp
   Plug 'eraserhd/parinfer-rust', { 'do': 'cargo build --release' }
+  Plug 'oblitum/rainbow'
 
   " Clojure
   Plug 'clojure-vim/acid.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -164,6 +165,10 @@ tnoremap <Esc> <C-\><C-n>
 autocmd TermOpen * setlocal nonumber norelativenumber
 command! Zsh vsplit term://zsh | :startinsert
 
+" Rainbow Brackets
+" ================================================
+let g:rainbow_active = 1
+
 " Clojure
 " ================================================
 command! Repl :vsplit term://lein repl :connect
@@ -182,7 +187,7 @@ autocmd FileType clojure
 
 " Lisp
 " ================================================
-autocmd FileType lisp,clojure let b:lexima_disabled=1
+autocmd FileType lisp,clojure let b:lexima_disabled = 1
 
 " Haskell
 " ================================================
