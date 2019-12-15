@@ -25,7 +25,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'oblitum/rainbow'
 
   " Clojure
-  Plug 'clojure-vim/acid.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'tpope/vim-fireplace' " TODO: try to replace with https://github.com/Olical/conjure
+                             " adding https://github.com/clojure-vim/async-clj-omni for completion
 
   " Haskell
   Plug 'neovimhaskell/haskell-vim'
@@ -171,19 +172,9 @@ let g:rainbow_active = 1
 
 " Clojure
 " ================================================
-command! Repl :vsplit term://lein repl :connect
-autocmd CursorMoved,CursorMovedI *.clj :AcidClearVtext
+command! Repl normal :split term://lein repl :connect<CR><C-W>12_i
 
-let g:acid_no_default_keymappings = 1
-
-autocmd FileType clojure
-      \   nmap <buffer> <silent> <Leader>c    <Plug>(acid-eval-cmdline)
-      \ | nmap <buffer> <silent> <Leader>e    <Plug>(acid-eval-expr)
-      \ | vmap <buffer> <silent> <Leader>e    <Plug>(acid-eval-visual)
-      \ | nmap <buffer> <silent> <Leader>E    <Plug>(acid-eval-top-expr)
-      \ | nmap <buffer> <silent> <Leader>p    <Plug>(acid-eval-print)
-      \ | nmap <buffer> <silent> <Leader>g    <Plug>(acid-go-to)
-      \ | AsyncRun lein repl :headless
+autocmd FileType clojure AsyncRun lein repl :headless
 
 " Lisp
 " ================================================
