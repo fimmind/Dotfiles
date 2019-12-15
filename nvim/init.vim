@@ -31,6 +31,8 @@ call plug#begin('~/.config/nvim/plugged')
   " Haskell
   Plug 'neovimhaskell/haskell-vim'
   Plug 'dan-t/vim-hsimport'
+  " TODO: try haskell-ide-engine with CoC.vim
+  " http://marco-lopes.com/articles/Vim-and-Haskell-in-2019/
 
   " Markdown
   Plug 'SidOfc/mkdx'
