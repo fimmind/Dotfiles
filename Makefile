@@ -28,6 +28,7 @@ link-all:
 	curDir=$$(pwd)
 	test -d ~/.config    || mkdir    ~/.config
 	test -d ~/.local/bin || mkdir -p ~/.local/bin
+	test -d ~/.lein      || mkdir    ~/.lein
 	${LN}/nvim                       ~/.config/nvim
 	${LN}/zshrc                      ~/.zshrc
 	${LN}/i3                         ~/.config/i3
@@ -35,6 +36,7 @@ link-all:
 	${LN}/keynavrc                   ~/.keynavrc
 	${LN}/fehbg                      ~/.fehbg
 	${LN}/qutebrowser                ~/.config/qutebrowser
+	${LN}/profiles.clj               ~/.lein/profiles.clj
 
 .ONESHELL:
 link-Xresources:
