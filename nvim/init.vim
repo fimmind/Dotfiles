@@ -22,7 +22,7 @@ call plug#begin('~/.config/nvim/plugged')
 
   " Lisp
   Plug 'eraserhd/parinfer-rust', { 'do': 'cargo build --release' }
-  Plug 'oblitum/rainbow'
+  Plug 'oblitum/rainbow' " TODO: fix wrong syntax highlight when enabled
 
   " Clojure
   Plug 'tpope/vim-fireplace' " TODO: try to replace with https://github.com/Olical/conjure
