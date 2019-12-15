@@ -66,7 +66,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'cohama/lexima.vim'
   Plug 'lervag/vimtex'
   Plug 'vim-scripts/vim-auto-save'
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' } " TODO: try https://github.com/ncm2/ncm2
   Plug 'deoplete-plugins/deoplete-jedi'
   Plug 'SirVer/ultisnips'
 call plug#end()
