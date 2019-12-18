@@ -1,4 +1,5 @@
 global !p
+# TODO fix ^{\text{_}} problem
 texMathZones = ['texMathZone'+x for x in ['A', 'AS', 'B', 'BS', 'C', 'CS', 'D', 'DS', 'E', 'ES', 'F', 'FS', 'G', 'GS', 'H', 'HS', 'I', 'IS', 'J', 'JS', 'K', 'KS', 'L', 'LS', 'DS', 'V', 'W', 'X', 'Y', 'Z']]
 
 texIgnoreMathZones = ['texMathText']
@@ -6,13 +7,12 @@ texIgnoreMathZones = ['texMathText']
 texMathZoneIds = vim.eval('map('+str(texMathZones)+", 'hlID(v:val)')")
 texIgnoreMathZoneIds = vim.eval('map('+str(texIgnoreMathZones)+", 'hlID(v:val)')")
 
-ignore = texIgnoreMathZoneIds[0]
-
 def math():
 	synstackids = vim.eval("synstack(line('.'), col('.') - (col('.')>=2 ? 1 : 0))")
+	print(synstackids)
 	try:
 		first = next(i for i in reversed(synstackids) if i in texIgnoreMathZoneIds or i in texMathZoneIds)
-		return first != ignore
+		return not first in texIgnoreMathZoneIds
 	except StopIteration:
 		return False
 endglobal
@@ -240,13 +240,28 @@ endsnippet
 # Environments #
 ################
 
-snippet mk "Inline math" wA
+priority 1
+context "not math()"
+snippet mk "Inline math" iA
 $ ${1:${VISUAL}} $`!p
-if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
+if t[2] and t[2][0] not in [',', '.', '?', ' ', '!', ':']:
 	snip.rv = ' '
 else:
 	snip.rv = ''
 `$2
+endsnippet
+
+context "not math()"
+priority 10
+snippet nlmk "math with new line" wA
+$ ${1:${VISUAL}} $ \\\\ $0
+endsnippet
+
+context "not math()"
+snippet mK "math" wA
+\[
+	$1
+\]$0
 endsnippet
 
 snippet eq "Equation" b
@@ -270,6 +285,11 @@ $0
 endsnippet
 
 context "math()"
+snippet == "Equal in align" wA
+&=
+endsnippet
+
+context "math()"
 snippet cases "Cases" wA
 \begin{cases}
 	${1:${VISUAL}}
@@ -290,7 +310,6 @@ snippet gath "gathered" b
 	${1:${VISUAL}}
 \end{gathered}$0
 endsnippet
-
 
 ##############
 # Tikz Trees #
@@ -323,7 +342,7 @@ snippet // "Fraction" iA
 endsnippet
 
 context "math()"
-snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
+snippet '([\\A-Za-z'_^\d\.]+)/' "Fraction" wrA
 \\frac{`!p snip.rv = match.group(1)`}{$1}$0
 endsnippet
 
@@ -336,7 +355,7 @@ depth = 0
 i = len(stripped) - 1
 while True:
 	if stripped[i] == ')': depth += 1
-	if stripped[i] == '(': depth -= 1
+	elif stripped[i] == '(': depth -= 1
 	if depth == 0: break;
 	i -= 1
 snip.rv = stripped[0:i] + "\\frac{" + stripped[i+1:-1] + "}"
@@ -358,8 +377,13 @@ snippet '([A-Za-z])(\d)' "auto subscript" wrA
 endsnippet
 
 context "math()"
-snippet '([A-Za-z])_(\d\d)' "auto subscript2" wrA
+snippet '([A-Za-z])_(\d\d)' "auto subscript 2" wrA
 `!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`$1}$0
+endsnippet
+
+context "math()"
+snippet '([A-Za-z])([А-Яа-я])' "auto subscript ru" wrA
+`!p snip.rv = match.group(1)`_\text{`!p snip.rv = match.group(2)`$1}$0
 endsnippet
 
 snippet __ "subscript" iA
@@ -487,7 +511,6 @@ snippet tt "text" iA
 \text{${1:${VISUAL}}}$0
 endsnippet
 
-
 #########
 # Power #
 #########
@@ -597,6 +620,11 @@ endsnippet
 ###########
 # Symbols #
 ###########
+
+context "math()"
+snippet prop "proportional to" wA
+\propto
+endsnippet
 
 context "math()"
 snippet "(?<!\\)(sim|pi|perp|to)" "Symbols" riA
@@ -719,11 +747,11 @@ snippet AA "forall" iA
 \forall
 endsnippet
 
-snippet "(?<!<)==>" "implies" irA
+snippet "(?<!<)&=>" "implies" irA
 \implies
 endsnippet
 
-snippet <==> "equivalent" iA
+snippet <&=> "equivalent" iA
 \Longleftrightarrow
 endsnippet
 
@@ -869,6 +897,42 @@ snippet "(?<![=<])=>" "Logical implies" ri
 endsnippet
 snippet <=> "Logical eqivalent" i
 \Leftrightarrow
+endsnippet
+
+###########
+# Phisics #
+###########
+
+snippet phex "phisical exercise" b
+\begin{tabular}{l|@{\rule{3mm}{0mm}}l}
+	\begin{minipage}[t]{3cm}
+		Дано: \\\\
+		$1
+		\\\\
+		Найти: \\\\
+		$2
+	\end{minipage}
+	&
+	\begin{minipage}[t]{12cm}
+		Решение:
+
+		\begin{enumerate}[label=\arabic*)]
+			\item $3
+		\end{enumerate}
+	\end{minipage}
+\end{tabular}
+endsnippet
+
+priority 1
+context "math()"
+snippet of "unit" iA
+\,
+endsnippet
+
+priority 10
+context "math()"
+snippet fof "fractional unit" iA
+\,{}^{$1}/_{$2}$0
 endsnippet
 
 # vim:ft=snippets
