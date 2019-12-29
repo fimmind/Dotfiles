@@ -7,4 +7,4 @@ Favorite themes:
 * Mouse cursor: Breeze
 
 ## Thanks
-* Many LaTeX snippets are taken from [here](https://github.com/gillescastel/latex-snippets).
+* Many LaTeX snippets have been taken from [here](https://github.com/gillescastel/latex-snippets).
