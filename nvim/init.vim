@@ -83,6 +83,9 @@ let g:maplocalleader=','
 let g:mapleader=','
 map \ <Plug>(easymotion-prefix)
 
+nnoremap j gj
+nnoremap k gk
+
 " Deoplete
 " ================================================
 let g:deoplete#enable_at_startup = 1
