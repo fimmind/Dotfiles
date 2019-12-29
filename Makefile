@@ -9,7 +9,7 @@ ifeq ($(SYSTEM), manjaro)
 endif
 	sudo make enableBluetooth installPackets gitConfig installOhMyZsh \
 		installTheHaskellToolStack link-all setupNeoVim ldconfig \
-		installLeiningen installClj-kondo
+		installLeiningen installClj-kondo installHIE
 	i3exit lock
 # link-Xresources mast be last, becouse it may ask confirmation
 	make link-Xresources
@@ -80,6 +80,7 @@ ldconfig:
 
 setupNeoVim:
 	nvim -c ":PlugInstall | :qa"
+	nvim -c ":CocInstall -sync coc-json coc-snippets | :q"
 	pip3 install pynvim unicode flake8 yapf sympy inkscape-figures
 	stack install stylish-haskell hdevtools hsimport hlint jedi
 
@@ -105,3 +106,9 @@ installClj-kondo:
 	bash <(curl -s https://raw.githubusercontent.com/borkdude/clj-kondo/master/script/install-clj-kondo) \
 		--dir ~/.local/bin
 	clj-kondo
+
+ONESHELL:
+installHIE:
+	git clone https://github.com/haskell/haskell-ide-engine --recurse-submodules
+	cd haskell-ide-engine
+	stack ./install.hs build

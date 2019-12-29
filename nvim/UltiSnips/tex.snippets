@@ -243,12 +243,7 @@ endsnippet
 priority 1
 context "not math()"
 snippet mk "Inline math" iA
-$ ${1:${VISUAL}} $`!p
-if t[2] and t[2][0] not in [',', '.', '?', ' ', '!', ':']:
-	snip.rv = ' '
-else:
-	snip.rv = ''
-`$2
+$ ${1:${VISUAL}} $$2
 endsnippet
 
 context "not math()"
@@ -866,12 +861,6 @@ endsnippet
 priority 100
 snippet t--> "longrightarrow with tempetarure" i
 \stackrel{\mathit t}{\longrightarrow}
-endsnippet
-
-snippet texstr "sectionw with math" iA
-\texorpdfstring{$ \mathrm{ $1 } $}{ `!p
-snip.rv = t[2].replace('_', '\\_').replace('^', '\\^').replace('{', '\\{').replace('}', '\\}').replace('\\', '\\\\')
-` }
 endsnippet
 
 snippet mrm "mathrm" iA

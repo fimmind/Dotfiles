@@ -10,6 +10,7 @@ exec keynav
 exec ~/.fehbg
 exec amixer sset Master 100
 exec telegram-desktop -startintray
+exec gnome-terminal -- sudo pacman -Suy
 
 ########## Backlight ##########
 bindsym XF86MonBrightnessUp exec light -A 10 # Increase Brightness
