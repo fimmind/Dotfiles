@@ -58,6 +58,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'cohama/lexima.vim'
   Plug 'deoplete-plugins/deoplete-jedi'
+  Plug 'sirver/UltiSnips'
 call plug#end()
 
 " Mappings
@@ -77,7 +78,7 @@ nnoremap k gk
 " ================================================
 function InstallCocExtentions()
   CocInstall -sync
-  \ coc-snippets coc-git coc-explorer coc-yaml coc-vimlsp
+  \ coc-git coc-explorer coc-yaml coc-vimlsp
   \ coc-texlab coc-python coc-json
 endfunction
 
@@ -99,9 +100,6 @@ set shortmess+=c
 
 " always show signcolumns
 set signcolumn=yes
-
-" completion mappings
-inoremap <expr> <Tab> pumvisible() ? "\<C-y>" : "\<Tab>"
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -161,10 +159,6 @@ xmap if <Plug>(coc-funcobj-i)
 xmap af <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
-
-" Use <TAB> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <TAB> <Plug>(coc-range-select)
-xmap <silent> <TAB> <Plug>(coc-range-select)
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
@@ -226,6 +220,16 @@ onoremap ii :normal vii<CR>
 
 vnoremap ai :<C-U>silent! call SelectIndent(0)<CR>
 onoremap ai :normal vai<CR>
+
+" UltiSnips
+" ================================================
+let g:UltiSnipsEditSplit          ='vertical'
+let g:UltiSnipsSnippetDirectories = ['UltiSnips']
+let g:UltiSnipsUsePythonVersion   = 3
+
+let g:UltiSnipsExpandTrigger       = "<Tab>"
+let g:UltiSnipsJumpForwardTrigger  = "<Tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 
 " Emmet
 " ================================================
