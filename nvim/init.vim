@@ -39,16 +39,7 @@ call plug#begin('~/.config/nvim/plugged')
   " Html
   Plug 'mattn/emmet-vim'
 
-  " LaTeX
-  Plug 'lervag/vimtex'
-
-  " NERDTree
-  Plug 'scrooloose/nerdtree'
-  Plug 'Xuyuanp/nerdtree-git-plugin'
-  Plug 'jistr/vim-nerdtree-tabs'
-
   " Tools
-  Plug 'airblade/vim-gitgutter'
   Plug 'junegunn/vim-easy-align'
   Plug 'markonm/traces.vim'                " :substitute prewiew
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
@@ -84,6 +75,12 @@ nnoremap k gk
 
 " CoC
 " ================================================
+function InstallCocExtentions()
+  CocInstall -sync
+  \ coc-snippets coc-git coc-explorer coc-yaml coc-vimlsp
+  \ coc-texlab coc-python coc-json
+endfunction
+
 " if hidden is not set, TextEdit might fail.
 set hidden
 
@@ -135,11 +132,12 @@ endfunction
 autocmd CursorHold * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
-command! Rename <Plug>(coc-rename)<CR>
+command! Rename normal <Plug>(coc-rename)<CR>
 
 " Remap for format selected region
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  ggVG<Plug>(coc-format-selected)<C-o>
 
 augroup mygroup
   autocmd!
@@ -178,22 +176,17 @@ command! -nargs=? Fold :call CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " Using CocList
-" Show all diagnostics
 nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-" Manage extensions
 nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-" Show commands
 nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-" Find symbol of current document
 nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-" Search workspace symbols
 nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-" Do default action for next item.
 nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-" Do default action for previous item.
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-" Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" Open explorer
+nnoremap <C-\> :CocCommand explorer<CR>
 
 " Indented block text obgect
 " ================================================
@@ -267,8 +260,8 @@ let g:haskell_indent_if = 2
 let g:haskell_indent_case = 2
 let g:haskell_indent_let = 4
 let g:haskell_indent_where = 6
-let g:haskell_indent_before_where = 2
-let g:haskell_indent_after_bare_where = 2
+let g:haskell_indent_before_where = -1
+let g:haskell_indent_after_bare_where = 1
 let g:haskell_indent_do = 3
 let g:haskell_indent_in = 0
 let g:haskell_indent_guard = 2
@@ -359,10 +352,6 @@ syntax on
 
 " LaTeX  |latex|
 " ================================================
-let g:tex_flavor='latex'
-let g:Tex_GotoError = 0
-let g:vimtex_quickfix_mode=0
-let g:vimtex_view_method = 'zathura'
 let g:AutoPairsIgnorePrefixes = ['\', 'lr', '\left']
 
 " inkscape-figures
@@ -397,26 +386,6 @@ let g:polyglot_disabled = ['markdown']
 let g:mkdp_auto_close = 1
 
 let g:mkdp_browser = "qutebrowser"
-
-" NERDTree
-" ================================================
-command! CloseTree :NERDTreeClose
-noremap <C-\> :NERDTreeToggle<CR>
-inoremap <C-\> <Esc>:NERDTreeToggle<CR>a
-command! -nargs=1 Where :NERDTreeFind <args>
-
-" let g:NERDTreeIndicatorMapCustom = {
-" \ "Modified"  : "✹",
-" \ "Staged"    : "✚",
-" \ "Untracked" : "✭",
-" \ "Renamed"   : "➜",
-" \ "Unmerged"  : "═",
-" \ "Deleted"   : "✖",
-" \ "Dirty"     : "✗",
-" \ "Clean"     : "✔︎",
-" \ "Ignored"   : "☒",
-" \ "Unknown"   : "?"
-" \ }
 
 " NERDComment
 " ================================================

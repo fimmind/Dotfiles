@@ -76,13 +76,13 @@ else
 endif
 
 ldconfig:
-	sudo ldconfig
+	ldconfig
 
 setupNeoVim:
 	nvim -c ":PlugInstall | :qa"
-	nvim -c ":CocInstall -sync coc-json coc-snippets | :q"
-	pip3 install pynvim unicode flake8 yapf sympy inkscape-figures
-	stack install stylish-haskell hdevtools hsimport hlint jedi
+	nvim -c ":call InstallCocExtentions() | :q"
+	pip3 install pynvim unicode flake8 yapf sympy inkscape-figures jedi
+	stack install stylish-haskell hdevtools hsimport hlint
 
 gitConfig:
 	git config --global user.name fimmind
