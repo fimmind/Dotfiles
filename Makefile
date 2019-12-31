@@ -81,8 +81,7 @@ ldconfig:
 setupNeoVim:
 	nvim -c ":PlugInstall | :qa"
 	nvim -c ":call InstallCocExtentions() | :q"
-	pip3 install pynvim unicode flake8 yapf sympy inkscape-figures jedi
-	stack install stylish-haskell hdevtools hsimport hlint
+	pip3 install pynvim unicode flake8 yapf sympy inkscape-figures
 
 gitConfig:
 	git config --global user.name fimmind
