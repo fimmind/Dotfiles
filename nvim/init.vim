@@ -155,10 +155,9 @@ nmap <leader>ac  <Plug>(coc-codeaction)
 nmap <leader>qf  <Plug>(coc-fix-current)
 
 " Create mappings for function text object, requires document symbols feature of languageserver.
-xmap if <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap if <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
+xmap if <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-a)
+" TODO: af, which also selects space around function
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')
