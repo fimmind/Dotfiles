@@ -12,8 +12,9 @@ main = ${1:pure ()}
 endsnippet
 
 snippet module "module" b
-module ${1:`!v expand("%:t:r")`}${2: ( $3
-       ${1/./ /g} ) }where
+module `!v expand("%:t:r")`${1:
+	($2)
+}where
 
 $0
 endsnippet
