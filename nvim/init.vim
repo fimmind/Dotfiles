@@ -39,6 +39,9 @@ call plug#begin('~/.config/nvim/plugged')
   " Html
   Plug 'mattn/emmet-vim'
 
+  " LaTeX
+  Plug 'donRaphaco/neotex', { 'for': 'tex' }
+
   " Tools
   Plug 'junegunn/vim-easy-align'
   Plug 'markonm/traces.vim'                " :substitute prewiew
@@ -377,6 +380,16 @@ call lexima#add_rule({'char': '$', 'at': '\%#\$', 'leave': 1, 'filetype': 'latex
 call lexima#add_rule({'char': '<BS>', 'at': '\$\%#\$', 'delete': 1, 'filetype': 'latex'})
 
 call lexima#add_rule({'char': '<Space>', 'at': '\$\%#\$', 'input_after': '<Space>', 'filetype': 'latex'})
+
+" NeoTex
+let g:tex_flavor       = 'latex'
+let g:neotex_enabled   = 1
+let g:neotex_delay     = 250
+let g:neotex_latexdiff = 0
+
+nmap <leader>ll :NeoTexOn<CR>
+nmap <leader>lc :NeoTex<CR>
+nmap <leader>lo :AsyncRun zathura '%:r.pdf'<CR>
 
 " Markdown
 " ================================================
