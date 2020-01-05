@@ -375,12 +375,6 @@ for i in keys(pairs)
         \ })
 endfor
 
-call lexima#add_rule({'char': '$', 'input_after': '$', 'filetype': 'latex'})
-call lexima#add_rule({'char': '$', 'at': '\%#\$', 'leave': 1, 'filetype': 'latex'})
-call lexima#add_rule({'char': '<BS>', 'at': '\$\%#\$', 'delete': 1, 'filetype': 'latex'})
-
-call lexima#add_rule({'char': '<Space>', 'at': '\$\%#\$', 'input_after': '<Space>', 'filetype': 'latex'})
-
 " NeoTex
 let g:tex_flavor       = 'latex'
 let g:neotex_enabled   = 1
