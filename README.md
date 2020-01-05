@@ -1,3 +1,11 @@
+## Installation
+```shell
+$ cd ~
+$ git clone https://github.com/fimmind/Dotfiles
+$ cd Dotfiles
+$ sudo make
+```
+
 ## GTK theme
 Use `lxappearance`.
 
