@@ -25,7 +25,6 @@ https://documentcloud.adobe.com/ Adobe Document Cloud
 https://webchat.freenode.net/ Kiwi IRC - The web IRC client
 https://clojure.org/api/cheatsheet Clojure - Cheatsheet
 https://github.com/neovimhaskell/nvim-hs neovimhaskell/nvim-hs: Neovim API for Haskell plugins as well as the plugin provider
-https://hoogle.haskell.org/?hoogle=Int%20-%3E%20m%20a%20-%3E%20m%20a Int -> m a -> m a - Hoogle
 https://projecteuler.net/ About - Project Euler
 https://stepik.org/ https://stepik.org
 http://localhost:631/ Home - CUPS 2.3.0
@@ -36,3 +35,4 @@ https://www.gnu.org/software/gnu-c-manual/gnu-c-manual.html The GNU C Reference 
 https://www.overleaf.com/learn/latex/Beamer Beamer - Overleaf, Online LaTeX Editor
 https://www.passwordstore.org/ Pass: The Standard Unix Password Manager
 https://github.com/fimmind/Dotfiles fimmind/Dotfiles: My dotfiles
+https://losst.ru/ Losst - Linux Open Source Software Technologies
