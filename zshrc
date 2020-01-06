@@ -25,6 +25,7 @@ alias getamsterdam="cp ~/Dotfiles/beamerthemeAmsterdam.sty ./"
 
 PATH="$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/bin"
 PATH="$PATH:/usr/local/texlive/2019/bin/x86_64-linux"
+PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
 
 MANPATH="$MANPATH:/usr/local/texlive/2019/texmf-dist/doc/man"
 INFOPATH="$INFOPATH:/usr/local/texlive/2019/texmf-dist/doc/info"

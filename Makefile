@@ -8,7 +8,7 @@ ifeq ($(SYSTEM), manjaro)
 	sudo pacman -R manjaro-i3-settings
 endif
 	sudo make enableBluetooth installPackets gitConfig installOhMyZsh \
-		installTheHaskellToolStack link-all setupNeoVim ldconfig \
+		installBrew installTheHaskellToolStack link-all setupNeoVim ldconfig \
 		installLeiningen installClj-kondo installHIE
 	i3exit lock
 # link-Xresources mast be last, becouse it may ask confirmation
@@ -70,7 +70,7 @@ ifeq ($(SYSTEM), manjaro)
 		gcc neovim rofi htop ranger pcmanfm zathura shake telegram-desktop \
 		keynav qalculate-gtk i3-gaps i3lock i3exit i3status zsh zathura-pdf-mupdf \
 		clisp libreoffice-fresh libreoffice-fresh-ru ghc-libs ghc-static pandoc \
-		nodejs npm php rlwrap clojure cargo rogue nethack scala inkscape \
+		nodejs npm php rlwrap clojure cargo rogue nethack scala inkscape ruby \
 else
 	echo "can't install packets on this system ($(SYSTEM))"
 endif
@@ -83,6 +83,7 @@ setupNeoVim:
 	nvim -c ":call InstallCocExtentions() | :q"
 	pip3 install pynvim unicode flake8 yapf sympy inkscape-figures
 	npm install -g neovim
+	brew install ccls
 
 gitConfig:
 	git config --global user.name fimmind
@@ -112,3 +113,7 @@ installHIE:
 	git clone https://github.com/haskell/haskell-ide-engine --recurse-submodules
 	cd haskell-ide-engine
 	stack ./install.hs build
+
+installBrew:
+	gem install irb
+	sh -c "$$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
