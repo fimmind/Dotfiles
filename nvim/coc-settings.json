@@ -20,6 +20,25 @@
           "completionSnippetsOn": true
         }
       }
+    },
+    "clangd": {
+      "command": "clangd",
+      "args": [
+        "--background-index"
+      ],
+      "rootPatterns": [
+        "compile_flags.txt",
+        "compile_commands.json",
+        ".vim/",
+        ".git/",
+        ".hg/"
+      ],
+      "filetypes": [
+        "c",
+        "cpp",
+        "objc",
+        "objcpp"
+      ]
     }
   },
   "git.addedSign.hlGroup": "GitGutterAdd",
@@ -27,7 +46,6 @@
   "git.removedSign.hlGroup": "GitGutterDelete",
   "git.topRemovedSign.hlGroup": "GitGutterDelete",
   "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
-
   "python.linting.flake8Enabled": true,
   "python.linting.pylintEnabled": false,
   "python.formatting.provider": "yapf"
