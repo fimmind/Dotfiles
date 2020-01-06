@@ -15,7 +15,7 @@ Favorite themes:
 * Mouse cursor: Breeze
 
 ## TODO
-* Exhausive documentation
+* Exhaustive documentation
 * Move init.vim parts related to specific languages to ftplugin/<language\_filetype>.vim
 
 ## Thanks
