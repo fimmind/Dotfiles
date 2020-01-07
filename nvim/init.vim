@@ -50,6 +50,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tpope/vim-repeat'
   Plug 'scrooloose/nerdcommenter'
   Plug 'skywind3000/asyncrun.vim'
+  Plug 'michaeljsmith/vim-indent-object'
 
   " Motion
   Plug 'matze/vim-move'
@@ -183,45 +184,6 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 " Open explorer
 nnoremap <C-\> :CocCommand explorer<CR>
-
-" Indented block text obgect
-" ================================================
-function! SelectIndent(inner)
-  let start_line = line(".")
-  let start_ind = indent(start_line)
-
-  if start_ind == 0
-    exe "normal ggVG"
-  elseif start_ind > 0
-    let top = start_line
-    let next_indent = indent(top - 1)
-    while next_indent >= start_ind
-          \ || ( !a:inner
-          \ && next_indent >= 0
-          \ && getline(top - 1) =~ "^[ 	]*$" )
-      let top = top - 1
-      let next_indent = indent(top - 1)
-    endw
-
-    let bottom = start_line
-    let next_indent = indent(bottom + 1)
-    while next_indent >= start_ind
-          \ || ( !a:inner
-          \ && next_indent >= 0
-          \ && getline(bottom + 1) =~ "^[	 ]*$" )
-      let bottom = bottom + 1
-      let next_indent = indent(bottom + 1)
-    endw
-
-    exe "normal " . top . "GV" . bottom . "G"
-  endif
-endfunction
-
-vnoremap ii :<C-U>silent! call SelectIndent(1)<CR>
-onoremap ii :normal vii<CR>
-
-vnoremap ai :<C-U>silent! call SelectIndent(0)<CR>
-onoremap ai :normal vai<CR>
 
 " UltiSnips
 " ================================================
@@ -384,6 +346,7 @@ let g:neotex_latexdiff = 0
 nmap <leader>ll :NeoTexOn<CR>
 nmap <leader>lc :NeoTex<CR>
 nmap <leader>lo :AsyncRun zathura '%:r.pdf'<CR>
+autocmd FileType tex :NeoTexOn
 
 " Markdown
 " ================================================
