@@ -56,7 +56,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'matze/vim-move'
   Plug 'easymotion/vim-easymotion'
   Plug 'kien/ctrlp.vim'
-  Plug 'vim-scripts/a.vim'
 
   " IDE
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
