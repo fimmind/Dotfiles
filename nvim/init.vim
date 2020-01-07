@@ -70,8 +70,8 @@ command! Vimrc e ~/.config/nvim/init.vim
 
 let g:move_key_modifier='C'
 
-let g:maplocalleader=','
-let g:mapleader=','
+let g:maplocalleader=' '
+let g:mapleader=' '
 map \ <Plug>(easymotion-prefix)
 
 nnoremap j gj
