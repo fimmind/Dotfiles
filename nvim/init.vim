@@ -77,6 +77,8 @@ map \ <Plug>(easymotion-prefix)
 nnoremap j gj
 nnoremap k gk
 
+nnoremap <leader>sr :source %<CR>
+
 " Spell check
 " ================================================
 set spell spelllang=en,ru
