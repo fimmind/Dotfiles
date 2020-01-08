@@ -172,14 +172,14 @@ command! -nargs=? Fold :call CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " Using CocList
-nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
-nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
-nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
-nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
-nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
-nnoremap <silent> <space>j  :<C-u>CocNext<CR>
-nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
-nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent> ,a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> ,e  :<C-u>CocList extensions<cr>
+nnoremap <silent> ,c  :<C-u>CocList commands<cr>
+nnoremap <silent> ,o  :<C-u>CocList outline<cr>
+nnoremap <silent> ,s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> ,j  :<C-u>CocNext<CR>
+nnoremap <silent> ,k  :<C-u>CocPrev<CR>
+nnoremap <silent> ,p  :<C-u>CocListResume<CR>
 
 " Open explorer
 nnoremap <C-\> :CocCommand explorer<CR>
