@@ -77,6 +77,11 @@ map \ <Plug>(easymotion-prefix)
 nnoremap j gj
 nnoremap k gk
 
+" Spell check
+" ================================================
+set spell spelllang=en,ru
+noremap <leader>sp mm[s1z=`m
+
 " CoC
 " ================================================
 function InstallCocExtentions()
