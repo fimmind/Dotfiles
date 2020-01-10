@@ -156,8 +156,7 @@ command! Rename normal <Plug>(coc-rename)
 
 " Remap for format selected region
 xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  ggVG<Plug>(coc-format-selected)<C-o>
+nmap <leader>f  mmvip<leader>f`m
 
 augroup mygroup
   autocmd!
