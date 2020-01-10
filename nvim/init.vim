@@ -83,8 +83,18 @@ nnoremap <leader>sr :source %<CR>
 
 " Spell check
 " ================================================
-set spell spelllang=en,ru
-noremap <leader>sp mm[s1z=`m
+command! ToggleSpell call ToggleSpell()
+function ToggleSpell()
+  if(&spell)
+    setlocal nospell
+  else
+    setlocal spell
+  endif
+endfunction
+
+nnoremap <leader>st :ToggleSpell<CR>
+nnoremap <leader>sp mm[s1z=`m
+nnoremap <leader>sn mm]s1z=`m
 
 " CoC
 " ================================================
