@@ -30,6 +30,7 @@ call plug#begin('~/.config/nvim/plugged')
 
   " Haskell
   Plug 'neovimhaskell/haskell-vim'
+  Plug 'alx741/vim-stylishask'
 
   " Markdown
   Plug 'SidOfc/mkdx'

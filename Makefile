@@ -82,6 +82,7 @@ setupNeoVim:
 	nvim -c ":PlugInstall | :qa"
 	nvim -c ":call InstallCocExtentions() | :q"
 	pip3 install pynvim unicode flake8 yapf sympy inkscape-figures
+	stack install stylish-haskell
 	npm install -g neovim
 	brew install ccls
 
