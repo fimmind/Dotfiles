@@ -300,11 +300,11 @@ xmap ga <Plug>(EasyAlign)
 filetype indent on
 set autoindent
 set expandtab
-autocmd! FileType *
+autocmd FileType *
       \ set tabstop=2
       \ | set shiftwidth=2
       \ | set softtabstop=2
-autocmd! FileType cpp,c,python
+autocmd FileType cpp,c,python
       \ set tabstop=4
       \ | set shiftwidth=4
       \ | set softtabstop=4
