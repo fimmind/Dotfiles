@@ -375,10 +375,10 @@ let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
                         \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
                         \ }
 let g:polyglot_disabled = ['markdown']
-
 let g:mkdp_auto_close = 1
-
 let g:mkdp_browser = "qutebrowser"
+
+nnoremap <leader>ml :MarkdownPreview<CR>
 
 " NERDComment
 " ================================================
