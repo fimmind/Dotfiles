@@ -11,8 +11,6 @@
 "
 " *******************************************
 
-source ~/.config/nvim/plug.vim
-
 call plug#begin('~/.config/nvim/plugged')
   " Syntax, style
   Plug 'phaazon/gruvbox' " Not original, couse of haskell-vim support
