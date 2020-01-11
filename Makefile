@@ -86,6 +86,10 @@ setupNeoVim:
 	npm install -g neovim
 	brew install ccls
 
+updateVimPlug:
+	curl -fLo ./nvim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 gitConfig:
 	git config --global user.name fimmind
 	git config --global user.email "fimmind@mail.ru"
