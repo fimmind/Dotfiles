@@ -84,6 +84,7 @@ nnoremap <leader>sr :source %<CR>
 
 " Spell check
 " ================================================
+set spelllang=en,ru_yo
 command! ToggleSpell call ToggleSpell()
 function ToggleSpell()
   if(&spell)
