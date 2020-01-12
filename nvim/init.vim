@@ -101,7 +101,7 @@ nnoremap <leader>sn mm]s1z=`m
 function InstallCocExtentions()
   CocInstall -sync
   \ coc-git coc-explorer coc-yaml coc-vimlsp
-  \ coc-texlab coc-python coc-json
+  \ coc-texlab coc-python coc-json coc-rls
 endfunction
 
 " if hidden is not set, TextEdit might fail.
