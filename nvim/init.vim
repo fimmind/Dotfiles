@@ -419,6 +419,11 @@ let g:buildAndRunSetup = {
       \ "scala": {
         \ "run":       "scala '%:p'",
         \ "needBuild": 0
+        \ },
+      \ "rs": {
+        \ "run":       "cargo run",
+        \ "build":     "cargo build",
+        \ "needBuild": 0
         \ }
       \ }
 
