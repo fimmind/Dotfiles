@@ -102,6 +102,7 @@ function InstallCocExtentions()
   CocInstall -sync
   \ coc-git coc-explorer coc-yaml coc-vimlsp
   \ coc-texlab coc-python coc-json coc-rls
+  \ coc-ultisnips coc-word
 endfunction
 
 " if hidden is not set, TextEdit might fail.
