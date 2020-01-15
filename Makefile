@@ -60,6 +60,7 @@ installTheHaskellToolStack:
 	curl -sSL https://get.haskellstack.org/ | sh
 	cd ~
 	stack setup
+	stack install shake
 
 .ONESHELL:
 installPackets:
@@ -115,7 +116,7 @@ installClj-kondo:
 	clj-kondo
 
 ONESHELL:
-installHIE:
+installHIE: installTheHaskellToolStack
 	git clone https://github.com/haskell/haskell-ide-engine --recurse-submodules
 	cd haskell-ide-engine
 	stack ./install.hs build
