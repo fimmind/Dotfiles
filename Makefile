@@ -67,7 +67,7 @@ ifeq ($(SYSTEM), manjaro)
 	pacman -Syu --noconfirm
 	pacman -S --noconfirm \
 		curl git cmake make gnome-terminal qutebrowser python3 bluez bluez-utils \
-		gcc neovim rofi htop ranger pcmanfm zathura shake telegram-desktop \
+		gcc neovim rofi htop ranger pcmanfm zathura telegram-desktop lm_sensors jq \
 		keynav qalculate-gtk i3-gaps i3lock i3exit i3status zsh zathura-pdf-mupdf \
 		clisp libreoffice-fresh libreoffice-fresh-ru ghc-libs ghc-static rustup \
 		nodejs npm php rlwrap clojure cargo rogue nethack scala inkscape ruby
