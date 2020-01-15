@@ -15,6 +15,8 @@ general {
 }
 
 order += "memory"
+order += "disk /"
+order += "cpu_temperature 0"
 order += "volume master"
 order += "tztime local"
 
@@ -31,7 +33,17 @@ tztime local {
 }
 
 memory {
-       format = "%used"
-       threshold_degraded = "10%"
-       format_degraded = "MEMORY: %free"
+        format = "RAM: %percentage_used"
+        threshold_degraded = "10%"
+        threshold_critical = "5%"
+        format_degraded = "REST RAM: %free"
+}
+
+cpu_temperature 0 {
+        format = "CPU: %degrees °C"
+        path = "/sys/class/hwmon/hwmon0/temp1_input"
+}
+
+disk "/" {
+        format = "ROM: %percentage_used"
 }
