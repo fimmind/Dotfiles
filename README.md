@@ -18,6 +18,7 @@ Favorite themes:
 * Exhaustive documentation
 * Move init.vim parts related to specific languages to ftplugin/<language\_filetype>.vim
 * Fix brew installation (Now you have to press Enter after running installation script, but it should be completely automatic)
+* Fix haskell `module` snippet (It ignores path to module right now)
 
 ## Thanks
 * Many LaTeX snippets have been taken from [here](https://github.com/gillescastel/latex-snippets).
