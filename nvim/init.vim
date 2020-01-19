@@ -235,12 +235,17 @@ command! Zsh vsplit term://zsh | :startinsert
 " ================================================
 let g:rainbow_active = 1
 
+" TODO: highlight top level haskell operators
 let g:rainbow_conf = {
         \ 'operators': '_,_',
         \ 'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
         \ 'separately': {
           \ 'cpp': 0,
           \ 'c': 0,
+          \ 'haskell': {
+            \ 'operators': '_,\|[-!#$%&\*\+/<=>\?@\\^|~:.]\+_',
+            \	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/\v\{\ze[^-]/ end=/}/ fold'],
+          \ }
         \ }
       \ }
 
