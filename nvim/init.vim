@@ -103,11 +103,13 @@ autocmd FileType markdown,tex,text setlocal spell
 
 " CoC
 " ================================================
-function InstallCocExtentions()
-  CocInstall -sync
-  \ coc-git coc-explorer coc-yaml coc-vimlsp
-  \ coc-texlab coc-python coc-json coc-rls
-  \ coc-ultisnips coc-word coc-html
+let g:coc_global_extensions = [
+      \ "coc-git", "coc-explorer", "coc-yaml", "coc-vimlsp",
+      \ "coc-texlab", "coc-python", "coc-json", "coc-rls",
+      \ "coc-ultisnips", "coc-word", "coc-html"
+      \ ]
+function InstallCocExtensions()
+  exec "CocInstall -sync " . join(g:coc_global_extensions)
 endfunction
 
 " if hidden is not set, TextEdit might fail.

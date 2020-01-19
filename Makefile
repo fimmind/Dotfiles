@@ -82,7 +82,7 @@ ldconfig:
 
 setupNeoVim:
 	nvim -c ":PlugInstall | :qa"
-	nvim -c ":call InstallCocExtentions() | :q"
+	nvim -c ":call InstallCocExtensions() | :q"
 	pip3 install pynvim unicode flake8 yapf sympy inkscape-figures
 	stack install stylish-haskell
 	npm install -g neovim
