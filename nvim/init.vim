@@ -23,7 +23,8 @@ call plug#begin('~/.config/nvim/plugged')
 
   " Clojure
   Plug 'tpope/vim-fireplace' " TODO: try to replace with https://github.com/Olical/conjure
-                             " adding https://github.com/clojure-vim/async-clj-omni for completion
+                             " with https://github.com/jlesquembre/coc-conjure
+                             " for completion
 
   " Haskell
   Plug 'neovimhaskell/haskell-vim'
