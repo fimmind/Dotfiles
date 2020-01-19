@@ -20,7 +20,6 @@ call plug#begin('~/.config/nvim/plugged')
 
   " Lisp
   Plug 'eraserhd/parinfer-rust', { 'do': 'cargo build --release' }
-  Plug 'oblitum/rainbow' " TODO: fix wrong syntax highlight when enabled
 
   " Clojure
   Plug 'tpope/vim-fireplace' " TODO: try to replace with https://github.com/Olical/conjure
@@ -40,6 +39,9 @@ call plug#begin('~/.config/nvim/plugged')
 
   " LaTeX
   Plug 'donRaphaco/neotex', { 'for': 'tex' }
+
+  " C++
+  Plug 'oblitum/rainbow', { 'for': ['cpp', 'c'], 'as': 'rainbow-cpp' }
 
   " Tools
   Plug 'junegunn/vim-easy-align'
@@ -61,6 +63,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'cohama/lexima.vim'
   Plug 'deoplete-plugins/deoplete-jedi'
   Plug 'sirver/UltiSnips'
+  Plug 'luochen1990/rainbow' " TODO: operators highlight for Haskell
 call plug#end()
 
 " Mappings
@@ -228,9 +231,18 @@ tnoremap <Esc> <C-\><C-n>
 autocmd TermOpen * setlocal nonumber norelativenumber
 command! Zsh vsplit term://zsh | :startinsert
 
-" Rainbow Brackets
+" Rainbow parentheseses
 " ================================================
 let g:rainbow_active = 1
+
+let g:rainbow_conf = {
+        \ 'operators': '_,_',
+        \ 'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+        \ 'separately': {
+          \ 'cpp': 0,
+          \ 'c': 0,
+        \ }
+      \ }
 
 " Clojure
 " ================================================
