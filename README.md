@@ -3,7 +3,7 @@
 $ cd ~
 $ git clone https://github.com/fimmind/Dotfiles
 $ cd Dotfiles
-$ sudo make
+$ make
 ```
 
 ## GTK theme
