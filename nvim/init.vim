@@ -87,7 +87,7 @@ nnoremap <leader>st :ToggleSpell<CR>
 nnoremap <leader>sp mm[s1z=`m
 nnoremap <leader>sn mm]s1z=`m
 
-autocmd FileType markdown,tex,text setlocal spell
+autocmd FileType gitcommit,markdown,tex,text setlocal spell
 
 " CoC
 " ================================================
