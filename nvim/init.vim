@@ -298,9 +298,6 @@ command! HsType
 
 nnoremap <Leader>ht :HsType<CR>
 
-nnoremap <Leader>him :w<CR>:HsimportModule<CR>
-nnoremap <Leader>his :w<CR>:HsimportSymbol<CR>
-
 " Easy-align
 " ================================================
 nmap ga <Plug>(EasyAlign)
