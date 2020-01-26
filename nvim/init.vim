@@ -373,6 +373,8 @@ nmap <leader>lc :NeoTex<CR>
 nmap <leader>lo :AsyncRun zathura '%:r.pdf'<CR>
 autocmd FileType tex :NeoTexOn
 
+nmap <leader>" cs">ysi>>
+
 " Markdown
 " ================================================
 let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
