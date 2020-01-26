@@ -9,7 +9,7 @@ ifeq ($(SYSTEM), manjaro)
 endif
 	sudo make enableBluetooth installPackets gitConfig installOhMyZsh \
 		installBrew installTheHaskellToolStack link-all setupNeoVim ldconfig \
-		installLeiningen installClj-kondo installHIE
+		installLeiningen installHIE
 	i3exit lock
 # link-Xresources mast be last, becouse it may ask confirmation
 	make link-Xresources
@@ -110,11 +110,6 @@ installLeiningen:
 		-O ~/.local/bin/lein
 	chmod ug+x ~/.local/bin/lein
 	lein
-
-installClj-kondo:
-	bash <(curl -s https://raw.githubusercontent.com/borkdude/clj-kondo/master/script/install-clj-kondo) \
-		--dir ~/.local/bin
-	clj-kondo
 
 ONESHELL:
 installHIE: installTheHaskellToolStack
