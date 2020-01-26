@@ -288,6 +288,7 @@ snippet == "Equal in align" wA
 &=
 endsnippet
 
+priority 1
 context "math()"
 snippet cases "Cases" wA
 \begin{cases}
@@ -295,7 +296,9 @@ snippet cases "Cases" wA
 \end{cases}$0
 endsnippet
 
-snippet casesset "Set of equations" b
+priority 10
+context "math()"
+snippet orcasest "Set of equations" wA
 \left[ {
 	\def\arraystretch{1.2}
 	\begin{array}{@{}l@{\quad}l@{}}
