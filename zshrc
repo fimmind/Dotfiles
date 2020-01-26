@@ -35,3 +35,7 @@ if [ "`uname -o`" == "Android" ]; then
   alias hugs="termux-chroot hugs"
   alias runhugs="termux-chroot runhugs"
 fi
+
+
+export WINEPREFIX=$HOME/.wine
+export WINEARCH=win32
