@@ -434,6 +434,11 @@ let g:buildAndRunSetup = {
         \ "run":       "cargo run",
         \ "build":     "cargo build",
         \ "needBuild": 0
+        \ },
+      \ "cs": {
+        \ "run":       "dotnet run",
+        \ "build":     "dotnet build",
+        \ "needBuild": 0
         \ }
       \ }
 
