@@ -7,9 +7,7 @@ $ make
 ```
 
 ## GTK theme
-Use `lxappearance`.
-
-Favorite themes:
+Use `lxappearance`:
 * Widget: Plata-Noir
 * Icon: Papirus
 * Mouse cursor: Breeze
