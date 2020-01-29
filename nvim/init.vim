@@ -49,7 +49,6 @@ call plug#begin('~/.config/nvim/plugged')
   " IDE
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'cohama/lexima.vim'
-  Plug 'deoplete-plugins/deoplete-jedi'
   Plug 'sirver/UltiSnips'
   Plug 'luochen1990/rainbow' " TODO: operators highlight for Haskell
 call plug#end()
