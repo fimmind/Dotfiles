@@ -117,6 +117,10 @@ installHIE:
 	cd haskell-ide-engine
 	stack ./install.hs build
 
+installFloskell:
+	git clone https://github.com/ennocramer/floskell
+	cd floskell && stack install
+
 installBrew:
 	gem install irb
 	sh -c "$$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
