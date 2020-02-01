@@ -115,7 +115,7 @@ ONESHELL:
 installHIE:
 	git clone https://github.com/haskell/haskell-ide-engine --recurse-submodules
 	cd haskell-ide-engine
-	stack ./install.hs build
+	stack ./install.hs hie-8.6.5
 
 installFloskell:
 	git clone https://github.com/ennocramer/floskell
