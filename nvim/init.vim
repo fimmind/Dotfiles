@@ -383,7 +383,11 @@ let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
                         \ }
 let g:polyglot_disabled = ['markdown']
 let g:mkdp_auto_close = 1
-let g:mkdp_browser = "qutebrowser"
+
+let g:mkdp_browserfunc = 'OpenMKDP'
+function OpenMKDP(url)
+  exec "AsyncRun qutebrowser ':open -w " . a:url . "'"
+endfunction
 
 nnoremap <leader>ml :MarkdownPreview<CR>
 
