@@ -56,12 +56,14 @@ snippet start "Basic template" b
 
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{amsthm}
 \usepackage{hhline}
 \usepackage{indentfirst}
 \usepackage{xcolor}
 \usepackage{lastpage}
 \usepackage{tikz}
 \usepackage{pgfplots}
+\usepackage{graphicx}
 
 \usepackage{enumitem}
 \makeatletter
@@ -733,13 +735,6 @@ endsnippet
 snippet ooo "\infty" iA
 \infty
 endsnippet
-snippet <= "leq" i
-\le
-endsnippet
-
-snippet >= "geq" i
-\ge
-endsnippet
 
 snippet EE "exist" iA
 \exists
@@ -880,10 +875,10 @@ endsnippet
 snippet not "Logial not" i
 \lnot
 endsnippet
-snippet "(?<![=<])=>" "Logical implies" ri
+snippet "(?<![=<])=>" "Logical implies" riA
 \Rightarrow
 endsnippet
-snippet <=> "Logical eqivalent" i
+snippet <=> "Logical eqivalent" iA
 \Leftrightarrow
 endsnippet
 
