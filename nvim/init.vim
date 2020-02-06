@@ -31,6 +31,9 @@ call plug#begin('~/.config/nvim/plugged')
   " C++
   Plug 'oblitum/rainbow', { 'for': ['cpp', 'c'], 'as': 'rainbow-cpp' }
 
+  " Python
+  Plug 'hynek/vim-python-pep8-indent'
+
   " Tools
   Plug 'junegunn/vim-easy-align'
   Plug 'markonm/traces.vim'                " :substitute prewiew
