@@ -7,7 +7,7 @@ commands = {
     "suspend": "systemctl suspend",
     "hibernate": "systemctl hibernate",
     "reboot": "systemctl reboot",
-    "shutdown": "systemctl shutdown"
+    "shutdown": "systemctl poweroff"
 }
 
 rofi = "".join([
