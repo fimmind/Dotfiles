@@ -442,6 +442,10 @@ let g:buildAndRunSetup = {
         \ "run":       "dotnet run",
         \ "build":     "dotnet build",
         \ "needBuild": 0
+        \ },
+      \ "sh": {
+        \ "run":       "'%:p'",
+        \ "needBuild": 0
         \ }
       \ }
 
