@@ -40,6 +40,7 @@ link-all:
 	${LN}/profiles.clj               ~/.lein/profiles.clj
 	${LN}/brittany                   ~/.config/brittany
 	${LN}/broot                      ~/.config/broot
+	${LN}/.profile                   ~/.profile
 
 .ONESHELL:
 link-Xresources:
