@@ -14,9 +14,11 @@ Use `lxappearance`:
 
 ## TODO
 * Exhaustive documentation
+* Installation instructions
 * Move init.vim parts related to specific languages to ftplugin/<language\_filetype>.vim
 * Fix haskell `module` snippet (It ignores path to module right now)
 * Setup default application with xdg-settings
+* Try to setup and use [floskell](https://github.com/ennocramer/floskell)
 
 ## Thanks
 * Many LaTeX snippets have been taken from [here](https://github.com/gillescastel/latex-snippets).
