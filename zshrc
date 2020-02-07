@@ -11,6 +11,7 @@ source $ZSH/oh-my-zsh.sh
 
 export EDITOR='nvim'
 export PAGER='less'
+export TERMINAL='alacritty'
 setopt +o nomatch
 
 if [[ -n $(bash -c "compgen -c | grep -w eopkg") ]]; then
