@@ -15,11 +15,10 @@ Use `lxappearance`:
 
 ## TODO
 * Exhaustive documentation
-* Installation instructions
-* System update script
+* System installation instructions
 * Move init.vim parts related to specific languages to ftplugin/<language\_filetype>.vim
 * Fix haskell `module` snippet (It ignores path to module right now)
-* Setup default application with xdg-settings
+* Setup default applications
 * Try to setup and use [floskell](https://github.com/ennocramer/floskell)
 
 ## Thanks
