@@ -38,6 +38,7 @@ link-all:
 	${LN}/fehbg                      ~/.fehbg
 	${LN}/qutebrowser                ~/.config/qutebrowser
 	${LN}/profiles.clj               ~/.lein/profiles.clj
+	${LN}/brittany                   ~/.config/brittany
 
 .ONESHELL:
 link-Xresources:
