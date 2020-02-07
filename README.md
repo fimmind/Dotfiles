@@ -1,3 +1,4 @@
+# Dotfiles
 ## Installation
 ```shell
 $ cd ~
