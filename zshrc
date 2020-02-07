@@ -10,6 +10,7 @@ plugins=(git vim-interaction stack)
 source $ZSH/oh-my-zsh.sh
 
 export EDITOR='nvim'
+export PAGER='less'
 setopt +o nomatch
 
 if [[ -n $(bash -c "compgen -c | grep -w eopkg") ]]; then
@@ -52,3 +53,5 @@ function _pip_completion {
 }
 compctl -K _pip_completion pip
 # pip zsh completion end
+
+source /home/fimmind/.config/broot/launcher/bash/br

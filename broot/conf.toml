@@ -1,0 +1,20 @@
+# Configuration documentation is available at https://dystroy.org/broot
+
+[[verbs]]
+invocation = "edit"
+key = "F2"
+shortcut = "e"
+execution = "$EDITOR {file}"
+
+[[verbs]]
+key = "ctrl-c"
+execution = ":quit"
+
+[[verbs]]
+invocation = "create {subpath}"
+execution = "$EDITOR {directory}/{subpath}"
+
+[[verbs]]
+name = "view"
+invocation = "view"
+execution = "$PAGER {file}"
