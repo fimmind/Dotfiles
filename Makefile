@@ -67,6 +67,7 @@ installTheHaskellToolStack:
 .ONESHELL:
 installPackets:
 ifeq ($(SYSTEM), manjaro)
+	pacman-key --refresh-keys
 	pacman -Syu --noconfirm
 	pacman -S --noconfirm \
 		curl git cmake make alacritty qutebrowser python3 bluez bluez-utils \
