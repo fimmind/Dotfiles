@@ -7,12 +7,12 @@ setup:
 ifeq ($(SYSTEM), manjaro)
 	sudo pacman -R manjaro-i3-settings
 endif
-	sudo make enableBluetooth installPackets gitConfig installOhMyZsh \
+	sudo $(MAKE) enableBluetooth installPackets gitConfig installOhMyZsh \
 		installBrew installTheHaskellToolStack link-all setupNeoVim ldconfig \
 		installLeiningen installHIE
 	i3exit lock
 # link-Xresources mast be last, becouse it may ask confirmation
-	make link-Xresources
+	$(MAKE) link-Xresources
 
 enableBluetooth:
 	systemctl enable bluetooth
