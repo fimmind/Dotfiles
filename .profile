@@ -5,6 +5,6 @@ export BROWSER=/usr/bin/qutebrowser
 export PAGER='less'
 export TERMINAL='alacritty'
 
-PATH="$PATH:$HOME/.local/bin:$HOME/bin:/usr/local/bin"
+PATH="$PATH:$HOME/Dotfiles/bin"
 PATH="$PATH:/usr/local/texlive/2019/bin/x86_64-linux"
 PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"

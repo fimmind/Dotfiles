@@ -32,7 +32,7 @@ bindsym XF86AudioLowerVolume exec --no-startup-id amixer -D pulse sset Master 5%
 bindsym XF86AudioMute exec --no-startup-id amixer -D pulse sset Master toggle-mute # Toggle muting
 
 ########## Other ##########
-bindsym $mod+Shift+p exec ~/.config/i3/powermenu.py
+bindsym $mod+Shift+p exec powermenu
 bindsym $mod+Shift+l exec i3exit lock
 bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
@@ -42,7 +42,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+d exec rofi -modi drun -show drun -show-icons
 bindsym $mod+x exec rofi -dmenu -p "run" -l 0 | zsh
 bindsym Mod1+Tab exec rofi -show window
-bindsym $mod+c exec ~/.config/i3/rofiCalc.py
+bindsym $mod+c exec rofi-calc
 
 ########## Focus ##########
 bindsym $mod+h focus left
