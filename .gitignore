@@ -1,4 +1,2 @@
-haskell-ide-engine
-floskell
-texlive.tar.gz
-install-tl-*
+sources/**
+!sources/README.md

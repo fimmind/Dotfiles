@@ -105,10 +105,11 @@ gitConfig:
 
 .ONESHELL:
 installTexLive:
+	cd sources
 	test -f texlive.tar.gz || \
 		wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz -O texlive.tar.gz
 	tar -xf texlive.tar.gz
-	cd `ls | grep install-tl-*` && ./install-tl -profile ../texlive.profile
+	cd `ls | grep install-tl-*` && ./install-tl -profile ../../texlive.profile
 
 installLeiningen:
 	wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein \
@@ -118,13 +119,17 @@ installLeiningen:
 
 ONESHELL:
 installHIE:
+	cd sources
 	git clone https://github.com/haskell/haskell-ide-engine --recurse-submodules
 	cd haskell-ide-engine
 	stack ./install.hs hie-8.6.5
 
+ONESHELL:
 installFloskell:
+	cd sources
 	git clone https://github.com/ennocramer/floskell
-	cd floskell && stack install
+	cd floskell
+	stack install
 
 installBrew:
 	gem install irb
