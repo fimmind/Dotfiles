@@ -1,0 +1,7 @@
+#!/usr/bin/bash
+printf "Do you want to start full system upgrade? (y/n) "
+read answer
+
+if [[ -z "$answer" ]] || [[ "$answer" == "y" ]]; then
+  sudo sh -c 'pacman-key --refresh-keys && pacman -Suy --noconfirm'
+fi
