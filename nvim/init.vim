@@ -32,7 +32,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'oblitum/rainbow', { 'for': ['cpp', 'c'], 'as': 'rainbow-cpp' }
 
   " Python
-  Plug 'hynek/vim-python-pep8-indent'
+  Plug 'tweekmonster/braceless.vim' " TODO: learn
 
   " Tools
   Plug 'junegunn/vim-easy-align'
@@ -299,6 +299,10 @@ command! HsType
         \ . col(".")
 
 nnoremap <Leader>ht :HsType<CR>
+
+" Python
+" ================================================
+autocmd FileType python BracelessEnable +indent
 
 " Easy-align
 " ================================================
