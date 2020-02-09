@@ -1,7 +1,17 @@
 #!/usr/bin/bash
+sudo_upgrade(){
+  pacman-key --refresh-keys
+  pacman -Suy --noconfirm
+}
+
+no_sudo_upgrade(){
+  :
+}
+
 printf "Do you want to start full system upgrade? (y/n) "
 read answer
 
 if [[ -z "$answer" ]] || [[ "$answer" == "y" ]]; then
-  sudo sh -c 'pacman-key --refresh-keys && pacman -Suy --noconfirm'
+  sudo bash -c "$(declare -f sudo_upgrade); sudo_upgrade"
+  no_sudo_upgrade
 fi
