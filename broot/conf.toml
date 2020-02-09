@@ -4,7 +4,8 @@
 invocation = "edit"
 key = "F2"
 shortcut = "e"
-execution = "$EDITOR {file}"
+execution = "nvim {file} '+cd {directory}'"
+from_shell = true
 
 [[verbs]]
 key = "ctrl-c"
