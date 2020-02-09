@@ -2,6 +2,7 @@
 sudo_upgrade(){
   pacman-key --refresh-keys
   pacman -Suy --noconfirm
+  tlmgr update --self --all --reinstall-forcibly-removed
 }
 
 no_sudo_upgrade(){
