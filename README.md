@@ -20,6 +20,7 @@ Use `lxappearance`:
 * Fix haskell `module` snippet (It ignores path to module right now)
 * Setup default applications
 * Try to setup and use [floskell](https://github.com/ennocramer/floskell)
+* Try [command-t](https://github.com/wincent/command-t) instead of ctrl-p
 
 ## Thanks
 * Many LaTeX snippets have been taken from [here](https://github.com/gillescastel/latex-snippets).
