@@ -6,7 +6,8 @@ sudo_upgrade(){
 }
 
 no_sudo_upgrade(){
-  :
+  cd ~/Dotfiles
+  make updateVimPlug
 }
 
 printf "Do you want to start full system upgrade? (y/n) "
