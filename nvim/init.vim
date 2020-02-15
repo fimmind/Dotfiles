@@ -408,15 +408,15 @@ let g:buildAndRunSetup = {
         \ "run"      : "test -f '%:p:r' && '%:p:r' || '%:p:h/main'",
         \ "needBuild": 1
         \ },
-      \ "py": {
+      \ "python": {
         \ "run"      : "python3 '%:p'",
         \ "needBuild": 0
         \ },
-      \ "js": {
+      \ "javascript": {
         \ "run"      : "node '%:p'",
         \ "needBuild": 0
         \ },
-      \ "hs": {
+      \ "haskell": {
         \ "build"    : "stack build",
         \ "run"      : "stack test && clear && stack run",
         \ "needBuild": 0
@@ -429,7 +429,7 @@ let g:buildAndRunSetup = {
         \ "run"      : "clisp '%:p'",
         \ "needBuild": 0
         \ },
-      \ "clj": {
+      \ "clojure": {
         \ "run":       "lein run",
         \ "needBuild": 0
         \ },
@@ -437,7 +437,7 @@ let g:buildAndRunSetup = {
         \ "run":       "scala '%:p'",
         \ "needBuild": 0
         \ },
-      \ "rs": {
+      \ "rust": {
         \ "run":       "cargo run",
         \ "build":     "cargo build",
         \ "needBuild": 0
@@ -458,9 +458,7 @@ function! Eq(fst, snd)
   let g:buildAndRunSetup[a:fst] = g:buildAndRunSetup[a:snd]
 endfunction
 
-call Eq("h",   "c")
 call Eq("cpp", "c")
-call Eq("hpp", "c")
 
 " Build
 " ================================================
@@ -469,7 +467,7 @@ command! Build execute Build()
 function! Build()
   let workDir = system("pwd")
   wa | cd %:p:h
-  let fileType = expand("%:e")
+  let fileType = &ft
   if has_key(g:buildAndRunSetup, fileType)
     let setup = g:buildAndRunSetup[fileType]
     if has_key(setup, "build")
@@ -490,7 +488,7 @@ command! Run execute Run()
 function! Run()
   let workDir = system("pwd")
   wa | cd %:p:h
-  let fileType = expand("%:e")
+  let fileType = &ft
   if has_key(g:buildAndRunSetup, fileType)
     let setup = g:buildAndRunSetup[fileType]
     if setup["needBuild"]
