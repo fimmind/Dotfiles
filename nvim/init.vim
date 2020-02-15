@@ -51,7 +51,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'cohama/lexima.vim'
   Plug 'sirver/UltiSnips'
-  Plug 'luochen1990/rainbow' " TODO: operators highlight for Haskell
+  Plug 'luochen1990/rainbow'
 call plug#end()
 
 " Mappings
@@ -225,7 +225,6 @@ command! Zsh vsplit term://zsh | :startinsert
 " ================================================
 let g:rainbow_active = 1
 
-" TODO: highlight top level haskell operators
 let g:rainbow_conf = {
         \ 'operators': '_,_',
         \ 'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
