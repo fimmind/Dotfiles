@@ -9,7 +9,7 @@ ifeq ($(SYSTEM), manjaro)
 endif
 	sudo $(MAKE) enableBluetooth installPackets gitConfig installOhMyZsh \
 		installBrew installTheHaskellToolStack link-all setupNeoVim ldconfig \
-		installLeiningen installHIE
+		installLeiningen installClojure-lsp installHIE
 	i3exit lock
 # link-Xresources mast be last, becouse it may ask confirmation
 	$(MAKE) link-Xresources
@@ -137,3 +137,7 @@ installBrew:
 	gem install irb
 	echo | sh -c \
 		"$$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+
+installClojure-lsp:
+	wget https://github.com/snoe/clojure-lsp/releases/latest/download/clojure-lsp -O ~/.local/bin/clojure-lsp
+	chmod 755 ~/.local/bin/clojure-lsp

@@ -52,6 +52,31 @@
         "~"
       ]
     },
+    "clojure-lsp": {
+      "command": "clojure-lsp",
+      "filetypes": [
+        "clojure"
+      ],
+      "rootPatterns": [
+        "project.clj"
+      ],
+      "additionalSchemes": [
+        "jar",
+        "zipfile"
+      ],
+      "trace.server": "verbose",
+      "initializationOptions": {
+        "project-specs": [
+          {
+            "project-path": "project.clj",
+            "classpath-cmd": [
+              "lein",
+              "classpath"
+            ]
+          }
+        ]
+      }
+    },
   },
   "git.addedSign.hlGroup": "GitGutterAdd",
   "git.changedSign.hlGroup": "GitGutterChange",
