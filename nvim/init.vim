@@ -151,8 +151,11 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 command! Rename normal <Plug>(coc-rename)
 
 " Remap for format selected region
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  mmvip<leader>f`m
+xmap <leader>fs  <Plug>(coc-format-selected)
+nmap <leader>fs  mmvip<leader>fs`m
+
+" Remap for format whole file
+nmap <leader>ff  <Plug>(coc-format)
 
 augroup mygroup
   autocmd!
