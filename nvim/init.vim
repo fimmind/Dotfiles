@@ -9,9 +9,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'eraserhd/parinfer-rust', { 'do': 'cargo build --release' }
 
   " Clojure
-  Plug 'tpope/vim-fireplace' " TODO: try to replace with https://github.com/Olical/conjure
-                             " with https://github.com/jlesquembre/coc-conjure
-                             " for completion
+  Plug 'guns/vim-clojure-static'
 
   " Haskell
   Plug 'neovimhaskell/haskell-vim'
@@ -244,9 +242,7 @@ let g:rainbow_conf = {
 
 " Clojure
 " ================================================
-command! Repl normal :split term://lein repl :connect<CR><C-W>12_i
-
-autocmd FileType clojure AsyncRun lein repl :headless
+command! Repl vsplit term://lein repl | startinsert
 
 " Lisp
 " ================================================
