@@ -10,7 +10,6 @@ call plug#begin('~/.config/nvim/plugged')
 
   " Clojure
   Plug 'guns/vim-clojure-static'
-  " TODO: try https://github.com/guns/vim-clojure-static
 
   " Haskell
   Plug 'neovimhaskell/haskell-vim'
