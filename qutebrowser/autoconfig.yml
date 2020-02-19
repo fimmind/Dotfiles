@@ -8,6 +8,8 @@ config_version: 2
 settings:
   auto_save.session:
     global: true
+  content.geolocation:
+    https://www.google.com: true
   content.notifications:
     https://novate.ru: false
     https://onlinemultfilmy.ru: false
