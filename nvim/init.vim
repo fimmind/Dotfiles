@@ -8,9 +8,6 @@ call plug#begin('~/.config/nvim/plugged')
   " Lisp
   Plug 'eraserhd/parinfer-rust', { 'do': 'cargo build --release' }
 
-  " Clojure
-  Plug 'guns/vim-clojure-static'
-
   " Haskell
   Plug 'neovimhaskell/haskell-vim'
   Plug 'alx741/vim-stylishask'
