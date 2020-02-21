@@ -250,10 +250,6 @@ let g:rainbow_conf = {
         \ }
       \ }
 
-" Clojure
-" ================================================
-command! Repl tabnew term://lein repl | startinsert
-
 " Lisp
 " ================================================
 autocmd FileType lisp,clojure let b:lexima_disabled = 1
