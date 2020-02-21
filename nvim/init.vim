@@ -252,7 +252,7 @@ let g:rainbow_conf = {
 
 " Clojure
 " ================================================
-command! Repl vsplit term://lein repl | startinsert
+command! Repl tabnew term://lein repl | startinsert
 
 " Lisp
 " ================================================
