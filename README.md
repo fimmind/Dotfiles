@@ -16,12 +16,13 @@ Use `lxappearance`:
 ## TODO
 * Exhaustive documentation
 * System installation instructions
-* Move init.vim parts related to specific languages to ftplugin/<language\_filetype>.vim
-* Fix haskell `module` snippet (It ignores path to module right now)
 * Setup default applications
-* Try to setup and use [floskell](https://github.com/ennocramer/floskell)
-* Try [command-t](https://github.com/wincent/command-t) instead of ctrl-p
-* General REPL mapping
+* (Neo)Vim:
+  * Move init.vim parts related to specific languages to ftplugin/<language\_filetype>.vim
+  * Fix haskell `module` snippet (It ignores path to module right now)
+  * Try to setup and use [floskell](https://github.com/ennocramer/floskell)
+  * Try [command-t](https://github.com/wincent/command-t) instead of ctrl-p
+  * General REPL mapping
 
 ## Thanks
 * Many LaTeX snippets have been taken from [here](https://github.com/gillescastel/latex-snippets).
