@@ -21,6 +21,7 @@ Use `lxappearance`:
 * Setup default applications
 * Try to setup and use [floskell](https://github.com/ennocramer/floskell)
 * Try [command-t](https://github.com/wincent/command-t) instead of ctrl-p
+* General REPL mapping
 
 ## Thanks
 * Many LaTeX snippets have been taken from [here](https://github.com/gillescastel/latex-snippets).
