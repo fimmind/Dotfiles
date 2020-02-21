@@ -68,6 +68,17 @@ nnoremap gk k
 
 nnoremap <leader>sr :source %<CR>
 
+" Tabs
+" ================================================
+nnoremap <leader>tn :tabnext<CR>
+nnoremap <leader>tp :tabprevious<CR>
+nnoremap <leader>ta :tabnew<CR>
+nnoremap <leader>tf :tabfirst<CR>
+nnoremap <leader>tl :tablast<CR>
+nnoremap <leader>ts :tabs<CR>
+nnoremap <leader>tq :tabclose<CR>
+nnoremap <leader>to :tabonly<CR>
+
 " Spell check
 " ================================================
 set spelllang=en,ru_yo
