@@ -5,6 +5,10 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'justinmk/vim-syntax-extra'
   Plug 'PotatoesMaster/i3-vim-syntax'
 
+  " Clojure
+  Plug 'tpope/vim-fireplace' " TODO: learn
+  Plug 'guns/vim-sexp'       " TODO: learn
+
   " Lisp
   Plug 'eraserhd/parinfer-rust', { 'do': 'cargo build --release' }
 
