@@ -1,2 +1,2 @@
 command! -buffer ReplTab tabnew term://lein repl
-nnoremap <buffer> <localleader>tr :ReplTab<CR>
+nnoremap <buffer> <localleader>tr :ReplTab<CR>:tabprevious<CR>
