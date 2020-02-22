@@ -254,9 +254,11 @@ let g:rainbow_conf = {
         \ }
       \ }
 
-" Lisp
+" Clojure
 " ================================================
 autocmd FileType lisp,clojure let b:lexima_disabled = 1
+
+let g:sexp_enable_insert_mode_mappings = 0
 
 " Haskell
 " ================================================
