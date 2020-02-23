@@ -92,6 +92,24 @@ snippet start "Basic template" b
 \end{document}
 endsnippet
 
+snippet image "only image teplate" b
+\documentclass[12pt, a4paper]{article}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+\usepackage[left=0.5cm, right=0.5cm, top=0.5cm, bottom=0.5cm]{geometry}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+
+\begin{document}
+	$1
+\end{document}
+endsnippet
+
 snippet beg "begin{} / end{}" b
 \\begin{${1:something}}
 	${0:${VISUAL}}
