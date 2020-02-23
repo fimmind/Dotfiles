@@ -298,16 +298,6 @@ for at in ['{-\%#-}', '{-#\%##-}', '{- \%# -}', '{-# \%# #-}']
         \ })
 endfor
 
-command! Ghci vsplit term://stack ghci | :startinsert
-
-command! HsType
-        \ :exec ":w | :!hdevtools type -s .hdevtools.sock"
-        \ . " % "
-        \ . line(".") . " "
-        \ . col(".")
-
-nnoremap <Leader>ht :HsType<CR>
-
 " Python
 " ================================================
 autocmd FileType python BracelessEnable +indent
