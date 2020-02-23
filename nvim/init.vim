@@ -353,10 +353,6 @@ syntax sync fromstart
 " ================================================
 let g:AutoPairsIgnorePrefixes = ['\', 'lr', '\left']
 
-" inkscape-figures
-inoremap <C-f> <Esc>: silent exec '.!inkscape-figures create "'.getline('.').'" "'.b:vimtex.root.'/figures/"'<CR><CR>:w<CR>
-nnoremap <C-f> : silent exec '!inkscape-figures edit "'.b:vimtex.root.'/figures/" > /dev/null 2>&1 &'<CR><CR>:redraw!<CR>
-
 let pairs = {'(':')', '\\\\{':'\\\\}', '[':']', '<':'>'}
 for i in keys(pairs)
   call lexima#add_rule({
@@ -373,12 +369,7 @@ let g:neotex_enabled   = 1
 let g:neotex_delay     = 250
 let g:neotex_latexdiff = 0
 
-nmap <leader>ll :NeoTexOn<CR>
-nmap <leader>lc :NeoTex<CR>
-nmap <leader>lo :AsyncRun zathura '%:r.pdf'<CR>
 autocmd FileType tex :NeoTexOn
-
-nmap <leader>" cs">ysi>>
 
 " Markdown
 " ================================================
