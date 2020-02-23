@@ -386,8 +386,6 @@ function OpenMKDP(url)
   exec "AsyncRun qutebrowser ':open -w " . a:url . "'"
 endfunction
 
-nnoremap <leader>ml :MarkdownPreview<CR>
-
 " NERDComment
 " ================================================
 let g:NERDSpaceDelims = 1
