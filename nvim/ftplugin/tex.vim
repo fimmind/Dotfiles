@@ -1,8 +1,8 @@
-nmap <buffer> <leader>ll :NeoTexOn<CR>
-nmap <buffer> <leader>lc :NeoTex<CR>
-nmap <buffer> <leader>lo :AsyncRun zathura '%:r.pdf'<CR>
+nmap <buffer> <localleader>ll :NeoTexOn<CR>
+nmap <buffer> <localleader>lc :NeoTex<CR>
+nmap <buffer> <localleader>lo :AsyncRun zathura '%:r.pdf'<CR>
 
-nmap <buffer> <leader>" cs">ysi>>
+nmap <buffer> <localleader>" cs">ysi>>
 
 " inkscape-figures
 " FIXME
