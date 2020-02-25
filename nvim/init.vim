@@ -424,6 +424,7 @@ let g:buildAndRunSetup = {
         \ "needBuild": 0
         \ },
       \ "clojure": {
+        \ "build":     "lein uberjar",
         \ "run":       "lein run",
         \ "needBuild": 0
         \ },
