@@ -76,7 +76,7 @@ ifeq ($(SYSTEM), manjaro)
 		gcc neovim rofi htop ranger pcmanfm zathura telegram-desktop lm_sensors jq \
 		keynav qalculate-gtk i3-gaps i3lock i3exit i3status zsh zathura-pdf-mupdf \
 		clisp libreoffice-fresh libreoffice-fresh-ru ghc-libs ghc-static rustup \
-		nodejs npm php rlwrap cargo rogue nethack scala inkscape ruby \
+		nodejs npm php rlwrap clojure cargo rogue nethack scala inkscape ruby \
 		imagemagick wine winetricks unrar firefox dotnet-sdk ttf-dejavu broot \
 		neofetch irssi bind-tools
 	rustup default stable
