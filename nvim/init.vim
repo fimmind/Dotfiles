@@ -7,7 +7,7 @@ call plug#begin('~/.config/nvim/plugged')
 
   " Clojure
   Plug 'tpope/vim-fireplace' " TODO: learn
-  Plug 'guns/vim-sexp'       " TODO: learn
+  Plug 'guns/vim-sexp'
 
   " Lisp
   Plug 'eraserhd/parinfer-rust', { 'do': 'cargo build --release' }
