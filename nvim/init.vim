@@ -332,6 +332,7 @@ set wrap
 set hlsearch
 set showmatch
 set termencoding=utf-8
+set fileencodings=utf-8,cp1251
 set ch=1
 set title
 set wildmenu
