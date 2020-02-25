@@ -11,8 +11,8 @@ endif
 		installBrew installTheHaskellToolStack link-all setupNeoVim ldconfig \
 		installLeiningen installHIE
 	i3exit lock
-# link-Xresources mast be last, becouse it may ask confirmation
-	$(MAKE) link-Xresources
+# They mast be last, because they ask confirmation
+	$(MAKE) link-Xresources installClj-kondo  # !! latter wont work with sudo
 
 enableBluetooth:
 	systemctl enable bluetooth
@@ -141,3 +141,6 @@ installBrew:
 installClojure-lsp:
 	wget https://github.com/snoe/clojure-lsp/releases/latest/download/clojure-lsp -O ~/.local/bin/clojure-lsp
 	chmod 755 ~/.local/bin/clojure-lsp
+
+installClj-kondo:
+	pamac build clj-kondo-bin --no-confirm
