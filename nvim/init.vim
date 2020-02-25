@@ -268,6 +268,9 @@ let g:sexp_enable_insert_mode_mappings = 0
 let g:conjure_log_direction = "horizontal"
 let g:conjure_log_blacklist = ["up", "ret", "ret-multiline", "load-file", "eval"]
 
+let g:conjure_nmap_run_tests = ""
+let g:conjure_nmap_run_all_tests = ""
+
 " Haskell
 " ================================================
 let g:haskell_indent_if = 2
