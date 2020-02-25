@@ -6,7 +6,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'PotatoesMaster/i3-vim-syntax'
 
   " Clojure
-  Plug 'tpope/vim-fireplace' " TODO: learn
+  Plug 'Olical/conjure', { 'tag': 'v2.1.2', 'do': 'bin/compile' }
   Plug 'guns/vim-sexp'
 
   " Lisp
@@ -106,7 +106,7 @@ autocmd FileType gitcommit,markdown,tex,text setlocal spell
 let g:coc_global_extensions = [
       \ "coc-git", "coc-explorer", "coc-yaml", "coc-vimlsp",
       \ "coc-texlab", "coc-python", "coc-json", "coc-rls",
-      \ "coc-ultisnips", "coc-word", "coc-html"
+      \ "coc-ultisnips", "coc-word", "coc-html", "coc-conjure"
       \ ]
 function InstallCocExtensions()
   exec "CocInstall -sync " . join(g:coc_global_extensions)
@@ -259,6 +259,9 @@ let g:rainbow_conf = {
 autocmd FileType lisp,clojure let b:lexima_disabled = 1
 
 let g:sexp_enable_insert_mode_mappings = 0
+
+let g:conjure_log_direction = "horizontal"
+let g:conjure_log_blacklist = ["up", "ret", "ret-multiline", "load-file", "eval"]
 
 " Haskell
 " ================================================
