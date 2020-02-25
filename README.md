@@ -23,6 +23,8 @@ Use `lxappearance`:
   * Try to setup and use [floskell](https://github.com/ennocramer/floskell)
   * Try [command-t](https://github.com/wincent/command-t) instead of ctrl-p
   * General REPL mapping
+  * Setup clj-kondo-lsp and connect it to coc.nvim instead of using clj-kondo with ALE
+    https://github.com/borkdude/clj-kondo/blob/master/doc/editor-integration.md 
 
 ## Thanks
 * Many LaTeX snippets have been taken from [here](https://github.com/gillescastel/latex-snippets).
