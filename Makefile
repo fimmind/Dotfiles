@@ -120,6 +120,13 @@ installLeiningen:
 	lein
 
 ONESHELL:
+installBoot-clj:
+	cd ~/.local/bin
+	curl -fsSLo boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh
+	chmod 755 boot
+	./boot
+
+ONESHELL:
 installHIE:
 	cd sources
 	git clone https://github.com/haskell/haskell-ide-engine --recurse-submodules
