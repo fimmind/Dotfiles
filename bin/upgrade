@@ -1,20 +1,24 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 sudo_upgrade(){
   pacman-key --refresh-keys
   pacman -Suy --noconfirm
   tlmgr update --self --all --reinstall-forcibly-removed
+  pamac update
 }
 
 no_sudo_upgrade(){
+  brew update
+  brew upgrade
+
   cd ~/Dotfiles
   make updateVimPlug
-  pamac update # it mast be last
 }
 
 printf "Do you want to start full system upgrade? (y/n) "
 read answer
 
 if [[ -z "$answer" ]] || [[ "$answer" == "y" ]]; then
+  cd ~
   sudo bash -c "$(declare -f sudo_upgrade); sudo_upgrade"
   no_sudo_upgrade
 fi
