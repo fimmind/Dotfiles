@@ -17,6 +17,7 @@ Use `lxappearance`:
 * Exhaustive documentation
 * System installation instructions
 * Setup default applications
+* Try to learn boot and use it instead of leiningen (Maybe it will fix conjure completion for packages add as dependencies)
 * (Neo)Vim:
   * Move init.vim parts related to specific languages to ftplugin/<language\_filetype>.vim
   * Fix haskell `module` snippet (It ignores path to module right now)
