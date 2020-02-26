@@ -104,6 +104,7 @@ autocmd FileType gitcommit,markdown,tex,text setlocal spell
 
 " ALE
 " ================================================
+let g:ale_linters_explicit = 1
 let g:ale_linters = {'clojure': ['clj-kondo']}
 
 " CoC
