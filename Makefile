@@ -8,11 +8,11 @@ ifeq ($(SYSTEM), manjaro)
 	sudo pacman -R manjaro-i3-settings
 endif
 	sudo $(MAKE) enableBluetooth installPackets gitConfig installOhMyZsh \
-		installBrew installTheHaskellToolStack link-all setupNeoVim ldconfig \
+		installTheHaskellToolStack link-all setupNeoVim ldconfig \
 		installLeiningen installHIE
 	i3exit lock
 # They mast be last, because they ask confirmation
-	$(MAKE) link-Xresources installClj-kondo  # !! latter wont work with sudo
+	$(MAKE) installBrew link-Xresources installClj-kondo  # !! latter wont work with sudo
 
 enableBluetooth:
 	systemctl enable bluetooth
@@ -81,6 +81,7 @@ ifeq ($(SYSTEM), manjaro)
 		neofetch irssi bind-tools
 	rustup default stable
 	broot --install
+	gem install irb
 else
 	echo "can't install packets on this system ($(SYSTEM))"
 endif
@@ -141,7 +142,6 @@ installFloskell:
 	stack install
 
 installBrew:
-	gem install irb
 	echo | sh -c \
 		"$$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 
