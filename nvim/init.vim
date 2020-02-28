@@ -435,7 +435,7 @@ let g:buildAndRunSetup = {
         \ },
       \ "clojure": {
         \ "build":     "lein uberjar",
-        \ "run":       "lein run",
+        \ "run":       "lein run || clear && clojure '%:p'",
         \ "needBuild": 0
         \ },
       \ "scala": {
