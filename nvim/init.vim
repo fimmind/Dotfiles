@@ -75,8 +75,6 @@ nnoremap gk k
 
 nnoremap <leader>sr :source %<CR>
 
-autocmd BufWrite * :%s/\s\+$/
-
 " Tabs
 " ================================================
 nnoremap <leader>tn :tabnext<CR>
