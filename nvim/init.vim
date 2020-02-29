@@ -43,6 +43,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'scrooloose/nerdcommenter'
   Plug 'skywind3000/asyncrun.vim'
   Plug 'michaeljsmith/vim-indent-object'
+  Plug 'KorySchneider/vim-trim'
 
   " Motion
   Plug 'matze/vim-move'
@@ -74,6 +75,8 @@ nnoremap gj j
 nnoremap gk k
 
 nnoremap <leader>sr :source %<CR>
+
+autocmd BufWrite * :Trim
 
 " Tabs
 " ================================================
