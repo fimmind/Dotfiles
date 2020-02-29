@@ -44,6 +44,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'skywind3000/asyncrun.vim'
   Plug 'michaeljsmith/vim-indent-object'
   Plug 'KorySchneider/vim-trim'
+  Plug 'tpope/vim-fugitive'                " TODO: learn
 
   " Motion
   Plug 'matze/vim-move'
