@@ -48,6 +48,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'matze/vim-move'
   Plug 'easymotion/vim-easymotion'
   Plug 'kien/ctrlp.vim'
+  Plug 'ctrlpvim/ctrlp.vim'
 
   " IDE
   Plug 'dense-analysis/ale'
