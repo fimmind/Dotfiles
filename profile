@@ -8,3 +8,5 @@ export TERMINAL='kitty'
 PATH="$PATH:$HOME/Dotfiles/bin"
 PATH="$PATH:/usr/local/texlive/2019/bin/x86_64-linux"
 PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
+
+# vim:ft=sh
