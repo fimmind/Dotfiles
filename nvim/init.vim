@@ -4,6 +4,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'suy/vim-qmake'
   Plug 'justinmk/vim-syntax-extra'
   Plug 'PotatoesMaster/i3-vim-syntax'
+  Plug 'vim-airline/vim-airline'
 
   " Clojure
   Plug 'Olical/conjure', { 'tag': 'v2.1.2', 'do': 'bin/compile' }
