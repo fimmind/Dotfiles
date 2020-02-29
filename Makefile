@@ -33,7 +33,7 @@ link-all:
 	${LN}/zshrc                      ~/.zshrc
 	${LN}/i3                         ~/.config/i3
 	${LN}/i3status                   ~/.config/i3status
-	${LN}/alacritty                  ~/.config/alacritty
+	${LN}/kitty                      ~/.config/kitty
 	${LN}/keynavrc                   ~/.keynavrc
 	${LN}/fehbg                      ~/.fehbg
 	${LN}/qutebrowser                ~/.config/qutebrowser
@@ -72,7 +72,7 @@ ifeq ($(SYSTEM), manjaro)
 	pacman-key --refresh-keys
 	pacman -Syu --noconfirm
 	pacman -S --noconfirm \
-		curl git cmake make alacritty qutebrowser python3 bluez bluez-utils \
+		curl git cmake make kitty qutebrowser python3 bluez bluez-utils \
 		gcc neovim rofi htop ranger pcmanfm zathura telegram-desktop lm_sensors jq \
 		keynav qalculate-gtk i3-gaps i3lock i3exit i3status zsh zathura-pdf-mupdf \
 		clisp libreoffice-fresh libreoffice-fresh-ru ghc-libs ghc-static rustup \
