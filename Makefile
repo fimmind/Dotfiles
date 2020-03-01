@@ -12,7 +12,7 @@ endif
 		installLeiningen installHIE
 	i3exit lock
 # They mast be last, because they ask confirmation
-	$(MAKE) installBrew link-Xresources installClj-kondo  # !! latter wont work with sudo
+	$(MAKE) installBrew link-Xresources
 
 enableBluetooth:
 	systemctl enable bluetooth

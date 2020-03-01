@@ -53,7 +53,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'ctrlpvim/ctrlp.vim'
 
   " IDE
-  Plug 'dense-analysis/ale'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'cohama/lexima.vim'
   Plug 'sirver/UltiSnips'
@@ -107,11 +106,6 @@ nnoremap <leader>sp mm[s1z=`m
 nnoremap <leader>sn mm]s1z=`m
 
 autocmd FileType gitcommit,markdown,tex,text setlocal spell
-
-" ALE
-" ================================================
-let g:ale_linters_explicit = 1
-let g:ale_linters = {'clojure': ['clj-kondo']}
 
 " CoC
 " ================================================
