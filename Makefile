@@ -42,6 +42,7 @@ link-all:
 	${LN}/brittany                   ~/.config/brittany
 	${LN}/broot                      ~/.config/broot
 	${LN}/profile                    ~/.profile
+	${LN}/conjure                    ~/.config/conjure
 
 .ONESHELL:
 link-Xresources:
