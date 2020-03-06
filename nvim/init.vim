@@ -8,9 +8,9 @@ call plug#begin('~/.config/nvim/plugged')
 
   " Clojure
   Plug 'Olical/conjure', { 'tag': 'v2.1.2', 'do': 'bin/compile' }
-  Plug 'guns/vim-sexp'
 
   " Lisp
+  Plug 'guns/vim-sexp'
   Plug 'eraserhd/parinfer-rust', { 'do': 'cargo build --release' }
 
   " Haskell
