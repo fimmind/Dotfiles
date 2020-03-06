@@ -7,12 +7,13 @@ setup:
 ifeq ($(SYSTEM), manjaro)
 	sudo pacman -R manjaro-i3-settings
 endif
+	$(MAKE) installBrew
 	sudo $(MAKE) enableBluetooth installPackets gitConfig installOhMyZsh \
 		installTheHaskellToolStack link-all setupNeoVim ldconfig \
 		installLeiningen installHIE
 	i3exit lock
-# They mast be last, because they ask confirmation
-	$(MAKE) installBrew link-Xresources
+	$(MAKE) installBoot-clj # No sudo. It uses brew
+	$(MAKE) link-Xresources # Mast be last, because it asks confirmation
 
 enableBluetooth:
 	systemctl enable bluetooth
@@ -151,3 +152,7 @@ installClojure-lsp:
 
 installClj-kondo:
 	pamac build clj-kondo-bin --no-confirm
+
+installBoot-clj:
+	brew install boot-clj
+	cd && boot
