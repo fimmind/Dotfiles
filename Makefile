@@ -81,7 +81,7 @@ ifeq ($(SYSTEM), manjaro)
 		clisp libreoffice-fresh libreoffice-fresh-ru ghc-libs ghc-static rustup \
 		nodejs npm php rlwrap clojure cargo rogue nethack scala inkscape ruby \
 		imagemagick wine winetricks unrar firefox dotnet-sdk ttf-dejavu broot \
-		neofetch irssi bind-tools tmux
+		neofetch irssi bind-tools tmux cmatrix
 	rustup default stable
 	broot --install
 	gem install irb
