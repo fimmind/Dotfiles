@@ -5,6 +5,5 @@ nmap <buffer> <localleader>lo :AsyncRun zathura '%:r.pdf'<CR>
 nmap <buffer> <localleader>" cs">ysi>>
 
 " inkscape-figures
-" FIXME
-inoremap <buffer> <C-f> <Esc>: silent exec '.!inkscape-figures create "'.getline('.').'" "'.b:vimtex.root.'/figures/"'<CR><CR>:w<CR>
-nnoremap <buffer> <C-f> : silent exec '!inkscape-figures edit "'.b:vimtex.root.'/figures/" > /dev/null 2>&1 &'<CR><CR>:redraw!<CR>
+inoremap <buffer> <C-f> <Esc>: silent exec '.!inkscape-figures create "'.getline('.').'" "'.projectroot#guess().'/figures/"'<CR><CR>:w<CR>
+nnoremap <buffer> <C-f> : silent exec '!inkscape-figures edit "'.projectroot#guess().'/figures/" > /dev/null 2>&1 &'<CR><CR>:redraw!<CR>

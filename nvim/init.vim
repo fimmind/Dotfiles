@@ -45,6 +45,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'michaeljsmith/vim-indent-object'
   Plug 'KorySchneider/vim-trim'
   Plug 'tpope/vim-fugitive'                " TODO: learn
+  Plug 'dbakker/vim-projectroot'
 
   " Motion
   Plug 'matze/vim-move'
@@ -106,6 +107,13 @@ nnoremap <leader>sp mm[s1z=`m
 nnoremap <leader>sn mm]s1z=`m
 
 autocmd FileType gitcommit,markdown,tex,text setlocal spell
+
+" Project-root
+" ================================================
+let g:rootmarkers = [
+      \ '.projectroot', '.git', '.hg', '.svn', '.bzr', '_darcs', 'build.xml',
+      \ 'main.tex', 'project.clj', 'deps.edn', 'package.yaml', 'stack.yaml'
+      \ ]
 
 " CoC
 " ================================================
