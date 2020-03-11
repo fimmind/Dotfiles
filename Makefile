@@ -7,7 +7,8 @@ setup:
 ifeq ($(SYSTEM), manjaro)
 	sudo pacman -R manjaro-i3-settings
 endif
-	$(MAKE) installPackets installBrew enableBluetooth gitConfig installOhMyZsh \
+	$(MAKE) LN_ARGS=-sfT \
+		installPackets installBrew enableBluetooth gitConfig installOhMyZsh \
 		installTheHaskellToolStack link-all setupNeoVim ldconfig \
 		installLeiningen installHIE installBoot-clj
 	i3exit lock
