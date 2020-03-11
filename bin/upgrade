@@ -3,14 +3,14 @@ sudo_upgrade(){
   pacman-key --refresh-keys
   pacman -Suy --noconfirm
   tlmgr update --self --all --reinstall-forcibly-removed
-  pamac update
+  pamac update --no-confirm
+  npm install -g npm
+  npm upgrade
 }
 
 no_sudo_upgrade(){
   brew update
   brew upgrade
-
-  npm install -g npm
 
   cd ~/Dotfiles
   make updateVimPlug
