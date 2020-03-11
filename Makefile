@@ -1,5 +1,5 @@
 SHELL = /usr/bin/bash
-.SILENT: link-Xresources
+.SILENT: link-Xresources setup
 
 SYSTEM := $(shell sed -n "s/^ID=//p" /etc/os-release)
 
@@ -7,12 +7,10 @@ setup:
 ifeq ($(SYSTEM), manjaro)
 	sudo pacman -R manjaro-i3-settings
 endif
-	$(MAKE) installBrew
-	sudo $(MAKE) enableBluetooth installPackets gitConfig installOhMyZsh \
+	$(MAKE) installPackets installBrew enableBluetooth gitConfig installOhMyZsh \
 		installTheHaskellToolStack link-all setupNeoVim ldconfig \
-		installLeiningen installHIE
+		installLeiningen installHIE installBoot-clj
 	i3exit lock
-	$(MAKE) installBoot-clj # No sudo. It uses brew
 	$(MAKE) link-Xresources # Mast be last, because it asks confirmation
 
 enableBluetooth:
@@ -69,12 +67,11 @@ installTheHaskellToolStack:
 	stack setup
 	stack install shake
 
-.ONESHELL:
 installPackets:
 ifeq ($(SYSTEM), manjaro)
-	pacman-key --refresh-keys
-	pacman -Syu --noconfirm
-	pacman -S --noconfirm \
+	sudo pacman-key --refresh-keys
+	sudo pacman -Syu --noconfirm
+	sudo pacman -S --noconfirm \
 		curl git cmake make kitty qutebrowser python3 bluez bluez-utils \
 		gcc neovim rofi htop ranger pcmanfm zathura telegram-desktop lm_sensors jq \
 		keynav qalculate-gtk i3-gaps i3lock i3exit i3status zsh zathura-pdf-mupdf \
@@ -93,11 +90,11 @@ ldconfig:
 	ldconfig
 
 setupNeoVim:
-	nvim -c ":PlugInstall | :qa"
+	nvim -u "nvim/plugins.vim" -c ":PlugInstall | :qa"
 	nvim -c ":call InstallCocExtensions() | :q"
-	pip3 install pynvim unicode flake8 yapf sympy inkscape-figures
+	sudo pip3 install pynvim unicode flake8 yapf sympy inkscape-figures
 	stack install stylish-haskell
-	npm install -g neovim bash-language-server
+	sudo npm install -g neovim bash-language-server
 	brew install ccls
 
 updateVimPlug:
@@ -122,13 +119,6 @@ installLeiningen:
 		-O ~/.local/bin/lein
 	chmod ug+x ~/.local/bin/lein
 	lein
-
-ONESHELL:
-installBoot-clj:
-	cd ~/.local/bin
-	curl -fsSLo boot https://github.com/boot-clj/boot-bin/releases/download/latest/boot.sh
-	chmod 755 boot
-	./boot
 
 ONESHELL:
 installHIE:
