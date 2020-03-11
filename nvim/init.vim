@@ -1,4 +1,4 @@
-call plug#begin('~/.config/nvim/plugged')
+call plug#begin(stdpath('data') . '/plugged')
   " Syntax, style
   Plug 'phaazon/gruvbox' " Not original, couse of haskell-vim support
   Plug 'suy/vim-qmake'
