@@ -50,7 +50,6 @@ call plug#begin('~/.config/nvim/plugged')
   " Motion
   Plug 'matze/vim-move'
   Plug 'easymotion/vim-easymotion'
-  Plug 'kien/ctrlp.vim'
   Plug 'ctrlpvim/ctrlp.vim'
 
   " IDE
