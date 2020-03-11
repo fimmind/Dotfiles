@@ -10,6 +10,8 @@ no_sudo_upgrade(){
   brew update
   brew upgrade
 
+  npm install -g npm
+
   cd ~/Dotfiles
   make updateVimPlug
 }
