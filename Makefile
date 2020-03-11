@@ -5,7 +5,7 @@ SYSTEM := $(shell sed -n "s/^ID=//p" /etc/os-release)
 
 setup:
 ifeq ($(SYSTEM), manjaro)
-	sudo pacman -R manjaro-i3-settings
+	sudo pacman -R manjaro-i3-settings i3status-manjaro
 endif
 	$(MAKE) LN_ARGS=-sfT \
 		installPackets installBrew enableBluetooth gitConfig installOhMyZsh \
