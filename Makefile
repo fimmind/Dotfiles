@@ -69,6 +69,7 @@ installTheHaskellToolStack:
 
 installPackets:
 ifeq ($(SYSTEM), manjaro)
+	pamac build virtualbox-ext-oracle --no-confirm
 	sudo pacman-key --refresh-keys
 	sudo pacman -Syu --noconfirm
 	sudo pacman -S --noconfirm \
@@ -78,7 +79,8 @@ ifeq ($(SYSTEM), manjaro)
 		clisp libreoffice-fresh libreoffice-fresh-ru ghc-libs ghc-static rustup \
 		nodejs npm php rlwrap clojure cargo rogue nethack scala inkscape ruby \
 		imagemagick wine winetricks unrar firefox dotnet-sdk ttf-dejavu broot \
-		neofetch irssi bind-tools tmux cmatrix
+		neofetch irssi bind-tools tmux cmatrix \
+		virtualbox virtualbox-host-dkms
 	rustup default stable
 	broot --install
 	gem install irb
