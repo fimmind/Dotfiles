@@ -110,8 +110,8 @@ function! s:show_documentation()
   endif
 endfunction
 
-" Highlight symbol under cursor on CursorHold
-autocmd CursorHold * silent call CocActionAsync('highlight')
+" Highlight symbol under cursor on CursorMoved
+autocmd CursorMoved * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 command! Rename normal <Plug>(coc-rename)
