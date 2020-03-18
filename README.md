@@ -17,6 +17,7 @@ Use `lxappearance`:
 * Exhaustive documentation
 * System installation instructions
 * Setup default applications
+* Setup windows layout using [this](https://i3wm.org/docs/layout-saving.html) article
 * (Neo)Vim:
   * Fix haskell `module` snippet (It ignores path to module right now)
   * Try to setup and use [floskell](https://github.com/ennocramer/floskell)
