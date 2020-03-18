@@ -16,6 +16,7 @@ call plug#begin(stdpath('data') . '/plugged')
   " Haskell
   Plug 'neovimhaskell/haskell-vim'
   Plug 'alx741/vim-stylishask'
+  Plug 'fimmind/vim-hs-type'
 
   " Markdown
   Plug 'SidOfc/mkdx'
@@ -46,6 +47,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'KorySchneider/vim-trim'
   Plug 'tpope/vim-fugitive'                " TODO: learn
   Plug 'dbakker/vim-projectroot'
+  Plug 'vim-scripts/vim-auto-save'
 
   " Motion
   Plug 'matze/vim-move'
