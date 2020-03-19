@@ -32,6 +32,7 @@ nnoremap <leader>to :tabonly<CR>
 
 " Fugitive
 " ================================================
+nnoremap <leader>gg :G<CR>
 nnoremap <leader>gs :G status<CR>
 nnoremap <leader>gw :Gw<CR>
 nnoremap <leader>gW :Gwq<CR>
