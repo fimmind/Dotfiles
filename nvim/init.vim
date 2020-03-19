@@ -35,6 +35,7 @@ nnoremap <leader>to :tabonly<CR>
 nnoremap <leader>gs :G status<CR>
 nnoremap <leader>gw :Gw<CR>
 nnoremap <leader>gW :Gwq<CR>
+nnoremap <leader>dm :G diff master<CR>
 nnoremap <leader>gd :G diff<CR>
 nnoremap <leader>gc :G commit<CR>
 nnoremap <leader>ga :G add<Space>
