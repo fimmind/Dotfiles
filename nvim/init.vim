@@ -44,14 +44,7 @@ nnoremap <leader>gl :G log<CR>
 " Spell check
 " ================================================
 set spelllang=en,ru_yo
-command! ToggleSpell call ToggleSpell()
-function ToggleSpell()
-  if(&spell)
-    setlocal nospell
-  else
-    setlocal spell
-  endif
-endfunction
+command! ToggleSpell let &spell = ! &spell
 
 nnoremap <leader>st :ToggleSpell<CR>
 nnoremap <leader>sp mm[s1z=`m
