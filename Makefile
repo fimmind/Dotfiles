@@ -108,6 +108,7 @@ gitConfig:
 	git config --global user.name fimmind
 	git config --global user.email "fimmind@mail.ru"
 	git config --global core.editor nvim
+	git config --global credential.helper cache
 
 .ONESHELL:
 installTexLive:
