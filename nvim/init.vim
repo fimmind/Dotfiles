@@ -2,7 +2,7 @@ exec "source" . stdpath('config') . "/plugins.vim"
 
 " Mappings
 " ================================================
-command! Vimrc e ~/.config/nvim/init.vim
+command! Vimrc e ~/Dotfiles/nvim/init.vim
 
 let g:move_key_modifier='C'
 
@@ -35,8 +35,8 @@ nnoremap <leader>to :tabonly<CR>
 nnoremap <leader>gs :G status<CR>
 nnoremap <leader>gw :Gw<CR>
 nnoremap <leader>gW :Gwq<CR>
-nnoremap <leader>gd :Gvdiff<CR>
-nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>gd :G diff<CR>
+nnoremap <leader>gc :G commit<CR>
 nnoremap <leader>ga :G add<Space>
 nnoremap <leader>gl :G log<CR>
 
