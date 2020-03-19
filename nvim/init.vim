@@ -194,6 +194,8 @@ tnoremap <Esc> <C-\><C-n>
 autocmd TermOpen * setlocal nonumber norelativenumber
 command! Zsh vsplit term://zsh | :startinsert
 
+nnoremap <leader>z :Zsh<CR>
+
 " Rainbow parentheseses
 " ================================================
 let g:rainbow_active = 1
