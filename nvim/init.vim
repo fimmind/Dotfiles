@@ -30,6 +30,16 @@ nnoremap <leader>ts :tabs<CR>
 nnoremap <leader>tq :tabclose<CR>
 nnoremap <leader>to :tabonly<CR>
 
+" Fugitive
+" ================================================
+nnoremap <leader>gs :G status<CR>
+nnoremap <leader>gw :Gw<CR>
+nnoremap <leader>gW :Gwq<CR>
+nnoremap <leader>gd :Gvdiff<CR>
+nnoremap <leader>gc :Gcommit<CR>
+nnoremap <leader>ga :G add<Space>
+nnoremap <leader>gl :G log<CR>
+
 " Spell check
 " ================================================
 set spelllang=en,ru_yo
