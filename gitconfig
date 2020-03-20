@@ -1,0 +1,7 @@
+[user]
+	email = fimmind@mail.ru
+	name = fimmind
+[core]
+	editor = nvim
+[gpg]
+	program = gpg

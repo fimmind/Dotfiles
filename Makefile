@@ -8,7 +8,7 @@ ifeq ($(SYSTEM), manjaro)
 	sudo pacman -R manjaro-i3-settings i3status-manjaro
 endif
 	$(MAKE) LN_ARGS=-sfT \
-		installPackets installBrew enableBluetooth gitConfig installOhMyZsh \
+		installPackets installBrew enableBluetooth installOhMyZsh \
 		installTheHaskellToolStack link-all setupNeoVim ldconfig \
 		installLeiningen installHIE installBoot-clj
 	i3exit lock
@@ -29,6 +29,7 @@ link-all:
 	test -d ~/.config    || mkdir    ~/.config
 	test -d ~/.local/bin || mkdir -p ~/.local/bin
 	test -d ~/.lein      || mkdir    ~/.lein
+	${LN}/gitconfig                  ~/.gitconfig
 	${LN}/nvim                       ~/.config/nvim
 	${LN}/zshrc                      ~/.zshrc
 	${LN}/i3                         ~/.config/i3
@@ -103,11 +104,6 @@ setupNeoVim:
 updateVimPlug:
 	curl -fLo ./nvim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-gitConfig:
-	git config --global user.name fimmind
-	git config --global user.email "fimmind@mail.ru"
-	git config --global core.editor nvim
 
 .ONESHELL:
 installTexLive:
