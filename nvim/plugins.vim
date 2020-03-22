@@ -45,7 +45,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'skywind3000/asyncrun.vim'
   Plug 'michaeljsmith/vim-indent-object'
   Plug 'KorySchneider/vim-trim'
-  Plug 'tpope/vim-fugitive'                " TODO: learn
+  Plug 'tpope/vim-fugitive'
   Plug 'dbakker/vim-projectroot'
   Plug 'vim-scripts/vim-auto-save'
 
