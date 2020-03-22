@@ -17,6 +17,9 @@ nnoremap gk k
 
 nnoremap <leader>sr :source %<CR>
 
+nnoremap gq :q<CR>
+nnoremap gw :w<CR>
+
 autocmd BufWrite * :Trim
 
 " Tabs
