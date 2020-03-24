@@ -68,7 +68,8 @@ let g:rootmarkers = [
 let g:coc_global_extensions = [
       \ "coc-git", "coc-explorer", "coc-yaml", "coc-vimlsp",
       \ "coc-texlab", "coc-python", "coc-json", "coc-rls",
-      \ "coc-ultisnips", "coc-word", "coc-html", "coc-conjure"
+      \ "coc-ultisnips", "coc-word", "coc-html", "coc-conjure",
+      \ "coc-tsserver"
       \ ]
 function InstallCocExtensions()
   exec "CocInstall -sync " . join(g:coc_global_extensions)
