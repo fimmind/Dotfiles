@@ -19,7 +19,7 @@ settings:
     global: DejaVu Sans Mono
   url.searchengines:
     global:
-      DEFAULT: https://duckduckgo.com/?q={}
+      DEFAULT: https://www.google.com/search?q={}
       duckduckgo: https://duckduckgo.com/?q={}
       google: https://www.google.com/search?q={}
       wiki: https://ru.wikipedia.org/w/index.php?search={}
