@@ -22,6 +22,8 @@ nnoremap gw :w<CR>
 
 autocmd BufWrite * :Trim
 
+nnoremap <leader>; mmA;<Esc>`m
+
 " Tabs
 " ================================================
 nnoremap <leader>tn :tabnext<CR>
