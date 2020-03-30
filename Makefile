@@ -8,9 +8,9 @@ ifeq ($(SYSTEM), manjaro)
 	sudo pacman -R manjaro-i3-settings i3status-manjaro
 endif
 	$(MAKE) LN_ARGS=-sfT \
-		installPackets installBrew enableBluetooth installOhMyZsh \
-		installTheHaskellToolStack link-all setupNeoVim ldconfig \
-		installLeiningen installHIE installBoot-clj
+		installPackets installBrew installBrewPackets enableBluetooth \
+		installOhMyZsh installTheHaskellToolStack link-all setupNeoVim ldconfig \
+		installLeiningen installHIE
 	i3exit lock
 	$(MAKE) link-Xresources # Mast be last, because it asks confirmation
 
@@ -99,7 +99,6 @@ setupNeoVim:
 	sudo pip3 install pynvim unicode flake8 yapf sympy inkscape-figures
 	stack install stylish-haskell hdevtools
 	sudo npm install -g neovim bash-language-server
-	brew install ccls
 
 updateVimPlug:
 	curl -fLo ./nvim/autoload/plug.vim --create-dirs \
@@ -136,6 +135,9 @@ installFloskell:
 installBrew:
 	echo | sh -c \
 		"$$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+
+installBrewPackets:
+	brew install candid82/brew/joker ccls
 
 installClojure-lsp:
 	wget https://github.com/snoe/clojure-lsp/releases/latest/download/clojure-lsp -O ~/.local/bin/clojure-lsp
