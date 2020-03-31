@@ -356,7 +356,7 @@ let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
                         \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
                         \ }
 let g:polyglot_disabled = ['markdown']
-let g:mkdp_auto_close = 1
+let g:mkdp_auto_close = 0
 
 let g:mkdp_browserfunc = 'OpenMKDP'
 function OpenMKDP(url)
