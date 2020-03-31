@@ -11,6 +11,7 @@ settings:
   content.geolocation:
     https://www.google.com: true
   content.notifications:
+    https://83.farcaleniom.com: false
     https://novate.ru: false
     https://onlinemultfilmy.ru: false
     https://webchat.freenode.net: true
