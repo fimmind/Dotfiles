@@ -44,7 +44,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'scrooloose/nerdcommenter'
   Plug 'skywind3000/asyncrun.vim'
   Plug 'michaeljsmith/vim-indent-object'
-  Plug 'KorySchneider/vim-trim'
   Plug 'tpope/vim-fugitive'
   Plug 'dbakker/vim-projectroot'
   Plug 'vim-scripts/vim-auto-save'
@@ -59,4 +58,5 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'cohama/lexima.vim'
   Plug 'sirver/UltiSnips'
   Plug 'luochen1990/rainbow'
+  Plug 'dense-analysis/ale'
 call plug#end()

@@ -20,8 +20,6 @@ nnoremap <leader>sr :source %<CR>
 nnoremap gq :q<CR>
 nnoremap gw :w<CR>
 
-autocmd BufWrite * :Trim
-
 nnoremap <leader>; mmA;<Esc>`m
 
 " Tabs
@@ -64,6 +62,18 @@ let g:rootmarkers = [
       \ '.projectroot', '.git', '.hg', '.svn', '.bzr', '_darcs', 'build.xml',
       \ 'main.tex', 'project.clj', 'deps.edn', 'package.yaml', 'stack.yaml'
       \ ]
+
+" ALE
+" ================================================
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+      \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \ }
+
+let g:ale_linters_explicit = 1
+let g:ale_linters = {
+      \ 'clojure': ['joker']
+      \ }
 
 " CoC
 " ================================================
