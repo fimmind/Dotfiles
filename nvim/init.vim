@@ -75,6 +75,8 @@ let g:ale_linters = {
       \ 'clojure': ['joker']
       \ }
 
+let g:ale_sign_warning = ">>"
+
 " CoC
 " ================================================
 " TODO: setup coc-eslint
