@@ -67,6 +67,7 @@ let g:rootmarkers = [
 
 " CoC
 " ================================================
+" TODO: setup coc-eslint
 let g:coc_global_extensions = [
       \ "coc-git", "coc-explorer", "coc-yaml", "coc-vimlsp",
       \ "coc-texlab", "coc-python", "coc-json", "coc-rls",
