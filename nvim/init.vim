@@ -139,6 +139,7 @@ autocmd CursorMoved * silent call CocActionAsync('highlight')
 
 " Remap for rename current word
 command! Rename normal <Plug>(coc-rename)
+nnoremap <leader>ar :Rename<CR>
 
 " Remap for format selected region
 xmap <leader>fs  <Plug>(coc-format-selected)
