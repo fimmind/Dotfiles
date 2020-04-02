@@ -416,6 +416,10 @@ let g:buildAndRunSetup = {
         \ "run":       "lein run",
         \ "needBuild": 0
         \ },
+      \ "joker": {
+        \ "run":       "joker '%:p'",
+        \ "needBuild": 0
+        \ },
       \ "scala": {
         \ "run":       "scala '%:p'",
         \ "needBuild": 0
