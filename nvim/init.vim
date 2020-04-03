@@ -20,8 +20,6 @@ nnoremap <leader>sr :source %<CR>
 nnoremap gq :q<CR>
 nnoremap gw :w<CR>
 
-nnoremap <leader>; mmA;<Esc>`m
-
 " Tabs
 " ================================================
 nnoremap <leader>tn :tabnext<CR>
