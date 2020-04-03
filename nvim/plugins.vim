@@ -26,6 +26,9 @@ call plug#begin(stdpath('data') . '/plugged')
   " Html
   Plug 'mattn/emmet-vim'
 
+  " JavaScript
+  Plug 'lfilho/cosco.vim'
+
   " LaTeX
   Plug 'donRaphaco/neotex', { 'for': 'tex' }
 
