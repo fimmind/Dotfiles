@@ -10,5 +10,6 @@ export XDG_DATA_HOME="$HOME/.local/share"
 PATH="$PATH:$HOME/Dotfiles/bin"
 PATH="$PATH:/usr/local/texlive/2019/bin/x86_64-linux"
 PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
+PATH="$PATH:$XDG_DATA_HOME/nvim/plugged/vim-iced/bin"
 
 # vim:ft=sh

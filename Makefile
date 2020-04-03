@@ -42,7 +42,6 @@ link-all:
 	${LN}/brittany                   ~/.config/brittany
 	${LN}/broot                      ~/.config/broot
 	${LN}/profile                    ~/.profile
-	${LN}/conjure                    ~/.config/conjure
 	${LN}/tmux.conf                  ~/.tmux.conf
 
 .ONESHELL:

@@ -6,12 +6,13 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'PotatoesMaster/i3-vim-syntax'
   Plug 'vim-airline/vim-airline'
 
-  " Clojure
-  Plug 'Olical/conjure', { 'tag': 'v2.1.2', 'do': 'bin/compile' }
-
   " Lisp
   Plug 'guns/vim-sexp'
   Plug 'eraserhd/parinfer-rust', { 'do': 'cargo build --release' }
+
+  " Clojure
+  Plug 'liquidz/vim-iced', {'for': 'clojure'}
+  Plug 'liquidz/vim-iced-coc-source', {'for': 'clojure'}
 
   " Haskell
   Plug 'neovimhaskell/haskell-vim'

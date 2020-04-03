@@ -61,5 +61,6 @@
   "python.linting.flake8Enabled": true,
   "python.linting.pylintEnabled": false,
   "python.formatting.provider": "yapf",
-  "latex.lint.onChange": true
+  "latex.lint.onChange": true,
+  "coc.source.iced.enable": true
 }

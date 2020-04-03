@@ -81,8 +81,7 @@ let g:ale_sign_warning = ">>"
 let g:coc_global_extensions = [
       \ "coc-git", "coc-explorer", "coc-yaml", "coc-vimlsp",
       \ "coc-texlab", "coc-python", "coc-json", "coc-rls",
-      \ "coc-ultisnips", "coc-word", "coc-html", "coc-conjure",
-      \ "coc-tsserver"
+      \ "coc-ultisnips", "coc-word", "coc-html", "coc-tsserver"
       \ ]
 function InstallCocExtensions()
   exec "CocInstall -sync " . join(g:coc_global_extensions)
@@ -237,16 +236,9 @@ let g:rainbow_conf = {
 " ================================================
 autocmd FileType lisp,clojure let b:lexima_disabled = 1
 
+let g:iced_enable_default_key_mappings = v:true
+
 let g:sexp_enable_insert_mode_mappings = 0
-
-let g:conjure_log_direction = "horizontal"
-let g:conjure_log_blacklist = ["up", "ret", "ret-multiline", "load-file", "eval"]
-
-let g:conjure_nmap_run_tests = ""
-let g:conjure_nmap_run_all_tests = ""
-
-let g:conjure_log_size_small = 25
-let g:conjure_log_size_large = 25
 
 " Haskell
 " ================================================
