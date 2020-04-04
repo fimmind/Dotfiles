@@ -8,7 +8,6 @@ call plug#begin(stdpath('data') . '/plugged')
 
   " Lisp
   Plug 'guns/vim-sexp'
-  Plug 'eraserhd/parinfer-rust', { 'do': 'cargo build --release' }
 
   " Clojure
   Plug 'liquidz/vim-iced', {'for': 'clojure'}

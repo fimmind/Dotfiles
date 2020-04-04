@@ -239,7 +239,7 @@ autocmd FileType lisp,clojure let b:lexima_disabled = 1
 let g:iced_enable_default_key_mappings = v:true
 let g:iced_formatter = 'cljstyle'
 
-let g:sexp_enable_insert_mode_mappings = 0
+let g:sexp_enable_insert_mode_mappings = 1
 
 " Haskell
 " ================================================
