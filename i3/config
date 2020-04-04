@@ -44,6 +44,7 @@ bindsym $mod+d exec rofi -modi drun -show drun -show-icons
 bindsym $mod+x exec rofi -dmenu -p "run" -l 0 | zsh
 bindsym Mod1+Tab exec rofi -show window
 bindsym $mod+c exec kitty --class=calculator -- qalc
+bindsym $mod+n exec nvimanywhere
 
 ########## Focus ##########
 bindsym $mod+h focus left
@@ -180,6 +181,7 @@ new_window 1pixel
 # for_window [window_role="task_dialog"] floating enable
 # for_window [title="Preferences$"] floating enable
 for_window [class="calculator"] floating enable
+for_window [class="float"] floating enable
 
 smart_borders no_gaps
 smart_gaps on

@@ -1,0 +1,6 @@
+#! /usr/bin/env bash
+
+file=$(mktemp)
+kitty --class=float -- nvim $file
+cat $file | xclip -sel clip
+rm $file
