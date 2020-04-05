@@ -90,7 +90,7 @@ else
 endif
 
 ldconfig:
-	ldconfig
+	sudo ldconfig
 
 setupNeoVim:
 	nvim -u "nvim/plugins.vim" -c ":PlugInstall | :qa"
