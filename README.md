@@ -14,6 +14,7 @@ Use `lxappearance`:
 * Mouse cursor: Breeze
 
 ## TODO
+* Replace i3status with i3blocks
 * Exhaustive documentation
 * System installation instructions
 * Setup default applications
