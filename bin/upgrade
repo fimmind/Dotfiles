@@ -4,7 +4,6 @@ sudo_upgrade(){
   pacman -Suy --noconfirm
   tlmgr update --self --all --reinstall-forcibly-removed
   pamac update --no-confirm
-  npm install -g npm
   npm upgrade
 }
 
