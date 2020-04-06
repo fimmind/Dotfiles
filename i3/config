@@ -156,6 +156,7 @@ bar {
     workspace_buttons yes
     binding_mode_indicator yes
     tray_output HDMI1
+    separator_symbol " - "
 
     colors {
         background #404552
