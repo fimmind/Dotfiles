@@ -20,6 +20,8 @@ nnoremap <leader>sr :source %<CR>
 nnoremap gq :q<CR>
 nnoremap gw :w<CR>
 
+nnoremap <leader>u :UndotreeToggle<CR>:UndotreeFocus<CR>
+
 " Tabs
 " ================================================
 nnoremap <leader>tn :tabnext<CR>

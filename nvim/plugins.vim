@@ -50,6 +50,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'tpope/vim-fugitive'
   Plug 'dbakker/vim-projectroot'
   Plug 'vim-scripts/vim-auto-save'
+  Plug 'mbbill/undotree'
 
   " Motion
   Plug 'matze/vim-move'
