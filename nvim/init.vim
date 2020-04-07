@@ -79,7 +79,6 @@ let g:ale_sign_warning = ">>"
 
 " CoC
 " ================================================
-" TODO: setup coc-eslint
 let g:coc_global_extensions = [
       \ "coc-git", "coc-explorer", "coc-yaml", "coc-vimlsp",
       \ "coc-texlab", "coc-python", "coc-json", "coc-rls",
@@ -167,7 +166,6 @@ nmap <leader>qf  <Plug>(coc-fix-current)
 " Create mappings for function text object, requires document symbols feature of languageserver.
 xmap if <Plug>(coc-funcobj-a)
 omap if <Plug>(coc-funcobj-a)
-" TODO: af, which also selects space around function
 
 " Use `:Format` to format current buffer
 command! -nargs=0 Format :call CocAction('format')

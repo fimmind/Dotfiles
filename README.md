@@ -22,6 +22,7 @@ Use `lxappearance`:
 * (Neo)Vim:
   * Same mappings for vim-iced and ALE as for coc.nvim
   * General REPL mapping. Maybe with [vim-repl](https://github.com/sillybun/vim-repl)
+  * Setup coc-eslint
   * Fix haskell `module` snippet (It ignores path to module right now)
   * Try to setup and use [floskell](https://github.com/ennocramer/floskell)
 
