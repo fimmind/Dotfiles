@@ -43,6 +43,7 @@ link-all:
 	${LN}/broot                      ~/.config/broot
 	${LN}/profile                    ~/.profile
 	${LN}/tmux.conf                  ~/.tmux.conf
+	${LN}/cljstyle                   ~/.cljstyle
 
 .ONESHELL:
 link-Xresources:
