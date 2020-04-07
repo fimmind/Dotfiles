@@ -4,7 +4,7 @@
 $ cd ~  # Some scripts and settings rely on this Dotfiles' location
 $ git clone https://github.com/fimmind/Dotfiles
 $ cd Dotfiles
-$ make
+$ make # Enter super user's password when asked
 ```
 
 ## GTK theme
