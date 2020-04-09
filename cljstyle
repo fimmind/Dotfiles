@@ -1,5 +1,4 @@
-{:list-indent-size 1
- :line-break-functions? false
+{:line-break-functions? false
  :indents {#"def.*" [[:inner 0]]}}
 
 ; vim:ft=clojure
