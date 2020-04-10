@@ -11,3 +11,5 @@ if [ "`uname -o`" = "Android" ]
   alias hugs="termux-chroot hugs"
   alias runhugs="termux-chroot runhugs"
 end
+
+set fish_greeting
