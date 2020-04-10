@@ -14,7 +14,10 @@ Use `lxappearance`:
 * Mouse cursor: Breeze
 
 ## TODO
-* Replace i3status with i3blocks
+* Replacements:
+  * i3status -> i3blocks
+  * kitty -> st (simple terminal)
+  * zsh -> fish (Like [that](https://www.youtube.com/watch?v=ux1SP9B5lSQ))
 * Exhaustive documentation
 * System installation instructions
 * Setup default applications
