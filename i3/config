@@ -41,7 +41,7 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 bindsym $mod+d exec rofi -modi drun -show drun -show-icons
-bindsym $mod+x exec rofi -dmenu -p "run" -l 0 | zsh
+bindsym $mod+x exec rofi -dmenu -p "run" -l 0 | fish
 bindsym Mod1+Tab exec rofi -show window
 bindsym $mod+c exec kitty --class=calculator -- qalc
 bindsym $mod+n exec nvimanywhere

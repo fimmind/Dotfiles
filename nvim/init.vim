@@ -210,9 +210,9 @@ autocmd FileType html,css EmmetInstall
 " ================================================
 tnoremap <Esc> <C-\><C-n>
 autocmd TermOpen * setlocal nonumber norelativenumber
-command! Zsh vsplit term://zsh | :startinsert
 
-nnoremap <leader>z :Zsh<CR>
+command! Sh vsplit term://fish | startinsert
+nnoremap <leader>z :Sh<CR>
 
 " Rainbow parentheseses
 " ================================================

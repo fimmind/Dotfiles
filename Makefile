@@ -9,7 +9,7 @@ ifeq ($(SYSTEM), manjaro)
 endif
 	$(MAKE) LN_ARGS=-sfT \
 		installPackets installBrew installBrewPackets enableBluetooth \
-		installOhMyZsh installTheHaskellToolStack link-all setupNeoVim ldconfig \
+		installOhMyFish installTheHaskellToolStack link-all setupNeoVim ldconfig \
 		installLeiningen installHIE
 	i3exit lock
 	$(MAKE) link-Xresources # Mast be last, because it asks confirmation
@@ -31,7 +31,8 @@ link-all:
 	test -d ~/.lein      || mkdir    ~/.lein
 	${LN}/gitconfig                  ~/.gitconfig
 	${LN}/nvim                       ~/.config/nvim
-	${LN}/zshrc                      ~/.zshrc
+	${LN}/fish                       ~/.config/fish
+	${LN}/omf                        ~/.config/omf
 	${LN}/i3                         ~/.config/i3
 	${LN}/i3status                   ~/.config/i3status
 	${LN}/kitty                      ~/.config/kitty
@@ -61,7 +62,12 @@ link-Xresources:
 installOhMyZsh:
 	sh -c "`curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh` --unattended"
 	mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
-	chsh -s `which zsh`
+	sh -c "chsh -s `which zsh`"
+
+installOhMyFish:
+	curl -L https://get.oh-my.fish | fish
+	fish -c "omf install sashimi"
+	sh -c "chsh -s `which fish`"
 
 installTheHaskellToolStack:
 	curl -sSL https://get.haskellstack.org/ | sh
@@ -77,7 +83,7 @@ ifeq ($(SYSTEM), manjaro)
 	sudo pacman -S --noconfirm \
 		curl git cmake make kitty qutebrowser python3 bluez bluez-utils \
 		gcc neovim rofi htop ranger pcmanfm zathura telegram-desktop lm_sensors jq \
-		keynav qalculate-gtk i3-gaps i3lock i3exit i3status zsh zathura-pdf-mupdf \
+		keynav qalculate-gtk i3-gaps i3lock i3exit i3status fish zathura-pdf-mupdf \
 		clisp libreoffice-fresh libreoffice-fresh-ru ghc-libs ghc-static rustup \
 		nodejs npm php rlwrap clojure cargo rogue nethack scala inkscape ruby \
 		imagemagick wine winetricks unrar firefox dotnet-sdk ttf-dejavu broot \
