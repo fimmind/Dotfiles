@@ -3,6 +3,13 @@ alias fix_time="sudo ntpd -qg"
 alias vimrc="nvim -c Vimrc"
 alias getamsterdam="cp ~/Dotfiles/beamerthemeAmsterdam.sty ./"
 
+alias la="ls -AlF"
+alias l="ls -CF"
+alias ll="ls -ACF"
+alias gs="git status"
+alias gd="git diff"
+
+
 set MANPATH  "$MANPATH:/usr/local/texlive/2019/texmf-dist/doc/man"
 set INFOPATH "$INFOPATH:/usr/local/texlive/2019/texmf-dist/doc/info"
 
