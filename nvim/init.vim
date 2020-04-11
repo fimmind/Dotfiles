@@ -379,7 +379,7 @@ let g:NERDDefaultAlign = 'left'
 let g:buildAndRunSetup = {
       \ "c": {
         \ "build":     "test -f '%:p:h/Makefile' && make -f '%:p:h/Makefile' || cmake '%:p:h'",
-        \ "run":       "test -f '%:p:r' && '%:p:r' || '%:p:h/main'",
+        \ "run":       "test -x '%:p:r' && '%:p:r' || '%:p:h/main'",
         \ "needBuild": 1
         \ },
       \ "python": {
