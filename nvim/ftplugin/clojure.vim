@@ -6,3 +6,5 @@ nnoremap <buffer> <localleader>rr :Run<CR>
 " This overrides CoC's mappings
 nnoremap <buffer> <leader>fs :IcedFormat<CR>
 nnoremap <buffer> <leader>ff :IcedFormatAll<CR>
+
+autocmd CursorMoved <buffer> IcedDocumentClose
