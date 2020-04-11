@@ -318,6 +318,7 @@ set splitbelow
 set showcmd
 set number
 set relativenumber
+set ignorecase
 set mouse=a
 filetype plugin on
 filetype plugin indent on
