@@ -52,6 +52,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'dbakker/vim-projectroot'
   Plug 'vim-scripts/vim-auto-save'
   Plug 'mbbill/undotree'
+  Plug 'junegunn/vim-peekaboo'
+  Plug 'nelstrom/vim-visual-star-search'
 
   " Motion
   Plug 'matze/vim-move'
