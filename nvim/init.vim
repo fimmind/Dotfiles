@@ -378,53 +378,43 @@ let g:NERDDefaultAlign = 'left'
 " ================================================
 let g:buildAndRunSetup = {
       \ "c": {
-        \ "build"    : "test -f '%:p:h/Makefile' && make -f '%:p:h/Makefile' || cmake '%:p:h'",
-        \ "run"      : "test -f '%:p:r' && '%:p:r' || '%:p:h/main'",
+        \ "build":     "test -f '%:p:h/Makefile' && make -f '%:p:h/Makefile' || cmake '%:p:h'",
+        \ "run":       "test -f '%:p:r' && '%:p:r' || '%:p:h/main'",
         \ "needBuild": 1
         \ },
       \ "python": {
-        \ "run"      : "python3 '%:p'",
-        \ "needBuild": 0
+        \ "run":       "python3 '%:p'"
         \ },
       \ "javascript": {
-        \ "run"      : "node '%:p'",
-        \ "needBuild": 0
+        \ "run":       "node '%:p'"
         \ },
       \ "haskell": {
-        \ "build"    : "stack build",
-        \ "run"      : "stack test && clear && stack run",
-        \ "needBuild": 0
+        \ "build":     "stack build",
+        \ "run":       "stack test && clear && stack run"
         \ },
       \ "php": {
-        \ "run"      : "php -f '%:p'",
-        \ "needBuild": 0
+        \ "run":       "php -f '%:p'"
         \ },
       \ "lisp": {
-        \ "run"      : "clisp '%:p'",
-        \ "needBuild": 0
+        \ "run":       "clisp '%:p'"
         \ },
       \ "clojure": {
         \ "build":     "lein uberjar",
-        \ "run":       "lein run",
-        \ "needBuild": 0
+        \ "run":       "lein run"
         \ },
       \ "scala": {
-        \ "run":       "scala '%:p'",
-        \ "needBuild": 0
+        \ "run":       "scala '%:p'"
         \ },
       \ "rust": {
-        \ "run":       "cargo run",
         \ "build":     "cargo build",
-        \ "needBuild": 0
+        \ "run":       "cargo run"
         \ },
       \ "cs": {
-        \ "run":       "dotnet run",
-        \ "build":     "dotnet build",
-        \ "needBuild": 0
+        \ "build":     "!dotnet build",
+        \ "run":       "dotnet run"
         \ },
       \ "sh": {
-        \ "run":       "'%:p'",
-        \ "needBuild": 0
+        \ "run":       "'%:p'"
         \ }
       \ }
 
@@ -466,7 +456,7 @@ function! Run()
   let fileType = &ft
   if has_key(g:buildAndRunSetup, fileType)
     let setup = g:buildAndRunSetup[fileType]
-    if setup["needBuild"]
+    if has_key(setup, "needBuild") && setup["needBuild"]
       execute "!".setup["build"]
     endif
     split
