@@ -15,8 +15,6 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
-nnoremap <leader>sr :source %<CR>
-
 nnoremap gq :q<CR>
 nnoremap gw :w<CR>
 
@@ -376,11 +374,14 @@ let g:NERDDefaultAlign = 'left'
 
 " Build & Run
 " ================================================
-let g:buildAndRunSetup = {
+nnoremap <leader>rr :call build_and_run#run()<CR>
+nnoremap <leader>bb :call build_and_run#build()<CR>
+
+let g:build_and_run_setup = {
       \ "c": {
-        \ "build":     "test -f '%:p:h/Makefile' && make -f '%:p:h/Makefile' || cmake '%:p:h'",
-        \ "run":       "test -x '%:p:r' && '%:p:r' || '%:p:h/main'",
-        \ "needBuild": 1
+        \ "build":     "!test -f '%:h/Makefile' && make -f '%:h/Makefile' || cmake '%:h'",
+        \ "run":       "test -x '%:p:r' && %:p:r || '%:h/main'",
+        \ "need_build": 1
         \ },
       \ "python": {
         \ "run":       "python3 '%:p'"
@@ -389,7 +390,7 @@ let g:buildAndRunSetup = {
         \ "run":       "node '%:p'"
         \ },
       \ "haskell": {
-        \ "build":     "stack build",
+        \ "build":     "!stack build",
         \ "run":       "stack test && clear && stack run"
         \ },
       \ "php": {
@@ -399,14 +400,14 @@ let g:buildAndRunSetup = {
         \ "run":       "clisp '%:p'"
         \ },
       \ "clojure": {
-        \ "build":     "lein uberjar",
+        \ "build":     "!lein uberjar",
         \ "run":       "lein run"
         \ },
       \ "scala": {
         \ "run":       "scala '%:p'"
         \ },
       \ "rust": {
-        \ "build":     "cargo build",
+        \ "build":     "!cargo build",
         \ "run":       "cargo run"
         \ },
       \ "cs": {
@@ -415,55 +416,15 @@ let g:buildAndRunSetup = {
         \ },
       \ "sh": {
         \ "run":       "'%:p'"
+        \ },
+      \ "vim": {
+        \ "run":       ":source %"
         \ }
       \ }
 
 
 function! Eq(fst, snd)
-  let g:buildAndRunSetup[a:fst] = g:buildAndRunSetup[a:snd]
+  let g:build_and_run_setup[a:fst] = g:build_and_run_setup[a:snd]
 endfunction
 
 call Eq("cpp", "c")
-
-" Build
-" ================================================
-nnoremap <Leader>b :call Build()<CR>
-command! Build execute Build()
-function! Build()
-  let workDir = system("pwd")
-  wa | cd %:p:h
-  let fileType = &ft
-  if has_key(g:buildAndRunSetup, fileType)
-    let setup = g:buildAndRunSetup[fileType]
-    if has_key(setup, "build")
-      execute "!".setup["build"]
-    else
-      echo fileType." has not \"build\" field"
-    endif
-  else
-    echo "There's no \"".fileType."\" in g:buildAndRunSetup"
-  endif
-  execute "cd ".workDir
-endfunction
-
-" Run
-" ================================================
-nnoremap <Leader>r :call Run()<CR>
-command! Run execute Run()
-function! Run()
-  let workDir = system("pwd")
-  wa | cd %:p:h
-  let fileType = &ft
-  if has_key(g:buildAndRunSetup, fileType)
-    let setup = g:buildAndRunSetup[fileType]
-    if has_key(setup, "needBuild") && setup["needBuild"]
-      execute "!".setup["build"]
-    endif
-    split
-    execute "terminal ".setup["run"]
-    startinsert
-  else
-    echo "There's no \"".fileType."\" in g:buildAndRunSetup"
-  endif
-  execute "cd ".workDir
-endfunction

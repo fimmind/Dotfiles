@@ -22,6 +22,7 @@ Use `lxappearance`:
 * Setup default applications
 * Setup windows layout using [this](https://i3wm.org/docs/layout-saving.html) article
 * (Neo)Vim:
+  * Move `autoload/build_and_run.vim` into separated plugin
   * Same mappings for vim-iced and ALE as for coc.nvim
   * General REPL mapping. Maybe with [vim-repl](https://github.com/sillybun/vim-repl)
   * Setup coc-eslint
