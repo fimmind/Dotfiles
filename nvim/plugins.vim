@@ -1,6 +1,6 @@
 call plug#begin(stdpath('data') . '/plugged')
   " Syntax, style
-  Plug 'phaazon/gruvbox' " Not original, couse of haskell-vim support
+  Plug 'phaazon/gruvbox' " Not original, cause of haskell-vim support
   Plug 'suy/vim-qmake'
   Plug 'justinmk/vim-syntax-extra'
   Plug 'PotatoesMaster/i3-vim-syntax'
