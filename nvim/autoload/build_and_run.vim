@@ -16,6 +16,8 @@ endfunction
 " Read configuration
 " ================================================
 let s:config = {
+      \ "save_on_build": 1,
+      \ "save_on_run": 1
       \ }
 
 if exists("g:build_and_run_config")
@@ -84,6 +86,10 @@ function! build_and_run#build()
     return
   endif
 
+  if s:config["save_on_run"]
+    wa
+  endif
+
   call s:save_cwd()
   call s:build_bare()
   call s:restore_cwd()
@@ -99,6 +105,10 @@ function! build_and_run#run()
   if !s:is_ft_configured()
     call s:print_message("filetype " . &ft . " is not configured")
     return
+  endif
+
+  if s:config["save_on_build"]
+    wa
   endif
 
   call s:save_cwd()
