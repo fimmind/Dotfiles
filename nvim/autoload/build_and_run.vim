@@ -13,6 +13,21 @@ function! s:print_message(msg)
   exec s:build_message(a:msg)
 endfunction
 
+" Read configuration
+" ================================================
+let s:config = {
+      \ }
+
+if exists("g:build_and_run_config")
+  for [key, val] in items(g:build_and_run_config)
+    if has_key(s:config, key)
+      let s:config[key] = val
+    else
+      call s:print_message("Ignoring unknown option '" . key . "' in config")
+    endif
+  endfor
+endif
+
 " Commands evaluation
 " ================================================
 function! s:run_cmd(cmd)
