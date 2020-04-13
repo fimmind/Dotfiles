@@ -18,6 +18,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'neovimhaskell/haskell-vim'
   Plug 'alx741/vim-stylishask'
   Plug 'fimmind/vim-hs-type'
+  Plug 'feuerbach/vim-hs-module-name'
 
   " Markdown
   Plug 'SidOfc/mkdx'
