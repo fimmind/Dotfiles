@@ -21,6 +21,10 @@ set mouse=a
 filetype plugin on
 filetype plugin indent on
 
+if &shell =~# 'fish$'
+    set shell=bash
+endif
+
 " Mappings
 " ================================================
 command! Vimrc e ~/Dotfiles/nvim/init.vim
