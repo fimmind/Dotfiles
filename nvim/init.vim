@@ -415,7 +415,10 @@ let g:build_and_run_setup = {
         \ "run":       "dotnet run"
         \ },
       \ "sh": {
-        \ "run":       "'%:p'"
+        \ "run":       "sh '%:p'"
+        \ },
+      \ "fish": {
+        \ "run":       "fish '%:p'"
         \ },
       \ "vim": {
         \ "run":       ":source %"
