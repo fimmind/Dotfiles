@@ -379,8 +379,8 @@ nnoremap <leader>bb :call build_and_run#build()<CR>
 
 let g:build_and_run_setup = {
       \ "c": {
-        \ "build":     "!test -f '%:h/Makefile' && make -f '%:h/Makefile' || cmake '%:h'",
-        \ "run":       "test -x '%:p:r' && %:p:r || '%:h/main'",
+        \ "build":     "!test -f '%:h/Makefile'; or cmake '%:h'; and make -f '%:h/Makefile'",
+        \ "run":       "test -x '%:p:r'; and %:p:r; or '%:h/main'",
         \ "need_build": 1
         \ },
       \ "python": {
