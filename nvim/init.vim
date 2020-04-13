@@ -1,5 +1,26 @@
 exec "source" . stdpath('config') . "/plugins.vim"
 
+" Main
+" ================================================
+set colorcolumn=81
+set splitright
+set wrap
+set hlsearch
+set showmatch
+set termencoding=utf-8
+set fileencodings=utf-8,cp1251
+set ch=1
+set title
+set wildmenu
+set splitbelow
+set showcmd
+set number
+set relativenumber
+set ignorecase
+set mouse=a
+filetype plugin on
+filetype plugin indent on
+
 " Mappings
 " ================================================
 command! Vimrc e ~/Dotfiles/nvim/init.vim
@@ -299,27 +320,6 @@ autocmd FileType cpp,c,python
       \ set tabstop=4
       \ | set shiftwidth=4
       \ | set softtabstop=4
-
-" Other settings
-" ================================================
-set colorcolumn=81
-set splitright
-set wrap
-set hlsearch
-set showmatch
-set termencoding=utf-8
-set fileencodings=utf-8,cp1251
-set ch=1
-set title
-set wildmenu
-set splitbelow
-set showcmd
-set number
-set relativenumber
-set ignorecase
-set mouse=a
-filetype plugin on
-filetype plugin indent on
 
 " Theme
 " ================================================
