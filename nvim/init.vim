@@ -42,10 +42,10 @@ let g:maplocalleader=' '
 let g:mapleader=' '
 nmap \ <Plug>(easymotion-prefix)
 
-noremap j gj
-noremap k gk
-noremap gj j
-noremap gk k
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+nnoremap gk k
 
 nnoremap gq :q<CR>
 nnoremap gw :w<CR>
