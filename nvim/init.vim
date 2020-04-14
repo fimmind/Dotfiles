@@ -21,6 +21,13 @@ set mouse=a
 filetype plugin on
 filetype plugin indent on
 
+set hidden         " :
+set nobackup       " :
+set nowritebackup  " : for coc.nvim
+set updatetime=300 " :
+set shortmess+=c   " :
+set signcolumn=yes " :
+
 if &shell =~# 'fish$'
     set shell=bash
 endif
@@ -110,22 +117,6 @@ let g:coc_global_extensions = [
 function InstallCocExtensions()
   exec "CocInstall -sync " . join(g:coc_global_extensions)
 endfunction
-
-" if hidden is not set, TextEdit might fail.
-set hidden
-
-" Some servers have issues with backup files, see #649
-set nobackup
-set nowritebackup
-
-" You will have bad experience for diagnostic messages when it's default 4000.
-set updatetime=300
-
-" don't give |ins-completion-menu| messages.
-set shortmess+=c
-
-" always show signcolumns
-set signcolumn=yes
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
