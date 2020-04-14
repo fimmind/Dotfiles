@@ -355,11 +355,12 @@ autocmd FileType tex :NeoTexOn
 
 " Markdown
 " ================================================
-let g:mkdx#settings     = { 'highlight': { 'enable': 1 },
-                        \ 'enter': { 'shift': 1 },
-                        \ 'links': { 'external': { 'enable': 1 } },
-                        \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
-                        \ }
+let g:mkdx#settings = {
+      \ 'highlight': { 'enable': 1 },
+      \ 'enter': { 'shift': 1 },
+      \ 'links': { 'external': { 'enable': 1 } },
+      \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
+      \ }
 let g:polyglot_disabled = ['markdown']
 let g:mkdp_auto_close = 0
 
@@ -380,49 +381,49 @@ nnoremap <leader>bb :call build_and_run#build()<CR>
 
 let g:build_and_run_setup = {
       \ "c": {
-        \ "build":     "!test -f '%:h/Makefile'; or cmake '%:h'; and make -f '%:h/Makefile'",
-        \ "run":       "test -x '%:p:r'; and %:p:r; or '%:h/main'",
+        \ "build":      "!test -f '%:h/Makefile'; or cmake '%:h'; and make -f '%:h/Makefile'",
+        \ "run":        "test -x '%:p:r'; and %:p:r; or '%:h/main'",
         \ "need_build": 1
         \ },
       \ "python": {
-        \ "run":       "python3 '%:p'"
+        \ "run":        "python3 '%:p'"
         \ },
       \ "javascript": {
-        \ "run":       "node '%:p'"
+        \ "run":        "node '%:p'"
         \ },
       \ "haskell": {
-        \ "build":     "!stack build",
-        \ "run":       "stack test && clear && stack run"
+        \ "build":      "!stack build",
+        \ "run":        "stack test && clear && stack run"
         \ },
       \ "php": {
-        \ "run":       "php -f '%:p'"
+        \ "run":        "php -f '%:p'"
         \ },
       \ "lisp": {
-        \ "run":       "clisp '%:p'"
+        \ "run":        "clisp '%:p'"
         \ },
       \ "clojure": {
-        \ "build":     "!lein uberjar",
-        \ "run":       "lein run"
+        \ "build":      "!lein uberjar",
+        \ "run":        "lein run"
         \ },
       \ "scala": {
-        \ "run":       "scala '%:p'"
+        \ "run":        "scala '%:p'"
         \ },
       \ "rust": {
-        \ "build":     "!cargo build",
-        \ "run":       "cargo run"
+        \ "build":      "!cargo build",
+        \ "run":        "cargo run"
         \ },
       \ "cs": {
-        \ "build":     "!dotnet build",
-        \ "run":       "dotnet run"
+        \ "build":      "!dotnet build",
+        \ "run":        "dotnet run"
         \ },
       \ "sh": {
-        \ "run":       "sh '%:p'"
+        \ "run":        "sh '%:p'"
         \ },
       \ "fish": {
-        \ "run":       "fish '%:p'"
+        \ "run":        "fish '%:p'"
         \ },
       \ "vim": {
-        \ "run":       ":source %"
+        \ "run":        ":source %"
         \ }
       \ }
 
