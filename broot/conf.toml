@@ -2,7 +2,7 @@
 
 [[verbs]]
 invocation = "edit"
-key = "F2"
+key = "enter"
 shortcut = "e"
 execution = "$EDITOR {file}"
 
