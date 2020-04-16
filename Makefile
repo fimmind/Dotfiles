@@ -81,7 +81,7 @@ ifeq ($(SYSTEM), manjaro)
 	sudo pacman-key --refresh-keys
 	sudo pacman -Syu --noconfirm
 	sudo pacman -S --noconfirm \
-		curl git cmake make kitty qutebrowser python3 bluez bluez-utils \
+		curl git cmake make kitty qutebrowser python3 bluez bluez-utils pandoc \
 		gcc neovim rofi htop ranger pcmanfm zathura telegram-desktop lm_sensors jq \
 		keynav qalculate-gtk i3-gaps i3lock i3exit i3status fish zathura-pdf-mupdf \
 		clisp libreoffice-fresh libreoffice-fresh-ru ghc-libs ghc-static rustup \
