@@ -416,10 +416,6 @@ let g:build_and_run_setup = {
         \ },
       \ "vim": {
         \ "run":        ":source %"
-        \ },
-      \ "markdown": {
-        \ "build":      "!pandoc '%:p' -t beamer -o '%:p:r.pdf'",
-        \ "run":        ":AsyncRun zathura '%:p:r.pdf'"
         \ }
       \ }
 
