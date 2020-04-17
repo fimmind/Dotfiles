@@ -24,6 +24,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'SidOfc/mkdx'
   Plug 'dhruvasagar/vim-table-mode'
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+  Plug 'vim-pandoc/vim-pandoc-syntax'
 
   " Html
   Plug 'mattn/emmet-vim'

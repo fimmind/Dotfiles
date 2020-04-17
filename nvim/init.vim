@@ -357,6 +357,8 @@ function OpenMKDP(url)
   exec "AsyncRun qutebrowser ':open -w " . a:url . "'"
 endfunction
 
+autocmd FileType markdown set syntax=pandoc
+
 " NERDComment
 " ================================================
 let g:NERDSpaceDelims = 1
