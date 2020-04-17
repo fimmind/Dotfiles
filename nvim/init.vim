@@ -33,7 +33,7 @@ set signcolumn=yes " :
 " ================================================
 command! Vimrc e ~/Dotfiles/nvim/init.vim
 
-let g:move_key_modifier='M'
+let g:move_key_modifier='C'
 
 let g:maplocalleader=' '
 let g:mapleader=' '
