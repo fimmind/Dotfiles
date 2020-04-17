@@ -29,10 +29,6 @@ set updatetime=300 " :
 set shortmess+=c   " :
 set signcolumn=yes " :
 
-if &shell =~# 'fish$'
-    set shell=bash
-endif
-
 " Mappings
 " ================================================
 command! Vimrc e ~/Dotfiles/nvim/init.vim
