@@ -1,4 +1,5 @@
 # Dotfiles
+
 ## Installation
 ```shell
 $ cd ~  # Some scripts and settings rely on this Dotfiles' location
