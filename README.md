@@ -15,6 +15,7 @@ Use `lxappearance`:
 * Mouse cursor: Breeze
 
 ## TODO
+* Setup pandoc like [that](https://learnbyexample.github.io/tutorial/ebook-generation/customizing-pandoc/)
 * Replacements:
   * i3status -> i3blocks
   * kitty -> st (simple terminal)
