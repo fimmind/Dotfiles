@@ -92,7 +92,7 @@ snippet start "Basic template" b
 \end{document}
 endsnippet
 
-snippet image "only image teplate" b
+snippet start-image "only image teplate" b
 \documentclass[12pt, a4paper]{article}
 
 \usepackage[T2A]{fontenc}
@@ -108,6 +108,37 @@ snippet image "only image teplate" b
 \begin{document}
 	$1
 \end{document}
+endsnippet
+
+snippet start-beamer "beamer template" b
+\documentclass[12pt, a4paper]{beamer}
+
+\usetheme{Amsterdam}
+
+\usepackage[T1, T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english, russian]{babel}
+
+\setbeamertemplate{navigation symbols}{}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{hhline}
+\usepackage{indentfirst}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+\title{$1}
+
+\author{Виногродский Серафим}
+
+\begin{document}
+	\maketitle
+
+	$2
+\end{document}
+
 endsnippet
 
 snippet beg "begin{} / end{}" b
