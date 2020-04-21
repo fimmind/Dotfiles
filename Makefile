@@ -89,6 +89,7 @@ ifeq ($(SYSTEM), manjaro)
 		imagemagick wine winetricks unrar firefox dotnet-sdk ttf-dejavu broot \
 		neofetch irssi bind-tools tmux cmatrix cmus figlet deluge deluge-gtk \
 		virtualbox virtualbox-host-dkms
+	sudo npm install -g add-gitignore
 	rustup default stable
 	broot --install
 	gem install irb
