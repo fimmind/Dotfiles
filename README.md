@@ -24,6 +24,8 @@ Use `lxappearance`:
 * Setup default applications
 * Setup windows layout using [this](https://i3wm.org/docs/layout-saving.html) article
 * (Neo)Vim:
+  * Try [vim-lion](https://github.com/tommcdo/vim-lion) instead of
+    vim-easy-motion
   * Setup `Joker` linting with
     [efm-langserver](https://github.com/mattn/efm-langserver) and `coc.nvim`
     instead of ALE
