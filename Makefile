@@ -125,9 +125,21 @@ installLeiningen:
 	chmod ug+x ~/.local/bin/lein
 	lein
 
+remove = \
+				if [ -e $(1) ]; then \
+					echo; \
+					echo "File $(1) exists. Do you want do delete it (y/n)?"; \
+					read -p "> " answer; \
+					echo; \
+					if [ "$$answer" = "y" ]; then \
+						rm $(1) -rf; \
+					fi \
+				fi
+
 ONESHELL:
 installHIE:
 	cd sources
+	$(call remove,./haskell-ide-engine)
 	git clone https://github.com/haskell/haskell-ide-engine --recurse-submodules
 	cd haskell-ide-engine
 	stack ./install.hs hie-8.6.5
@@ -135,6 +147,7 @@ installHIE:
 ONESHELL:
 installFloskell:
 	cd sources
+	$(call remove,./floskell)
 	git clone https://github.com/ennocramer/floskell
 	cd floskell
 	stack install
