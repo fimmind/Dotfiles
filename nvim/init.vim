@@ -405,7 +405,7 @@ let g:build_and_run_setup = {
         \ },
       \ "go": {
         \ "run":        "go run '%:p'",
-        \ "build":      "go build '%:p'"
+        \ "build":      "go build"
         \ },
       \ "cs": {
         \ "build":      "!dotnet build",
