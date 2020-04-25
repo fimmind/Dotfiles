@@ -48,6 +48,7 @@ nnoremap gq :q<CR>
 nnoremap gw :w<CR>
 
 nnoremap <leader>u :UndotreeToggle<CR>:UndotreeFocus<CR>
+nmap <silent> <localleader>; <Plug>(cosco-commaOrSemiColon)
 
 " Tabs
 " ================================================
