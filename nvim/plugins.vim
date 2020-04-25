@@ -6,6 +6,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'PotatoesMaster/i3-vim-syntax'
   Plug 'vim-airline/vim-airline'
   Plug 'dag/vim-fish'
+  Plug 'cespare/vim-toml'
 
   " Lisp
   Plug 'guns/vim-sexp'
