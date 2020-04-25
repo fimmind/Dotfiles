@@ -109,7 +109,8 @@ let g:ale_sign_warning = ">>"
 let g:coc_global_extensions = [
       \ "coc-git", "coc-explorer", "coc-yaml", "coc-vimlsp",
       \ "coc-texlab", "coc-python", "coc-json", "coc-rls",
-      \ "coc-ultisnips", "coc-word", "coc-html", "coc-tsserver"
+      \ "coc-ultisnips", "coc-word", "coc-html", "coc-tsserver",
+      \ "coc-go"
       \ ]
 function InstallCocExtensions()
   exec "CocInstall -sync " . join(g:coc_global_extensions)
@@ -401,6 +402,10 @@ let g:build_and_run_setup = {
       \ "rust": {
         \ "build":      "!cargo build",
         \ "run":        "cargo run"
+        \ },
+      \ "go": {
+        \ "run":        "go run '%:p'",
+        \ "build":      "go build '%:p'"
         \ },
       \ "cs": {
         \ "build":      "!dotnet build",
