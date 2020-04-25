@@ -108,7 +108,7 @@ let g:ale_sign_warning = ">>"
 " ================================================
 let g:coc_global_extensions = [
       \ "coc-git", "coc-explorer", "coc-yaml", "coc-vimlsp",
-      \ "coc-texlab", "coc-python", "coc-json", "coc-rls",
+      \ "coc-texlab", "coc-python", "coc-json", "coc-rust-analyzer",
       \ "coc-ultisnips", "coc-word", "coc-html", "coc-tsserver",
       \ "coc-go"
       \ ]
