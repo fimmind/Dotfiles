@@ -100,7 +100,7 @@ endif
 ldconfig:
 	sudo ldconfig
 
-setupNeoVim:
+setupNeoVim: updateVimPlug
 	nvim -u "nvim/plugins.vim" -c ":PlugInstall | :qa"
 	nvim -c ":call InstallCocExtensions() | :q"
 	sudo pip3 install pynvim unicode flake8 yapf sympy inkscape-figures
@@ -108,8 +108,9 @@ setupNeoVim:
 	sudo npm install -g neovim bash-language-server
 
 updateVimPlug:
-	curl -fLo ./nvim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
 
 .ONESHELL:
 installTexLive:
