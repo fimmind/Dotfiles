@@ -24,6 +24,11 @@ header-includes:
 - \usepackage[T2A]{fontenc}
 - \usepackage[utf8]{inputenc}
 - \usepackage[russian]{babel}
+- \usepackage{enumitem}
+- \usepackage{amsfonts}
+- \setlist[itemize,1]{label=$\bullet$}
+- \setlist[itemize,2]{label=$\circ$}
+- \setlist[itemize,3]{label=$\star$}
 ...
 endsnippet
 
@@ -38,5 +43,12 @@ ${2:
 theme:
 - Amsterdam}
 fontsize: 12pt
+
+header-includes:
+- \usepackage{enumitem}
+- \usepackage{amsfonts}
+- \setlist[itemize,1]{label=$\bullet$}
+- \setlist[itemize,2]{label=$\circ$}
+- \setlist[itemize,3]{label=$\star$}
 ...
 endsnippet
