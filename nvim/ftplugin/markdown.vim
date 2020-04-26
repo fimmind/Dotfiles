@@ -4,3 +4,7 @@ nnoremap <buffer> <localleader>lc :w<CR>:!pandoc % -o %:r.pdf<CR>
 nnoremap <buffer> <localleader>lo :AsyncRun zathura %:r.pdf<CR>
 
 nnoremap <buffer> <localleader>fs vapgq
+
+
+UltiSnipsAddFiletypes tex
+UltiSnipsAddFiletypes markdown
