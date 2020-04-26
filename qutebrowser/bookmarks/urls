@@ -94,3 +94,5 @@ https://livebook.manning.com/book/clojure-the-essential-reference/welcome/v-29/2
 https://kmb.cybber.ru/web/git/main.html .git · Курс молодого CTF бойца v 1.5
 https://doc.rust-lang.org/book/ The Rust Programming Language - The Rust Programming Language
 https://doc.rust-lang.org/std/index.html std - Rust
+https://crates.io/ crates.io: Rust Package Registry
+https://learnbyexample.github.io/tutorial/ebook-generation/customizing-pandoc/ Customizing pandoc to generate beautiful pdfs from markdown | learnbyexample
