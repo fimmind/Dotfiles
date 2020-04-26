@@ -16,8 +16,6 @@ Use `lxappearance`:
 
 ## TODO
 * Setup pandoc like [that](https://learnbyexample.github.io/tutorial/ebook-generation/customizing-pandoc/)
-* Replacements:
-  * i3status -> i3blocks
 * Exhaustive documentation (At least short description)
 * System installation instructions
 * Setup default applications
