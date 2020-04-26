@@ -401,7 +401,7 @@ let g:build_and_run_setup = {
         \ "run":        "scala '%:p'"
         \ },
       \ "rust": {
-        \ "build":      "!cargo build",
+        \ "build":      "!cargo build --release",
         \ "run":        "cargo run"
         \ },
       \ "go": {
