@@ -360,6 +360,7 @@ function OpenMKDP(url)
 endfunction
 
 autocmd FileType markdown set syntax=pandoc
+let g:pandoc#syntax#conceal#use = 0
 
 " NERDComment
 " ================================================
