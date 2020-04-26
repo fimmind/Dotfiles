@@ -88,7 +88,7 @@ ifeq ($(SYSTEM), manjaro)
 		nodejs npm php rlwrap clojure cargo rogue nethack scala inkscape ruby \
 		imagemagick wine winetricks unrar firefox dotnet-sdk ttf-dejavu broot \
 		neofetch irssi bind-tools tmux cmatrix cmus figlet deluge deluge-gtk \
-		virtualbox virtualbox-host-dkms go
+		virtualbox virtualbox-host-dkms go gnome-mplayer
 	sudo npm install -g add-gitignore
 	rustup default stable
 	broot --install
