@@ -19,7 +19,7 @@ Use `lxappearance`:
 * Replacements:
   * i3status -> i3blocks
   * kitty -> st (simple terminal)
-* Exhaustive documentation
+* Exhaustive documentation (At least short description)
 * System installation instructions
 * Setup default applications
 * Setup windows layout using [this](https://i3wm.org/docs/layout-saving.html) article
