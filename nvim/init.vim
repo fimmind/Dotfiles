@@ -321,7 +321,7 @@ set background=dark
 syntax on
 syntax sync fromstart
 
-" LaTeX  |latex|
+" LaTeX
 " ================================================
 let g:AutoPairsIgnorePrefixes = ['\', 'lr', '\left']
 
