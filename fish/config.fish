@@ -2,6 +2,7 @@ alias ru="setxkbmap us,ru ,winkeys grp:caps_toggle"
 alias fix_time="sudo ntpd -qg"
 alias vimrc="nvim -c Vimrc"
 alias getamsterdam="cp ~/Dotfiles/beamerthemeAmsterdam.sty ./"
+alias weather="curl wttr.in/moscow"
 
 alias la="ls -AlF"
 alias l="ls -CF"
