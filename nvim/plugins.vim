@@ -8,6 +8,9 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'dag/vim-fish'
   Plug 'cespare/vim-toml'
 
+  " Rust
+  Plug 'rust-lang/rust.vim'
+
   " Lisp
   Plug 'guns/vim-sexp'
 
@@ -69,4 +72,5 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'sirver/UltiSnips'
   Plug 'luochen1990/rainbow'
   Plug 'dense-analysis/ale'
+  Plug 'majutsushi/tagbar'
 call plug#end()

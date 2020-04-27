@@ -84,6 +84,11 @@ nnoremap <leader>sn mm]s1z=`m
 
 autocmd FileType gitcommit,markdown,tex,text setlocal spell
 
+" Tagbar
+" ================================================
+nnoremap <C-]> :TagbarToggle<CR>
+let g:tagbar_autofocus = 1
+
 " Project-root
 " ================================================
 let g:rootmarkers = [
