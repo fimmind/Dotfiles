@@ -6,4 +6,4 @@ nnoremap <buffer> <localleader>lo :AsyncRun zathura %:r.pdf<CR>
 nnoremap <buffer> <localleader>fs vapgq
 
 
-UltiSnipsAddFiletypes markdown,tex
+UltiSnipsAddFiletypes markdown.tex
