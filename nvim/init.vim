@@ -331,6 +331,7 @@ syntax sync fromstart
 " ================================================
 let g:AutoPairsIgnorePrefixes = ['\', 'lr', '\left']
 
+" TODO: move to snippets
 let pairs = {'(':')', '\\\\{':'\\\\}', '[':']', '<':'>'}
 for i in keys(pairs)
   call lexima#add_rule({
