@@ -5,11 +5,10 @@ font pango:Clear Sans 10
 
 ########## Autolaunch ##########
 exec --no-startup-id nm-applet
-exec --no-startup-id setxkbmap us,ru ,winkeys grp:caps_toggle
-exec keynav
-exec ~/.fehbg
-exec amixer sset Master 100
-exec telegram-desktop -startintray
+exec --no-startup-id keynav
+exec --no-startup-id ~/.fehbg
+exec --no-startup-id amixer sset Master 100
+exec --no-startup-id telegram-desktop -startintray
 exec kitty -- upgrade
 
 ########## Backlight ##########
