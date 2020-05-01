@@ -2,10 +2,11 @@
 
 ## Installation
 ```shell
-$ cd ~  # Some scripts and settings rely on this Dotfiles' location
+$ cd ~                 # Some scripts and settings rely on this Dotfiles' location
 $ git clone https://github.com/fimmind/Dotfiles
 $ cd Dotfiles
-$ make # Enter your password when asked
+$ make                 # Enter your password when asked
+$ make installTexLive  # This takes a long while, therfore it's optional
 ```
 
 ## GTK theme
