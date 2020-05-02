@@ -12,6 +12,9 @@ exec --no-startup-id telegram-desktop -startintray
 exec --no-startup-id albert
 exec kitty -- upgrade
 
+########## Settings ##########
+focus_on_window_activation focus
+
 ########## Backlight ##########
 bindsym XF86MonBrightnessUp exec light -A 10 # Increase Brightness
 bindsym XF86MonBrightnessDown exec light -U 10 # Decrease Brightness
@@ -183,7 +186,6 @@ new_window 1pixel
 # for_window [window_role="task_dialog"] floating enable
 # for_window [title="Preferences$"] floating enable
 for_window [class="float"] floating enable
-for_window [urgent="latest"] focus
 
 smart_borders no_gaps
 smart_gaps on
