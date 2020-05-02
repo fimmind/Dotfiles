@@ -10,7 +10,7 @@ endif
 	$(MAKE) LN_ARGS=-sfT \
 		installPackets installBrew installBrewPackets enableBluetooth \
 		installOhMyFish installTheHaskellToolStack link-all setupNeoVim ldconfig \
-		installLeiningen installHIE
+		setup-default-app installLeiningen installHIE
 	i3exit lock
 	$(MAKE) link-Xresources # Mast be last, because it asks confirmation
 
@@ -99,6 +99,11 @@ ifeq ($(SYSTEM), manjaro)
 else
 	echo "can't install packets on this system ($(SYSTEM))"
 endif
+
+setup-default-app:
+	xdg-mime default org.qutebrowser.qutebrowser.desktop x-scheme-handler/http
+	xdg-mime default org.qutebrowser.qutebrowser.desktop x-scheme-handler/https
+	xdg-mime default org.qutebrowser.qutebrowser.desktop text/html
 
 ldconfig:
 	sudo ldconfig
