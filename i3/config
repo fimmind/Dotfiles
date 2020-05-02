@@ -110,16 +110,16 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-bindsym $mod+1 workspace $ws1; exec albert hide
-bindsym $mod+2 workspace $ws2; exec albert hide
-bindsym $mod+3 workspace $ws3; exec albert hide
-bindsym $mod+4 workspace $ws4; exec albert hide
-bindsym $mod+5 workspace $ws5; exec albert hide
-bindsym $mod+6 workspace $ws6; exec albert hide
-bindsym $mod+7 workspace $ws7; exec albert hide
-bindsym $mod+8 workspace $ws8; exec albert hide
-bindsym $mod+9 workspace $ws9; exec albert hide
-bindsym $mod+0 workspace $ws10; exec albert hide
+bindsym $mod+1 workspace $ws1;  exec --no-startup-id albert hide
+bindsym $mod+2 workspace $ws2;  exec --no-startup-id albert hide
+bindsym $mod+3 workspace $ws3;  exec --no-startup-id albert hide
+bindsym $mod+4 workspace $ws4;  exec --no-startup-id albert hide
+bindsym $mod+5 workspace $ws5;  exec --no-startup-id albert hide
+bindsym $mod+6 workspace $ws6;  exec --no-startup-id albert hide
+bindsym $mod+7 workspace $ws7;  exec --no-startup-id albert hide
+bindsym $mod+8 workspace $ws8;  exec --no-startup-id albert hide
+bindsym $mod+9 workspace $ws9;  exec --no-startup-id albert hide
+bindsym $mod+0 workspace $ws10; exec --no-startup-id albert hide
 
 ########## Move window ##########
 mode "move" {
