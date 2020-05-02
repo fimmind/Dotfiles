@@ -16,7 +16,6 @@ Use `lxappearance`:
 * Mouse cursor: Breeze
 
 ## TODO
-* Setup qutebrowser as default browser for Albert
 * Setup pandoc like [that](https://learnbyexample.github.io/tutorial/ebook-generation/customizing-pandoc/)
 * Exhaustive documentation (At least short description)
 * System installation instructions
