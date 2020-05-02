@@ -104,6 +104,9 @@ setup-default-app:
 	xdg-mime default org.qutebrowser.qutebrowser.desktop x-scheme-handler/http
 	xdg-mime default org.qutebrowser.qutebrowser.desktop x-scheme-handler/https
 	xdg-mime default org.qutebrowser.qutebrowser.desktop text/html
+	xdg-mime default kitty.desktop application/x-shellscript
+	xdg-mime default kitty.desktop application/x-sharedlib
+	xdg-mime default nvim.desktop text/markdown
 
 ldconfig:
 	sudo ldconfig
