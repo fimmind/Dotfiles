@@ -45,6 +45,7 @@ link-all:
 	${LN}/profile                    ~/.profile
 	${LN}/tmux.conf                  ~/.tmux.conf
 	${LN}/cljstyle                   ~/.cljstyle
+	${LN}/albert                     ~/.config/albert
 
 .ONESHELL:
 link-Xresources:
@@ -88,8 +89,10 @@ ifeq ($(SYSTEM), manjaro)
 		nodejs npm php rlwrap clojure cargo rogue nethack scala inkscape ruby \
 		imagemagick wine winetricks unrar firefox dotnet-sdk ttf-dejavu broot \
 		neofetch irssi bind-tools tmux cmatrix cmus figlet deluge deluge-gtk \
-		virtualbox virtualbox-host-dkms go gnome-mplayer gnome-screenshot
+		virtualbox virtualbox-host-dkms go gnome-mplayer gnome-screenshot \
+		albert
 	sudo npm install -g add-gitignore
+	pip install pylatexenc
 	rustup default stable
 	broot --install
 	gem install irb

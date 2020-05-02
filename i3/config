@@ -9,6 +9,7 @@ exec --no-startup-id keynav
 exec --no-startup-id ~/.fehbg
 exec --no-startup-id amixer sset Master 100
 exec --no-startup-id telegram-desktop -startintray
+exec --no-startup-id albert
 exec kitty -- upgrade
 
 ########## Backlight ##########
@@ -40,7 +41,8 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 bindsym Mod1+Tab exec rofi -show window
-bindsym $mod+d exec rofi -modi drun -show drun -show-icons
+# bindsym $mod+d exec rofi -modi drun -show drun -show-icons
+bindsym $mod+d exec --no-startup-id albert toggle
 bindsym $mod+x exec kitty --class=float
 bindsym $mod+c exec kitty --class=float -- qalc
 bindsym $mod+n exec nvimanywhere
