@@ -101,6 +101,7 @@ else
 endif
 
 setup-default-app:
+	xdg-mime default org.pwmt.zathura.desktop application/pdf
 	xdg-mime default org.qutebrowser.qutebrowser.desktop x-scheme-handler/http
 	xdg-mime default org.qutebrowser.qutebrowser.desktop x-scheme-handler/https
 	xdg-mime default org.qutebrowser.qutebrowser.desktop text/html
