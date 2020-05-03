@@ -28,5 +28,17 @@
         "name": "DuckDuckGo",
         "trigger": "dd ",
         "url": "https://duckduckgo.com/?q=%s"
+    },
+    {
+        "iconPath": "/home/fimmind/.config/albert/org.albert.extension.websearch/{fafdaea5-8105-45a4-b3d6-1cf832208ed9}.png",
+        "name": "Multitran",
+        "trigger": "ml ",
+        "url": "https://www.multitran.com/m.exe?s=%s"
+    },
+    {
+        "iconPath": "/home/fimmind/.config/albert/org.albert.extension.websearch/{db96b6f0-e6e2-4a0f-91cd-9039b1e8d98d}.png",
+        "name": "Merriam-Webster",
+        "trigger": "mw ",
+        "url": "https://www.merriam-webster.com/dictionary/%s"
     }
 ]
