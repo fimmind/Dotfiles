@@ -16,6 +16,13 @@ Use `lxappearance`:
 * Mouse cursor: Breeze
 
 ## TODO
+* Makefile:
+  * Test if full installation works fine
+  * Figure out how to make installation more automatic (Now there are many
+    places where you have to, for example, input your password, and, since
+    installation takes a while, it should be allowed to leave computer without
+    of a risk to return back and find out that computer waits for your
+    confirmation and stays doing nothing)
 * Setup pandoc like [that](https://learnbyexample.github.io/tutorial/ebook-generation/customizing-pandoc/)
 * Exhaustive documentation (At least short description)
 * System installation instructions
