@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 sudo_upgrade(){
   pacman-key --refresh-keys
-  pacman -Suyy --noconfirm
+  pacman -Syyuu --noconfirm
   tlmgr update --self --all --reinstall-forcibly-removed
   pamac update --no-confirm
   npm upgrade
