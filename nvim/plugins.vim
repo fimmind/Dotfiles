@@ -42,9 +42,6 @@ call plug#begin(stdpath('data') . '/plugged')
   " C++
   Plug 'oblitum/rainbow', { 'for': ['cpp', 'c'], 'as': 'rainbow-cpp' }
 
-  " Python
-  Plug 'tweekmonster/braceless.vim' " TODO: learn
-
   " Tools
   Plug 'junegunn/vim-easy-align'
   Plug 'markonm/traces.vim'                " :substitute prewiew

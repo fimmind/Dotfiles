@@ -295,10 +295,6 @@ for at in ['{-\%#-}', '{-#\%##-}', '{- \%# -}', '{-# \%# #-}']
         \ })
 endfor
 
-" Python
-" ================================================
-autocmd FileType python BracelessEnable +indent
-
 " Easy-align
 " ================================================
 nmap ga <Plug>(EasyAlign)
