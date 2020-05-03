@@ -29,15 +29,12 @@ set updatetime=300 " :
 set shortmess+=c   " :
 set signcolumn=yes " :
 
-" Mappings
+" Basic mappings
 " ================================================
 command! Vimrc e ~/Dotfiles/nvim/init.vim
 
-let g:move_key_modifier='C'
-
 let g:maplocalleader=' '
 let g:mapleader=' '
-nmap \ <Plug>(easymotion-prefix)
 
 nnoremap j gj
 nnoremap k gk
@@ -47,11 +44,6 @@ nnoremap gk k
 nnoremap gq :q<CR>
 nnoremap gw :w<CR>
 
-nnoremap <leader>u :UndotreeToggle<CR>:UndotreeFocus<CR>
-nmap <silent> <localleader>; <Plug>(cosco-commaOrSemiColon)
-
-" Tabs
-" ================================================
 nnoremap <leader>tn :tabnext<CR>
 nnoremap <leader>tp :tabprevious<CR>
 nnoremap <leader>ta :tabnew<CR>
@@ -61,8 +53,21 @@ nnoremap <leader>ts :tabs<CR>
 nnoremap <leader>tq :tabclose<CR>
 nnoremap <leader>to :tabonly<CR>
 
-" Fugitive
+" Plugins mappings
 " ================================================
+" EasyMotion
+nmap \ <Plug>(easymotion-prefix)
+
+" Undotree
+nnoremap <leader>u :UndotreeToggle<CR>:UndotreeFocus<CR>
+
+" Cosco
+nmap <silent> <localleader>; <Plug>(cosco-commaOrSemiColon)
+
+" vim-move
+let g:move_key_modifier='C'
+
+" Fugitive
 nnoremap <leader>gg :G<CR>
 nnoremap <leader>gs :G status<CR>
 nnoremap <leader>gw :Gw<CR>
@@ -300,7 +305,7 @@ endfor
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
-" Indent
+" Indentation
 " ================================================
 filetype indent on
 set autoindent
