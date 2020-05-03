@@ -24,8 +24,8 @@
         "url": "https://www.merriam-webster.com/dictionary/%s"
     },
     {
-        "iconPath": "/home/fimmind/.config/albert/org.albert.extension.websearch/{ea979ae0-6146-4571-aeca-67aaaff91efd}.png",
-        "name": "Urbain Dictionary",
+        "iconPath": "/home/fimmind/.config/albert/org.albert.extension.websearch/{b760ce32-fb7a-47b7-86f7-4f9a663f168c}.png",
+        "name": "Urban Dictionary",
         "trigger": "ur ",
         "url": "https://www.urbandictionary.com/define.php?term=%s"
     },
