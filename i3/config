@@ -26,9 +26,10 @@ bindsym XF86AudioPrev exec playerctl previous
 bindsym XF86AudioNext exec playerctl next
 
 ########## Screenshots ##########
-bindsym --release Print         exec gnome-screenshot    --class=float -f ~/Pictures/$(date +"%d.%m.%y_%T:%N").png
-bindsym --release Shift+Print   exec gnome-screenshot -w --class=float -f ~/Pictures/$(date +"%d.%m.%y_%T:%N").png
-bindsym --release Control+Print exec gnome-screenshot -a --class=float -f ~/Pictures/$(date +"%d.%m.%y_%T:%N").png
+set $gs_args --class=float -f ~/Pictures/$(date +"%d.%m.%y_%T:%N").png
+bindsym --release Print         exec gnome-screenshot       $gs_args
+bindsym --release Shift+Print   exec gnome-screenshot -w -B $gs_args
+bindsym --release Control+Print exec gnome-screenshot -a    $gs_args
 
 ########## Sound ##########
 bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -D pulse sset Master 5%+
