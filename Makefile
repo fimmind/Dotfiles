@@ -45,7 +45,6 @@ link-all:
 	${LN}/profile                    ~/.profile
 	${LN}/tmux.conf                  ~/.tmux.conf
 	${LN}/cljstyle                   ~/.cljstyle
-	${LN}/albert                     ~/.config/albert
 	${LN}/rofi                       ~/.config/rofi
 
 .ONESHELL:
@@ -91,7 +90,7 @@ ifeq ($(SYSTEM), manjaro)
 		imagemagick wine winetricks unrar firefox dotnet-sdk ttf-dejavu broot \
 		neofetch irssi bind-tools tmux cmatrix cmus figlet deluge deluge-gtk \
 		virtualbox virtualbox-host-dkms go gnome-mplayer gnome-screenshot \
-		albert playerctl muparser
+		playerctl muparser
 	sudo npm install -g add-gitignore
 	pip install pylatexenc
 	rustup default stable
