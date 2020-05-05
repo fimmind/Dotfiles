@@ -164,6 +164,13 @@ installFloskell:
 	cd floskell
 	stack install
 
+ONESHELL:
+installZoom:
+	cd sources
+	$(call remove,./zoom_x86_64.pkg.tar.xz)
+	wget https://zoom.us/client/latest/zoom_x86_64.pkg.tar.xz \
+		&& sudo pacman -U zoom_x86_64.pkg.tar.xz --noconfirm
+
 installBrew:
 	echo | sh -c \
 		"$$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
