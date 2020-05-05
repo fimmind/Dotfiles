@@ -46,6 +46,7 @@ link-all:
 	${LN}/tmux.conf                  ~/.tmux.conf
 	${LN}/cljstyle                   ~/.cljstyle
 	${LN}/albert                     ~/.config/albert
+	${LN}/rofi                       ~/.config/rofi
 
 .ONESHELL:
 link-Xresources:
