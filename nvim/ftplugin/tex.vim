@@ -1,6 +1,6 @@
 nmap <buffer> <localleader>ll :NeoTexOn<CR>
 nmap <buffer> <localleader>lc :NeoTex<CR>
-nmap <buffer> <localleader>lo :AsyncRun zathura '%:r.pdf'<CR>
+nmap <buffer> <localleader>lo :AsyncRun zathura '%:p:r.pdf'<CR>
 
 nmap <buffer> <localleader>" cs">ysi>>
 
