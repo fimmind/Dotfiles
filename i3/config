@@ -10,6 +10,7 @@ exec --no-startup-id ~/.fehbg
 exec --no-startup-id amixer sset Master 100
 exec --no-startup-id telegram-desktop -startintray
 exec kitty -- upgrade
+exec kitty -- fish -c random_man
 
 ########## Settings ##########
 focus_on_window_activation focus
