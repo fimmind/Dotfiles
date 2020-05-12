@@ -364,7 +364,7 @@ let g:mkdp_auto_close = 0
 
 let g:mkdp_browserfunc = 'OpenMKDP'
 function OpenMKDP(url)
-  exec "AsyncRun qutebrowser ':open -w " . a:url . "'"
+  exec "AsyncRun chromium '--app=" . a:url . "'"
 endfunction
 
 autocmd FileType markdown set syntax=pandoc
