@@ -64,6 +64,15 @@ function! DeleteNext(prev)
   exe "normal! mm" . l:motion . nr2char(getchar()) . "x`m"
 endfunction
 
+vnoremap <leader>w :call EchoWc("-w")<CR>
+function EchoWc(wc_args) range
+  echo trim(system(
+          \ 'echo ' . shellescape(join(getline(a:firstline, a:lastline), "\n"))
+          \ .'| wc ' . a:wc_args
+        \ ))
+        \ "words"
+endfunction
+
 " Plugins mappings
 " ================================================
 " EasyMotion
