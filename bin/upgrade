@@ -5,12 +5,12 @@ sudo_upgrade(){
   tlmgr update --self --all --reinstall-forcibly-removed
   pamac update --no-confirm
   npm upgrade
-  stack upgrade
 }
 
 no_sudo_upgrade(){
   brew update
   brew upgrade
+  stack upgrade
 
   cd ~/Dotfiles
   make updateVimPlug
