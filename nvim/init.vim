@@ -449,6 +449,9 @@ let g:build_and_run_setup = {
         \ },
       \ "vim": {
         \ "run":        ":source %"
+        \ },
+      \ "xdefaults": {
+        \ "run":        "!xrdb '%:p'"
         \ }
       \ }
 
