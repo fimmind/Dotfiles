@@ -3,6 +3,7 @@ alias fix_time="sudo ntpd -qg"
 alias vimrc="nvim -c Vimrc"
 alias getamsterdam="cp ~/Dotfiles/beamerthemeAmsterdam.sty ./"
 alias weather="curl wttr.in/moscow"
+alias test-unicode="curl https://www.cl.cam.ac.uk/~mgk25/ucs/examples/UTF-8-demo.txt | less"
 
 alias la="ls -AlF"
 alias l="ls -CF"
