@@ -5,7 +5,7 @@ SYSTEM := $(shell sed -n "s/^ID=//p" /etc/os-release)
 
 setup:
 ifeq ($(SYSTEM), manjaro)
-	sudo pacman -R manjaro-i3-settings i3status-manjaro
+	sudo pacman -R manjaro-i3-settings i3status-manjaro --noconfirm
 endif
 	$(MAKE) LN_ARGS=-sfT \
 		installPackets installBrew installBrewPackets enableBluetooth \
@@ -90,7 +90,7 @@ ifeq ($(SYSTEM), manjaro)
 		imagemagick wine winetricks unrar firefox dotnet-sdk ttf-dejavu broot \
 		neofetch irssi bind-tools tmux cmatrix cmus figlet deluge deluge-gtk \
 		virtualbox virtualbox-host-dkms go gnome-mplayer gnome-screenshot \
-		playerctl muparser opera chromium zathura-djvu
+		playerctl muparser opera chromium zathura-djvu feh python-pip
 	sudo npm install -g add-gitignore
 	pip install pylatexenc
 	rustup default stable
