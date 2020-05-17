@@ -1,0 +1,30 @@
+#! /usr/bin/env bash
+
+usage() {
+  echo "usage: nvimsel (edit|write) selection"
+  echo "example: nvimsel edit clip"
+  exit 2
+}
+
+if [ $# != 2 ]; then
+  usage
+fi
+
+action=$1
+sel=$2
+
+file=$(mktemp --suffix=.txt)
+
+case $action in
+  edit) xclip -selection $sel -o > $file ;;
+  write) ;;
+  *) rm $file; usage ;;
+esac
+
+kitty --class=float -- nvim $file
+
+if [ -s $file ]; then
+  xclip -rmlastnl -selection $sel $file
+fi
+
+rm $file
