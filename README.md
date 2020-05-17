@@ -2,11 +2,14 @@
 
 ## Installation
 ```shell
-$ cd ~                 # Some scripts and settings rely on this Dotfiles' location
+$ cd ~                 # Some scripts and settings rely on such Dotfiles' location
 $ git clone https://github.com/fimmind/Dotfiles
 $ cd Dotfiles
-$ make                 # Enter your password when asked
-$ make installTexLive  # This takes a long while, therfore it's optional
+$ sudo pacman-key --refresh-keys  # ┬ Not needed, if you are sure, that keys or
+$ sudo pacman -Syu --noconfirm    # ┘    packages are up to date
+$ make
+$ make installTexLive  # This takes a long while and much space,
+$                      #    therfore it's optional
 ```
 
 ## GTK theme

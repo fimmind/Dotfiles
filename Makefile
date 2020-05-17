@@ -78,8 +78,6 @@ ifeq ($(SYSTEM), manjaro)
 	pamac build virtualbox-ext-oracle --no-confirm
 	pamac install discord
 	sudo pacman -R manjaro-i3-settings i3status-manjaro --noconfirm
-	sudo pacman-key --refresh-keys
-	sudo pacman -Syu --noconfirm
 	sudo pacman -S --noconfirm \
 		curl git cmake make kitty qutebrowser python3 bluez bluez-utils pandoc \
 		gcc neovim rofi htop ranger pcmanfm zathura telegram-desktop lm_sensors jq \
