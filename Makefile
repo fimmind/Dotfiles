@@ -157,7 +157,7 @@ installZoom:
 installBrew:
 	echo | sh -c \
 		"$$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-	PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
+	PATH="$$PATH:/home/linuxbrew/.linuxbrew/bin"
 
 installBrewPackets:
 	brew install candid82/brew/joker ccls
