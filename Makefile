@@ -5,8 +5,8 @@ SYSTEM := $(shell sed -n "s/^ID=//p" /etc/os-release)
 
 setup:
 	$(MAKE) LN_ARGS=-sfT \
-		installPackets installBrew installBrewPackets enableBluetooth \
-		installOhMyFish installTheHaskellToolStack link-all setupNeoVim ldconfig \
+		link-all installPackets installBrew installBrewPackets enableBluetooth \
+		installOhMyFish installTheHaskellToolStack setupNeoVim ldconfig \
 		setup-default-apps installLeiningen installHIE
 	i3exit lock
 	$(MAKE) link-Xresources # Mast be last, because it asks confirmation
