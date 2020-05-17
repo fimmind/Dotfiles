@@ -8,8 +8,6 @@ setup:
 		link-all installPackets installBrew installBrewPackets enableBluetooth \
 		installOhMyFish installTheHaskellToolStack setupNeoVim ldconfig \
 		setup-default-apps installLeiningen installHIE
-	i3exit lock
-	$(MAKE) link-Xresources # Mast be last, because it asks confirmation
 
 enableBluetooth:
 	sudo systemctl enable bluetooth
@@ -43,19 +41,7 @@ link-all:
 	${LN}/tmux.conf                  ~/.tmux.conf
 	${LN}/cljstyle                   ~/.cljstyle
 	${LN}/rofi                       ~/.config/rofi
-
-.ONESHELL:
-link-Xresources:
-	curDir=$$(pwd)
-	if [ -f ~/.Xresources ] && [ ! -L ~/.Xresources ]; then
-		echo ".Xresources file already exists. Would you like to replace it? (y/n)"
-		read answer
-	else
-		answer=y
-	fi
-	if [ "$$answer" = "y" ]; then
-		ln -sfT $$curDir/Xresources ~/.Xresources
-	fi
+	${LN}/Xresources                 ~/.Xresources
 
 installOhMyZsh:
 	sh -c "`curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh` --unattended"
