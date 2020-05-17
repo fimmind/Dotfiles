@@ -4,9 +4,6 @@ SHELL = /usr/bin/bash
 SYSTEM := $(shell sed -n "s/^ID=//p" /etc/os-release)
 
 setup:
-ifeq ($(SYSTEM), manjaro)
-	sudo pacman -R manjaro-i3-settings i3status-manjaro --noconfirm
-endif
 	$(MAKE) LN_ARGS=-sfT \
 		installPackets installBrew installBrewPackets enableBluetooth \
 		installOhMyFish installTheHaskellToolStack link-all setupNeoVim ldconfig \
@@ -79,6 +76,7 @@ installTheHaskellToolStack:
 installPackets:
 ifeq ($(SYSTEM), manjaro)
 	pamac build virtualbox-ext-oracle --no-confirm
+	sudo pacman -R manjaro-i3-settings i3status-manjaro --noconfirm
 	sudo pacman-key --refresh-keys
 	sudo pacman -Syu --noconfirm
 	sudo pacman -S --noconfirm \
