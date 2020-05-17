@@ -76,6 +76,7 @@ installTheHaskellToolStack:
 installPackets:
 ifeq ($(SYSTEM), manjaro)
 	pamac build virtualbox-ext-oracle --no-confirm
+	pamac install discord
 	sudo pacman -R manjaro-i3-settings i3status-manjaro --noconfirm
 	sudo pacman-key --refresh-keys
 	sudo pacman -Syu --noconfirm
