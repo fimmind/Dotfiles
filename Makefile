@@ -7,16 +7,16 @@ setup:
 	$(MAKE) LN_ARGS=-sfT \
 		installPackets installBrew installBrewPackets enableBluetooth \
 		installOhMyFish installTheHaskellToolStack link-all setupNeoVim ldconfig \
-		setup-default-app installLeiningen installHIE
+		setup-default-apps installLeiningen installHIE
 	i3exit lock
 	$(MAKE) link-Xresources # Mast be last, because it asks confirmation
 
 enableBluetooth:
-	systemctl enable bluetooth
+	sudo systemctl enable bluetooth
 
 fixTime:
 	sudo ntpd -qg
-	systemctl enable ntpd
+	sudo systemctl enable ntpd
 
 LN_ARGS ?= -sT
 LN = ln ${LN_ARGS} $$curDir
@@ -76,7 +76,7 @@ installTheHaskellToolStack:
 installPackets:
 ifeq ($(SYSTEM), manjaro)
 	pamac build virtualbox-ext-oracle --no-confirm
-	pamac install discord
+	pamac install discord --no-confirm
 	sudo pacman -R manjaro-i3-settings i3status-manjaro --noconfirm
 	sudo pacman -S --noconfirm \
 		curl git cmake make kitty qutebrowser python3 bluez bluez-utils pandoc \
@@ -97,7 +97,7 @@ else
 	echo "can't install packets on this system ($(SYSTEM))"
 endif
 
-setup-default-app:
+setup-default-apps:
 	xdg-mime default org.pwmt.zathura.desktop application/pdf
 	xdg-mime default org.qutebrowser.qutebrowser.desktop x-scheme-handler/http
 	xdg-mime default org.qutebrowser.qutebrowser.desktop x-scheme-handler/https
@@ -171,6 +171,7 @@ installZoom:
 installBrew:
 	echo | sh -c \
 		"$$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+	PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
 
 installBrewPackets:
 	brew install candid82/brew/joker ccls
