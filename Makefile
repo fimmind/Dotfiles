@@ -16,8 +16,8 @@ setup:
 	echo "$$USER ALL=(ALL) NOPASSWD:ALL" | sudo tee $$sudoers
 	$(MAKE) LN_ARGS=-sfT \
 		link-all installPackets installBrew installBrewPackets enableBluetooth \
-		installOhMyFish installTheHaskellToolStack setupNeoVim ldconfig \
-		setup-default-apps installLeiningen installHIE
+		installTheHaskellToolStack setupNeoVim ldconfig \
+		setup-default-apps installLeiningen installHIE installOhMyFish 
 	sudo rm $$sudoers
 
 enableBluetooth:
