@@ -57,7 +57,6 @@ link-all:
 installOhMyZsh:
 	sh -c "`curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh` --unattended"
 	mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
-	sh -c "chsh -s `which zsh`"
 
 installOhMyFish:
 	curl -L https://get.oh-my.fish | fish
