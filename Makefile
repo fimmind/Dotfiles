@@ -168,10 +168,10 @@ installZoom:
 installBrew:
 	echo | sh -c \
 		"$$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
-	PATH="$$PATH:/home/linuxbrew/.linuxbrew/bin"
 
 installBrewPackets:
-	brew install candid82/brew/joker ccls
+	/home/linuxbrew/.linuxbrew/bin/brew install \
+		candid82/brew/joker ccls
 
 installClojure-lsp:
 	wget https://github.com/snoe/clojure-lsp/releases/latest/download/clojure-lsp -O ~/.local/bin/clojure-lsp
