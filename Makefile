@@ -61,7 +61,6 @@ installOhMyZsh:
 installOhMyFish:
 	curl -L https://get.oh-my.fish | fish
 	fish -c "omf install sashimi"
-	sh -c "chsh -s `which fish`"
 
 installTheHaskellToolStack:
 	curl -sSL https://get.haskellstack.org/ | sh
