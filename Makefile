@@ -4,10 +4,21 @@ SHELL = /usr/bin/bash
 SYSTEM := $(shell sed -n "s/^ID=//p" /etc/os-release)
 
 setup:
+	sudoers=/etc/sudoers.d/$$USER
+	if sudo [ -e $$sudoers ]; then
+		echo "File '$$sudoers' exists, but this script will override it."
+		read -p "Continue? (y/n) " -n 1 answer
+		echo
+		if [ $$answer != y ]; then
+			exit 0
+		fi
+	fi
+	echo "$$USER ALL=(ALL) NOPASSWD:ALL" | sudo tee $$sudoers
 	$(MAKE) LN_ARGS=-sfT \
 		link-all installPackets installBrew installBrewPackets enableBluetooth \
 		installOhMyFish installTheHaskellToolStack setupNeoVim ldconfig \
 		setup-default-apps installLeiningen installHIE
+	sudo rm $$sudoers
 
 enableBluetooth:
 	sudo systemctl enable bluetooth
