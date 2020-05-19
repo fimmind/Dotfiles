@@ -71,3 +71,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'dense-analysis/ale'
   Plug 'majutsushi/tagbar'
 call plug#end()
+
+" Automatically install missing plugins
+if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+   PlugInstall --sync | q
+endif
