@@ -89,14 +89,12 @@ let g:move_key_modifier='C'
 
 " Fugitive
 nnoremap <leader>gg :G<CR>
-nnoremap <leader>gs :G status<CR>
 nnoremap <leader>gw :Gw<CR>
-nnoremap <leader>gW :Gwq<CR>
-nnoremap <leader>dm :G diff master<CR>
-nnoremap <leader>gd :G diff<CR>
-nnoremap <leader>gc :G commit<CR>
-nnoremap <leader>ga :G add<Space>
 nnoremap <leader>gl :G log<CR>
+
+" Easy-align
+nmap ga <Plug>(EasyAlign)
+xmap ga <Plug>(EasyAlign)
 
 " Spell check
 " ================================================
@@ -218,14 +216,14 @@ command! -nargs=? Fold :call CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " Using CocList
-nnoremap <silent> ,a  :<C-u>CocList diagnostics<cr>
-nnoremap <silent> ,e  :<C-u>CocList extensions<cr>
-nnoremap <silent> ,c  :<C-u>CocList commands<cr>
-nnoremap <silent> ,o  :<C-u>CocList outline<cr>
-nnoremap <silent> ,s  :<C-u>CocList -I symbols<cr>
-nnoremap <silent> ,j  :<C-u>CocNext<CR>
-nnoremap <silent> ,k  :<C-u>CocPrev<CR>
-nnoremap <silent> ,p  :<C-u>CocListResume<CR>
+nnoremap <silent> <leader>la  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <leader>le  :<C-u>CocList extensions<cr>
+nnoremap <silent> <leader>lc  :<C-u>CocList commands<cr>
+nnoremap <silent> <leader>lo  :<C-u>CocList outline<cr>
+nnoremap <silent> <leader>ls  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> <leader>lj  :<C-u>CocNext<CR>
+nnoremap <silent> <leader>lk  :<C-u>CocPrev<CR>
+nnoremap <silent> <leader>lp  :<C-u>CocListResume<CR>
 
 " Open explorer
 nnoremap <C-\> :CocCommand explorer<CR>
@@ -252,8 +250,8 @@ autocmd FileType html,css EmmetInstall
 tnoremap <Esc> <C-\><C-n>
 autocmd TermOpen * setlocal nonumber norelativenumber
 
-command! Sh vsplit term://fish | startinsert
-nnoremap <leader>z :Sh<CR>
+command! Shell vsplit term://fish | startinsert
+nnoremap <leader>z :Shell<CR>
 
 " Rainbow parentheseses
 " ================================================
@@ -320,11 +318,6 @@ for at in ['{-\%#-}', '{-#\%##-}', '{- \%# -}', '{-# \%# #-}']
         \ })
 endfor
 
-" Easy-align
-" ================================================
-nmap ga <Plug>(EasyAlign)
-xmap ga <Plug>(EasyAlign)
-
 " Indentation
 " ================================================
 filetype indent on
@@ -350,8 +343,6 @@ syntax sync fromstart
 
 " LaTeX
 " ================================================
-let g:AutoPairsIgnorePrefixes = ['\', 'lr', '\left']
-
 " TODO: move to snippets
 let pairs = {'(':')', '\\\\{':'\\\\}', '[':']', '<':'>'}
 for i in keys(pairs)
@@ -374,14 +365,14 @@ autocmd FileType tex :NeoTexOn
 " Markdown
 " ================================================
 let g:mkdx#settings = {
-      \ 'highlight': { 'enable': 1 },
+      \ 'highlight': { 'enable': 0 },
       \ 'enter': { 'shift': 1 },
       \ 'links': { 'external': { 'enable': 1 } },
       \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
       \ }
 let g:polyglot_disabled = ['markdown']
-let g:mkdp_auto_close = 0
 
+let g:mkdp_auto_close = 0
 let g:mkdp_browserfunc = 'OpenMKDP'
 function OpenMKDP(url)
   exec "AsyncRun chromium '--app=" . a:url . "'"
@@ -455,9 +446,4 @@ let g:build_and_run_setup = {
         \ }
       \ }
 
-
-function! Eq(fst, snd)
-  let g:build_and_run_setup[a:fst] = g:build_and_run_setup[a:snd]
-endfunction
-
-call Eq("cpp", "c")
+let g:build_and_run_setup["cpp"] = g:build_and_run_setup["c"]
