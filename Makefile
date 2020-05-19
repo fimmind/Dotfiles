@@ -58,8 +58,11 @@ installOhMyZsh:
 	sh -c "`curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh` --unattended"
 	mv ~/.zshrc.pre-oh-my-zsh ~/.zshrc
 
+ONESHELL:
 installOhMyFish:
-	curl -L https://get.oh-my.fish | fish
+	cd sources
+	curl -L https://get.oh-my.fish > get-omf.fish
+	fish get-omf.fish --noninteractive
 	fish -c "omf install sashimi"
 
 installTheHaskellToolStack:
