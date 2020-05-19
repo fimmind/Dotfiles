@@ -5,6 +5,7 @@ sudo_upgrade(){
   tlmgr update --self --all --reinstall-forcibly-removed
   pamac update --no-confirm
   npm upgrade
+  updatedb
 }
 
 no_sudo_upgrade(){
