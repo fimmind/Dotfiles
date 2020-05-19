@@ -113,6 +113,7 @@ setupNeoVim: updateVimPlug
 	sudo pip3 install pynvim unicode flake8 yapf sympy inkscape-figures
 	stack install stylish-haskell hdevtools
 	sudo npm install -g neovim bash-language-server
+	gem install neovim
 
 updateVimPlug:
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
