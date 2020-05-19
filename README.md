@@ -1,4 +1,4 @@
-# Dotfiles
+# Fimmind's Dotfiles
 
 ## Installation
 ```shell
