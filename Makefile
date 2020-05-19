@@ -17,7 +17,7 @@ setup:
 	$(MAKE) LN_ARGS=-sfT \
 		link-all installPackets installBrew installBrewPackets enableBluetooth \
 		installTheHaskellToolStack setupNeoVim ldconfig \
-		setup-default-apps installLeiningen installHIE installOhMyFish 
+		setup-default-apps installLeiningen installHIE installOhMyFish
 	sudo rm $$sudoers
 
 enableBluetooth:
