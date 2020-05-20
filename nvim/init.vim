@@ -139,7 +139,7 @@ let g:coc_global_extensions = [
       \ "coc-git", "coc-explorer", "coc-yaml", "coc-vimlsp",
       \ "coc-texlab", "coc-python", "coc-json", "coc-rust-analyzer",
       \ "coc-ultisnips", "coc-word", "coc-html", "coc-tsserver",
-      \ "coc-go"
+      \ "coc-go", "coc-prettier", "coc-css"
       \ ]
 function InstallCocExtensions()
   exec "CocInstall -sync " . join(g:coc_global_extensions)
@@ -179,6 +179,7 @@ nnoremap <leader>ar :Rename<CR>
 
 " Remap for format selected region
 xmap <leader>fs  <Plug>(coc-format-selected)
+vmap <leader>fs  <Plug>(coc-format-selected)
 nmap <leader>fs  mmvip<leader>fs`m
 
 " Remap for format whole file
@@ -216,14 +217,14 @@ command! -nargs=? Fold :call CocAction('fold', <f-args>)
 command! -nargs=0 OR   :call CocAction('runCommand', 'editor.action.organizeImport')
 
 " Using CocList
-nnoremap <silent> <leader>la  :<C-u>CocList diagnostics<cr>
-nnoremap <silent> <leader>le  :<C-u>CocList extensions<cr>
-nnoremap <silent> <leader>lc  :<C-u>CocList commands<cr>
-nnoremap <silent> <leader>lo  :<C-u>CocList outline<cr>
-nnoremap <silent> <leader>ls  :<C-u>CocList -I symbols<cr>
-nnoremap <silent> <leader>lj  :<C-u>CocNext<CR>
-nnoremap <silent> <leader>lk  :<C-u>CocPrev<CR>
-nnoremap <silent> <leader>lp  :<C-u>CocListResume<CR>
+nnoremap <silent> ,a  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> ,e  :<C-u>CocList extensions<cr>
+nnoremap <silent> ,c  :<C-u>CocList commands<cr>
+nnoremap <silent> ,o  :<C-u>CocList outline<cr>
+nnoremap <silent> ,s  :<C-u>CocList -I symbols<cr>
+nnoremap <silent> ,j  :<C-u>CocNext<CR>
+nnoremap <silent> ,k  :<C-u>CocPrev<CR>
+nnoremap <silent> ,p  :<C-u>CocListResume<CR>
 
 " Open explorer
 nnoremap <C-\> :CocCommand explorer<CR>
@@ -238,12 +239,24 @@ let g:UltiSnipsExpandTrigger       = "<Tab>"
 let g:UltiSnipsJumpForwardTrigger  = "<Tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
 
-" Emmet
+" HTML
 " ================================================
+let g:bracey_auto_start_browser = 0
+
 let g:user_emmet_mode='a'
-let g:user_emmet_leader_key='<C-m>'
+let g:user_emmet_leader_key=','
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
+
+autocmd FileType html,css,javascript call SetupFront()
+function SetupFront()
+  nnoremap <buffer> <localleader>ll :Bracey<CR>
+  nnoremap <buffer> <localleader>lo :BraceyOpen<CR>
+
+  command! -buffer BraceyOpen
+        \ exec "AsyncRun chromium '--app=" .
+        \ g:bracey_server_path . ":" . g:bracey_server_port . "'"
+endfunction
 
 " Terminal
 " ================================================
@@ -365,7 +378,7 @@ autocmd FileType tex :NeoTexOn
 " Markdown
 " ================================================
 let g:mkdx#settings = {
-      \ 'highlight': { 'enable': 0 },
+      \ 'highlight': { 'enable': 1 },
       \ 'enter': { 'shift': 1 },
       \ 'links': { 'external': { 'enable': 1 } },
       \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
