@@ -13,7 +13,7 @@ description:
 print_usage() {
   echo "
 usage:
-  $(basename "$0") [action [selection]] [--help]
+  $(basename "$0") [--action action] [--sel selection] [--help]
 
 options:
   action        action performed on selection. Options are \"edit\"
@@ -30,32 +30,38 @@ options:
 }
 
 exit_usage() {
-  echo "Wrong arguments!"
   print_usage >&2
   exit 2
 }
 
-for arg in $@; do
-  if [ "$arg" = "--help" ]; then
-    print_description
-    print_usage
-    exit 0
-  fi
+action=edit
+sel=clipboard
+
+while [ -n "$1" ]; do
+  case $1 in
+    --help)
+      print_description
+      print_usage
+      exit 0 ;;
+    --action)
+      action=$2
+      shift ;;
+    --sel)
+      sel=$2
+      shift ;;
+  esac
+  shift
 done
-
-if [ $# -gt 2 ]; then
-  exit_usage
-fi
-
-action=${1:-edit}
-sel=${2:-clipboard}
 
 file=$(mktemp --suffix=.txt)
 
 case $action in
   edit) xclip -selection $sel -o > $file ;;
   write) ;;
-  *) rm $file; exit_usage ;;
+  *)
+    rm $file
+    echo "Wrong value for --action" >&2
+    exit_usage ;;
 esac
 
 kitty --class=float -- nvim $file
