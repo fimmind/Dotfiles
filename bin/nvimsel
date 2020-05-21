@@ -1,44 +1,54 @@
 #! /usr/bin/env bash
 
-print_usage() {
+print_description() {
   echo "
 description:
   This script allows you to edit/write X selections (e.g. clipboard)
   using neovim. It opens temporal file, optionally containing current
   text from the specified selection, in neovim and then, after the
   editor is closed, if the file is not empty, it writes text from
-  that file to the X selection
+  that file to the X selection"
+}
 
+print_usage() {
+  echo "
 usage:
-  $(basename "$0") action selection   Edit or write selection
-  $(basename "$0") --help             Print this help message
+  $(basename "$0") [action [selection]] [--help]
 
 options:
   action        action performed on selection. Options are \"edit\"
                 for opening neovim with current text of selection or
-                \"write\" for opening nvim with empty file
+                \"write\" for opening nvim with empty file.
+                Defaults to \"edit\"
 
   selection     X selection to use. For more details see xclip's
-                manual page (-selection option)
+                manual page (-selection option).
+                Defaults to \"clipboard\"
+
+  --help        Forces printing help message with description
 "
 }
 
 exit_usage() {
+  echo "Wrong arguments!"
   print_usage >&2
   exit 2
 }
 
-if [ "$1" = "--help" ]; then
-  print_usage
-  exit 0
-fi
+for arg in $@; do
+  if [ "$arg" = "--help" ]; then
+    print_description
+    print_usage
+    exit 0
+  fi
+done
 
-if [ $# != 2 ]; then
+if [ $# -gt 2 ]; then
   exit_usage
 fi
 
-action=$1
-sel=$2
+action=${1:-edit}
+sel=${2:-clipboard}
 
 file=$(mktemp --suffix=.txt)
 
