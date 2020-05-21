@@ -3,27 +3,29 @@
 print_description() {
   echo "
 description:
-  This script allows you to edit/write X selections (e.g. clipboard)
-  using neovim. It opens temporal file, optionally containing current
-  text from the specified selection, in neovim and then, after the
-  editor is closed, if the file is not empty, it writes text from
-  that file to the X selection"
+  This script allows you to edit/write X selections (e.g. clipboard).
+  It opens temporal file, optionally containing current text from the
+  specified selection, and then, after the editor is closed, if the
+  file is not empty, it writes text from that file to the X selection"
 }
 
 print_usage() {
   echo "
 usage:
-  $(basename "$0") [--action action] [--sel selection] [--help]
+  seledit [--action action] [--sel selection] [--editor editor]
+          [--help]
 
 options:
   action        action performed on selection. Options are \"edit\"
-                for opening neovim with current text of selection or
-                \"write\" for opening nvim with empty file.
+                for opening edtor with current text of selection or
+                \"write\" for opening editor with empty file.
                 Defaults to \"edit\"
 
   selection     X selection to use. For more details see xclip's
                 manual page (-selection option).
                 Defaults to \"clipboard\"
+
+  editor        Command used to open editor. Defaults to "xdg-open"
 
   --help        Forces printing help message with description
 "
@@ -36,6 +38,7 @@ exit_usage() {
 
 action=edit
 sel=clipboard
+editor=xdg-open
 
 while [ -n "$1" ]; do
   case $1 in
@@ -48,6 +51,9 @@ while [ -n "$1" ]; do
       shift ;;
     --sel)
       sel=$2
+      shift ;;
+    --editor)
+      editor=$2
       shift ;;
   esac
   shift
@@ -64,7 +70,7 @@ case $action in
     exit_usage ;;
 esac
 
-kitty --class=float -- nvim $file
+$editor $file
 
 if [ -s $file ]; then
   xclip -rmlastnl -selection $sel $file

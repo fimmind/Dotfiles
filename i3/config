@@ -48,8 +48,8 @@ bindsym Mod1+Tab exec rofi -show window
 bindsym $mod+d exec rofi -show drun
 bindsym $mod+x exec kitty --class=float
 bindsym $mod+c exec kitty --class=float -- qalc
-bindsym $mod+n exec nvimsel --action write
-bindsym $mod+Shift+n exec nvimsel --action edit
+bindsym $mod+n exec seledit --action write --editor "kitty --class=float -- nvim"
+bindsym $mod+Shift+n exec seledit --action edit --editor "kitty --class=float -- nvim"
 
 ########## Focus ##########
 bindsym $mod+h focus left
