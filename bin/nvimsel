@@ -1,13 +1,40 @@
 #! /usr/bin/env bash
 
-usage() {
-  echo "usage: nvimsel (edit|write) selection"
-  echo "example: nvimsel edit clip"
+print_usage() {
+  echo "
+description:
+  This script allows you to edit/write X selections (e.g. clipboard)
+  using neovim. It opens temporal file, optionally containing current
+  text from the specified selection, in neovim and then, after the
+  editor is closed, if the file is not empty, it writes text from
+  that file to the X selection
+
+usage:
+  $(basename "$0") action selection   Edit or write selection
+  $(basename "$0") --help             Print this help message
+
+options:
+  action        action performed on selection. Options are \"edit\"
+                for opening neovim with current text of selection or
+                \"write\" for opening nvim with empty file
+
+  selection     X selection to use. For more details see xclip's
+                manual page (-selection option)
+"
+}
+
+exit_usage() {
+  print_usage >&2
   exit 2
 }
 
+if [ "$1" = "--help" ]; then
+  print_usage
+  exit 0
+fi
+
 if [ $# != 2 ]; then
-  usage
+  exit_usage
 fi
 
 action=$1
@@ -18,7 +45,7 @@ file=$(mktemp --suffix=.txt)
 case $action in
   edit) xclip -selection $sel -o > $file ;;
   write) ;;
-  *) rm $file; usage ;;
+  *) rm $file; exit_usage ;;
 esac
 
 kitty --class=float -- nvim $file
