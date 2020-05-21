@@ -12,22 +12,22 @@ description:
 print_usage() {
   echo "
 usage:
-  seledit [--action action] [--sel selection] [--editor editor]
-          [--help]
+  seledit [options]
 
 options:
-  action        action performed on selection. Options are \"edit\"
-                for opening edtor with current text of selection or
-                \"write\" for opening editor with empty file.
-                Defaults to \"edit\"
+  --action action   action performed on selection. Options are \"edit\"
+                    for opening edtor with current text of selection or
+                    \"write\" for opening editor with empty file.
+                    Defaults to \"edit\"
 
-  selection     X selection to use. For more details see xclip's
-                manual page (-selection option).
-                Defaults to \"clipboard\"
+  --sel selection   X selection to use. For more details see xclip's
+                    Vmanual page (-selection option).
+                    Defaults to \"clipboard\"
 
-  editor        Command used to open editor. Defaults to "xdg-open"
+  --editor editor   Command used to open editor.
+                    Defaults to "xdg-open"
 
-  --help        Forces printing help message with description
+  --help            Forces printing help message with description
 "
 }
 
