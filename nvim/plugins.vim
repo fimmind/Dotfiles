@@ -33,6 +33,7 @@ call plug#begin(stdpath('data') . '/plugged')
   " Html
   Plug 'mattn/emmet-vim'
   Plug 'gko/vim-coloresque'
+  Plug 'KabbAmine/vCoolor.vim'
   Plug 'turbio/bracey.vim', { 'do': 'npm install --prefix server' }
 
   " JavaScript
