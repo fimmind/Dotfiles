@@ -73,6 +73,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'luochen1990/rainbow'
   Plug 'dense-analysis/ale'
   Plug 'majutsushi/tagbar'
+  Plug 'aperezdc/vim-template'
 call plug#end()
 
 " Automatically install missing plugins

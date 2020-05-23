@@ -19,6 +19,7 @@ set number
 set relativenumber
 set ignorecase
 set mouse=a
+set shell=/bin/bash
 filetype plugin on
 filetype plugin indent on
 
@@ -118,6 +119,11 @@ let g:rootmarkers = [
       \ '.projectroot', '.git', '.hg', '.svn', '.bzr', '_darcs', 'build.xml',
       \ 'main.tex', 'project.clj', 'deps.edn', 'package.yaml', 'stack.yaml'
       \ ]
+
+" Templates
+" ================================================
+let g:templates_directory = stdpath("config") . "/templates"
+let g:templates_no_builtin_templates = 1
 
 " ALE
 " ================================================
