@@ -112,7 +112,7 @@ setupNeoVim: updateVimPlug
 	nvim -c ":call InstallCocExtensions() | :qa"
 	sudo pip3 install pynvim unicode flake8 yapf sympy inkscape-figures
 	stack install stylish-haskell hdevtools
-	sudo npm install -g neovim bash-language-server
+	sudo npm install -g neovim bash-language-server browser-sync
 	gem install neovim
 
 updateVimPlug:

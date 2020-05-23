@@ -247,22 +247,10 @@ let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
 
 " HTML
 " ================================================
-let g:bracey_auto_start_browser = 0
-
 let g:user_emmet_mode='a'
 let g:user_emmet_leader_key=','
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
-
-autocmd FileType html,css,javascript call SetupFront()
-function SetupFront()
-  nnoremap <buffer> <localleader>ll :Bracey<CR>
-  nnoremap <buffer> <localleader>lo :BraceyOpen<CR>
-
-  command! -buffer BraceyOpen
-        \ exec "AsyncRun chromium '--app=" .
-        \ g:bracey_server_path . ":" . g:bracey_server_port . "'"
-endfunction
 
 " Terminal
 " ================================================
