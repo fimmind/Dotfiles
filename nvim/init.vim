@@ -262,6 +262,10 @@ autocmd TermOpen * setlocal nonumber norelativenumber
 command! Shell vsplit term://fish | startinsert
 nnoremap <leader>z :Shell<CR>
 
+" Lexima
+" ================================================
+autocmd FileType lisp,clojure,j let b:lexima_disabled = 1
+
 " Rainbow parentheseses
 " ================================================
 let g:rainbow_active = 1
@@ -282,8 +286,6 @@ let g:rainbow_conf = {
 
 " Clojure
 " ================================================
-autocmd FileType lisp,clojure let b:lexima_disabled = 1
-
 let g:iced_enable_default_key_mappings = v:true
 let g:iced_formatter = 'cljstyle'
 
