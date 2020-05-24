@@ -452,6 +452,9 @@ let g:build_and_run_setup = {
         \ },
       \ "xdefaults": {
         \ "run":        "!xrdb '%:p'"
+        \ },
+      \ "j": {
+        \ "run":        "j8run '%:p'"
         \ }
       \ }
 
