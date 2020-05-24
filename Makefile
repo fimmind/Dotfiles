@@ -192,5 +192,5 @@ installJ:
 	$(call remove,./j8-git)
 	git clone https://aur.archlinux.org/j8-git.git
 	cd j8-git
-	makepkg -s
-	makepkg -i
+	makepkg -s --noconfirm
+	makepkg -i --noconfirm
