@@ -9,6 +9,7 @@ exec --no-startup-id keynav
 exec --no-startup-id ~/.fehbg
 exec --no-startup-id amixer sset Master 100
 exec --no-startup-id telegram-desktop -startintray
+exec --no-startup-id browser-sync start
 exec kitty -- upgrade
 exec kitty -- fish -c random_man
 
