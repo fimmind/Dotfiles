@@ -53,6 +53,8 @@ nnoremap <leader>tl :tablast<CR>
 nnoremap <leader>ts :tabs<CR>
 nnoremap <leader>tq :tabclose<CR>
 nnoremap <leader>to :tabonly<CR>
+nnoremap <leader>tgr :2tabmove<CR>
+nnoremap <leader>tgl :-1tabmove<CR>
 
 nnoremap <leader>d :call DeleteNext(0)<CR>
 nnoremap <leader>D :call DeleteNext(1)<CR>
