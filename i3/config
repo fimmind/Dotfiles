@@ -188,6 +188,9 @@ new_window 1pixel
 # for_window [window_role="task_dialog"] floating enable
 # for_window [title="Preferences$"] floating enable
 for_window [class="float"] floating enable
+for_window [urgent="latest"] focus
+for_window [class="firefox"] move to workspace $ws9
+for_window [class="qutebrowser"] move to workspace $ws1
 
 smart_borders no_gaps
 smart_gaps on
