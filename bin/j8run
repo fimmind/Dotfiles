@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-cat $@ | j8 -c

@@ -457,7 +457,7 @@ let g:build_and_run_setup = {
         \ "run":        "!xrdb '%:p'"
         \ },
       \ "j": {
-        \ "run":        "j8run '%:p'"
+        \ "run":        "echo | j8 -c '%:p'"
         \ }
       \ }
 
