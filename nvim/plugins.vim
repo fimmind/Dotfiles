@@ -37,6 +37,7 @@ call plug#begin(stdpath('data') . '/plugged')
 
   " JavaScript
   Plug 'lfilho/cosco.vim'
+  Plug 'isruslan/vim-es6'
 
   " LaTeX
   Plug 'donRaphaco/neotex', { 'for': 'tex' }
