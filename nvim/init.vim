@@ -247,6 +247,13 @@ let g:UltiSnipsExpandTrigger       = "<Tab>"
 let g:UltiSnipsJumpForwardTrigger  = "<Tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
 
+call lexima#add_rule({
+      \ 'char': '<CR>',
+      \ 'filetype': 'snippets',
+      \ 'at': '^snippet.*\%#\s*$',
+      \ 'input_after': '<CR>endsnippet'
+      \ })
+
 " HTML
 " ================================================
 let g:user_emmet_mode='a'
