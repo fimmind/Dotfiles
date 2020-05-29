@@ -98,7 +98,11 @@ endfunction
 " Run
 " ================================================
 function! s:run_bare()
-  call s:run_cmd(s:get_setup_key("run", s:build_message("There's no 'run' field for " . &ft)))
+  if executable(expand('%:p'))
+    call s:run_cmd(expand('%:p'))
+  else
+    call s:run_cmd(s:get_setup_key("run", s:build_message("There's no 'run' field for " . &ft)))
+  endif
 endfunction
 
 function! build_and_run#run()
