@@ -20,8 +20,12 @@ set relativenumber
 set ignorecase
 set mouse=a
 set shell=/bin/bash
+set termguicolors
+set background=dark
 filetype plugin on
 filetype plugin indent on
+syntax on
+syntax sync fromstart
 
 set hidden         " :
 set nobackup       " :
@@ -360,12 +364,8 @@ autocmd FileType cpp,c,python,rust
 
 " Theme
 " ================================================
-set termguicolors
 let g:gruvbox_contrast_dark = "hard"
 colorscheme gruvbox
-set background=dark
-syntax on
-syntax sync fromstart
 
 " LaTeX
 " ================================================
