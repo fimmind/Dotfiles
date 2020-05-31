@@ -303,6 +303,10 @@ let g:rainbow_conf = {
         \ }
       \ }
 
+" Rust
+" ================================================
+highlight link CocRustChainingHint CocCodeLens
+
 " Clojure
 " ================================================
 let g:iced_enable_default_key_mappings = v:true
