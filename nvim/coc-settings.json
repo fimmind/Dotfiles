@@ -2,38 +2,22 @@
   "languageserver": {
     "haskell": {
       "command": "hie-wrapper",
-      "args": [
-        "--lsp"
-      ],
+      "args": ["--lsp"],
       "rootPatterns": [
         "*.cabal",
         "stack.yaml",
         "cabal.project",
         "package.yaml"
       ],
-      "filetypes": [
-        "hs",
-        "lhs",
-        "haskell"
-      ],
+      "filetypes": ["hs", "lhs", "haskell"],
       "initializationOptions": {
         "languageServerHaskell": {}
       }
     },
     "c++": {
       "command": "ccls",
-      "filetypes": [
-        "c",
-        "cpp",
-        "objc",
-        "objcpp"
-      ],
-      "rootPatterns": [
-        ".ccls",
-        "compile_commands.json",
-        ".git/",
-        ".hg/"
-      ],
+      "filetypes": ["c", "cpp", "objc", "objcpp"],
+      "rootPatterns": [".ccls", "compile_commands.json", ".git/", ".hg/"],
       "initializationOptions": {
         "cache": {
           "directory": "/tmp/ccls"
@@ -42,16 +26,10 @@
     },
     "bash": {
       "command": "bash-language-server",
-      "args": [
-        "start"
-      ],
-      "filetypes": [
-        "sh"
-      ],
-      "ignoredRootPaths": [
-        "~"
-      ]
-    },
+      "args": ["start"],
+      "filetypes": ["sh"],
+      "ignoredRootPaths": ["~"]
+    }
   },
   "git.addedSign.hlGroup": "GitGutterAdd",
   "git.changedSign.hlGroup": "GitGutterChange",
