@@ -1,53 +1,18 @@
 call plug#begin(stdpath('data') . '/plugged')
-  " Syntax, style
+  " Coloring
   Plug 'phaazon/gruvbox' " Not original, cause of haskell-vim support
-  Plug 'suy/vim-qmake'
-  Plug 'justinmk/vim-syntax-extra'
-  Plug 'PotatoesMaster/i3-vim-syntax'
-  Plug 'vim-airline/vim-airline'
-  Plug 'dag/vim-fish'
-  Plug 'cespare/vim-toml'
-
-  " Rust
-  Plug 'rust-lang/rust.vim'
-
-  " Lisp
-  Plug 'guns/vim-sexp'
-
-  " Clojure
-  Plug 'liquidz/vim-iced', {'for': 'clojure'}
-  Plug 'liquidz/vim-iced-coc-source', {'for': 'clojure'}
-
-  " Haskell
-  Plug 'neovimhaskell/haskell-vim'
-  Plug 'alx741/vim-stylishask'
-  Plug 'fimmind/vim-hs-type'
-  Plug 'feuerbach/vim-hs-module-name'
-
-  " Markdown
-  Plug 'SidOfc/mkdx'
-  Plug 'dhruvasagar/vim-table-mode'
-  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-  Plug 'vim-pandoc/vim-pandoc-syntax'
-
-  " Html
-  Plug 'mattn/emmet-vim'
   Plug 'gko/vim-coloresque'
-  Plug 'KabbAmine/vCoolor.vim'
-
-  " JavaScript
-  Plug 'lfilho/cosco.vim'
-  Plug 'isruslan/vim-es6'
-
-  " LaTeX
-  Plug 'donRaphaco/neotex', { 'for': 'tex' }
-
-  " C++
   Plug 'oblitum/rainbow', { 'for': ['cpp', 'c'], 'as': 'rainbow-cpp' }
+  Plug 'luochen1990/rainbow'
+
+  " Motion
+  Plug 'matze/vim-move'
+  Plug 'easymotion/vim-easymotion'
+  Plug 'ctrlpvim/ctrlp.vim'
 
   " Tools
   Plug 'junegunn/vim-easy-align'
-  Plug 'markonm/traces.vim'                " :substitute prewiew
+  Plug 'markonm/traces.vim'                " :substitute preview
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
   Plug 'tpope/vim-surround'
   Plug 'tpope/vim-repeat'
@@ -60,20 +25,51 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'mbbill/undotree'
   Plug 'junegunn/vim-peekaboo'
   Plug 'nelstrom/vim-visual-star-search'
-
-  " Motion
-  Plug 'matze/vim-move'
-  Plug 'easymotion/vim-easymotion'
-  Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'lfilho/cosco.vim'
+  Plug 'KabbAmine/vCoolor.vim'
+  Plug 'cohama/lexima.vim'
+  Plug 'guns/vim-sexp'
+  Plug 'mattn/emmet-vim'
+  Plug 'sirver/UltiSnips'
 
   " IDE
+  " ================================================
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'cohama/lexima.vim'
-  Plug 'sirver/UltiSnips'
-  Plug 'luochen1990/rainbow'
   Plug 'dense-analysis/ale'
   Plug 'majutsushi/tagbar'
   Plug 'aperezdc/vim-template'
+
+  " Syntax
+  Plug 'suy/vim-qmake'
+  Plug 'justinmk/vim-syntax-extra'
+  Plug 'PotatoesMaster/i3-vim-syntax'
+  Plug 'vim-airline/vim-airline'
+  Plug 'dag/vim-fish'
+  Plug 'cespare/vim-toml'
+  Plug 'isruslan/vim-es6'
+  Plug 'neovimhaskell/haskell-vim'
+  Plug 'vim-pandoc/vim-pandoc-syntax'
+
+  " Rust
+  Plug 'rust-lang/rust.vim'
+
+  " Clojure
+  Plug 'liquidz/vim-iced', {'for': 'clojure'}
+  Plug 'liquidz/vim-iced-coc-source', {'for': 'clojure'}
+
+  " Haskell
+  Plug 'alx741/vim-stylishask'
+  Plug 'fimmind/vim-hs-type'
+  Plug 'feuerbach/vim-hs-module-name'
+
+  " Markdown
+  Plug 'SidOfc/mkdx'
+  Plug 'dhruvasagar/vim-table-mode'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+
+  " LaTeX
+  Plug 'donRaphaco/neotex', { 'for': 'tex' }
+
 call plug#end()
 
 " Automatically install missing plugins
