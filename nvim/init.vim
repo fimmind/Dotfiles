@@ -103,6 +103,9 @@ nnoremap <leader>gl :G log<CR>
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
+" CtrlP
+nnoremap <M-p> :CtrlPBuffer<CR>
+
 " Spell check
 " ================================================
 set spelllang=en,ru_yo
