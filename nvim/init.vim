@@ -86,7 +86,7 @@ endfunction
 nmap \ <Plug>(easymotion-prefix)
 
 " Undotree
-nnoremap <leader>u :UndotreeToggle<CR>:UndotreeFocus<CR>
+nnoremap <M-\> :UndotreeToggle<CR>:UndotreeFocus<CR>
 
 " Cosco
 nmap <silent> <localleader>; <Plug>(cosco-commaOrSemiColon)
