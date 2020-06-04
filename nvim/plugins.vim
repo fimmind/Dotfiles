@@ -9,6 +9,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'matze/vim-move'
   Plug 'easymotion/vim-easymotion'
   Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'wellle/targets.vim'
 
   " Tools
   Plug 'junegunn/vim-easy-align'
