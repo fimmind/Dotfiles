@@ -63,6 +63,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'alx741/vim-stylishask'
   Plug 'fimmind/vim-hs-type'
   Plug 'feuerbach/vim-hs-module-name'
+  Plug 'itchyny/vim-haskell-indent'
 
   " Markdown
   Plug 'SidOfc/mkdx'

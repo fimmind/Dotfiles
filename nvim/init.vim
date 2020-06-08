@@ -295,6 +295,31 @@ for at in ['{-\%#-}', '{-#\%##-}', '{- \%# -}', '{-# \%# #-}']
         \ })
 endfor
 
+call lexima#add_rule({
+      \ 'filetype': 'haskell',
+      \ 'char': '<CR>',
+      \ 'at': '^{-\s*\%#\s*-}',
+      \ 'syntax': 'Comment',
+      \ 'input': '<CR> - ',
+      \ 'input_after': '<CR>'
+      \ })
+
+call lexima#add_rule({
+      \ 'filetype': 'haskell',
+      \ 'char': '<CR>',
+      \ 'at': '^{-.*\%#',
+      \ 'syntax': 'Comment',
+      \ 'input': '<CR> - '
+      \ })
+
+call lexima#add_rule({
+      \ 'filetype': 'haskell',
+      \ 'char': '<CR>',
+      \ 'at': '^ -.*\%#',
+      \ 'syntax': 'Comment',
+      \ 'input': '<CR>- '
+      \ })
+
 " LaTeX {{{2
 let pairs = {'(':')', '\\\\{':'\\\\}', '[':']', '<':'>'}
 for i in keys(pairs)
@@ -342,15 +367,7 @@ let g:iced_formatter = 'cljstyle'
 let g:sexp_enable_insert_mode_mappings = 1
 
 " Haskell {{{1
-let g:haskell_indent_if = 2
-let g:haskell_indent_case = 2
-let g:haskell_indent_let = 4
-let g:haskell_indent_where = 6
-let g:haskell_indent_before_where = -1
-let g:haskell_indent_after_bare_where = 1
-let g:haskell_indent_do = 3
-let g:haskell_indent_in = 0
-let g:haskell_indent_guard = 2
+let g:haskell_indent_disable = 1
 
 " Indentation {{{1
 filetype indent on
