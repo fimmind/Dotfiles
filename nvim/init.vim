@@ -1,7 +1,6 @@
 exec "source" . stdpath('config') . "/plugins.vim"
 
-" Main
-" ================================================
+" Main settings {{{1
 set colorcolumn=81
 set textwidth=80
 set splitright
@@ -22,6 +21,7 @@ set mouse=a
 set shell=/bin/bash
 set termguicolors
 set background=dark
+set foldmethod=marker
 filetype plugin on
 filetype plugin indent on
 syntax on
@@ -34,8 +34,7 @@ set updatetime=300 " :
 set shortmess+=c   " :
 set signcolumn=yes " :
 
-" Basic mappings
-" ================================================
+" Basic mappings {{{1
 command! Vimrc e ~/Dotfiles/nvim/init.vim
 
 let g:maplocalleader=' '
@@ -80,34 +79,31 @@ function EchoWc(wc_args, postfix) range
         \ . a:postfix
 endfunction
 
-" Plugins mappings
-" ================================================
-" EasyMotion
+" EasyMotion {{{1
 nmap \ <Plug>(easymotion-prefix)
 
-" Undotree
+" Undotree {{{1
 nnoremap <M-\> :UndotreeToggle<CR>:UndotreeFocus<CR>
 
-" Cosco
+" Cosco {{{1
 nmap <silent> <localleader>; <Plug>(cosco-commaOrSemiColon)
 
-" vim-move
+" vim-move {{{1
 let g:move_key_modifier='C'
 
-" Fugitive
+" Fugitive {{{1
 nnoremap <leader>gg :G<CR>
 nnoremap <leader>gw :Gw<CR>
 nnoremap <leader>gl :G log<CR>
 
-" Easy-align
+" Easy-align {{{1
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
 
-" CtrlP
+" CtrlP {{{1
 nnoremap <M-p> :CtrlPBuffer<CR>
 
-" Spell check
-" ================================================
+" Spell check {{{1
 set spelllang=en,ru_yo
 command! ToggleSpell let &spell = ! &spell
 
@@ -117,25 +113,21 @@ nnoremap <leader>sn mm]s1z=`m
 
 autocmd FileType gitcommit,markdown,tex,text setlocal spell
 
-" Tagbar
-" ================================================
+" Tagbar {{{1
 nnoremap <C-]> :TagbarToggle<CR>
 let g:tagbar_autofocus = 1
 
-" Project-root
-" ================================================
+" Project-root {{{1
 let g:rootmarkers = [
       \ '.projectroot', '.git', '.hg', '.svn', '.bzr', '_darcs', 'build.xml',
       \ 'main.tex', 'project.clj', 'deps.edn', 'package.yaml', 'stack.yaml'
       \ ]
 
-" Templates
-" ================================================
+" Templates {{{1
 let g:templates_directory = stdpath("config") . "/templates"
 let g:templates_no_builtin_templates = 1
 
-" ALE
-" ================================================
+" ALE {{{1
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
       \ '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -148,8 +140,7 @@ let g:ale_linters = {
 
 let g:ale_sign_warning = ">>"
 
-" CoC
-" ================================================
+" CoC {{{1
 let g:coc_global_extensions = [
       \ "coc-git", "coc-explorer", "coc-yaml", "coc-vimlsp",
       \ "coc-texlab", "coc-python", "coc-json", "coc-rust-analyzer",
@@ -244,8 +235,7 @@ nnoremap <silent> ,p  :<C-u>CocListResume<CR>
 " Open explorer
 nnoremap <C-\> :CocCommand explorer<CR>
 
-" UltiSnips
-" ================================================
+" UltiSnips {{{1
 let g:UltiSnipsEditSplit          ='vertical'
 let g:UltiSnipsSnippetDirectories = ['UltiSnips']
 let g:UltiSnipsUsePythonVersion   = 3
@@ -261,8 +251,7 @@ call lexima#add_rule({
       \ 'input_after': '<CR>endsnippet'
       \ })
 
-" HTML
-" ================================================
+" HTML {{{1
 let g:user_emmet_mode='a'
 let g:user_emmet_leader_key=','
 let g:user_emmet_install_global = 0
@@ -275,20 +264,17 @@ call lexima#add_rule({
       \ 'input_after': '<CR>'
       \ })
 
-" Terminal
-" ================================================
+" Terminal {{{1
 tnoremap <Esc> <C-\><C-n>
 autocmd TermOpen * setlocal nonumber norelativenumber
 
 command! Shell vsplit term://fish | startinsert
 nnoremap <leader>z :Shell<CR>
 
-" Lexima
-" ================================================
+" Lexima {{{1
 autocmd FileType lisp,clojure,j let b:lexima_disabled = 1
 
-" Rainbow parentheseses
-" ================================================
+" Rainbow parentheseses {{{1
 let g:rainbow_active = 1
 
 let g:rainbow_conf = {
@@ -306,19 +292,16 @@ let g:rainbow_conf = {
         \ }
       \ }
 
-" Rust
-" ================================================
+" Rust {{{1
 highlight link CocRustChainingHint CocCodeLens
 
-" Clojure
-" ================================================
+" Clojure {{{1
 let g:iced_enable_default_key_mappings = v:true
 let g:iced_formatter = 'cljstyle'
 
 let g:sexp_enable_insert_mode_mappings = 1
 
-" Haskell
-" ================================================
+" Haskell {{{1
 let g:haskell_indent_if = 2
 let g:haskell_indent_case = 2
 let g:haskell_indent_let = 4
@@ -355,8 +338,7 @@ for at in ['{-\%#-}', '{-#\%##-}', '{- \%# -}', '{-# \%# #-}']
         \ })
 endfor
 
-" Indentation
-" ================================================
+" Indentation {{{1
 filetype indent on
 set autoindent
 set expandtab
@@ -369,13 +351,11 @@ autocmd FileType cpp,c,python,rust
       \ | set shiftwidth=4
       \ | set softtabstop=4
 
-" Theme
-" ================================================
+" Theme {{{1
 let g:gruvbox_contrast_dark = "hard"
 colorscheme gruvbox
 
-" LaTeX
-" ================================================
+" LaTeX {{{1
 " TODO: move to snippets
 let pairs = {'(':')', '\\\\{':'\\\\}', '[':']', '<':'>'}
 for i in keys(pairs)
@@ -395,8 +375,7 @@ let g:neotex_latexdiff = 0
 
 autocmd FileType tex :NeoTexOn
 
-" Markdown
-" ================================================
+" Markdown {{{1
 let g:mkdx#settings = {
       \ 'highlight': { 'enable': 1 },
       \ 'enter': { 'shift': 1 },
@@ -414,13 +393,11 @@ endfunction
 autocmd FileType markdown set syntax=pandoc
 let g:pandoc#syntax#conceal#use = 0
 
-" NERDComment
-" ================================================
+" NERDComment {{{1
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 
-" Build & Run
-" ================================================
+" Build & Run {{{1
 nnoremap <leader>rr :call build_and_run#run()<CR>
 nnoremap <leader>bb :call build_and_run#build()<CR>
 
@@ -483,3 +460,6 @@ let g:build_and_run_setup = {
       \ }
 
 let g:build_and_run_setup["cpp"] = g:build_and_run_setup["c"]
+" }}}
+
+" vim: fdm=marker
