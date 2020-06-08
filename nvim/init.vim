@@ -244,25 +244,11 @@ let g:UltiSnipsExpandTrigger       = "<Tab>"
 let g:UltiSnipsJumpForwardTrigger  = "<Tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
 
-call lexima#add_rule({
-      \ 'char': '<CR>',
-      \ 'filetype': 'snippets',
-      \ 'at': '^snippet.*\%#\s*$',
-      \ 'input_after': '<CR>endsnippet'
-      \ })
-
 " HTML {{{1
 let g:user_emmet_mode='a'
 let g:user_emmet_leader_key=','
 let g:user_emmet_install_global = 0
 autocmd FileType html,css EmmetInstall
-
-call lexima#add_rule({
-      \ 'char': '<CR>',
-      \ 'filetype': 'html',
-      \ 'at': '<[^/<>]*>\%#</[^<>]*>',
-      \ 'input_after': '<CR>'
-      \ })
 
 " Terminal {{{1
 tnoremap <Esc> <C-\><C-n>
@@ -273,6 +259,60 @@ nnoremap <leader>z :Shell<CR>
 
 " Lexima {{{1
 autocmd FileType lisp,clojure,j let b:lexima_disabled = 1
+
+" UltiSnips {{{2
+call lexima#add_rule({
+      \ 'char': '<CR>',
+      \ 'filetype': 'snippets',
+      \ 'at': '^snippet.*\%#\s*$',
+      \ 'input_after': '<CR>endsnippet'
+      \ })
+
+" Haskell {{{2
+let chars = {
+      \ '-': ['{\%#}'],
+      \ '#': ['{-\%#-}'],
+      \ '<Space>': ['{-\%#-}', '{-#\%##-}']
+      \ }
+
+for char in keys(chars)
+  for at in chars[char]
+    call lexima#add_rule({
+          \ 'filetype': 'haskell',
+          \ 'char': char,
+          \ 'at': at,
+          \ 'input_after': char
+          \ })
+  endfor
+endfor
+
+for at in ['{-\%#-}', '{-#\%##-}', '{- \%# -}', '{-# \%# #-}']
+  call lexima#add_rule({
+        \ 'filetype': 'haskell',
+        \ 'char': '<BS>',
+        \ 'at': at,
+        \ 'delete': 1
+        \ })
+endfor
+
+" LaTeX {{{2
+let pairs = {'(':')', '\\\\{':'\\\\}', '[':']', '<':'>'}
+for i in keys(pairs)
+  call lexima#add_rule({
+        \ 'char': i[-1:],
+        \ 'at': 'lr\%#',
+        \ 'filetype': 'tex',
+        \ 'input': '<BS><BS> <Esc>:call UltiSnips#Anon("\\left'.i.' $1 \\right'.pairs[i].'$0")<CR>'
+        \ })
+endfor
+
+" HTML {{{2
+call lexima#add_rule({
+      \ 'char': '<CR>',
+      \ 'filetype': 'html',
+      \ 'at': '<[^/<>]*>\%#</[^<>]*>',
+      \ 'input_after': '<CR>'
+      \ })
 
 " Rainbow parentheseses {{{1
 let g:rainbow_active = 1
@@ -312,32 +352,6 @@ let g:haskell_indent_do = 3
 let g:haskell_indent_in = 0
 let g:haskell_indent_guard = 2
 
-let chars = {
-      \ '-': ['{\%#}'],
-      \ '#': ['{-\%#-}'],
-      \ '<Space>': ['{-\%#-}', '{-#\%##-}']
-      \ }
-
-for char in keys(chars)
-  for at in chars[char]
-    call lexima#add_rule({
-          \ 'filetype': 'haskell',
-          \ 'char': char,
-          \ 'at': at,
-          \ 'input_after': char
-          \ })
-  endfor
-endfor
-
-for at in ['{-\%#-}', '{-#\%##-}', '{- \%# -}', '{-# \%# #-}']
-  call lexima#add_rule({
-        \ 'filetype': 'haskell',
-        \ 'char': '<BS>',
-        \ 'at': at,
-        \ 'delete': 1
-        \ })
-endfor
-
 " Indentation {{{1
 filetype indent on
 set autoindent
@@ -365,17 +379,6 @@ let g:header_alignment = 0
 nnoremap <leader>hh :AddHeader<CR>
 
 " LaTeX {{{1
-" TODO: move to snippets
-let pairs = {'(':')', '\\\\{':'\\\\}', '[':']', '<':'>'}
-for i in keys(pairs)
-  call lexima#add_rule({
-        \ 'char': i[-1:],
-        \ 'at': 'lr\%#',
-        \ 'filetype': 'tex',
-        \ 'input': '<BS><BS> <Esc>:call UltiSnips#Anon("\\left'.i.' $1 \\right'.pairs[i].'$0")<CR>'
-        \ })
-endfor
-
 " NeoTex
 let g:tex_flavor       = 'latex'
 let g:neotex_enabled   = 1
