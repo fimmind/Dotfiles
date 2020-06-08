@@ -32,6 +32,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'guns/vim-sexp'
   Plug 'mattn/emmet-vim'
   Plug 'sirver/UltiSnips'
+  Plug 'alpertuna/vim-header'
 
   " IDE
   " ================================================

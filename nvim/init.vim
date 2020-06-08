@@ -355,6 +355,15 @@ autocmd FileType cpp,c,python,rust
 let g:gruvbox_contrast_dark = "hard"
 colorscheme gruvbox
 
+" File's header {{{1
+let g:header_field_author = 'Serafim Vinogrodskiy'
+let g:header_field_author_email = 'fimmind@mail.ru'
+let g:header_auto_add_header = 0
+let g:header_field_license_id = 'MIT'
+let g:header_alignment = 0
+
+nnoremap <leader>hh :AddHeader<CR>
+
 " LaTeX {{{1
 " TODO: move to snippets
 let pairs = {'(':')', '\\\\{':'\\\\}', '[':']', '<':'>'}
