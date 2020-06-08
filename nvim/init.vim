@@ -1,3 +1,4 @@
+" Plugins loading {{{1
 exec "source" . stdpath('config') . "/plugins.vim"
 
 " Main settings {{{1
