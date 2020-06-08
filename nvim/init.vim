@@ -244,12 +244,6 @@ let g:UltiSnipsExpandTrigger       = "<Tab>"
 let g:UltiSnipsJumpForwardTrigger  = "<Tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
 
-" HTML {{{1
-let g:user_emmet_mode='a'
-let g:user_emmet_leader_key=','
-let g:user_emmet_install_global = 0
-autocmd FileType html,css EmmetInstall
-
 " Terminal {{{1
 tnoremap <Esc> <C-\><C-n>
 autocmd TermOpen * setlocal nonumber norelativenumber
@@ -357,18 +351,6 @@ let g:rainbow_conf = {
         \ }
       \ }
 
-" Rust {{{1
-highlight link CocRustChainingHint CocCodeLens
-
-" Clojure {{{1
-let g:iced_enable_default_key_mappings = v:true
-let g:iced_formatter = 'cljstyle'
-
-let g:sexp_enable_insert_mode_mappings = 1
-
-" Haskell {{{1
-let g:haskell_indent_disable = 1
-
 " Indentation {{{1
 filetype indent on
 set autoindent
@@ -394,6 +376,24 @@ let g:header_field_license_id = 'MIT'
 let g:header_alignment = 0
 
 nnoremap <leader>hh :AddHeader<CR>
+
+" HTML {{{1
+let g:user_emmet_mode='a'
+let g:user_emmet_leader_key=','
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+
+" Rust {{{1
+highlight link CocRustChainingHint CocCodeLens
+
+" Clojure {{{1
+let g:iced_enable_default_key_mappings = v:true
+let g:iced_formatter = 'cljstyle'
+
+let g:sexp_enable_insert_mode_mappings = 1
+
+" Haskell {{{1
+let g:haskell_indent_disable = 1
 
 " LaTeX {{{1
 " NeoTex
@@ -421,10 +421,6 @@ endfunction
 
 autocmd FileType markdown set syntax=pandoc
 let g:pandoc#syntax#conceal#use = 0
-
-" NERDComment {{{1
-let g:NERDSpaceDelims = 1
-let g:NERDDefaultAlign = 'left'
 
 " Build & Run {{{1
 nnoremap <leader>rr :call build_and_run#run()<CR>
