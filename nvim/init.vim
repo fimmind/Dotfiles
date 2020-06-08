@@ -110,6 +110,24 @@ autocmd TermOpen * setlocal nonumber norelativenumber
 command! Shell vsplit term://fish | startinsert
 nnoremap <leader>z :Shell<CR>
 
+" Rainbow parentheseses {{{1
+let g:rainbow_active = 1
+
+let g:rainbow_conf = {
+        \ 'operators': '_,_',
+        \ 'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+        \ 'separately': {
+          \ 'cpp': 0,
+          \ 'c': 0,
+          \ 'markdown': 0,
+          \ 'j': 0,
+          \ 'haskell': {
+            \ 'operators': '_,\|[-!#$%&\*\+/<=>\?@\\^|~:.]\+_',
+            \	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/\v\{\ze[^-]/ end=/}/ fold'],
+          \ }
+        \ }
+      \ }
+
 " Theme {{{1
 let g:gruvbox_contrast_dark = "hard"
 colorscheme gruvbox
@@ -350,24 +368,6 @@ call lexima#add_rule({
       \ 'at': '<[^/<>]*>\%#</[^<>]*>',
       \ 'input_after': '<CR>'
       \ })
-
-" Rainbow parentheseses {{{1
-let g:rainbow_active = 1
-
-let g:rainbow_conf = {
-        \ 'operators': '_,_',
-        \ 'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
-        \ 'separately': {
-          \ 'cpp': 0,
-          \ 'c': 0,
-          \ 'markdown': 0,
-          \ 'j': 0,
-          \ 'haskell': {
-            \ 'operators': '_,\|[-!#$%&\*\+/<=>\?@\\^|~:.]\+_',
-            \	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/\v\{\ze[^-]/ end=/}/ fold'],
-          \ }
-        \ }
-      \ }
 
 " vim-header {{{1
 let g:header_field_author = 'Serafim Vinogrodskiy'
