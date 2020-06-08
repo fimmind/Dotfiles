@@ -79,6 +79,40 @@ function EchoWc(wc_args, postfix) range
         \ . a:postfix
 endfunction
 
+" Indentation {{{1
+filetype indent on
+set autoindent
+set expandtab
+autocmd FileType *
+      \ set tabstop=2
+      \ | set shiftwidth=2
+      \ | set softtabstop=2
+autocmd FileType cpp,c,python,rust
+      \ set tabstop=4
+      \ | set shiftwidth=4
+      \ | set softtabstop=4
+
+" Spell check {{{1
+set spelllang=en,ru_yo
+command! ToggleSpell let &spell = ! &spell
+
+nnoremap <leader>st :ToggleSpell<CR>
+nnoremap <leader>sp mm[s1z=`m
+nnoremap <leader>sn mm]s1z=`m
+
+autocmd FileType gitcommit,markdown,tex,text setlocal spell
+
+" Terminal {{{1
+tnoremap <Esc> <C-\><C-n>
+autocmd TermOpen * setlocal nonumber norelativenumber
+
+command! Shell vsplit term://fish | startinsert
+nnoremap <leader>z :Shell<CR>
+
+" Theme {{{1
+let g:gruvbox_contrast_dark = "hard"
+colorscheme gruvbox
+
 " EasyMotion {{{1
 nmap \ <Plug>(easymotion-prefix)
 
@@ -102,16 +136,6 @@ xmap ga <Plug>(EasyAlign)
 
 " CtrlP {{{1
 nnoremap <M-p> :CtrlPBuffer<CR>
-
-" Spell check {{{1
-set spelllang=en,ru_yo
-command! ToggleSpell let &spell = ! &spell
-
-nnoremap <leader>st :ToggleSpell<CR>
-nnoremap <leader>sp mm[s1z=`m
-nnoremap <leader>sn mm]s1z=`m
-
-autocmd FileType gitcommit,markdown,tex,text setlocal spell
 
 " Tagbar {{{1
 nnoremap <C-]> :TagbarToggle<CR>
@@ -244,13 +268,6 @@ let g:UltiSnipsExpandTrigger       = "<Tab>"
 let g:UltiSnipsJumpForwardTrigger  = "<Tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
 
-" Terminal {{{1
-tnoremap <Esc> <C-\><C-n>
-autocmd TermOpen * setlocal nonumber norelativenumber
-
-command! Shell vsplit term://fish | startinsert
-nnoremap <leader>z :Shell<CR>
-
 " Lexima {{{1
 autocmd FileType lisp,clojure,j let b:lexima_disabled = 1
 
@@ -350,23 +367,6 @@ let g:rainbow_conf = {
           \ }
         \ }
       \ }
-
-" Indentation {{{1
-filetype indent on
-set autoindent
-set expandtab
-autocmd FileType *
-      \ set tabstop=2
-      \ | set shiftwidth=2
-      \ | set softtabstop=2
-autocmd FileType cpp,c,python,rust
-      \ set tabstop=4
-      \ | set shiftwidth=4
-      \ | set softtabstop=4
-
-" Theme {{{1
-let g:gruvbox_contrast_dark = "hard"
-colorscheme gruvbox
 
 " vim-header {{{1
 let g:header_field_author = 'Serafim Vinogrodskiy'
