@@ -18,3 +18,12 @@ fn main() -> Result<(), Box<dyn Error>> {
 	Ok(())
 }
 endsnippet
+
+snippet tests "tests block" b
+#[cfg(test)]
+mod tests {
+	use super::*;
+
+	$0
+}
+endsnippet
