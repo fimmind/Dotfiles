@@ -33,6 +33,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'mattn/emmet-vim'
   Plug 'sirver/UltiSnips'
   Plug 'alpertuna/vim-header'
+  Plug 'andrewradev/splitjoin.vim'
 
   " IDE
   " ================================================

@@ -144,6 +144,12 @@ nmap <silent> <localleader>; <Plug>(cosco-commaOrSemiColon)
 " vim-move {{{1
 let g:move_key_modifier='C'
 
+" splitjoin {{{1
+let g:splitjoin_split_mapping = ''
+let g:splitjoin_join_mapping  = ''
+nmap <leader>J <Plug>SplitjoinJoin
+nmap <leader>j <Plug>SplitjoinSplit
+
 " Fugitive {{{1
 nnoremap <leader>gg :G<CR>
 nnoremap <leader>gw :Gw<CR>
