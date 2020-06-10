@@ -1,9 +1,17 @@
 snippet prn "println!" w
-println!("{}", $1);
+println!("{}", $1)
 endsnippet
 
 snippet pr "print!" w
-print!("{}", $1);
+print!("{} ", $1)
+endsnippet
+
+snippet prnd "println! as Debug" w
+println!("{:?}", $1)
+endsnippet
+
+snippet prd "print! as Debug" w
+print!("{:?} ", $1)
 endsnippet
 
 snippet main "main function" b
