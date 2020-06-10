@@ -46,7 +46,7 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
-nnoremap gq :q<CR>
+nnoremap gq :bdelete<CR>
 nnoremap gw :w<CR>
 
 nnoremap <leader>tn :tabnext<CR>
