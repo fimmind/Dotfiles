@@ -383,6 +383,10 @@ let g:header_alignment = 0
 
 nnoremap <leader>hh :AddHeader<CR>
 
+" NERDComment {{{1
+let g:NERDSpaceDelims = 1
+let g:NERDDefaultAlign = 'left'
+
 " HTML {{{1
 let g:user_emmet_mode='a'
 let g:user_emmet_leader_key=','
