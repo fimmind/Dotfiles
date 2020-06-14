@@ -84,7 +84,7 @@ ifeq ($(SYSTEM), manjaro)
 		nodejs npm php rlwrap clojure cargo rogue nethack scala inkscape ruby \
 		imagemagick wine winetricks unrar firefox dotnet-sdk ttf-dejavu broot \
 		neofetch irssi bind-tools tmux cmatrix cmus figlet deluge deluge-gtk \
-		virtualbox virtualbox-host-dkms go gnome-mplayer gnome-screenshot \
+		virtualbox virtualbox-host-dkms go gnome-mplayer gnome-screenshot gnugo \
 		playerctl muparser opera chromium zathura-djvu feh python-pip ctags
 	sudo npm install -g add-gitignore
 	pip install pylatexenc
