@@ -23,6 +23,8 @@ set shell=/bin/bash
 set termguicolors
 set background=dark
 set foldmethod=marker
+set exrc
+set secure
 filetype plugin on
 filetype plugin indent on
 syntax on
