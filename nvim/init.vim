@@ -377,7 +377,7 @@ call lexima#add_rule({
       \ })
 
 " vim-header {{{1
-let g:header_field_author = 'Serafim Vinogrodskiy'
+let g:header_field_author = 'Vinogrodskii Serafim'
 let g:header_field_author_email = 'fimmind@mail.ru'
 let g:header_auto_add_header = 0
 let g:header_field_license_id = 'MIT'
