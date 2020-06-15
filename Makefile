@@ -53,6 +53,7 @@ link-all:
 	${LN}/cljstyle                   ~/.cljstyle
 	${LN}/rofi                       ~/.config/rofi
 	${LN}/Xresources                 ~/.Xresources
+	${LN}/rustfmt.toml               ~/.rustfmt.toml
 
 installOhMyZsh:
 	sh -c "`curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh` --unattended"
