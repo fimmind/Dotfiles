@@ -148,7 +148,7 @@ remove = \
 ONESHELL:
 installHIE:
 	cd sources
-	$(call remove,./haskell-ide-engine)
+	$(call remove,haskell-ide-engine)
 	git clone https://github.com/haskell/haskell-ide-engine --recurse-submodules
 	cd haskell-ide-engine
 	stack ./install.hs latest
@@ -156,7 +156,7 @@ installHIE:
 ONESHELL:
 installFloskell:
 	cd sources
-	$(call remove,./floskell)
+	$(call remove,floskell)
 	git clone https://github.com/ennocramer/floskell
 	cd floskell
 	stack install
@@ -164,7 +164,7 @@ installFloskell:
 ONESHELL:
 installZoom:
 	cd sources
-	$(call remove,./zoom_x86_64.pkg.tar.xz)
+	$(call remove,zoom_x86_64.pkg.tar.xz)
 	wget https://zoom.us/client/latest/zoom_x86_64.pkg.tar.xz \
 		&& sudo pacman -U zoom_x86_64.pkg.tar.xz --noconfirm
 
@@ -190,7 +190,7 @@ installBoot-clj:
 ONESHELL:
 installJ:
 	cd sources
-	$(call remove,./j8-git)
+	$(call remove,j8-git)
 	git clone https://aur.archlinux.org/j8-git.git
 	cd j8-git
 	makepkg -s --noconfirm
