@@ -131,8 +131,7 @@ let g:rainbow_conf = {
         \ }
       \ }
 
-" Theme {{{1
-let g:gruvbox_contrast_dark = "hard"
+" Sheme {{{1
 colorscheme gruvbox
 
 " EasyMotion {{{1
