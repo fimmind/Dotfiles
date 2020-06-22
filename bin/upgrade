@@ -14,8 +14,7 @@ no_sudo_upgrade(){
   stack upgrade
 
   cd ~/Dotfiles
-  make updateVimPlug
-  nvim -u "nvim/plugins.vim" -c ":PlugUpdate | :qa"
+  nvim -u "nvim/plugins.vim" -c ":UpdateVimPlug | :PlugUpdate | :qa"
 }
 
 printf "Do you want to start full system upgrade? (y/n) "

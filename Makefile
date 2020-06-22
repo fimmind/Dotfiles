@@ -109,7 +109,7 @@ setup-default-apps:
 ldconfig:
 	sudo ldconfig
 
-setupNeoVim: updateVimPlug
+setupNeoVim:
 	nvim -u "nvim/plugins.vim" -c ":PlugInstall | :qa"
 	nvim -c ":call InstallCocExtensions() | :qa"
 	sudo pip3 install pynvim unicode flake8 yapf sympy inkscape-figures

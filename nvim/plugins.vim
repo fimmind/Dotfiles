@@ -1,3 +1,15 @@
+" Download vim-plug if missing {{{
+let s:vim_plug_file = stdpath("data") . "/site/autoload/plug.vim"
+command UpdateVimPlug
+      \ echo "Installing vim-plug..."
+      \ | silent! exec "!curl --create-dirs -fsSLo " . s:vim_plug_file
+        \ . " https://raw.github.com/junegunn/vim-plug/master/plug.vim"
+
+if empty(glob(s:vim_plug_file))
+  UpdateVimPlug
+endif
+" }}}
+
 call plug#begin(stdpath('data') . '/plugged')
   " Coloring
   Plug 'phaazon/gruvbox' " Not original, cause of haskell-vim support
