@@ -49,7 +49,6 @@ nnoremap gj j
 nnoremap gk k
 
 nnoremap <leader>x :bdelete<CR>
-nnoremap <leader>w :w<CR>
 nnoremap <leader>qq :q<CR>
 
 nnoremap <leader>tn :tabnext<CR>
