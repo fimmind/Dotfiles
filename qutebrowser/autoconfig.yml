@@ -17,7 +17,7 @@ settings:
     https://webchat.freenode.net: true
     https://www.reddit.com: false
   fonts.default_family:
-    global: DejaVu Sans Mono
+    global: Source Code Pro
   url.searchengines:
     global:
       DEFAULT: https://www.google.com/search?q={}

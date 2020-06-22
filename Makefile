@@ -86,7 +86,8 @@ ifeq ($(SYSTEM), manjaro)
 		imagemagick wine winetricks unrar firefox dotnet-sdk ttf-dejavu broot \
 		neofetch irssi bind-tools tmux cmatrix cmus figlet deluge deluge-gtk \
 		virtualbox virtualbox-host-dkms go gnome-mplayer gnome-screenshot gnugo \
-		playerctl muparser opera chromium zathura-djvu feh python-pip ctags
+		playerctl muparser opera chromium zathura-djvu feh python-pip ctags \
+		adobe-source-code-pro-fonts
 	sudo npm install -g add-gitignore
 	pip install pylatexenc
 	rustup default stable
