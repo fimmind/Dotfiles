@@ -89,7 +89,7 @@ ifeq ($(SYSTEM), manjaro)
 		playerctl muparser opera chromium zathura-djvu feh python-pip ctags \
 		adobe-source-code-pro-fonts
 	sudo npm install -g add-gitignore
-	pip install pylatexenc
+	pip install pylatexenc hy
 	rustup default stable
 	broot --install
 	gem install irb

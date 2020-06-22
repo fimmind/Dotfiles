@@ -294,7 +294,7 @@ let g:UltiSnipsJumpForwardTrigger  = "<Tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
 
 " Lexima {{{1
-autocmd FileType lisp,clojure,j let b:lexima_disabled = 1
+autocmd FileType j let b:lexima_disabled = 1
 
 " UltiSnips {{{2
 call lexima#add_rule({
@@ -382,11 +382,18 @@ let g:header_auto_add_header = 0
 let g:header_field_license_id = 'MIT'
 let g:header_alignment = 0
 
-nnoremap <leader>hh :AddHeader<CR>
+nnoremap <leader>ah :AddHeader<CR>
 
 " NERDComment {{{1
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
+
+" Lisps {{{1
+let g:sexp_enable_insert_mode_mappings = 1
+let g:sexp_filetypes = 'clojure,scheme,lisp,timl,hy'
+autocmd FileType clojure,scheme,lisp,timl,hy
+      \ let b:lexima_disabled = 1
+      \ | set lisp
 
 " HTML {{{1
 let g:user_emmet_mode='a'
@@ -400,8 +407,6 @@ highlight link CocRustChainingHint CocCodeLens
 " Clojure {{{1
 let g:iced_enable_default_key_mappings = v:true
 let g:iced_formatter = 'cljstyle'
-
-let g:sexp_enable_insert_mode_mappings = 1
 
 " Haskell {{{1
 let g:haskell_indent_disable = 1
@@ -492,6 +497,9 @@ let g:build_and_run_setup = {
         \ },
       \ "j": {
         \ "run":        "echo | j8 -c '%:p'"
+        \ },
+      \ "hy": {
+        \ "run":        "hy '%:p'"
         \ }
       \ }
 
