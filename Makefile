@@ -110,7 +110,7 @@ ldconfig:
 	sudo ldconfig
 
 setupNeoVim:
-	nvim -u "nvim/plugins.vim" -c ":PlugInstall | :qa"
+	nvim -u "nvim/plugins.vim" -c ":qa"
 	nvim -c ":call InstallCocExtensions() | :qa"
 	sudo pip3 install pynvim unicode flake8 yapf sympy inkscape-figures
 	stack install stylish-haskell hdevtools
