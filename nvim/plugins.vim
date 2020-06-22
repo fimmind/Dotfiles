@@ -20,6 +20,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'scrooloose/nerdcommenter'
   Plug 'skywind3000/asyncrun.vim'
   Plug 'michaeljsmith/vim-indent-object'
+  Plug 'kana/vim-textobj-user'
+  Plug 'kana/vim-textobj-fold'
   Plug 'tpope/vim-fugitive'
   Plug 'dbakker/vim-projectroot'
   Plug 'vim-scripts/vim-auto-save'
