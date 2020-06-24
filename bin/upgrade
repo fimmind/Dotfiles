@@ -13,8 +13,7 @@ no_sudo_upgrade(){
   brew upgrade
   stack upgrade
 
-  cd ~/Dotfiles
-  nvim -u "nvim/plugins.vim" -c ":UpdateVimPlug | :PlugUpdate | :qa"
+  nvim -u "~/Dotfiles/nvim/plugins.vim" -c "call UpdateVimPlug() | :PlugUpdate | :qa"
 }
 
 printf "Do you want to start full system upgrade? (y/n) "

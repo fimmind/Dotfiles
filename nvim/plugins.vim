@@ -1,12 +1,13 @@
 " Download vim-plug if missing {{{
 let s:vim_plug_file = stdpath("data") . "/site/autoload/plug.vim"
-command UpdateVimPlug
-      \ echo "Installing vim-plug..."
-      \ | silent! exec "!curl --create-dirs -fsSLo " . s:vim_plug_file
+function! UpdateVimPlug()
+  echo "Updating vim-plug..."
+  silent! exec "!curl --create-dirs -fsSLo " . s:vim_plug_file
         \ . " https://raw.github.com/junegunn/vim-plug/master/plug.vim"
+endfunction
 
 if empty(glob(s:vim_plug_file))
-  UpdateVimPlug
+  call UpdateVimPlug()
 endif
 " }}}
 
