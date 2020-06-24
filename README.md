@@ -22,8 +22,8 @@ Use `lxappearance`:
 - Icon: Papirus
 - Mouse cursor: Breeze
 
-### Enable auto power-on after boot
-Set following in `/etc/bluetooth/main.conf`
+### Enable auto power-on of bluetooth after a boot
+Set following in `/etc/bluetooth/main.conf`:
 ```conf
 [Policy]
 AutoEnable=true
