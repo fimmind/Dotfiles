@@ -504,6 +504,6 @@ let g:build_and_run_setup = {
       \ }
 
 let g:build_and_run_setup["cpp"] = g:build_and_run_setup["c"]
-" }}}
+" }}}1
 
 " vim: fdm=marker
