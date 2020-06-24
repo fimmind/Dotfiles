@@ -14,13 +14,20 @@ $                      #    therfore it's optional
 $ chsh -s /usr/bin/fish
 ```
 
-## GTK theme
+### GTK theme
 
 Use `lxappearance`:
 
 - Widget: Plata-Noir
 - Icon: Papirus
 - Mouse cursor: Breeze
+
+### Enable auto power-on after boot
+Set following in `/etc/bluetooth/main.conf`
+```conf
+[Policy]
+AutoEnable=true
+```
 
 ## TODO
 
