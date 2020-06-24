@@ -29,6 +29,9 @@ Set following in `/etc/bluetooth/main.conf`:
 AutoEnable=true
 ```
 
+### Make functional keys default on Logitech k380
+Use this: https://github.com/jergusg/k380-function-keys-conf
+
 ## TODO
 
 - Makefile:
