@@ -111,3 +111,5 @@ https://doc.rust-lang.org/nomicon/index.html Introduction - The Rustonomicon
 https://github.com/rust-lang/rust/issues Issues · rust-lang/rust
 https://docs.hylang.org/en/stable/ The Hy Manual — hy 0.18.0 documentation
 http://josekipedia.com/ Josekipedia
+https://docs.rs/itertools/ Itertools docs
+https://rust-lang.github.io/async-book/ Getting Started - Asynchronous Programming in Rust
