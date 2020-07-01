@@ -190,7 +190,7 @@ let g:ale_linters = {
 
 let g:ale_sign_warning = ">>"
 
-" CoC {{{1
+" coc.nvim {{{1
 let g:coc_global_extensions = [
       \ "coc-git", "coc-explorer", "coc-yaml", "coc-vimlsp",
       \ "coc-texlab", "coc-python", "coc-json", "coc-rust-analyzer",
@@ -239,6 +239,9 @@ nmap <leader>fs  mmvip<leader>fs`m
 
 " Remap for format whole file
 nmap <leader>ff  <Plug>(coc-format)
+
+" Remap for format & save
+nmap <leader>fw  <Plug>(coc-format):w<CR>
 
 augroup mygroup
   autocmd!
