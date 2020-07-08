@@ -174,7 +174,8 @@ installBrewPackets:
 		candid82/brew/joker ccls
 
 installClojure-lsp:
-	wget https://github.com/snoe/clojure-lsp/releases/latest/download/clojure-lsp -O ~/.local/bin/clojure-lsp
+	wget https://github.com/snoe/clojure-lsp/releases/latest/download/clojure-lsp \
+		-O ~/.local/bin/clojure-lsp
 	chmod 755 ~/.local/bin/clojure-lsp
 
 installClj-kondo:
