@@ -10,6 +10,8 @@ settings:
     global: true
   content.geolocation:
     https://www.google.com: true
+  content.host_blocking.enabled:
+    global: false
   content.notifications:
     https://83.farcaleniom.com: false
     https://novate.ru: false
