@@ -194,5 +194,5 @@ for_window [class="qutebrowser"] move window to workspace $ws1
 
 smart_borders no_gaps
 smart_gaps on
-gaps inner 7
+gaps inner 2
 gaps outer 0
