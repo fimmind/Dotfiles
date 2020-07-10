@@ -15,8 +15,8 @@ setup:
 	fi
 	echo "$$USER ALL=(ALL) NOPASSWD:ALL" | sudo tee $$sudoers
 	$(MAKE) LN_ARGS=-sfT \
-		link-all installPackets installBrew installBrewPackets enableBluetooth \
-		installTheHaskellToolStack setupNeoVim ldconfig \
+		link-all installPackets installTelegramm installBrew installBrewPackets \
+		enableBluetooth installTheHaskellToolStack setupNeoVim ldconfig \
 		setup-default-apps installLeiningen installHIE installOhMyFish
 	sudo rm $$sudoers
 
@@ -79,7 +79,7 @@ ifeq ($(SYSTEM), manjaro)
 	sudo pacman -R manjaro-i3-settings i3status-manjaro --noconfirm
 	sudo pacman -S --noconfirm \
 		curl git cmake make kitty qutebrowser python3 bluez bluez-utils pandoc \
-		gcc neovim rofi htop ranger pcmanfm zathura telegram-desktop lm_sensors jq \
+		gcc neovim rofi htop ranger pcmanfm zathura flatpak lm_sensors jq \
 		keynav qalculate-gtk i3-gaps i3lock i3exit i3status fish zathura-pdf-mupdf \
 		clisp libreoffice-fresh libreoffice-fresh-ru ghc-libs ghc-static rustup \
 		nodejs npm php rlwrap clojure cargo rogue nethack scala inkscape ruby \
@@ -158,12 +158,13 @@ installFloskell:
 	cd floskell
 	stack install
 
-ONESHELL:
 installZoom:
-	cd sources
-	$(call remove,zoom_x86_64.pkg.tar.xz)
-	wget https://zoom.us/client/latest/zoom_x86_64.pkg.tar.xz \
-		&& sudo pacman -U zoom_x86_64.pkg.tar.xz --noconfirm
+	flatpak install -y \
+		https://flathub.org/repo/appstream/us.zoom.Zoom.flatpakref
+
+installTelegramm:
+	flatpak install -y \
+		https://flathub.org/repo/appstream/org.telegram.desktop.flatpakref
 
 installBrew:
 	echo | sh -c \
