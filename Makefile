@@ -78,7 +78,7 @@ ifeq ($(SYSTEM), manjaro)
 	sudo pacman -S --noconfirm \
 		curl git cmake make kitty qutebrowser python3 bluez bluez-utils pandoc \
 		gcc neovim rofi htop ranger pcmanfm zathura flatpak lm_sensors jq \
-		keynav qalculate-gtk spectrwm fish zathura-pdf-mupdf \
+		keynav qalculate-gtk spectrwm xorg-xsetroot fish zathura-pdf-mupdf \
 		clisp libreoffice-fresh libreoffice-fresh-ru ghc-libs ghc-static rustup \
 		nodejs npm php rlwrap clojure cargo rogue nethack scala inkscape ruby \
 		imagemagick wine winetricks unrar firefox dotnet-sdk ttf-dejavu broot \
