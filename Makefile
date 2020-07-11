@@ -39,8 +39,7 @@ link-all:
 	${LN}/nvim                       ~/.config/nvim
 	${LN}/fish                       ~/.config/fish
 	${LN}/omf                        ~/.config/omf
-	${LN}/i3                         ~/.config/i3
-	${LN}/i3status                   ~/.config/i3status
+	${LN}/spectrwm.conf              ~/.spectrwm.conf
 	${LN}/kitty                      ~/.config/kitty
 	${LN}/keynavrc                   ~/.keynavrc
 	${LN}/fehbg                      ~/.fehbg
@@ -76,16 +75,15 @@ installPackets:
 ifeq ($(SYSTEM), manjaro)
 	pamac build virtualbox-ext-oracle --no-confirm
 	pamac install discord --no-confirm
-	sudo pacman -R manjaro-i3-settings i3status-manjaro --noconfirm
 	sudo pacman -S --noconfirm \
 		curl git cmake make kitty qutebrowser python3 bluez bluez-utils pandoc \
 		gcc neovim rofi htop ranger pcmanfm zathura flatpak lm_sensors jq \
-		keynav qalculate-gtk i3-gaps i3lock i3exit i3status fish zathura-pdf-mupdf \
+		keynav qalculate-gtk spectrwm fish zathura-pdf-mupdf \
 		clisp libreoffice-fresh libreoffice-fresh-ru ghc-libs ghc-static rustup \
 		nodejs npm php rlwrap clojure cargo rogue nethack scala inkscape ruby \
 		imagemagick wine winetricks unrar firefox dotnet-sdk ttf-dejavu broot \
 		neofetch irssi bind-tools tmux cmatrix cmus figlet deluge deluge-gtk \
-		virtualbox virtualbox-host-dkms go gnome-mplayer gnome-screenshot gnugo \
+		virtualbox virtualbox-host-dkms go gnome-mplayer scrot gnugo \
 		playerctl muparser opera chromium zathura-djvu feh python-pip ctags \
 		adobe-source-code-pro-fonts
 	sudo npm install -g add-gitignore

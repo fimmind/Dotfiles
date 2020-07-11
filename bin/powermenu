@@ -2,8 +2,8 @@
 from os import popen
 
 commands = {
-    "lock": "i3exit lock",
-    "logout": "i3exit logout",
+    # TODO: "lock": "",
+    # TODO: "logout": "",
     "suspend": "systemctl suspend",
     "hibernate": "systemctl hibernate",
     "reboot": "systemctl reboot",

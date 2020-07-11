@@ -39,7 +39,6 @@ Use this: https://github.com/jergusg/k380-function-keys-conf
 - Setup pandoc like [that](https://learnbyexample.github.io/tutorial/ebook-generation/customizing-pandoc/)
 - Exhaustive documentation (At least short description)
 - System installation instructions
-- Setup windows layout using [this](https://i3wm.org/docs/layout-saving.html) article
 - (Neo)Vim:
   - Try [flow](https://github.com/neoclide/coc.nvim/wiki/Language-servers#flow)
     for js
