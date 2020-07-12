@@ -40,6 +40,7 @@ link-all:
 	${LN}/fish                       ~/.config/fish
 	${LN}/omf                        ~/.config/omf
 	${LN}/spectrwm.conf              ~/.spectrwm.conf
+	${LN}/spectrwm_us.conf           ~/.spectrwm_us.conf
 	${LN}/kitty                      ~/.config/kitty
 	${LN}/keynavrc                   ~/.keynavrc
 	${LN}/fehbg                      ~/.fehbg
