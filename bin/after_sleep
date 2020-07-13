@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+if [ $1 == --help ]; then
+  echo
+  echo "usage:"
+  echo "  after_sleep time commad [args...]   Same as \`sleep time; command args...\`"
+  echo "  after_sleep --help                  Print this help message"
+  echo
+  exit
+fi
+
+sleep $1
+shift
+$@
