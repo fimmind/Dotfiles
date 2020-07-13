@@ -86,7 +86,7 @@ ifeq ($(SYSTEM), manjaro)
 		neofetch irssi bind-tools tmux cmatrix cmus figlet deluge deluge-gtk \
 		virtualbox virtualbox-host-dkms go gnome-mplayer scrot gnugo unclutter \
 		playerctl muparser opera chromium zathura-djvu feh python-pip ctags \
-		adobe-source-code-pro-fonts
+		zenity adobe-source-code-pro-fonts
 	sudo npm install -g add-gitignore
 	pip install pylatexenc hy
 	rustup default stable

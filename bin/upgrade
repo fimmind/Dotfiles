@@ -16,10 +16,7 @@ no_sudo_upgrade(){
   nvim -u "~/Dotfiles/nvim/plugins.vim" -c "call UpdateVimPlug() | :PlugUpdate | :qa"
 }
 
-printf "Do you want to start full system upgrade? (y/n) "
-read answer
-
-if [[ -z "$answer" ]] || [[ "$answer" == "y" ]]; then
+if zenity --question --text "Do you want to start full system upgrade?"; then
   cd ~
   sudo bash -c "$(declare -f sudo_upgrade); sudo_upgrade"
   no_sudo_upgrade
