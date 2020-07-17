@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+
+file=~/Pictures/`date +'%d.%m.%y_%T:%N'`.png
+
+case $1 in
+  full)      maim                               $file;;
+  window)    maim -i $(xdotool getactivewindow) $file;;
+  selection) maim -s                            $file;;
+esac

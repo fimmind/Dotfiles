@@ -84,7 +84,7 @@ ifeq ($(SYSTEM), manjaro)
 		nodejs npm php rlwrap clojure cargo rogue nethack scala inkscape ruby \
 		imagemagick wine winetricks unrar firefox dotnet-sdk ttf-dejavu broot \
 		neofetch irssi bind-tools tmux cmatrix cmus figlet deluge deluge-gtk \
-		virtualbox virtualbox-host-dkms go gnome-mplayer scrot gnugo unclutter \
+		virtualbox virtualbox-host-dkms go gnome-mplayer maim gnugo unclutter \
 		playerctl muparser opera chromium zathura-djvu feh python-pip ctags \
 		zenity adobe-source-code-pro-fonts
 	sudo npm install -g add-gitignore
