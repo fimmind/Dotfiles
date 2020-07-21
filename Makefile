@@ -16,8 +16,8 @@ setup:
 	echo "$$USER ALL=(ALL) NOPASSWD:ALL" | sudo tee $$sudoers
 	$(MAKE) LN_ARGS=-sfT \
 		link-all installPackets installTelegramm installBrew installBrewPackets \
-		enableBluetooth installTheHaskellToolStack setupNeoVim ldconfig \
-		setup-default-apps installLeiningen installHIE installOhMyFish
+		enableBluetooth installSpotifyd installTheHaskellToolStack setupNeoVim \
+		ldconfig setup-default-apps installLeiningen installHIE installOhMyFish
 	sudo rm $$sudoers
 
 enableBluetooth:
@@ -193,3 +193,8 @@ installJ:
 	cd j8-git
 	makepkg -s --noconfirm
 	makepkg -i --noconfirm
+
+installSpotifyd:
+	pamac build spotifyd --no-confirm
+	systemctl --user start spotifyd.service
+	systemctl --user enable spotifyd.service
