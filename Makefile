@@ -196,5 +196,3 @@ installJ:
 
 installSpotifyd:
 	pamac build spotifyd --no-confirm
-	systemctl --user start spotifyd.service
-	systemctl --user enable spotifyd.service
