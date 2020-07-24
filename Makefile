@@ -22,9 +22,11 @@ setup:
 
 enableBluetooth:
 	sudo systemctl enable bluetooth
+	sudo systemctl start bluetooth
 
 enableNetworkManager:
 	sudo systemctl enable NetworkManager
+	sudo systemctl start NetworkManager
 
 fixTime:
 	sudo ntpd -qg
