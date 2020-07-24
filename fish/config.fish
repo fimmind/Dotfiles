@@ -28,3 +28,20 @@ set fish_greeting
 function fish_user_key_bindings
     fish_default_key_bindings
 end
+
+# ENVIRONMENT
+set -x QT_QPA_PLATFORMTHEME "qt5ct"
+set -x EDITOR "/usr/bin/nvim"
+set -x GTK2_RC_FILES "$HOME/.gtkrc-2.0"
+set -x BROWSER "/usr/bin/qutebrowser"
+set -x PAGER "less"
+set -x TERMINAL "kitty"
+set -x XDG_CONFIG_HOME "$HOME/.config"
+set -x XDG_DATA_HOME "$HOME/.local/share"
+
+set -x PATH "$PATH:$HOME/.local/bin"
+set -x PATH "$PATH:$HOME/Dotfiles/bin"
+set -x PATH "$PATH:$HOME/.gem/ruby/2.7.0/bin"
+set -x PATH "$PATH:/usr/local/texlive/2019/bin/x86_64-linux"
+set -x PATH "$PATH:/home/linuxbrew/.linuxbrew/bin"
+set -x PATH "$PATH:$XDG_DATA_HOME/nvim/plugged/vim-iced/bin"

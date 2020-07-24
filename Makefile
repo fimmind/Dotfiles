@@ -43,12 +43,10 @@ link-all:
 	${LN}/spectrwm_us.conf           ~/.spectrwm_us.conf
 	${LN}/kitty                      ~/.config/kitty
 	${LN}/keynavrc                   ~/.keynavrc
-	${LN}/fehbg                      ~/.fehbg
 	${LN}/qutebrowser                ~/.config/qutebrowser
 	${LN}/profiles.clj               ~/.lein/profiles.clj
 	${LN}/brittany                   ~/.config/brittany
 	${LN}/broot                      ~/.config/broot
-	${LN}/profile                    ~/.profile
 	${LN}/tmux.conf                  ~/.tmux.conf
 	${LN}/cljstyle                   ~/.cljstyle
 	${LN}/rofi                       ~/.config/rofi
@@ -73,20 +71,18 @@ installTheHaskellToolStack:
 	stack install shake
 
 installPackets:
-ifeq ($(SYSTEM), manjaro)
-	pamac build virtualbox-ext-oracle --no-confirm
-	pamac install discord --no-confirm
+ifeq ($(SYSTEM), arch)
 	sudo pacman -S --noconfirm \
-		curl git cmake make kitty qutebrowser python3 bluez bluez-utils pandoc \
+		wget curl git cmake make kitty qutebrowser python3 bluez bluez-utils pandoc \
 		gcc neovim rofi htop ranger pcmanfm zathura flatpak lm_sensors jq \
 		keynav qalculate-gtk spectrwm xorg-xsetroot fish zathura-pdf-mupdf \
 		clisp libreoffice-fresh libreoffice-fresh-ru ghc-libs ghc-static rustup \
 		nodejs npm php rlwrap clojure cargo rogue nethack scala inkscape ruby \
-		imagemagick wine winetricks unrar firefox dotnet-sdk ttf-dejavu broot \
+		imagemagick unrar firefox dotnet-sdk ttf-dejavu broot xclip alsa-utils \
 		neofetch irssi bind-tools tmux cmatrix cmus figlet deluge deluge-gtk \
 		virtualbox virtualbox-host-dkms go gnome-mplayer maim gnugo unclutter \
 		playerctl muparser opera chromium zathura-djvu feh python-pip ctags \
-		zenity adobe-source-code-pro-fonts
+		zenity wireless_tools adobe-source-code-pro-fonts
 	sudo npm install -g add-gitignore
 	pip install pylatexenc hy
 	rustup default stable
@@ -128,7 +124,7 @@ installLeiningen:
 	wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein \
 		-O ~/.local/bin/lein
 	chmod ug+x ~/.local/bin/lein
-	lein
+	~/.local/bin/lein
 
 remove = \
 				if [ -e $(1) ]; then \
@@ -179,7 +175,8 @@ installClojure-lsp:
 	chmod 755 ~/.local/bin/clojure-lsp
 
 installClj-kondo:
-	pamac build clj-kondo-bin --no-confirm
+	# TODO: fix for arch linux
+	# pamac build clj-kondo-bin --no-confirm
 
 installBoot-clj:
 	brew install boot-clj
@@ -195,4 +192,5 @@ installJ:
 	makepkg -i --noconfirm
 
 installSpotifyd:
-	pamac build spotifyd --no-confirm
+	# TODO: fix for arch linux
+	# pamac build spotifyd --no-confirm

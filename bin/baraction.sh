@@ -5,7 +5,7 @@ net() {
 }
 
 vol() {
-  amixer get Master | awk -F'[][]' 'END{ printf "VOL: %s (%s)", $2, $4 }'
+  amixer get Master | awk -F'[][]' 'END{ printf "VOL: %s (%s)", $2, $6 }'
 }
 
 rom() {
@@ -27,5 +27,5 @@ cpu() {
 }
 
 while :; do
-  echo "$(cpu)      $(ram)      $(rom)      $(vol)      $(net)"
+  echo "$(cpu)     $(ram)     $(rom)     $(vol)     $(net)"
 done
