@@ -118,7 +118,7 @@ installTexLive:
 	test -f texlive.tar.gz || \
 		wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz -O texlive.tar.gz
 	tar -xf texlive.tar.gz
-	cd `ls | grep install-tl-*` && ./install-tl -profile ../../texlive.profile
+	cd `ls | grep install-tl-*` && sudo ./install-tl -profile ../../texlive.profile
 
 installLeiningen:
 	wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein \
