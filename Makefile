@@ -15,9 +15,9 @@ setup:
 	fi
 	echo "$$USER ALL=(ALL) NOPASSWD:ALL" | sudo tee $$sudoers
 	$(MAKE) LN_ARGS=-sfT \
-		link-all installPackets installTelegramm installBrew installBrewPackets \
-		enableBluetooth installSpotifyd installTheHaskellToolStack setupNeoVim \
-		ldconfig setup-default-apps installLeiningen installHIE installOhMyFish
+		link-all installPackets installBrew installBrewPackets enableBluetooth \
+		installSpotifyd installTheHaskellToolStack setupNeoVim ldconfig \
+		setup-default-apps installLeiningen installHIE installOhMyFish
 	sudo rm $$sudoers
 
 enableBluetooth:
@@ -82,7 +82,7 @@ ifeq ($(SYSTEM), arch)
 		neofetch irssi bind-tools tmux cmatrix cmus figlet deluge deluge-gtk \
 		virtualbox virtualbox-host-dkms go gnome-mplayer maim gnugo unclutter \
 		playerctl muparser opera chromium zathura-djvu feh python-pip ctags \
-		zenity wireless_tools adobe-source-code-pro-fonts
+		zenity wireless_tools telegram-desktop adobe-source-code-pro-fonts
 	sudo npm install -g add-gitignore
 	pip install pylatexenc hy
 	rustup default stable
@@ -156,10 +156,6 @@ installFloskell:
 installZoom:
 	flatpak install -y \
 		https://flathub.org/repo/appstream/us.zoom.Zoom.flatpakref
-
-installTelegramm:
-	flatpak install -y \
-		https://flathub.org/repo/appstream/org.telegram.desktop.flatpakref
 
 installBrew:
 	echo | sh -c \
