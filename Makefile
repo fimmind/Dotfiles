@@ -35,6 +35,7 @@ link-all:
 	test -d ~/.config    || mkdir    ~/.config
 	test -d ~/.local/bin || mkdir -p ~/.local/bin
 	test -d ~/.lein      || mkdir    ~/.lein
+	${LN}/xinitrc                    ~/.xinitrc
 	${LN}/gitconfig                  ~/.gitconfig
 	${LN}/nvim                       ~/.config/nvim
 	${LN}/fish                       ~/.config/fish
