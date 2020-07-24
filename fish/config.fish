@@ -12,7 +12,7 @@ alias gs="git status"
 alias gd="git diff"
 alias gi="add-gitignore"
 
-alias dmenu="dmenu -x 2 -y 2 -nb '#18191d' -nf '#bbbbbb' -sb '#005577' -sf '#eeeeee' -fn 'DejaVu Sans Mono:size=10'"
+alias dmenu="dmenu -nb '#18191d' -nf '#bbbbbb' -sb '#005577' -sf '#eeeeee' -fn 'DejaVu Sans Mono:size=10'"
 
 set MANPATH  "$MANPATH:/usr/local/texlive/2019/texmf-dist/doc/man"
 set INFOPATH "$INFOPATH:/usr/local/texlive/2019/texmf-dist/doc/info"
