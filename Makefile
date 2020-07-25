@@ -194,6 +194,13 @@ installJ:
 	makepkg -s --noconfirm
 	makepkg -i --noconfirm
 
+ONESHELL:
 installSpotifyd:
-	# TODO: fix for arch linux
-	# pamac build spotifyd --no-confirm
+	cd sources
+	$(call remove,spotifyd-linux-slim.tar.gz)
+	if [ ! -f spotifyd-linux-slim.tar.gz ]; then
+		wget https://github.com/Spotifyd/spotifyd/releases/latest/download/spotifyd-linux-slim.tar.gz \
+			-O spotifyd-linux-slim.tar.gz
+	fi
+	tar -xf spotifyd-linux-slim.tar.gz
+	mv spotifyd ~/.local/bin/
