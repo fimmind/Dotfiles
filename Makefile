@@ -80,7 +80,7 @@ installPackets:
 ifeq ($(SYSTEM), arch)
 	sudo pacman -S --noconfirm \
 		wget curl git cmake make kitty qutebrowser python3 bluez bluez-utils pandoc \
-		gcc neovim rofi htop ranger pcmanfm zathura flatpak lm_sensors jq \
+		ccls gcc neovim rofi htop ranger pcmanfm zathura flatpak lm_sensors jq \
 		keynav qalculate-gtk spectrwm xorg-xsetroot fish zathura-pdf-mupdf \
 		clisp libreoffice-fresh libreoffice-fresh-ru ghc-libs ghc-static rustup \
 		nodejs npm php rlwrap clojure cargo rogue nethack scala inkscape ruby \
@@ -170,7 +170,7 @@ installBrew:
 
 installBrewPackets:
 	/home/linuxbrew/.linuxbrew/bin/brew install \
-		candid82/brew/joker ccls
+		candid82/brew/joker
 
 installClojure-lsp:
 	wget https://github.com/snoe/clojure-lsp/releases/latest/download/clojure-lsp \
