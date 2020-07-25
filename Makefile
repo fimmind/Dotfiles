@@ -134,15 +134,15 @@ installLeiningen:
 	~/.local/bin/lein
 
 remove = \
-				if [ -e $(1) ]; then \
-					echo; \
-					printf "File $(1) exists. Do you want do delete it? [y/N] "; \
-					read answer; \
-					echo; \
-					if [ "$$answer" = "y" -o "$$answer" = "Y" ]; then \
-						rm $(1) -rf; \
-					fi \
-				fi
+	if [ -e $(1) ]; then \
+		echo; \
+		printf "File $(1) exists. Do you want do delete it? [y/N] "; \
+		read answer; \
+		echo; \
+		if [ "$$answer" = "y" -o "$$answer" = "Y" ]; then \
+			rm $(1) -rf; \
+		fi \
+	fi
 
 aur_build = \
 	cd sources; \
