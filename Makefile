@@ -136,10 +136,10 @@ installLeiningen:
 remove = \
 				if [ -e $(1) ]; then \
 					echo; \
-					printf "File $(1) exists. Do you want do delete it? (y/n) "; \
+					printf "File $(1) exists. Do you want do delete it? [y/N] "; \
 					read answer; \
 					echo; \
-					if [ "$$answer" = "y" ]; then \
+					if [ "$$answer" = "y" -o "$$answer" = "Y" ]; then \
 						rm $(1) -rf; \
 					fi \
 				fi
