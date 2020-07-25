@@ -211,11 +211,12 @@ installJ:
 
 ONESHELL:
 installSpotifyd:
+	target=spotifyd-linux-full.tar.gz
 	cd sources
-	$(call remove,spotifyd-linux-slim.tar.gz)
-	if [ ! -f spotifyd-linux-slim.tar.gz ]; then
-		wget https://github.com/Spotifyd/spotifyd/releases/latest/download/spotifyd-linux-slim.tar.gz \
-			-O spotifyd-linux-slim.tar.gz
+	$(call remove,$$target)
+	if [ ! -f $$target ]; then
+		wget https://github.com/Spotifyd/spotifyd/releases/latest/download/$$target \
+			-O $$target
 	fi
-	tar -xf spotifyd-linux-slim.tar.gz
+	tar -xf $$target
 	mv spotifyd ~/.local/bin/
