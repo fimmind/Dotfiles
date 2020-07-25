@@ -1,3 +1,4 @@
+# vim:ft=gitconfig
 [user]
 	email = fimmind@mail.ru
 	name = fimmind
