@@ -144,6 +144,22 @@ remove = \
 					fi \
 				fi
 
+aur_build = \
+	cd sources; \
+	if [ -e $(1) ]; then \
+		if [ -d $(1) ]; then \
+			cd $(1); \
+			git pull; \
+		else \
+			echo "ERROR: file `sources/$(1)` exists but is not a directory"; \
+			exit 1; \
+		fi; \
+	else \
+		git clone aur:$(1); \
+		cd $(1); \
+	fi; \
+	makepkg -si --noconfirm;
+
 ONESHELL:
 installHIE:
 	cd sources
@@ -178,8 +194,7 @@ installClojure-lsp:
 	chmod 755 ~/.local/bin/clojure-lsp
 
 installClj-kondo:
-	# TODO: fix for arch linux
-	# pamac build clj-kondo-bin --no-confirm
+	$(call aur_build,clj-kondo-bin)
 
 installBoot-clj:
 	brew install boot-clj
