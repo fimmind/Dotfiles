@@ -89,7 +89,7 @@ ifeq ($(SYSTEM), arch)
 		virtualbox virtualbox-host-dkms go gnome-mplayer maim gnugo unclutter \
 		playerctl muparser opera chromium zathura-djvu feh python-pip ctags \
 		zenity wireless_tools telegram-desktop adobe-source-code-pro-fonts \
-		networkmanager
+		networkmanager base-devel
 	sudo npm install -g add-gitignore
 	pip install pylatexenc hy
 	rustup default stable
