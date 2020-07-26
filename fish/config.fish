@@ -45,3 +45,11 @@ set -x PATH "$PATH:$HOME/.gem/ruby/2.7.0/bin"
 set -x PATH "$PATH:/usr/local/texlive/2019/bin/x86_64-linux"
 set -x PATH "$PATH:/home/linuxbrew/.linuxbrew/bin"
 set -x PATH "$PATH:$XDG_DATA_HOME/nvim/plugged/vim-iced/bin"
+
+# Automatically start X11 in tty1
+# -------------------------------
+if systemctl -q is-active graphical.target \
+  && test -z "$DISPLAY" \
+       -a $XDG_VTNR -eq 1
+  exec startx
+end
