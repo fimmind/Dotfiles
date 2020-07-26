@@ -1,3 +1,13 @@
+# Fish conf
+# ---------
+set fish_greeting
+
+function fish_user_key_bindings
+    fish_default_key_bindings
+end
+
+# Aliases
+# -------
 alias ru="setxkbmap us,ru ,winkeys grp:caps_toggle"
 alias fix_time="sudo ntpd -qg"
 alias vimrc="nvim -c Vimrc"
@@ -14,22 +24,14 @@ alias gi="add-gitignore"
 
 alias dmenu="dmenu -nb '#18191d' -nf '#bbbbbb' -sb '#005577' -sf '#eeeeee' -fn 'DejaVu Sans Mono:size=10'"
 
-set MANPATH  "$MANPATH:/usr/local/texlive/2019/texmf-dist/doc/man"
-set INFOPATH "$INFOPATH:/usr/local/texlive/2019/texmf-dist/doc/info"
-
 if [ "`uname -o`" = "Android" ]
   alias chroot="termux-chroot && exit"
   alias hugs="termux-chroot hugs"
   alias runhugs="termux-chroot runhugs"
 end
 
-set fish_greeting
-
-function fish_user_key_bindings
-    fish_default_key_bindings
-end
-
-# ENVIRONMENT
+# Environment
+# -----------
 set -x QT_QPA_PLATFORMTHEME "qt5ct"
 set -x EDITOR "/usr/bin/nvim"
 set -x GTK2_RC_FILES "$HOME/.gtkrc-2.0"
@@ -45,6 +47,9 @@ set -x PATH "$PATH:$HOME/.gem/ruby/2.7.0/bin"
 set -x PATH "$PATH:/usr/local/texlive/2019/bin/x86_64-linux"
 set -x PATH "$PATH:/home/linuxbrew/.linuxbrew/bin"
 set -x PATH "$PATH:$XDG_DATA_HOME/nvim/plugged/vim-iced/bin"
+
+set -x MANPATH "$MANPATH:/usr/local/texlive/2019/texmf-dist/doc/man"
+set -x INFOPATH "$INFOPATH:/usr/local/texlive/2019/texmf-dist/doc/info"
 
 # Automatically start X11 in tty1
 # -------------------------------
