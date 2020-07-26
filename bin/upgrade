@@ -3,7 +3,7 @@ sudo_upgrade(){
   pacman-key --refresh-keys
   pacman -Syyuu --noconfirm
   tlmgr update --self --all --reinstall-forcibly-removed
-  pamac update --no-confirm
+
   npm upgrade
   updatedb
 }
