@@ -14,7 +14,7 @@ $ sudo pacman-key --refresh-keys  # ┬ Not needed, if you are sure, that keys o
 $ sudo pacman -Syu --noconfirm    # ┘    packages are up to date
 $ make
 $ make installTexLive  # This takes a long while and much space,
-$                      #    therfore it's optional
+$                      #    therefore it's optional
 $ chsh -s /usr/bin/fish
 ```
 
