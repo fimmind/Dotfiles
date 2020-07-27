@@ -15,9 +15,10 @@ setup:
 	fi
 	echo "$$USER ALL=(ALL) NOPASSWD:ALL" | sudo tee $$sudoers
 	$(MAKE) LN_ARGS=-sfT \
-		link-all installPackets installBrew installBrewPackets enableBluetooth \
-		enableNetworkManager installSpotifyd installTheHaskellToolStack setupNeoVim \
-		ldconfig setup-default-apps installLeiningen installHIE installOhMyFish
+		link-all installPackets installOhMyFish installBrew installBrewPackets \
+		enableBluetooth enableNetworkManager installSpotifyd \
+		installTheHaskellToolStack setupNeoVim ldconfig setup-default-apps \
+		installTheme-components installLeiningen installHIE
 	sudo rm $$sudoers
 
 enableBluetooth:
@@ -220,3 +221,8 @@ installSpotifyd:
 	fi
 	tar -xf $$target
 	mv spotifyd ~/.local/bin/
+
+installTheme-components:
+	sudo pacman -S papirus-icon-theme
+	$(call aur_build,plata-theme)
+	$(call aur_build,breeze-default-cursor-theme)
