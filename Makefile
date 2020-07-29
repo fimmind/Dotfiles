@@ -211,16 +211,9 @@ installJ:
 	makepkg -i --noconfirm
 
 ONESHELL:
-installSpotifyd:
-	target=spotifyd-linux-full.tar.gz
-	cd sources
-	$(call remove,$$target)
-	if [ ! -f $$target ]; then
-		wget https://github.com/Spotifyd/spotifyd/releases/latest/download/$$target \
-			-O $$target
-	fi
-	tar -xf $$target
-	mv spotifyd ~/.local/bin/
+installSpotify:
+	gpg --recv-key 4773BD5E130D1D45
+	$(call aur_build,spotify)
 
 installTheme-components:
 	sudo pacman -S papirus-icon-theme
