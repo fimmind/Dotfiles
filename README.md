@@ -26,11 +26,24 @@ Use `lxappearance`:
 - Icon: Papirus
 - Mouse cursor: Breeze
 
-### Enable auto power-on of bluetooth after a boot
+## Fixes for some problems
+
+### Enable automatic bluetooth activation
 Set following in `/etc/bluetooth/main.conf`:
 ```conf
 [Policy]
 AutoEnable=true
+```
+
+### Fix gpg's `General error <Unspecified source>`
+
+```
+# /etc/pacman.d/gnupg/gpg.conf
+keyserver hkps://hkps.pool.sks-keyservers.net
+keyserver-options no-honor-keyserver-url
+
+# /etc/pacman.d/gnupg/dirmngr.conf
+hkp-cacert /usr/share/gnupg/sks-keyservers.netCA.pem
 ```
 
 ### Make functional keys default on Logitech k380
@@ -54,7 +67,3 @@ Use this: https://github.com/jergusg/k380-function-keys-conf
   - General REPL mapping. Maybe with [vim-repl](https://github.com/sillybun/vim-repl)
   - Setup coc-eslint
   - Try to setup and use [floskell](https://github.com/ennocramer/floskell)
-
-## Thanks
-
-- Many LaTeX snippets have been taken from [here](https://github.com/gillescastel/latex-snippets).
