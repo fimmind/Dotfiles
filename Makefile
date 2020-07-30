@@ -212,7 +212,7 @@ installJ:
 
 ONESHELL:
 installSpotify:
-	gpg --recv-key 4773BD5E130D1D45
+	curl -sS https://download.spotify.com/debian/pubkey.gpg | gpg --import -
 	$(call aur_build,spotify)
 
 installTheme-components:
