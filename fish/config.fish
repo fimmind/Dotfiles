@@ -58,3 +58,7 @@ if systemctl -q is-active graphical.target \
        -a $XDG_VTNR -eq 1
   exec startx
 end
+
+# Autorun
+# -------
+amixer sset Master 100% on
