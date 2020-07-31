@@ -13,7 +13,6 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 browser-sync start &
 keynav &
 unclutter &
-spotifyd --volume-normalisation &
 xsetroot -solid \#303030
 fish -c ru
 exec spectrwm
