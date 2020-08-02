@@ -17,8 +17,8 @@ setup:
 	$(MAKE) LN_ARGS=-sfT \
 		link-all installPackets installOhMyFish installBrew installBrewPackets \
 		enableBluetooth enableNetworkManager enablePulseaudio installSpotifyd \
-		installTheHaskellToolStack setupNeoVim ldconfig setup-default-apps \
-		installTheme-components installLeiningen installHIE
+		setupNeoVim ldconfig setup-default-apps installTheme-components \
+		installLeiningen installHIE
 	sudo rm $$sudoers
 
 enableBluetooth:
@@ -75,12 +75,6 @@ installOhMyFish:
 	fish get-omf.fish --noninteractive
 	fish -c "omf install sashimi"
 
-installTheHaskellToolStack:
-	curl -sSL https://get.haskellstack.org/ | sh
-	cd ~
-	stack setup
-	stack install shake
-
 installPackets:
 ifeq ($(SYSTEM), arch)
 	sudo pacman -S --noconfirm \
@@ -94,7 +88,7 @@ ifeq ($(SYSTEM), arch)
 		virtualbox virtualbox-host-dkms go gnome-mplayer maim gnugo unclutter \
 		playerctl muparser opera chromium zathura-djvu feh python-pip ctags \
 		zenity wireless_tools telegram-desktop adobe-source-code-pro-fonts \
-		networkmanager base-devel mlocate tree \
+		networkmanager base-devel mlocate tree stack \
 		pulseaudio pulseaudio-bluetooth pulseaudio-alsa
 	sudo npm install -g add-gitignore
 	pip install pylatexenc hy
