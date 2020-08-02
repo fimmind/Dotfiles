@@ -16,7 +16,7 @@ setup:
 	echo "$$USER ALL=(ALL) NOPASSWD:ALL" | sudo tee $$sudoers
 	$(MAKE) LN_ARGS=-sfT \
 		link-all installPackets installOhMyFish installBrew installBrewPackets \
-		enableBluetooth enableNetworkManager installSpotifyd \
+		enableBluetooth enableNetworkManager enablePulseaudio installSpotifyd \
 		installTheHaskellToolStack setupNeoVim ldconfig setup-default-apps \
 		installTheme-components installLeiningen installHIE
 	sudo rm $$sudoers
@@ -28,6 +28,10 @@ enableBluetooth:
 enableNetworkManager:
 	sudo systemctl enable NetworkManager
 	sudo systemctl start NetworkManager
+
+enablePulseaudio:
+	systemctl --user enable pulseaudio.service
+	systemctl --user start pulseaudio.service
 
 fixTime:
 	sudo ntpd -qg
@@ -90,7 +94,8 @@ ifeq ($(SYSTEM), arch)
 		virtualbox virtualbox-host-dkms go gnome-mplayer maim gnugo unclutter \
 		playerctl muparser opera chromium zathura-djvu feh python-pip ctags \
 		zenity wireless_tools telegram-desktop adobe-source-code-pro-fonts \
-		networkmanager base-devel mlocate tree
+		networkmanager base-devel mlocate tree \
+		pulseaudio pulseaudio-bluetooth pulseaudio-alsa
 	sudo npm install -g add-gitignore
 	pip install pylatexenc hy
 	rustup default stable
