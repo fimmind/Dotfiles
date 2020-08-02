@@ -162,11 +162,7 @@ aur_build = \
 
 ONESHELL:
 installHIE:
-	cd sources
-	$(call remove,haskell-ide-engine)
-	git clone https://github.com/haskell/haskell-ide-engine --recurse-submodules
-	cd haskell-ide-engine
-	stack ./install.hs latest
+	$(call aur_build,haskell-ide-engine)
 
 ONESHELL:
 installFloskell:
