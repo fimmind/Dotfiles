@@ -1,0 +1,11 @@
+snippet "^(\w*)\s*=\s*" "cargo crate" r
+`!p
+import subprocess
+out, _ = subprocess.Popen(["cargo", "search", match[1]],
+													stdout=subprocess.PIPE,
+													stderr=subprocess.STDOUT).communicate()
+lines = out.splitlines()
+snip.rv = match[0] \
+				+ (lines[0].decode("utf-8").split()[2] if len(lines) > 0 else "unknown")
+`
+endsnippet
