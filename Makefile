@@ -120,7 +120,7 @@ ldconfig:
 setupNeoVim:
 	nvim -u "nvim/plugins.vim" -c ":qa"
 	nvim -c ":call InstallCocExtensions() | :qa"
-	sudo pip3 install pynvim unicode flake8 yapf sympy inkscape-figures
+	sudo pip3 install pynvim unicode jedi flake8 yapf sympy inkscape-figures
 	stack install stylish-haskell hdevtools
 	sudo npm install -g neovim bash-language-server browser-sync
 	gem install neovim
