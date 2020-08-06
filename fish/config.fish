@@ -54,11 +54,11 @@ set -x INFOPATH "$INFOPATH:/usr/local/texlive/2019/texmf-dist/doc/info"
 # Automatically start X11 in tty1
 # -------------------------------
 if systemctl -q is-active graphical.target \
-  && test -z "$DISPLAY" \
-       -a $XDG_VTNR -eq 1
+   && test   -z "$DISPLAY" \
+      -a     $XDG_VTNR -eq 1
+  amixer sset Master 100% on
   exec startx
 end
 
 # Autorun
 # -------
-amixer sset Master 100% on
