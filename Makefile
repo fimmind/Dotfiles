@@ -214,3 +214,6 @@ installTheme-components:
 	sudo pacman -S papirus-icon-theme
 	$(call aur_build,plata-theme)
 	$(call aur_build,breeze-default-cursor-theme)
+
+installRocketChat:
+	$(call aur_build,rocketchat-client-bin)
