@@ -5,7 +5,7 @@ net() {
 }
 
 vol() {
-  amixer get Master | awk -F 'Front .*:|[][]' 'BEGIN {RS=""}{ print $3 " (" $5 ")" }'
+  amixer get Master | awk -F 'Front .*:|[][]' 'BEGIN {RS=""}{ print "VOL: " $3 " (" $5 ")" }'
 }
 
 rom() {
