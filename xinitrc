@@ -13,6 +13,5 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 browser-sync start &
 keynav &
 unclutter &
-xsetroot -solid \#303030
 fish -c ru
-exec spectrwm
+exec bspwm

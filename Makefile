@@ -54,8 +54,8 @@ link-all:
 	${LN}/nvim                       ~/.config/nvim
 	${LN}/fish                       ~/.config/fish
 	${LN}/omf                        ~/.config/omf
-	${LN}/spectrwm.conf              ~/.spectrwm.conf
-	${LN}/spectrwm_us.conf           ~/.spectrwm_us.conf
+	${LN}/bspwm                      ~/.config/bspwm
+	${LN}/sxhkd                      ~/.config/sxhkd
 	${LN}/kitty                      ~/.config/kitty
 	${LN}/keynavrc                   ~/.keynavrc
 	${LN}/qutebrowser                ~/.config/qutebrowser
@@ -84,7 +84,7 @@ ifeq ($(SYSTEM), arch)
 	sudo pacman -S --noconfirm \
 		wget curl git cmake make kitty qutebrowser python3 bluez bluez-utils pandoc \
 		ccls gcc neovim rofi htop ranger pcmanfm zathura flatpak lm_sensors jq \
-		keynav qalculate-gtk spectrwm xorg-xsetroot fish zathura-pdf-mupdf \
+		keynav qalculate-gtk bspwm sxhkd xorg-xsetroot fish zathura-pdf-mupdf \
 		clisp libreoffice-fresh libreoffice-fresh-ru ghc-libs ghc-static rustup \
 		nodejs npm php rlwrap clojure cargo rogue nethack scala inkscape ruby \
 		imagemagick unrar firefox dotnet-sdk ttf-dejavu broot xclip alsa-utils \
