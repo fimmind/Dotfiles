@@ -67,6 +67,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'neovimhaskell/haskell-vim'
   Plug 'vim-pandoc/vim-pandoc-syntax'
   Plug 'hylang/vim-hy'
+  Plug 'kovetskiy/sxhkd-vim'
 
   " Rust
   Plug 'rust-lang/rust.vim'

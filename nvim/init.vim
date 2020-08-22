@@ -124,6 +124,7 @@ let g:rainbow_conf = {
           \ 'markdown': 0,
           \ 'j': 0,
           \ 'yaml': 0,
+          \ 'sxhkd': 0,
           \ 'haskell': {
             \ 'operators': '_,\|[-!#$%&\*\+/<=>\?@\\^|~:.]\+_',
             \	'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/\v\{\ze[^-]/ end=/}/ fold'],
