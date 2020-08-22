@@ -51,7 +51,7 @@ Use this: https://github.com/jergusg/k380-function-keys-conf
 
 ## TODO
 
-- Try [bspwm](https://github.com/baskerville/bspwm)
+- Setup [polybar](https://github.com/polybar/polybar)
 - Makefile:
   - Figure out how to run pamac command without of inserting password
 - Setup pandoc like [that](https://learnbyexample.github.io/tutorial/ebook-generation/customizing-pandoc/)
