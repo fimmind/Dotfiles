@@ -38,11 +38,11 @@ AutoEnable=true
 ### Fix gpg's `General error <Unspecified source>`
 
 ```
-# /etc/pacman.d/gnupg/gpg.conf
+# Add this to /etc/pacman.d/gnupg/gpg.conf
 keyserver hkps://hkps.pool.sks-keyservers.net
 keyserver-options no-honor-keyserver-url
 
-# /etc/pacman.d/gnupg/dirmngr.conf
+# and this to /etc/pacman.d/gnupg/dirmngr.conf
 hkp-cacert /usr/share/gnupg/sks-keyservers.netCA.pem
 ```
 
