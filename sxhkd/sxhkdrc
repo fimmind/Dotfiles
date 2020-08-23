@@ -50,6 +50,10 @@ super + shift + {q,x}
 super + m
 	bspc desktop -l next
 
+# rotate split
+super + r
+	bspc node -R 90
+
 # swap the current node and the biggest window
 super + shift + Return
 	bspc node -s biggest.window.local
@@ -106,6 +110,9 @@ super + ctrl + Delete
 super + ctrl + shift + Delete
 	bspc query -N -d | xargs -I id -n 1 bspc node id -p cancel
 
+# more focused window to presel
+super + ctrl + Return
+	bspc node -n 'last.!automatic.local'
 
 # expand a window by moving one of its side outward
 super + alt + {h,j,k,l}
