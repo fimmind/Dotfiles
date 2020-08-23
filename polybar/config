@@ -39,7 +39,7 @@ modules-left = wm
 modules-center = time
 modules-right = cpu ram rom volume network
 
-tray-position = right
+tray-position = none
 
 [module/wm]
 type = internal/bspwm
