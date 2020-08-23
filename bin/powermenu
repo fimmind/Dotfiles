@@ -2,7 +2,7 @@
 from os import popen
 
 commands = {
-    # TODO: "lock": "",
+    "lock": "xsecurelock",
     "logout": "bspc quit",
     "suspend": "systemctl suspend",
     "hibernate": "systemctl hibernate",

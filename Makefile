@@ -93,7 +93,7 @@ ifeq ($(SYSTEM), arch)
 		virtualbox virtualbox-host-dkms go gnome-mplayer maim gnugo unclutter \
 		playerctl muparser opera chromium zathura-djvu feh python-pip ctags \
 		zenity wireless_tools telegram-desktop adobe-source-code-pro-fonts \
-		networkmanager base-devel mlocate tree stack cups cups-pdf \
+		networkmanager base-devel mlocate tree stack cups cups-pdf xsecurelock \
 		pulseaudio pulseaudio-bluetooth pulseaudio-alsa
 	sudo npm install -g add-gitignore
 	pip install pylatexenc hy
