@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from os import popen
+import sys
 
 commands = {
     "lock": "xsecurelock",
@@ -10,9 +11,19 @@ commands = {
     "shutdown": "systemctl poweroff"
 }
 
-rofi = "".join([
-    "echo '", "\n".join(commands.keys()), "' | rofi -lines ",
-    str(len(commands)), " -dmenu -p power"
-])
+argc = len(sys.argv)
+if argc > 2:
+    print("Too many arguments. Expected 0 or 1, got", argc)
+    sys.exit(1)
+elif argc == 2:
+    action = sys.argv[1]
+else:
+    rofi = "".join([
+        "echo '", "\n".join(commands.keys()), "' | rofi -lines ",
+        str(len(commands)), " -dmenu -p power"
+    ])
+    action = popen(rofi).read()[:-1]
 
-popen(commands[popen(rofi).read()[:-1]])
+print(action)
+
+popen(commands[action])

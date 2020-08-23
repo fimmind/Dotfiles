@@ -14,11 +14,17 @@ super + d
 super + {_, shift +} n
 	seledit --editor "kitty --class=float -- nvim" --action {write,edit}
 
+super + c
+	kitty --class=float -- qalc
+
 super + shift + p
 	powermenu
 
-super + c
-	kitty --class=float -- qalc
+super + shift + Delete
+	powermenu logout
+
+super + shift + l
+	powermenu lock
 
 {_, shift +, ctrl +} Print
 	screenshot {full,window,selection}
@@ -37,10 +43,6 @@ super + c
 super + Delete
 	bspc wm -r; \
 	pkill -USR1 -x sxhkd
-
-# quit bspwm
-super + shift + Delete
-	bspc quit
 
 # close and kill
 super + shift + {q,x}
