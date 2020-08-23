@@ -17,7 +17,7 @@ setup:
 	$(MAKE) LN_ARGS=-sfT \
 		link-all installPackets installOhMyFish installBrew installBrewPackets \
 		enableBluetooth enableNetworkManager enablePulseaudio enableCUPS
-		installSpotifyd setupNeoVim ldconfig setup-default-apps \
+		installSpotifyd installPolybar setupNeoVim ldconfig setup-default-apps \
 		installTheme-components installLeiningen installHIE
 	sudo rm $$sudoers
 
@@ -56,6 +56,7 @@ link-all:
 	${LN}/omf                        ~/.config/omf
 	${LN}/bspwm                      ~/.config/bspwm
 	${LN}/sxhkd                      ~/.config/sxhkd
+	${LN}/polybar                    ~/.config/polybar
 	${LN}/kitty                      ~/.config/kitty
 	${LN}/keynavrc                   ~/.keynavrc
 	${LN}/qutebrowser                ~/.config/qutebrowser
@@ -221,3 +222,6 @@ installTheme-components:
 
 installRocketChat:
 	$(call aur_build,rocketchat-client-bin)
+
+installPolybar:
+	$(call aur_build,polybar)
