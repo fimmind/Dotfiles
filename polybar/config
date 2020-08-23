@@ -35,11 +35,14 @@ padding-left = 0
 padding-right = 1
 
 module-margin = 2
-modules-left = wm
+modules-left = wm xkeyboard
 modules-center = time
 modules-right = cpu ram rom volume network
 
 tray-position = none
+
+[module/xkeyboard]
+type = internal/xkeyboard
 
 [module/wm]
 type = internal/bspwm
