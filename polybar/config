@@ -41,9 +41,6 @@ modules-right = cpu ram rom volume network
 
 tray-position = none
 
-[module/xkeyboard]
-type = internal/xkeyboard
-
 [module/wm]
 type = internal/bspwm
 
@@ -64,6 +61,13 @@ label-urgent-padding = 1
 label-empty = %index%
 label-empty-foreground = ${colors.lightgray}
 label-empty-padding = 1
+
+[module/xkeyboard]
+type = internal/xkeyboard
+format = <label-layout><label-indicator>
+label-indicator-on-capslock = ↑
+label-indicator-on-numlock = ²
+label-indicator-on-scrolllock = ⤓
 
 [module/time]
 type = internal/date
