@@ -20,7 +20,7 @@ white = #ebdbb2
 background = ${self.black}
 foreground = ${self.white}
 
-[bar/top]
+[bar/main]
 monitor = HDMI1
 background = ${colors.background}
 foreground = ${colors.foreground}

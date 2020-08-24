@@ -3,7 +3,7 @@
 xsetroot -solid \#303030
 xsetroot -cursor_name left_ptr
 [ $1 == 0 ] && sxhkd &
-[ $1 == 0 ] && polybar top &
+[ $1 == 0 ] && polybar main &
 [ $1 == 0 ] && upgrade &
 
 #### MONITORS ####
