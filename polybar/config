@@ -35,7 +35,7 @@ padding-left = 0
 padding-right = 1
 
 module-margin = 2
-modules-left = wm xkeyboard
+modules-left = wm xkeyboard spotify
 modules-center = time
 modules-right = cpu ram rom volume network
 
@@ -68,6 +68,11 @@ format = <label-layout><label-indicator>
 label-indicator-on-capslock = ↑
 label-indicator-on-numlock = ²
 label-indicator-on-scrolllock = ⤓
+
+[module/spotify]
+type = custom/script
+interval = 0.5
+exec = python ~/.config/polybar/spotify_status.py -p '▶,■' -f '{play_pause} {artist}: {song}'
 
 [module/time]
 type = internal/date
