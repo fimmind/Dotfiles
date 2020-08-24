@@ -71,8 +71,8 @@ label-indicator-on-scrolllock = ⤓
 
 [module/spotify]
 type = custom/script
-interval = 0.5
-exec = python ~/.config/polybar/spotify_status.py -p '▶,■' -f '{play_pause} {artist}: {song}'
+interval = 0.1
+exec = python ~/.config/polybar/spotify_status.py -t 42 -p '▶,■' -f '{play_pause} {artist}: {song}'
 
 [module/time]
 type = internal/date
