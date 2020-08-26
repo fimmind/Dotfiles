@@ -61,8 +61,8 @@ super + shift + Return
 	bspc node -s biggest.window.local
 
 # set the window state
-super + {shift + t,space,shift + space,f}
-	bspc node -t {tiled,\~pseudo_tiled,\~floating,\~fullscreen}
+super + {t,space,shift + space,f}
+	bspc node -t {tiled,pseudo_tiled,floating,\~fullscreen}
 
 # focus the next/previous window in the current desktop
 super + {j,k}
