@@ -16,7 +16,7 @@ setup:
 	echo "$$USER ALL=(ALL) NOPASSWD:ALL" | sudo tee $$sudoers
 	$(MAKE) LN_ARGS=-sfT \
 		link-all installPackets installOhMyFish installBrew installBrewPackets \
-		enableBluetooth enableNetworkManager enablePulseaudio enableCUPS
+		enableBluetooth enableNetworkManager enablePulseaudio enableCUPS \
 		installSpotifyd installPolybar setupNeoVim ldconfig setup-default-apps \
 		installTheme-components setupVirtualBox installLeiningen installHIE
 	sudo rm $$sudoers
