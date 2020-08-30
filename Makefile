@@ -18,7 +18,7 @@ setup:
 		link-all installPackets installOhMyFish installBrew installBrewPackets \
 		enableBluetooth enableNetworkManager enablePulseaudio enableCUPS
 		installSpotifyd installPolybar setupNeoVim ldconfig setup-default-apps \
-		installTheme-components installLeiningen installHIE
+		installTheme-components setupVirtualBox installLeiningen installHIE
 	sudo rm $$sudoers
 
 enableBluetooth:
@@ -90,11 +90,12 @@ ifeq ($(SYSTEM), arch)
 		nodejs npm php rlwrap clojure cargo rogue nethack scala inkscape ruby \
 		imagemagick unrar firefox dotnet-sdk ttf-dejavu broot xclip alsa-utils \
 		neofetch irssi bind-tools tmux cmatrix cmus figlet deluge deluge-gtk \
-		virtualbox virtualbox-host-dkms go gnome-mplayer maim gnugo unclutter \
 		playerctl muparser opera chromium zathura-djvu feh python-pip ctags \
 		zenity wireless_tools telegram-desktop adobe-source-code-pro-fonts \
 		networkmanager base-devel mlocate tree stack cups cups-pdf xsecurelock \
-		pulseaudio pulseaudio-bluetooth pulseaudio-alsa
+		go gnome-mplayer maim gnugo unclutter \
+		pulseaudio pulseaudio-bluetooth pulseaudio-alsa \
+		virtualbox virtualbox-host-modules-arch virtualbox-guest-iso
 	sudo npm install -g add-gitignore
 	pip install pylatexenc hy
 	rustup default stable
@@ -225,3 +226,7 @@ installRocketChat:
 
 installPolybar:
 	$(call aur_build,polybar)
+
+setupVirtualBox:
+	$(call aur_build,virtualbox-ext-oracle)
+	sudo gpasswd -a $$USER vboxusers
