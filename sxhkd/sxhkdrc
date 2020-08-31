@@ -23,9 +23,6 @@ super + shift + p
 super + shift + Delete
 	powermenu logout
 
-super + shift + l
-	powermenu lock
-
 {_, shift +, ctrl +} Print
 	screenshot {full,window,selection}
 
