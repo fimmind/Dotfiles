@@ -93,7 +93,7 @@ ifeq ($(SYSTEM), arch)
 		playerctl muparser opera chromium zathura-djvu feh python-pip ctags \
 		zenity wireless_tools telegram-desktop adobe-source-code-pro-fonts \
 		networkmanager base-devel mlocate tree stack cups cups-pdf xsecurelock \
-		go gnome-mplayer maim gnugo unclutter \
+		go gnome-mplayer maim gnugo unclutter gimp \
 		pulseaudio pulseaudio-bluetooth pulseaudio-alsa \
 		virtualbox virtualbox-host-modules-arch virtualbox-guest-iso
 	sudo npm install -g add-gitignore
