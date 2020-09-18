@@ -461,7 +461,7 @@ let g:build_and_run_setup = {
         \ },
       \ "haskell": {
         \ "build":      "!stack build",
-        \ "run":        "stack test && clear && stack run"
+        \ "run":        "stack run"
         \ },
       \ "php": {
         \ "run":        "php -f '%:p'"
@@ -477,7 +477,7 @@ let g:build_and_run_setup = {
         \ "run":        "scala '%:p'"
         \ },
       \ "rust": {
-        \ "build":      "!cargo build --release",
+        \ "build":      "!cargo build",
         \ "run":        "cargo run"
         \ },
       \ "go": {
