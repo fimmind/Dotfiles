@@ -230,3 +230,6 @@ installPolybar:
 setupVirtualBox:
 	$(call aur_build,virtualbox-ext-oracle)
 	sudo gpasswd -a $$USER vboxusers
+
+installCgoban:
+	$(call aur_build,cgoban3)
