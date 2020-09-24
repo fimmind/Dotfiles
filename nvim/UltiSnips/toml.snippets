@@ -1,4 +1,4 @@
-snippet "^(\w*)\s*=\s*" "cargo crate" r
+snippet "^([-\w]*)\s*=\s*" "cargo crate" r
 `!p
 import subprocess
 out, _ = subprocess.Popen(["cargo", "search", match[1]],
