@@ -329,9 +329,9 @@ snippet eqnn "Equation without number" bA
 endsnippet
 
 snippet align "Align" b
-\begin{align*}
+\begin{aligned}
 	${1:${VISUAL}}
-\end{align*}
+\end{aligned}
 $0
 endsnippet
 
@@ -805,16 +805,40 @@ snippet <&=> "equivalent" iA
 endsnippet
 
 
-priority 10
+priority 100
 context "math()"
-snippet "bar" "bar" riA
-\overline{$1}$0
+snippet "([\\A-Za-z'_^\d\.]+)bar" "bar" riA
+\overline{`!p snip.rv = match.group(1)`}
 endsnippet
 
 priority 10
 context "math()"
-snippet "hat" "hat" riA
-\hat{$1}$0
+snippet bar "bar" iA
+\overline{${1:${VISUAL}}}
+endsnippet
+
+priority 100
+context "math()"
+snippet "([\\A-Za-z'_^\d\.]+)hat" "vector" riA
+\hat{`!p snip.rv = match.group(1)`}
+endsnippet
+
+priority 10
+context "math()"
+snippet hat "hat" iA
+\hat{${1:${VISUAL}}}
+endsnippet
+
+priority 100
+context "math()"
+snippet "([\\A-Za-z'_^\d\.]+)vec" "vector" riA
+\overrightarrow{`!p snip.rv = match.group(1)`}
+endsnippet
+
+priority 10
+context "math()"
+snippet vec "vector" iA
+\overrightarrow{${1:${VISUAL}}}
 endsnippet
 
 ################
@@ -839,50 +863,50 @@ endsnippet
 ######
 
 context "math()"
-snippet aG "alpha" wA
+snippet a;8 "alpha" iA
 \alpha
 endsnippet
 context "math()"
-snippet bG "beta" wA
+snippet b;8 "beta" iA
 \beta
 endsnippet
 context "math()"
-snippet yG "gamma" wA
+snippet y;8 "gamma" iA
 \gamma
 endsnippet
 context "math()"
-snippet pi "pi" wA
+snippet pi "pi" iA
 \pi
 endsnippet
 context "math()"
-snippet pG "rho" wA
+snippet p;8 "rho" iA
 \rho
 endsnippet
 context "math()"
-snippet vG "nu" wA
+snippet v;8 "nu" iA
 \nu
 endsnippet
 context "math()"
-snippet nG "eta" wA
+snippet n;8 "eta" iA
 \eta
 endsnippet
 context "math()"
-snippet mG "mu" wA
+snippet m;8 "mu" iA
 \mu
 endsnippet
 context "math()"
-snippet wG "omega" wA
+snippet w;8 "omega" iA
 \omega
 endsnippet
 context "math()"
-snippet oG "theta" wA
+snippet o;8 "theta" iA
 \theta
 endsnippet
 context "math()"
-snippet fG "varphi" wA
+snippet f;8 "varphi" iA
 \varphi
 endsnippet
-snippet lG "lambda" wA
+snippet l;8 "lambda" iA
 \lambda
 endsnippet
 
