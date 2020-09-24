@@ -18,6 +18,7 @@ set showcmd
 set number
 set relativenumber
 set ignorecase
+set smartcase
 set mouse=a
 set shell=/bin/bash
 set termguicolors
