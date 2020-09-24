@@ -388,7 +388,7 @@ let g:header_auto_add_header = 0
 let g:header_field_license_id = 'MIT'
 let g:header_alignment = 0
 
-nnoremap <leader>hh :AddHeader<CR>
+nnoremap <leader>ah :AddHeader<CR>
 
 " NERDComment {{{1
 let g:NERDSpaceDelims = 1
