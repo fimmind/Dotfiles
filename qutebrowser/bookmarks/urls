@@ -39,7 +39,6 @@ http://www.hostmath.com/ HostMath - Online LaTeX formula editor and browser-base
 http://latex2png.com/ latex2png - convert latex equations to images
 http://clojure.github.io/clojure/index.html Overview - Clojure v1.10.1 API documentation
 https://clojure.github.io/ Clojure Library Overview
-https://mydebianblog.blogspot.com/2008/11/latex.html Как оформить диплом в LaTeX? - Записки дебианщика
 https://clojuredocs.org/ Community-Powered Clojure Documentation and Examples | ClojureDocs
 https://clojure.org/reference Clojure - Reference
 https://www.messenger.com/ Messenger
@@ -113,7 +112,6 @@ https://docs.hylang.org/en/stable/ The Hy Manual — hy 0.18.0 documentation
 http://josekipedia.com/ Josekipedia
 https://docs.rs/itertools/ Itertools docs
 https://rust-lang.github.io/async-book/ Getting Started - Asynchronous Programming in Rust
-https://github.com/fimmind/dotm fimmind/dotm: Dotfiles manger (At very early stage of development)
 https://flathub.org/home Flathub—An app store and build service for Linux
 https://aur.archlinux.org/ AUR (ru) - Главная
 https://shin.gokgs.com/ Shin KGS
@@ -126,3 +124,4 @@ https://foxford.ru/dashboard/calendar Онлайн-школа Фоксфорд
 https://upload.wikimedia.org/wikipedia/commons/thumb/f/f6/Periodic_table_ru.svg/1200px-Periodic_table_ru.svg.png 1200px-Periodic_table_ru.svg.png (1200×675)
 https://arewegameyet.rs/ecosystem/scripting/ Scripting Languages | Are we game yet?
 https://lib.rs/command-line-interface Command-line interface — list of Rust libraries/crates // Lib.rs
+https://github.com/fimmind/dotmake fimmind/dotmake: Makefile-like dotfiles installation manger
