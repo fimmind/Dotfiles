@@ -14,6 +14,7 @@ alias vimrc="nvim -c Vimrc"
 alias getamsterdam="cp ~/Dotfiles/beamerthemeAmsterdam.sty ./"
 alias weather="curl wttr.in/moscow"
 alias test-unicode="curl https://www.cl.cam.ac.uk/~mgk25/ucs/examples/UTF-8-demo.txt | less"
+alias emacs="emacs --no-window-system"
 
 alias la="ls -AlF"
 alias l="ls -CF"

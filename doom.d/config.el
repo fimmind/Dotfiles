@@ -8,11 +8,10 @@
       display-line-numbers-type 'relative
       sh-shell 'fish
       company-idle-delay 0.1
-      company-minimum-prefix-length 2)
+      company-minimum-prefix-length 1)
 
 (after! rustic
   (setq rustic-lsp-server 'rust-analyzer))
-
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
