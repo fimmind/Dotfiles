@@ -17,7 +17,7 @@ setup:
 	$(MAKE) LN_ARGS=-sfT \
 		link-all installPackets installOhMyFish installBrew installBrewPackets \
 		enableBluetooth enableNetworkManager enablePulseaudio enableCUPS \
-		installSpotifyd installPolybar setupNeoVim ldconfig setup-default-apps \
+		installDoom installPolybar setupNeoVim ldconfig setup-default-apps \
 		installTheme-components setupVirtualBox installLeiningen installHIE
 	sudo rm $$sudoers
 
@@ -93,7 +93,7 @@ ifeq ($(SYSTEM), arch)
 		playerctl muparser opera chromium zathura-djvu feh python-pip ctags \
 		zenity wireless_tools telegram-desktop adobe-source-code-pro-fonts \
 		networkmanager base-devel mlocate tree stack cups cups-pdf xsecurelock \
-		go gnome-mplayer maim gnugo unclutter gimp \
+		go gnome-mplayer maim gnugo unclutter gimp emacs ripgrep \
 		pulseaudio pulseaudio-bluetooth pulseaudio-alsa \
 		virtualbox virtualbox-host-modules-arch virtualbox-guest-iso
 	sudo npm install -g add-gitignore
@@ -233,3 +233,11 @@ setupVirtualBox:
 
 installCgoban:
 	$(call aur_build,cgoban3)
+
+installDoom:
+	git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
+	~/.emacs.d/bin/doom -y install
+	rustup component add rust-src
+	curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-linux \
+		-o ~/.local/bin/rust-analyzer
+	chmod +x ~/.local/bin/rust-analyzer

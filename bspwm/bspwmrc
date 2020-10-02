@@ -45,3 +45,4 @@ bspc rule -a Kupfer.py focus=on
 bspc rule -a Screenkey manage=off
 bspc rule -a float state=floating
 bspc rule -a org-igoweb-cgoban-CGoban state=floating
+bspc rule -a Emacs state=tiled
