@@ -11,6 +11,9 @@ super + x
 super + d
 	rofi -show drun
 
+super + e
+	emacs
+
 super + {_, shift +} n
 	seledit --editor "kitty --class=float -- nvim" --action {write,edit}
 
