@@ -2,7 +2,7 @@
 
 (setq user-full-name "Serafim Vinogrondskiy"
       user-mail-address "fimmind@mail.ru"
-      doom-theme 'doom-monokai-pro
+      doom-theme 'doom-nord
       org-directory "~/org/"
       projectile-project-search-path '("~/Code/" "~/Code/New/")
       display-line-numbers-type 'relative
