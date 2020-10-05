@@ -242,3 +242,4 @@ installDoom:
 		-o ~/.local/bin/rust-analyzer
 	chmod +x ~/.local/bin/rust-analyzer
 	pip install pipenv black isort
+	sudo npm install -g prettier
