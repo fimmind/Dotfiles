@@ -7,8 +7,10 @@
       projectile-project-search-path '("~/Code/" "~/Code/New/")
       display-line-numbers-type 'relative
       sh-shell 'fish
-      company-idle-delay 0.1
-      company-minimum-prefix-length 1)
+      company-idle-delay 0.2
+      company-minimum-prefix-length 1
+      company-show-numbers t
+      projectile-find-dir-include-top-level t)
 
 (after! rustic
   (setq rustic-lsp-server 'rust-analyzer))
