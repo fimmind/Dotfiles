@@ -17,6 +17,7 @@ settings:
     https://novate.ru: false
     https://onlinemultfilmy.ru: false
     https://webchat.freenode.net: true
+    https://www.mos.ru: false
     https://www.reddit.com: false
   fonts.default_family:
     global: Source Code Pro
