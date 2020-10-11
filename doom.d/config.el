@@ -9,11 +9,13 @@
       sh-shell 'fish
       company-idle-delay 0.2
       company-minimum-prefix-length 1
-      company-show-numbers t
-      projectile-find-dir-include-top-level t)
+      company-show-numbers t)
 
 (after! rustic
   (setq rustic-lsp-server 'rust-analyzer))
+
+(map! :nv [remap evil-next-line] 'evil-next-visual-line
+      :nv [remap evil-previous-line] 'evil-previous-visual-line)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
