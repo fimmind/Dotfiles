@@ -243,3 +243,4 @@ installDoom:
 	chmod +x ~/.local/bin/rust-analyzer
 	pip install pipenv black isort jedhy
 	sudo npm install -g prettier
+	sudo pacman -S aspell aspell-en
