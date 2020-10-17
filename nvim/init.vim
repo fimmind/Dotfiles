@@ -51,6 +51,7 @@ nnoremap gk k
 
 nnoremap <leader>x :bdelete<CR>
 nnoremap <leader>qq :q<CR>
+nnoremap <leader>w <C-w>
 
 nnoremap <leader>tn :tabnext<CR>
 nnoremap <leader>tp :tabprevious<CR>
@@ -74,7 +75,7 @@ function! DeleteNext(prev)
   exe "normal! mm" . l:motion . nr2char(getchar()) . "x`m"
 endfunction
 
-vnoremap <leader>w :call EchoWc("-w", " words")<CR>
+command Wc call EchoWc("-w", " words")
 function EchoWc(wc_args, postfix) range
   echo trim(
         \ system(
