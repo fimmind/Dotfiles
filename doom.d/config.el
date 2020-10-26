@@ -14,6 +14,10 @@
 (after! rustic
   (setq rustic-lsp-server 'rust-analyzer))
 
+(after! vterm
+  (map! :map vterm-mode-map
+        :ni "C-j" 'vterm-send-return))
+
 (map! :nv [remap evil-next-line] 'evil-next-visual-line
       :nv [remap evil-previous-line] 'evil-previous-visual-line)
 
