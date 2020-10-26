@@ -18,7 +18,8 @@ setup:
 		link-all installPackets installOhMyFish installBrew installBrewPackets \
 		enableBluetooth enableNetworkManager enablePulseaudio enableCUPS \
 		installDoom installPolybar setupNeoVim ldconfig setup-default-apps \
-		installTheme-components setupVirtualBox installLeiningen installHIE
+		installTheme-components setupVirtualBox installLeiningen installHIE \
+		installSabaki
 	sudo rm $$sudoers
 
 enableBluetooth:
@@ -233,6 +234,9 @@ setupVirtualBox:
 
 installCgoban:
 	$(call aur_build,cgoban3)
+
+installSabaki:
+	$(call aur_build,sabaki)
 
 installDoom:
 	git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
