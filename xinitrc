@@ -13,5 +13,6 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 browser-sync start &
 keynav &
 unclutter &
+safeeyes & # FIXME
 fish -c ru
 exec bspwm

@@ -35,7 +35,7 @@ padding-left = 0
 padding-right = 1
 
 module-margin = 2
-modules-left = wm xkeyboard spotify
+modules-left = wm xkeyboard safeeyes spotify
 modules-center = time
 modules-right = cpu ram rom volume network
 
@@ -68,6 +68,13 @@ format = <label-layout><label-indicator>
 label-indicator-on-capslock = ↑
 label-indicator-on-numlock = ²
 label-indicator-on-scrolllock = ⤓
+
+[module/safeeyes]
+type = custom/script
+interval = 1
+exec = safeeyes --status
+click-left = safeeyes &
+click-right = safeeyes --take-break &
 
 [module/spotify]
 type = custom/script

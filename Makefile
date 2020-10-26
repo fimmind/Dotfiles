@@ -19,7 +19,7 @@ setup:
 		enableBluetooth enableNetworkManager enablePulseaudio enableCUPS \
 		installDoom installPolybar setupNeoVim ldconfig setup-default-apps \
 		installTheme-components setupVirtualBox installLeiningen installHIE \
-		installSabaki
+		installSabaki installSafeeyes
 	sudo rm $$sudoers
 
 enableBluetooth:
@@ -221,6 +221,9 @@ installTheme-components:
 	sudo pacman -S papirus-icon-theme
 	$(call aur_build,plata-theme)
 	$(call aur_build,breeze-default-cursor-theme)
+
+installSafeeyes:
+	$(call aur_build,safeeyes)
 
 installRocketChat:
 	$(call aur_build,rocketchat-client-bin)
