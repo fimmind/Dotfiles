@@ -95,7 +95,7 @@ ifeq ($(SYSTEM), arch)
 		zenity wireless_tools telegram-desktop adobe-source-code-pro-fonts \
 		networkmanager base-devel mlocate tree stack cups cups-pdf xsecurelock \
 		go gnome-mplayer maim gnugo unclutter gimp emacs ripgrep gcolor2 \
-		pulseaudio pulseaudio-bluetooth pulseaudio-alsa \
+		pulseaudio pulseaudio-bluetooth pulseaudio-alsa xdo \
 		virtualbox virtualbox-host-modules-arch virtualbox-guest-iso
 	sudo npm install -g add-gitignore
 	pip install pylatexenc hy

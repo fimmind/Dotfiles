@@ -79,6 +79,7 @@ type = custom/script
 interval = 0.1
 exec = python ~/.config/polybar/spotify_status.py -t 42 -p '▶,■' -f '{play_pause} {artist}: {song}'
 click-left = playerctl play-pause -p spotify
+click-right = xdo activate -N Spotify
 scroll-down = playerctl next -p spotify
 scroll-up = playerctl previous -p spotify
 
