@@ -1,5 +1,3 @@
-; %{l} $(workspaces) %{c} $(date) %{r} $(cpu)     $(ram)     $(rom)     $(volume)     $(network)
-
 [colors]
 black = #1d2021
 darkred = #cc241d
