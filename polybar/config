@@ -73,6 +73,7 @@ interval = 1
 exec = safeeyes --status
 click-left = safeeyes &
 click-right = safeeyes --take-break &
+click-middle = killall safeeyes
 
 [module/spotify]
 type = custom/script
