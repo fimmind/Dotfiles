@@ -35,8 +35,8 @@ enablePulseaudio:
 	systemctl --user start pulseaudio.service
 
 enableCUPS:
-	sudo systemctl enable org.cups.cupsd.service
-	sudo systemctl start org.cups.cupsd.service
+	sudo systemctl enable cups.service
+	sudo systemctl start cups.service
 
 fixTime:
 	sudo ntpd -qg
