@@ -43,6 +43,7 @@ super + shift + Delete
 super + Delete
 	bspc wm -r; \
 	pkill -USR1 -x sxhkd
+	pkill -USR1 -x polybar
 
 # close and kill
 super + shift + {q,x}
