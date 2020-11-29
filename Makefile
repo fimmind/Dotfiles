@@ -250,6 +250,6 @@ installDoom:
 	curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-linux \
 		-o ~/.local/bin/rust-analyzer
 	chmod +x ~/.local/bin/rust-analyzer
-	pip install pipenv black isort jedhy
+	pip install pipenv black isort jedhy mypy
 	sudo npm install -g prettier
 	sudo pacman -S aspell aspell-en
