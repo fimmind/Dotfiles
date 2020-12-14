@@ -15,4 +15,5 @@ keynav &
 unclutter &
 safeeyes & # FIXME
 fish -c ru
+xinputd &
 exec bspwm

@@ -1,0 +1,100 @@
+#!/usr/bin/env -S guile -s
+-*- mode: scheme -*-
+!#
+
+;;  Taken from https://github.com/teu5us/xinputd with a couple of minor modifications
+;;  For original license see https://github.com/teu5us/xinputd/blob/main/LICENSE
+
+
+(use-modules ((ice-9 rdelim)
+              #:select (read-string))
+             ((ice-9 popen)
+              #:select ((open-input-pipe . input-pipe)
+                        (open-output-pipe . output-pipe)
+                        close-pipe))
+             ((ice-9 ftw)
+              #:select (scandir))
+             ((srfi srfi-1)
+              #:select ((delete-duplicates . dedup))))
+
+(define *sleep-time* 1)
+
+(define *log* "/tmp/xinputd.log")
+
+(define *rules-dir* (string-append
+                     (getenv "HOME")
+                     "/.config/xinputd"))
+
+(define *devices* #f)
+
+(define (read-command command)
+  (let* ((p (input-pipe command))
+         (output (with-input-from-port p
+                    (lambda ()
+                      (read-string)))))
+    (close-pipe p)
+    output))
+
+(define (read-file file)
+  (let* ((output (with-input-from-file file
+                   (lambda ()
+                     (read-string)))))
+    output))
+
+(define (get-devices)
+  (dedup
+   (string-split (read-command "xinput list --name-only")
+                 #\newline)))
+
+(define (get-rule-files)
+  (let ((files (cddr (scandir *rules-dir*))))
+    (if files
+        files
+        (with-output-to-file *log*
+          (lambda ()
+            (error (format #f "~a \"~a\"~%"
+                           "No such directory"
+                           *rules-dir*)))))))
+
+(define (write-to-log applied str)
+  (with-output-to-file *log*
+    (lambda ()
+      (format #t "Rule was ~aapplied: \"~a\"~%"
+              (if applied "" "not ")
+              str))))
+
+(define (apply-rule rule-str)
+  (let ((p (output-pipe "sh")))
+    (display (string-append rule-str "\n") p)
+    (if (eqv? 0 (status:exit-val (close-pipe p)))
+        (write-to-log #t rule-str)
+        (write-to-log #f rule-str))))
+
+(define (apply-device-rules device)
+  (when (member device (get-rule-files))
+    (let ((rules (filter (lambda (str) (not (equal? str "")))
+                         (string-split (read-file
+                                        (format #f "~a/~a" *rules-dir* device))
+                                       #\newline))))
+      (map apply-rule rules))))
+
+(define (app-loop)
+  (while #t
+    (sleep *sleep-time*)
+    (let* ((current-devices (get-devices))
+           (devcomp (equal? (length current-devices)
+                            (length *devices*))))
+      (if devcomp
+          (continue)
+          (begin
+            (map apply-device-rules
+                 (filter (lambda (el) (not (member el *devices*)))
+                         current-devices))
+            (set! *devices* current-devices))))))
+
+(define (run-xinputd)
+  (set! *devices* (get-devices))
+  (map apply-device-rules *devices*)
+  (app-loop))
+
+(run-xinputd)

@@ -59,6 +59,7 @@ link-all:
 	${LN}/sxhkd                      ~/.config/sxhkd
 	${LN}/polybar                    ~/.config/polybar
 	${LN}/kitty                      ~/.config/kitty
+	${LN}/xinputd                    ~/.config/xinputd
 	${LN}/keynavrc                   ~/.keynavrc
 	${LN}/qutebrowser                ~/.config/qutebrowser
 	${LN}/profiles.clj               ~/.lein/profiles.clj
