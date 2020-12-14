@@ -12,10 +12,11 @@ super + d
 	rofi -show drun
 
 super + e
-	emacs
+	  emacsclient --create-frame
 
 super + {_, shift +} n
-	seledit --editor "emacs --geometry 120x36 --title seledit" --action {write,edit}
+	seledit --editor "emacsclient --create-frame -F '((title . \"seledit\") (width . 120) (height . 36))'" \
+		--action {write,edit}
 
 super + c
 	kitty --class=float -- qalc

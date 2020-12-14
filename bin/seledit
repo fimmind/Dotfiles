@@ -70,7 +70,7 @@ case $action in
     exit_usage ;;
 esac
 
-$editor $file
+bash -c "$editor $file"
 
 if [ -s $file ]; then
   xclip -rmlastnl -selection $sel $file
