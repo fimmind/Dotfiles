@@ -19,7 +19,7 @@ setup:
 		enableBluetooth enableNetworkManager enablePulseaudio enableCUPS \
 		installDoom installPolybar setupNeoVim ldconfig setup-default-apps \
 		installTheme-components setupVirtualBox installLeiningen installHIE \
-		installSabaki installSafeeyes
+		installSabaki
 	sudo rm $$sudoers
 
 enableBluetooth:
@@ -98,7 +98,7 @@ ifeq ($(SYSTEM), arch)
 		pulseaudio pulseaudio-bluetooth pulseaudio-alsa xdo \
 		virtualbox virtualbox-host-modules-arch virtualbox-guest-iso
 	sudo npm install -g add-gitignore
-	pip install pylatexenc hy
+	pip install pylatexenc hy safeeyes
 	rustup default stable
 	broot --install
 	gem install irb
@@ -221,9 +221,6 @@ installTheme-components:
 	sudo pacman -S papirus-icon-theme
 	$(call aur_build,plata-theme)
 	$(call aur_build,breeze-default-cursor-theme)
-
-installSafeeyes:
-	$(call aur_build,safeeyes)
 
 installRocketChat:
 	$(call aur_build,rocketchat-client-bin)
