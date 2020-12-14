@@ -15,7 +15,7 @@ super + e
 	emacs
 
 super + {_, shift +} n
-	seledit --editor "kitty --class=float -- nvim" --action {write,edit}
+	seledit --editor "emacs --geometry 120x36 --title seledit" --action {write,edit}
 
 super + c
 	kitty --class=float -- qalc

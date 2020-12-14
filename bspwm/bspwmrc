@@ -46,5 +46,6 @@ bspc rule -a Screenkey manage=off
 bspc rule -a float state=floating
 bspc rule -a org-igoweb-cgoban-CGoban state=floating
 bspc rule -a Emacs state=tiled
+bspc rule -a Emacs:*:seledit state=floating
 bspc rule -a Safeeyes state=floating
 bspc rule -a Zathura state=tiled
