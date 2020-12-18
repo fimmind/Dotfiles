@@ -9,7 +9,8 @@
       sh-shell 'fish
       company-idle-delay 0.2
       company-minimum-prefix-length 1
-      company-show-numbers t)
+      company-show-numbers t
+      default-input-method "japanese-skk")
 
 (after! rustic
   (setq rustic-lsp-server 'rust-analyzer))
@@ -20,6 +21,10 @@
 
 (map! :nv [remap evil-next-line] 'evil-next-visual-line
       :nv [remap evil-previous-line] 'evil-previous-visual-line)
+
+(dolist (charset '(kana han cjk-misc bopomofo))
+  (set-fontset-font (frame-parameter nil 'font)
+    charset (font-spec :family "Source Han Serif JP" :size 16)))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
