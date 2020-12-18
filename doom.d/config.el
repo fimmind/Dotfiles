@@ -22,9 +22,14 @@
 (map! :nv [remap evil-next-line] 'evil-next-visual-line
       :nv [remap evil-previous-line] 'evil-previous-visual-line)
 
-(dolist (charset '(kana han cjk-misc bopomofo))
-  (set-fontset-font (frame-parameter nil 'font)
-    charset (font-spec :family "Source Han Serif JP")))
+(defun setup-jp-font (&optional frame)
+  (when frame
+    (select-frame frame))
+  (dolist (charset '(kana han cjk-misc bopomofo))
+    (set-fontset-font (frame-parameter nil 'font)
+                      charset "Source Han Serif JP")))
+(add-hook 'after-make-frame-functions #'setup-jp-font)
+(setup-jp-font)
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
