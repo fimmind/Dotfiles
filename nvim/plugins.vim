@@ -21,7 +21,6 @@ call plug#begin(stdpath('data') . '/plugged')
   " Motion
   Plug 'matze/vim-move'
   Plug 'easymotion/vim-easymotion'
-  Plug 'ctrlpvim/ctrlp.vim'
   Plug 'wellle/targets.vim'
 
   " Tools
@@ -37,23 +36,16 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'kana/vim-textobj-fold'
   Plug 'tpope/vim-fugitive'
   Plug 'dbakker/vim-projectroot'
-  Plug 'vim-scripts/vim-auto-save'
-  Plug 'mbbill/undotree'
   Plug 'nelstrom/vim-visual-star-search'
   Plug 'lfilho/cosco.vim'
-  Plug 'KabbAmine/vCoolor.vim'
   Plug 'cohama/lexima.vim'
   Plug 'guns/vim-sexp'
   Plug 'mattn/emmet-vim'
   Plug 'sirver/UltiSnips'
   Plug 'alpertuna/vim-header'
   Plug 'andrewradev/splitjoin.vim'
-
-  " IDE
-  " ================================================
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'preservim/nerdtree'
   Plug 'dense-analysis/ale'
-  Plug 'majutsushi/tagbar'
   Plug 'aperezdc/vim-template'
 
   " Syntax
@@ -72,23 +64,12 @@ call plug#begin(stdpath('data') . '/plugged')
   " Rust
   Plug 'rust-lang/rust.vim'
 
-  " Clojure
-  Plug 'liquidz/vim-iced', {'for': 'clojure'}
-  Plug 'liquidz/vim-iced-coc-source', {'for': 'clojure'}
-
   " Haskell
-  Plug 'alx741/vim-stylishask'
-  Plug 'fimmind/vim-hs-type'
-  Plug 'feuerbach/vim-hs-module-name'
   Plug 'itchyny/vim-haskell-indent'
 
   " Markdown
   Plug 'SidOfc/mkdx'
   Plug 'dhruvasagar/vim-table-mode'
-  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-
-  " LaTeX
-  Plug 'donRaphaco/neotex', { 'for': 'tex' }
 
 call plug#end()
 

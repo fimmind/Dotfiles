@@ -31,13 +31,6 @@ filetype plugin indent on
 syntax on
 syntax sync fromstart
 
-set hidden         " :
-set nobackup       " :
-set nowritebackup  " : for coc.nvim
-set updatetime=300 " :
-set shortmess+=c   " :
-set signcolumn=yes " :
-
 " Basic mappings {{{1
 command! Vimrc e ~/Dotfiles/nvim/init.vim
 
@@ -114,6 +107,9 @@ autocmd TermOpen * setlocal nonumber norelativenumber
 command! Shell vsplit term://fish | startinsert
 nnoremap <leader>z :Shell<CR>
 
+" NERDTree {{{1
+nmap <C-\> :NERDTreeToggle<CR>
+
 " Rainbow parentheseses {{{1
 let g:rainbow_active = 1
 
@@ -140,9 +136,6 @@ colorscheme gruvbox
 " EasyMotion {{{1
 nmap \ <Plug>(easymotion-prefix)
 
-" Undotree {{{1
-nnoremap <M-\> :UndotreeToggle<CR>:UndotreeFocus<CR>
-
 " Cosco {{{1
 nmap <silent> <localleader>; <Plug>(cosco-commaOrSemiColon)
 
@@ -163,13 +156,6 @@ nnoremap <leader>gl :G log<CR>
 " Easy-align {{{1
 nmap ga <Plug>(EasyAlign)
 xmap ga <Plug>(EasyAlign)
-
-" CtrlP {{{1
-nnoremap <M-p> :CtrlPBuffer<CR>
-
-" Tagbar {{{1
-nnoremap <C-]> :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
 
 " Project-root {{{1
 let g:rootmarkers = [
@@ -193,103 +179,6 @@ let g:ale_linters = {
       \ }
 
 let g:ale_sign_warning = ">>"
-
-" coc.nvim {{{1
-let g:coc_global_extensions = [
-      \ "coc-git", "coc-explorer", "coc-yaml", "coc-vimlsp",
-      \ "coc-texlab", "coc-python", "coc-json", "coc-rust-analyzer",
-      \ "coc-ultisnips", "coc-word", "coc-html", "coc-tsserver",
-      \ "coc-go", "coc-prettier", "coc-css"
-      \ ]
-function InstallCocExtensions()
-  exec "CocInstall -sync " . join(g:coc_global_extensions)
-endfunction
-
-" Use <c-space> to trigger completion.
-inoremap <silent><expr> <c-space> coc#refresh()
-
-" Use `[g` and `]g` to navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" Remap keys for gotos
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
-
-" Highlight symbol under cursor on CursorMoved
-autocmd CursorMoved * silent call CocActionAsync('highlight')
-
-" Remap for rename current word
-command! Rename normal <Plug>(coc-rename)
-nnoremap <leader>ar :Rename<CR>
-
-" Remap for format selected region
-xmap <leader>fs  <Plug>(coc-format-selected)
-vmap <leader>fs  <Plug>(coc-format-selected)
-nmap <leader>fs  mmvip<leader>fs`m
-
-" Remap for format whole file
-nmap <leader>ff  <Plug>(coc-format)
-
-" Remap for format & save
-nmap <leader>fw  <Plug>(coc-format):w<CR>
-
-augroup mygroup
-  autocmd!
-  " Setup formatexpr specified filetype(s).
-  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-  " Update signature help on jump placeholder
-  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-augroup end
-
-" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
-xmap <leader>a  <Plug>(coc-codeaction-selected)
-nmap <leader>a  <Plug>(coc-codeaction-selected)
-
-" Remap for do codeAction of current line
-nmap <leader>ac  <Plug>(coc-codeaction)
-" Fix autofix problem of current line
-nmap <leader>qf  <Plug>(coc-fix-current)
-
-xmap af <Plug>(coc-funcobj-a)
-omap af <Plug>(coc-funcobj-a)
-xmap if <Plug>(coc-funcobj-i)
-omap if <Plug>(coc-funcobj-i)
-
-" Use `:Format` to format current buffer
-command! -nargs=0 Format :call CocAction('format')
-
-" Use `:Fold` to fold current buffer
-command! -nargs=? Fold :call CocAction('fold', <f-args>)
-
-" use `:OR` for organize import of current buffer
-command! -nargs=0 OR   :call CocAction('runCommand', 'editor.action.organizeImport')
-
-" Using CocList
-nnoremap <silent> ,a  :<C-u>CocList diagnostics<cr>
-nnoremap <silent> ,e  :<C-u>CocList extensions<cr>
-nnoremap <silent> ,c  :<C-u>CocList commands<cr>
-nnoremap <silent> ,o  :<C-u>CocList outline<cr>
-nnoremap <silent> ,s  :<C-u>CocList -I symbols<cr>
-nnoremap <silent> ,j  :<C-u>CocNext<CR>
-nnoremap <silent> ,k  :<C-u>CocPrev<CR>
-nnoremap <silent> ,p  :<C-u>CocListResume<CR>
-
-" Open explorer
-nnoremap <C-\> :CocCommand explorer<CR>
 
 " UltiSnips {{{1
 let g:UltiSnipsEditSplit          ='vertical'
@@ -411,21 +300,8 @@ autocmd FileType html,css EmmetInstall
 " Rust {{{1
 highlight link CocRustChainingHint CocCodeLens
 
-" Clojure {{{1
-let g:iced_enable_default_key_mappings = v:true
-let g:iced_formatter = 'cljstyle'
-
 " Haskell {{{1
 let g:haskell_indent_disable = 1
-
-" LaTeX {{{1
-" NeoTex
-let g:tex_flavor       = 'latex'
-let g:neotex_enabled   = 1
-let g:neotex_delay     = 250
-let g:neotex_latexdiff = 0
-
-autocmd FileType tex :NeoTexOn
 
 " Markdown {{{1
 let g:mkdx#settings = {
@@ -435,12 +311,6 @@ let g:mkdx#settings = {
       \ 'toc': { 'text': 'Table of Contents', 'update_on_write': 1 },
       \ }
 let g:polyglot_disabled = ['markdown']
-
-let g:mkdp_auto_close = 0
-let g:mkdp_browserfunc = 'OpenMKDP'
-function OpenMKDP(url)
-  exec "AsyncRun chromium '--app=" . a:url . "'"
-endfunction
 
 autocmd FileType markdown set syntax=pandoc
 let g:pandoc#syntax#conceal#use = 0
