@@ -46,21 +46,6 @@ function! s:run_cmd(cmd)
   endif
 endfunction
 
-" Getting access to g:build_and_run_setup
-" ================================================
-function! s:is_ft_configured()
-  return has_key(g:build_and_run_setup, &ft)
-endfunction
-
-function! s:get_setup_key(key, default)
-  let l:setup = g:build_and_run_setup[&ft]
-  if !has_key(setup, a:key)
-    return a:default
-  endif
-
-  return l:setup[a:key]
-endfunction
-
 " Saving working directory
 " ================================================
 function! s:save_cwd()
@@ -74,53 +59,38 @@ function! s:restore_cwd()
   unlet s:working_dir
 endfunction
 
+" Input
+" ================================================
+function! s:input_saved(prompt, var_name)
+    redraw!
+    if !exists(a:var_name)
+      exec "let ".a:var_name." = ''"
+    endif
+    exec "let ".a:var_name." = input('".a:prompt.": ', ".a:var_name.")"
+    redraw!
+    exec "return ".a:var_name
+endfunction
+
 " Build
 " ================================================
-function! s:build_bare()
-  call s:run_cmd(s:get_setup_key("build", s:build_message("There's no 'build' field for " . &ft)))
-endfunction
-
 function! build_and_run#build()
-  if !s:is_ft_configured()
-    call s:print_message("filetype " . &ft . " is not configured")
-    return
-  endif
-
-  if s:config["save_on_run"]
-    wa
-  endif
-
-  call s:save_cwd()
-  call s:build_bare()
-  call s:restore_cwd()
-endfunction
-
-" Run
-" ================================================
-function! s:run_bare()
-  if executable(expand('%:p'))
-    call s:run_cmd(expand('%:p'))
-  else
-    call s:run_cmd(s:get_setup_key("run", s:build_message("There's no 'run' field for " . &ft)))
-  endif
-endfunction
-
-function! build_and_run#run()
-  if !s:is_ft_configured()
-    call s:print_message("filetype " . &ft . " is not configured")
-    return
-  endif
-
   if s:config["save_on_build"]
     wa
   endif
 
   call s:save_cwd()
+  call s:run_cmd(s:input_saved("Build",  "b:bnr_build_command"))
+  call s:restore_cwd()
+endfunction
 
-  if s:get_setup_key("need_build", 0)
-    call s:build_bare()
+" Run
+" ================================================
+function! build_and_run#run()
+  if s:config["save_on_run"]
+    wa
   endif
-  call s:run_bare()
 
+  call s:save_cwd()
+  call s:run_cmd(s:input_saved("Run", "b:bnr_run_command"))
   call s:restore_cwd()
 endfunction

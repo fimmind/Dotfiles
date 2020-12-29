@@ -316,71 +316,9 @@ autocmd FileType markdown set syntax=pandoc
 let g:pandoc#syntax#conceal#use = 0
 
 " Build & Run {{{1
-nnoremap <leader>rr :call build_and_run#run()<CR>
-nnoremap <leader>bb :call build_and_run#build()<CR>
+nnoremap <leader>pr :call build_and_run#run()<CR>
+nnoremap <leader>pb :call build_and_run#build()<CR>
 
-let g:build_and_run_setup = {
-      \ "c": {
-        \ "build":      "!(test -f '%:h/Makefile' || cmake '%:h') && make -f '%:h/Makefile'",
-        \ "run":        "test -x '%:p:r' && %:p:r || '%:h/main'",
-        \ "need_build": 1
-        \ },
-      \ "python": {
-        \ "run":        "python3 '%:p'"
-        \ },
-      \ "javascript": {
-        \ "run":        "node '%:p'"
-        \ },
-      \ "haskell": {
-        \ "build":      "!stack build",
-        \ "run":        "stack run"
-        \ },
-      \ "php": {
-        \ "run":        "php -f '%:p'"
-        \ },
-      \ "lisp": {
-        \ "run":        "clisp '%:p'"
-        \ },
-      \ "clojure": {
-        \ "build":      "!lein uberjar",
-        \ "run":        "lein run"
-        \ },
-      \ "scala": {
-        \ "run":        "scala '%:p'"
-        \ },
-      \ "rust": {
-        \ "build":      "!cargo build",
-        \ "run":        "cargo run"
-        \ },
-      \ "go": {
-        \ "run":        "go run '%:p'",
-        \ "build":      "go build"
-        \ },
-      \ "cs": {
-        \ "build":      "!dotnet build",
-        \ "run":        "dotnet run"
-        \ },
-      \ "sh": {
-        \ "run":        "sh '%:p'"
-        \ },
-      \ "fish": {
-        \ "run":        "fish '%:p'"
-        \ },
-      \ "vim": {
-        \ "run":        ":source %"
-        \ },
-      \ "xdefaults": {
-        \ "run":        "!xrdb '%:p'"
-        \ },
-      \ "j": {
-        \ "run":        "echo | j8 -c '%:p'"
-        \ },
-      \ "hy": {
-        \ "run":        "hy '%:p'"
-        \ }
-      \ }
-
-let g:build_and_run_setup["cpp"] = g:build_and_run_setup["c"]
 " }}}1
 
 " vim: fdm=marker
