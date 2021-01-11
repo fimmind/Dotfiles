@@ -28,5 +28,8 @@ settings:
       google: https://www.google.com/search?q={}
       wiki: https://ru.wikipedia.org/w/index.php?search={}
       yandex: https://yandex.ru/search/?text={}
+      jisho: https://jisho.org/search/{}
+      merriam: https://www.merriam-webster.com/dictionary/{}
+      multitran: https://www.multitran.com/m.exe?s={}
   url.start_pages:
     global: https://start.duckduckgo.com
