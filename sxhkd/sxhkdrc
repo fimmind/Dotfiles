@@ -12,7 +12,10 @@ super + d
 	rofi -show drun
 
 super + e
-	  emacsclient --create-frame -a ""
+	emacsclient --create-frame -a ""
+
+super + shift + e
+	emacs
 
 super + {_, shift +} n
 	seledit --editor "emacsclient --create-frame -a '' -F '((title . \"seledit\") (width . 120) (height . 36))'" \
