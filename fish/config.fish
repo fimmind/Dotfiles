@@ -59,7 +59,7 @@ set -x INFOPATH "$INFOPATH:/usr/local/texlive/2019/texmf-dist/doc/info"
 if systemctl -q is-active graphical.target \
    && test   -z "$DISPLAY" \
       -a     $XDG_VTNR -eq 1
-  amixer sset Master 100% on
+  amixer sset Master 50% on
   exec startx
 end
 
