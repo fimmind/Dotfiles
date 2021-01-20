@@ -8,6 +8,10 @@ super + Return
 super + x
 	kitty --class=float
 
+super + g
+	set pass_name (cd $PASSWORD_STORE_DIR && rg --files | sed 's/\.gpg$//' | rofi -dmenu -p "pass"); \
+	test -n "$pass_name" && rofi -e (pass $pass_name -c)
+
 super + d
 	rofi -show drun
 

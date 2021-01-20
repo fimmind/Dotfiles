@@ -40,6 +40,7 @@ set -x PAGER "less"
 set -x TERMINAL "kitty"
 set -x XDG_CONFIG_HOME "$HOME/.config"
 set -x XDG_DATA_HOME "$HOME/.local/share"
+set -x PASSWORD_STORE_DIR "$HOME/.pass"
 
 set -x PATH "$PATH:$HOME/.local/bin"
 set -x PATH "$PATH:$HOME/Dotfiles/bin"
