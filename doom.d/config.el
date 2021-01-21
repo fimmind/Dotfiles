@@ -26,8 +26,7 @@
   (when frame
     (select-frame frame))
   (dolist (charset '(kana han cjk-misc bopomofo))
-    (set-fontset-font (frame-parameter nil 'font)
-                      charset "Source Han Serif JP")))
+    (set-fontset-font doom-font charset "Source Han Serif JP")))
 (add-hook 'after-make-frame-functions #'setup-jp-font)
 (setup-jp-font)
 
