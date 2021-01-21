@@ -16,5 +16,4 @@ unclutter &
 safeeyes & # FIXME
 fish -c ru
 xinputd &
-emacs --daemon &
 exec bspwm
