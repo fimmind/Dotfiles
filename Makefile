@@ -251,4 +251,4 @@ installDoom:
 	chmod +x ~/.local/bin/rust-analyzer
 	pip install pipenv black isort jedhy mypy
 	sudo npm install -g prettier
-	sudo pacman -S aspell aspell-en
+	sudo pacman -S aspell aspell-en ghostscript
