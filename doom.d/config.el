@@ -19,6 +19,9 @@
   (map! :map vterm-mode-map
         :ni "C-j" 'vterm-send-return))
 
+(after! lsp-mode
+  (setq lsp-rust-analyzer-import-merge-behaviour "last"))
+
 (map! :nv [remap evil-next-line] 'evil-next-visual-line
       :nv [remap evil-previous-line] 'evil-previous-visual-line)
 
