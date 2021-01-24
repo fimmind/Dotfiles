@@ -7,7 +7,7 @@
       projectile-project-search-path '("~/Code/" "~/Code/New/")
       display-line-numbers-type 'relative
       sh-shell 'fish
-      company-idle-delay 0.2
+      company-idle-delay 0.0
       company-minimum-prefix-length 1
       company-show-numbers t
       default-input-method "japanese-skk")
