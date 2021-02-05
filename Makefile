@@ -98,7 +98,7 @@ ifeq ($(SYSTEM), arch)
 		go gnome-mplayer maim gnugo unclutter gimp emacs ripgrep gcolor2 \
 		pulseaudio pulseaudio-bluetooth pulseaudio-alsa xdo guile pkgfile \
 		virtualbox virtualbox-host-modules-arch virtualbox-guest-iso \
-		adobe-source-han-serif-jp-fonts pass
+		adobe-source-han-serif-jp-fonts pass anki
 	sudo npm install -g add-gitignore
 	pip install pylatexenc hy safeeyes
 	rustup default stable
