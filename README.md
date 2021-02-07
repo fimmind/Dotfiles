@@ -50,12 +50,8 @@ hkp-cacert /usr/share/gnupg/sks-keyservers.netCA.pem
 Use this: https://github.com/jergusg/k380-function-keys-conf
 
 ## TODO
-
-- Makefile:
-  - Figure out how to run pamac command without of inserting password
-- Setup pandoc like [that](https://learnbyexample.github.io/tutorial/ebook-generation/customizing-pandoc/)
-- Exhaustive documentation (At least short description)
+- Exhaustive dotfiles documentation (At least short description)
 - System installation instructions
-- Setup emacs daemon for seledit. (Original setup)[https://github.com/fimmind/Dotfiles/commit/1f91dc578a460236df412077d5ef98c234d1fdd4] 
-  worked fine, but Now `emacs --daemon` always crashes "due to a long standing Gtk+ bug". As stated 
+- Setup emacs daemon for seledit. [Original setup](https://github.com/fimmind/Dotfiles/commit/1f91dc578a460236df412077d5ef98c234d1fdd4)
+  worked fine, but Now `emacs --daemon` always crashes "due to a long standing Gtk+ bug". As stated
   [here](https://gitlab.gnome.org/GNOME/gtk/issues/221) the solution might be to downgrade emacs-27 to emacs-26
