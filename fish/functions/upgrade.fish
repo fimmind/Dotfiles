@@ -10,7 +10,7 @@ function upgrade_no_sudo
     brew update
     brew upgrade
     stack upgrade
-    doom upgrade
+    yes | doom upgrade
 
     nvim -u "~/Dotfiles/nvim/plugins.vim" -c "call UpdateVimPlug() | :PlugUpdate | :qa"
 end
