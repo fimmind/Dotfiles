@@ -3,6 +3,7 @@
 (setq user-full-name "Serafim Vinogrondskiy"
       user-mail-address "fimmind@mail.ru"
       doom-theme 'doom-nord
+      doom-font (font-spec :family "Source Code Pro" :size 13)
       org-directory "~/org/"
       projectile-project-search-path '("~/Code/" "~/Code/New/")
       display-line-numbers-type 'relative
@@ -25,13 +26,10 @@
 (map! :nv [remap evil-next-line] 'evil-next-visual-line
       :nv [remap evil-previous-line] 'evil-previous-visual-line)
 
-(defun setup-jp-font (&optional frame)
-  (when frame
-    (select-frame frame))
+(add-hook! 'doom-load-theme-hook :append
   (dolist (charset '(kana han cjk-misc bopomofo))
-    (set-fontset-font doom-font charset "Source Han Serif JP")))
-(add-hook 'after-make-frame-functions #'setup-jp-font)
-(setup-jp-font)
+    (set-fontset-font
+     t charset (font-spec :family "Source Han Serif JP"))))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
