@@ -97,8 +97,9 @@ ifeq ($(SYSTEM), arch)
 		networkmanager base-devel mlocate tree stack cups cups-pdf xsecurelock \
 		go gnome-mplayer maim gnugo unclutter gimp emacs ripgrep gcolor2 \
 		pulseaudio pulseaudio-bluetooth pulseaudio-alsa xdo guile pkgfile \
-		virtualbox virtualbox-host-modules-arch virtualbox-guest-iso \
-		adobe-source-han-serif-jp-fonts pass anki
+		virtualbox virtualbox-host-dkms virtualbox-guest-iso virtualbox-sdk \
+		virtualbox-guest-utils virtualbox-guest-dkms linux-headers linux-lts-headers \
+		adobe-source-han-serif-jp-fonts pass anki dosfstools
 	sudo npm install -g add-gitignore
 	pip install pylatexenc hy safeeyes
 	rustup default stable
@@ -226,6 +227,7 @@ installPolybar:
 
 setupVirtualBox:
 	$(call aur_build,virtualbox-ext-oracle)
+	modprobe vboxdrv vboxpci vboxnetflt
 	sudo gpasswd -a $$USER vboxusers
 	sudo rcvboxdrv
 	sudo depmod -a
