@@ -45,9 +45,7 @@ super + shift + Delete
 
 # reload configuration files:
 super + Delete
-	bspc wm -r; \
-	pkill -USR1 -x sxhkd; \
-	pkill -USR1 -x polybar
+	bspc wm -r
 
 # close and kill
 super + shift + {q,x}
