@@ -205,14 +205,8 @@ installBoot-clj:
 	brew install boot-clj
 	cd && boot
 
-ONESHELL:
 installJ:
-	cd sources
-	$(call remove,j8-git)
-	git clone https://aur.archlinux.org/j8-git.git
-	cd j8-git
-	makepkg -s --noconfirm
-	makepkg -i --noconfirm
+	$(call aur_build,j9-git)
 
 ONESHELL:
 installSpotify:
