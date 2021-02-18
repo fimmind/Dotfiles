@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+temp_dir=$(mktemp -d /tmp/$1.aur.XXXXXX)
+git clone aur:$1 $temp_dir
+cd $temp_dir
+makepkg -si --noconfirm
+cd -
+rm -rf $temp_dir

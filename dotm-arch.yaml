@@ -1,0 +1,307 @@
+conf:
+  shell: bash
+  backup_dir: ./dotm-backups
+  pkg_managers:
+    install_cmds:
+      pacman: sudo pacman -S --needed --noconfirm %pkg
+      brew: /home/linuxbrew/.linuxbrew/bin/brew install %pkg
+      gem: gem install %pkg
+      pip: pip3 install %pkg
+      stack: stack install %pkg
+      npm: sudo npm install -g %pkg
+      cargo: cargo install %pkg
+      flatpak: flatpak install -y %pkg
+      aur: ./bin/aur_build %pkg
+    deps:
+      brew: brew
+      gem: ruby
+      pip: python
+      stack: haskell
+      npm: nodejs
+      cargo: cargo
+      flatpak: flatpak
+      aur: base_pkgs git
+
+rules:
+  base_pkgs:
+    - pkgs: { pacman: base base-devel wget }
+
+  DE:
+    - deps: >-
+        WM utils DE_apps fish bluetooth network CUPS audio
+
+  WM:
+    - deps: xorg sxhkd rofi polybar fonts theme kitty xinputd
+    - pkgs:
+        pacman: >-
+          bspwm xdo playerctl xclip xorg-xsetroot xsecurelock feh
+          zenity unclutter maim
+        pip: safeeyes
+    - links:
+        bspwm: ~/.config/bspwm
+
+  DE_apps:
+    - deps: >-
+        zathura kitty keynav emacs zoom qutebrowser spotify sabaki
+        kgs virtualbox
+    - pkgs:
+        pacman: >-
+          qalculate-gtk libreoffice-fresh libreoffice-fresh-ru
+          gnome-mplayer rogue nethack cmus deluge deluge-gtk
+          opera chromium firefox anki gcolor2 gimp pcmanfm
+
+  utils:
+    - deps: broot git nvim brew tmux
+    - pkgs:
+        pacman: >-
+          curl cmake htop ranger lm_sensors mlocate tree jq
+          imagemagick neofetch cmatrix cmus dosfstools pass unrar
+          pkgfile gnugo bind-tools irssi rlwrap ripgrep figlet
+        npm: add-gitignore
+        pip: pylatexenc
+
+  pr_langs:
+    - deps: rust clojure haskell ruby python nodejs
+    - pkgs:
+        pacman: clisp php go dotnet-sdk guile scala
+
+  xorg:
+    - pkgs: { pacman: xorg xorg-xinit }
+    - links:
+        Xresources: ~/.Xresources
+        xinitrc: ~/.xinitrc
+
+  sxhkd:
+    - pkgs: { pacman: sxhkd }
+    - links:
+        sxhkd: ~/.config/sxhkd
+
+  rofi:
+    - pkgs: { pacman: rofi }
+    - links:
+        rofi: ~/.config/rofi
+
+  polybar:
+    - pkgs: { aur: polybar }
+    - links:
+        polybar: ~/.config/polybar
+
+  fonts:
+    - pkgs:
+        pacman: >-
+          adobe-source-han-serif-jp-fonts
+          adobe-source-code-pro-fonts
+          ttf-dejavu
+
+  theme:
+    - pkgs:
+        pacman: papirus-icon-theme
+        aur:
+          - breeze-default-cursor-theme
+          - plata-theme
+
+  keynav:
+    - links:
+        keynavrc: ~/.keynavrc
+    - pkgs: { pacman: keynav }
+
+  network:
+    - pkgs: { pacman: networkmanager wireless_tools }
+    - shell: |
+        sudo systemctl enable NetworkManager
+        sudo systemctl start NetworkManager
+
+  broot:
+    - links:
+        broot: ~/.config/broot
+    - pkgs: { pacman: broot }
+    - shell: |
+        broot --install
+
+  xinputd:
+    - links:
+        xinputd: ~/.config/xinputd
+
+  git:
+    - pkgs: { pacman: git }
+    - links:
+        gitconfig: ~/.gitconfig
+
+  bluetooth:
+    - pkgs: { pacman: bluez bluez-utils }
+    - shell: |
+        sudo systemctl enable bluetooth
+        sudo systemctl start bluetooth
+
+  CUPS:
+    - pkgs: { pacman: cups cups-pdf }
+    - shell: |
+        sudo systemctl enable cups.service
+        sudo systemctl start cups.service
+
+  zathura:
+    - pkgs: { pacman: zathura zathura-pdf-mupdf zathura-djvu }
+    - shell: |
+        xdg-mime default org.pwmt.zathura.desktop application/pdf
+
+  kitty:
+    - pkgs:
+        pacman: kitty
+    - links:
+        kitty: ~/.config/kitty
+    - shell: |
+        xdg-mime default kitty.desktop application/x-shellscript
+        xdg-mime default kitty.desktop application/x-sharedlib
+
+  fish:
+    - pkgs: { pacman: fish }
+    - links:
+        fish: ~/.config/fish
+        omf: ~/.config/omf
+    - in_temp: |
+        wget https://get.oh-my.fish -O get-omf.fish
+        fish get-omf.fish --noninteractive
+        fish -c "omf install sashimi"
+    - shell: |
+        sudo usermod -s $(grep fish /etc/shells | head -1) $USER
+
+  audio:
+    - pkgs:
+        pacman: pulseaudio pulseaudio-bluetooth pulseaudio-alsa alsa-utils
+    - shell: |
+        systemctl --user enable pulseaudio.service
+        systemctl --user start pulseaudio.service
+
+  nvim:
+    - links:
+        nvim: ~/.config/nvim
+    - pkgs: { pacman: neovim }
+    - pkgs:
+        pacman: inkscape
+        pip: pynvim unicode sympy inkscape-figures
+        npm: neovim browser-sync
+        gem: neovim
+    - shell: |
+        nvim -u "nvim/plugins.vim" -c ":qa"
+        nvim -c ":call InstallCocExtensions() | :qa"
+        xdg-mime default nvim.desktop text/markdown
+
+  texlive:
+    - shell: |
+        cd sources
+        test -f texlive.tar.gz || \
+          wget http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz \
+          -O texlive.tar.gz
+        tar -xf texlive.tar.gz
+        cd `ls | grep install-tl-*` && sudo ./install-tl -profile ../../texlive.profile
+
+  zoom:
+    - pkgs:
+        flatpak: https://flathub.org/repo/appstream/us.zoom.Zoom.flatpakref
+
+  brew:
+    - in_temp: |
+        wget https://raw.githubusercontent.com/Homebrew/install/master/install.sh \
+          -O install.sh
+        echo | bash ./install.sh
+
+  qutebrowser:
+    - links:
+        qutebrowser: ~/.config/qutebrowser
+    - pkgs: { pacman: qutebrowser }
+    - shell: |
+        xdg-mime default org.qutebrowser.qutebrowser.desktop x-scheme-handler/http
+        xdg-mime default org.qutebrowser.qutebrowser.desktop x-scheme-handler/https
+        xdg-mime default org.qutebrowser.qutebrowser.desktop text/html
+
+  spotify:
+    - shell: |
+        curl -sS https://download.spotify.com/debian/pubkey.gpg | gpg --import -
+    - pkgs: { aur: spotify }
+
+  sabaki:
+    - pkgs: { aur: sabaki }
+
+  kgs:
+    - pkgs: { aur: cgoban }
+
+  rocketchat:
+    - pkgs: { aur: rocketchat-client-bin }
+
+  virtualbox:
+    - pkgs:
+        pacman: >-
+          virtualbox virtualbox-host-dkms virtualbox-guest-iso virtualbox-sdk
+          virtualbox-guest-utils virtualbox-guest-dkms linux-headers linux-lts-headers
+    - pkgs: { aur: virtualbox-ext-oracle }
+    - shell: |
+        modprobe vboxdrv vboxpci vboxnetflt
+        sudo gpasswd -a $USER vboxusers
+        sudo rcvboxdrv
+        sudo depmod -a
+
+  tmux:
+    - links:
+        tmux.conf: ~/.tmux.conf
+    - pkgs: { pacman: tmux }
+
+  cargo:
+    - pkgs: { pacman: rustup cargo }
+    - shell: |
+        rustup default nightly
+
+  rust:
+    - deps: cargo
+    - links:
+        rustfmt.toml: ~/.rustfmt.toml
+    - pkgs:
+        cargo: trunk
+
+  rust_analyzer:
+    - deps: cargo
+    - shell: |
+        curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-linux \
+          -o ~/.local/bin/rust-analyzer
+        chmod +x ~/.local/bin/rust-analyzer
+
+  clojure:
+    - pkgs: { pacman: clojure }
+    - links:
+        profiles.clj: ~/.lein/profiles.clj
+        cljstyle: ~/.cljstyle
+    - shell: |
+        wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein \
+          -O ~/.local/bin/lein
+        chmod +x ~/.local/bin/lein
+        ~/.local/bin/lein
+
+  haskell:
+    - pkgs: { pacman: stack ghc-libs ghc-static }
+    - shell: cd ~; stack setup
+
+  ruby:
+    - pkgs: { pacman: ruby }
+    - shell: gem install irb
+
+  python:
+    - pkgs: { pacman: python3 python-pip }
+
+  nodejs:
+    - pkgs: { pacman: nodejs npm }
+
+  j_lang:
+    - pkgs: { aur: j9-git }
+
+  flatpak:
+    - pkgs: { pacman: flatpak }
+
+  emacs:
+    - deps: rust rust_analyzer
+    - pkgs:
+        pacman: emacs aspell aspell-en ghostscript ccls ctags
+        pip: pipenv black isort mypy
+        npm: prettier bash-language-server
+    - shell: |
+        git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
+        ~/.emacs.d/bin/doom -y install
+        rustup component add rust-src
