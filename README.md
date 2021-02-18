@@ -7,15 +7,9 @@ absolutely no guarantee that it won't break your system or something like that.
 Be very careful using it
 
 ```shell
-$ cd ~                 # Some scripts and settings rely on such Dotfiles' location
-$ git clone https://github.com/fimmind/Dotfiles
-$ cd Dotfiles
-$ sudo pacman-key --refresh-keys  # ┬ Not needed, if you are sure, that keys or
-$ sudo pacman -Syu --noconfirm    # ┘    packages are up to date
-$ make
-$ make installTexLive  # This takes a long while and much space,
-$                      #    therefore it's optional
-$ chsh -s /usr/bin/fish
+git clone https://github.com/fimmind/Dotfiles ~/Dotfiles
+cd Dotfiles
+./setup.sh
 ```
 
 ### GTK theme
