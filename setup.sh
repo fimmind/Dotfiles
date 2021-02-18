@@ -9,17 +9,17 @@ trap cleanup_exit \
     SIGALRM SIGHUP SIGINT SIGIO \
     SIGKILL SIGPIPE SIGPROF SIGPWR \
     SIGSTKFLT SIGTERM EXIT ERR
-
 echo "$USER ALL=(ALL) NOPASSWD:ALL" | sudo tee $sudoers
 
 sudo pacman-key --refresh-keys || true
 sudo pacman -Syu --noconfirm
 
-dotmake install base_pkgs
+dotmake=./bin/dotmake
+$dotmake install base_pkgs
 if [ $# -eq 0 ]; then
-    dotmake install DE pr_langs texlive
+    $dotmake install DE pr_langs texlive
 else
-    dotmake install $@
+    $dotmake install $@
 fi
 
 cleanup_exit
