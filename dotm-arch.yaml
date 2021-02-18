@@ -25,6 +25,7 @@ conf:
 rules:
   base_pkgs:
     - pkgs: { pacman: base base-devel wget }
+    - shell: sudo ldconfig
 
   DE:
     - deps: >-
