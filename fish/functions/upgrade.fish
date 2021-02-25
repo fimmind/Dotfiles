@@ -3,6 +3,7 @@ function upgrade_sudo
     pacman -Syyuu --noconfirm
     tlmgr update --self --all --reinstall-forcibly-removed
     npm upgrade
+    npm install -g npm
     updatedb
 end
 
@@ -10,7 +11,7 @@ function upgrade_no_sudo
     brew update
     brew upgrade
     stack upgrade
-    yes | doom upgrade
+    doom --yes upgrade
 
     nvim -u "~/Dotfiles/nvim/plugins.vim" -c "call UpdateVimPlug() | :PlugUpdate | :qa"
 end
