@@ -1,8 +1,19 @@
 #!/usr/bin/env bash
 
-temp_dir=$(mktemp -d /tmp/$1.aur.XXXXXX)
-git clone aur:$1 $temp_dir
-cd $temp_dir
-makepkg -si --noconfirm
-cd -
-rm -rf $temp_dir
+for pkg in $@; do
+  if test -z "$(git ls-remote aur:$pkg)"; then
+    echo "Package '$pkg' does not exist"
+    exit 1
+  fi
+done
+
+for pkg in $@; do
+  temp_dir=$(mktemp -d /tmp/$1.aur.XXXXXX)
+  trap "rm -rf $temp_dir; exit" SIGINT EXIT
+
+  git clone aur:$pkg $temp_dir
+  cd $temp_dir
+  makepkg -si --noconfirm
+  cd -
+  rm -rf $temp_dir
+done
