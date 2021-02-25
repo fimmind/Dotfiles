@@ -42,6 +42,9 @@ set -x XDG_CONFIG_HOME "$HOME/.config"
 set -x XDG_DATA_HOME "$HOME/.local/share"
 set -x PASSWORD_STORE_DIR "$HOME/.pass"
 
+set -x _JAVA_AWT_WM_NONREPARENTING 1
+set -x ANDROID_SDK "$HOME/Android/Sdk"
+
 set -x PATH "$PATH:$HOME/.local/bin"
 set -x PATH "$PATH:$HOME/Dotfiles/bin"
 set -x PATH "$PATH:$HOME/.cargo/bin"

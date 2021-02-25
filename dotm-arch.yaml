@@ -28,7 +28,7 @@ rules:
     - shell: sudo ldconfig
 
   default:
-    - deps: DE pr_langs texlive
+    - deps: DE pr_langs texlive android_dev
 
   DE:
     - deps: >-
@@ -294,6 +294,17 @@ rules:
 
   nodejs:
     - pkgs: { pacman: nodejs npm }
+
+  react:
+    - deps: nodejs
+    - pkgs: { npm: react }
+
+  android_dev:
+    - deps: react
+    - pkgs:
+        pacman: android-tools
+        aur: android-studio
+        npm: react-native expo-cli
 
   j_lang:
     - pkgs: { aur: j9-git }

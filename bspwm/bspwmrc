@@ -55,3 +55,4 @@ bspc rule -a Emacs:*:seledit state=floating
 bspc rule -a Safeeyes state=floating
 bspc rule -a Zathura state=tiled
 bspc rule -a Anki state=pseudo_tiled
+bspc rule -a jetbrains-studio state=floating
