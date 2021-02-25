@@ -259,7 +259,9 @@ rules:
     - links:
         rustfmt.toml: ~/.rustfmt.toml
     - pkgs:
-        cargo: trunk
+        cargo: trunk wasm-bindgen-cli
+    - shell: |
+        rustup target add wasm32-unknown-unknown
 
   rust_analyzer:
     - deps: cargo
