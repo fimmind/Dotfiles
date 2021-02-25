@@ -9,7 +9,7 @@ done
 
 for pkg in $@; do
   temp_dir=$(mktemp -d /tmp/$1.aur.XXXXXX)
-  trap "rm -rf $temp_dir; exit" SIGINT EXIT
+  trap "rm -rf $temp_dir; exit" SIGINT EXIT ERR
 
   git clone aur:$pkg $temp_dir
   cd $temp_dir
