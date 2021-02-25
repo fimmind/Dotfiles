@@ -27,6 +27,9 @@ rules:
     - pkgs: { pacman: base base-devel wget }
     - shell: sudo ldconfig
 
+  default:
+    - deps: DE pr_langs texlive
+
   DE:
     - deps: >-
         WM utils DE_apps fish bluetooth network CUPS audio

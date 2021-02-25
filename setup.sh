@@ -17,7 +17,7 @@ sudo pacman -Syu --noconfirm
 dotmake=./bin/dotmake
 $dotmake install base_pkgs
 if [ $# -eq 0 ]; then
-    $dotmake install DE pr_langs texlive
+    $dotmake install default
 else
     $dotmake install $@
 fi
