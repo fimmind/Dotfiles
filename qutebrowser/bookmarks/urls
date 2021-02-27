@@ -146,3 +146,5 @@ https://doc.rust-lang.org/cargo/reference/manifest.html The Manifest Format - Th
 https://developer.mozilla.org/en-US/docs/Web/CSS CSS: Cascading Style Sheets | MDN
 https://docs.rs/yew Yew docs
 https://github.com/yewstack/yew yewstack/yew: Rust / Wasm framework for building client web apps
+https://reactnative.dev/docs/components-and-apis Core Components and APIs · React Native
+https://ethercreative.github.io/react-native-shadow-generator/ React Native Shadow Generator
