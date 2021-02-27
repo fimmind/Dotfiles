@@ -109,7 +109,7 @@ label-unmounted = ROM / unmounted
 label-unmounted-underline = ${colors.red}
 
 [module/volume]
-type = internal/alsa
+type = internal/pulseaudio
 label-volume = VOL %percentage%%
 label-volume-underline = ${colors.blue}
 label-muted = VOL %percentage%%
