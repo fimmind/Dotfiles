@@ -65,7 +65,9 @@ rules:
         pip: pylatexenc
 
   pr_langs:
-    - deps: rust clojure haskell ruby python nodejs
+    - deps: >-
+        rust clojure haskell ruby python nodejs
+        typescript
     - pkgs:
         pacman: clisp php go dotnet-sdk guile scala
 
@@ -294,6 +296,10 @@ rules:
 
   nodejs:
     - pkgs: { pacman: nodejs npm }
+
+  typescript:
+    - deps: nodejs
+    - pkgs: { npm: typescript ts-node }
 
   react:
     - deps: nodejs

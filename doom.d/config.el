@@ -31,6 +31,8 @@
     (set-fontset-font
      t charset (font-spec :family "Source Han Serif JP"))))
 
+(add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-tsx-mode))
+
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;
 ;; - `load!' for loading external *.el files relative to this one
