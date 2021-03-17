@@ -27,6 +27,7 @@ settings:
       duckduckgo: https://duckduckgo.com/?q={}
       google: https://www.google.com/search?q={}
       wiki: https://ru.wikipedia.org/w/index.php?search={}
+      wiktionary: https://en.wiktionary.org/wiki/{}
       yandex: https://yandex.ru/search/?text={}
       jisho: https://jisho.org/search/{}
       merriam: https://www.merriam-webster.com/dictionary/{}
