@@ -299,7 +299,7 @@ rules:
     - pkgs: { pacman: python3 python-pip }
 
   nodejs:
-    - pkgs: { pacman: nodejs npm }
+    - pkgs: { pacman: nodejs npm yarn }
 
   typescript:
     - deps: nodejs
