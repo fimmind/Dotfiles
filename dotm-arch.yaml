@@ -32,7 +32,7 @@ rules:
 
   DE:
     - deps: >-
-        WM utils DE_apps fish bluetooth network CUPS audio
+        WM utils DE_apps fish bluetooth network time_setup CUPS audio
 
   WM:
     - deps: xorg sxhkd rofi polybar fonts theme kitty xinputd
@@ -116,6 +116,10 @@ rules:
     - shell: |
         sudo systemctl enable NetworkManager
         sudo systemctl start NetworkManager
+
+  time_setup:
+    - pkgs: { pacman: ntp }
+    - shell: sudo systemctl enable ntpd.service
 
   broot:
     - links:
