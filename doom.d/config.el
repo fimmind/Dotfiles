@@ -11,7 +11,9 @@
       company-idle-delay 0.0
       company-minimum-prefix-length 1
       company-show-numbers t
-      default-input-method "japanese-skk")
+      default-input-method "japanese-skk"
+      git-commit-summary-max-length 80
+      ispell-dictionary "en")
 
 (after! rustic
   (setq rustic-lsp-server 'rust-analyzer))
