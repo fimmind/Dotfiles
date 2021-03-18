@@ -37,7 +37,7 @@ modules-left = wm xkeyboard safeeyes spotify
 modules-center = time
 modules-right = cpu ram rom volume network
 
-tray-position = none
+tray-position = right
 
 [module/wm]
 type = internal/bspwm
