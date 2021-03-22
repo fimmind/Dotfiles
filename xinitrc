@@ -10,10 +10,8 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 [[ -f "$userresources" ]] && xrdb -merge "$userresources"
 [[ -f "$usermodmap"    ]] && xmodmap "$usermodmap"
 
-browser-sync start &
 keynav &
 unclutter &
-safeeyes & # FIXME
 fish -c ru
 xinputd &
 exec bspwm
