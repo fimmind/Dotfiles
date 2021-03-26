@@ -314,7 +314,7 @@ rules:
     - pkgs:
         pacman: android-tools
         aur: android-studio
-        npm: react-native expo-cli
+        brew: watchman
 
   j_lang:
     - pkgs: { aur: j9-git }
