@@ -1,5 +1,12 @@
 #! /usr/bin/env bash
 
+need_upgrade=true
+read -rN 1 -p "Do you want to run pacman update? [Y/n] " answer
+if test "$answer" = "n" -o "$answer" = "N"; then
+  need_upgrade=false
+fi
+echo
+
 sudoers=$(sudo mktemp /etc/sudoers.d/dotmake_${USER}_XXXXXX) || exit
 cleanup_exit() {
     sudo rm $sudoers &> /dev/null
@@ -11,8 +18,10 @@ trap cleanup_exit \
     SIGSTKFLT SIGTERM EXIT ERR
 echo "$USER ALL=(ALL) NOPASSWD:ALL" | sudo tee $sudoers
 
-sudo pacman-key --refresh-keys || true
-sudo pacman -Syu --noconfirm
+if $need_upgrade; then
+  sudo pacman-key --refresh-keys || true
+  sudo pacman -Syu --noconfirm
+fi
 
 dotmake=./bin/dotmake
 $dotmake install base_pkgs
