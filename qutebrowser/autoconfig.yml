@@ -32,5 +32,6 @@ settings:
       jisho: https://jisho.org/search/{}
       merriam: https://www.merriam-webster.com/dictionary/{}
       multitran: https://www.multitran.com/m.exe?s={}
+      ojad: http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/sortprefix:accent/word:{}
   url.start_pages:
     global: https://start.duckduckgo.com
