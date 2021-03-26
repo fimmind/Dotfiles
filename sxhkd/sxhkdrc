@@ -18,9 +18,6 @@ super + d
 super + e
 	emacs
 
-super + {_, shift +} n
-	seledit --editor "emacs --geometry 120x36 --title seledit" --action {write,edit}
-
 super + c
 	kitty --class=float -- qalc
 
@@ -29,6 +26,9 @@ super + shift + p
 
 super + shift + Delete
 	powermenu logout
+
+super + {u,i,o}
+	ibus engine {xkb:ru::rus,xkb:us::eng,skk}
 
 {_, shift +, ctrl +} Print
 	screenshot {full,window,selection}
@@ -89,7 +89,7 @@ super + {grave,Tab}
 	bspc {node,desktop} -f last
 
 # focus the older or newer node in the focus history
-super + {o,i}
+super + {n,p}
 	bspc wm -h off; \
 	bspc node {older,newer} -f; \
 	bspc wm -h on

@@ -8,7 +8,6 @@ end
 
 # Aliases
 # -------
-alias ru="setxkbmap us,ru ,winkeys grp:caps_toggle"
 alias fix_time="sudo ntpd -qg"
 alias vimrc="nvim -c Vimrc"
 alias getamsterdam="cp ~/Dotfiles/beamerthemeAmsterdam.sty ./"

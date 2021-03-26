@@ -56,3 +56,5 @@ bspc rule -a Safeeyes state=floating
 bspc rule -a Zathura state=tiled
 bspc rule -a Anki state=pseudo_tiled
 bspc rule -a jetbrains-studio state=floating
+bspc rule -a Ibus-setup state=floating
+bspc rule -a Ibus-setup-skk state=floating

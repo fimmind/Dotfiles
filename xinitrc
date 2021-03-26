@@ -10,8 +10,11 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 [[ -f "$userresources" ]] && xrdb -merge "$userresources"
 [[ -f "$usermodmap"    ]] && xmodmap "$usermodmap"
 
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+ibus-daemon -rx &
+
 keynav &
 unclutter &
-fish -c ru
-xinputd &
 exec bspwm
