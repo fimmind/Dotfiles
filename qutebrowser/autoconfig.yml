@@ -33,5 +33,7 @@ settings:
       merriam: https://www.merriam-webster.com/dictionary/{}
       multitran: https://www.multitran.com/m.exe?s={}
       ojad: http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/sortprefix:accent/word:{}
+      tofugu: https://www.tofugu.com/?s={}
+      tae-kim-guide: http://www.guidetojapanese.org/learn/search_gcse/?q={}
   url.start_pages:
     global: https://start.duckduckgo.com
