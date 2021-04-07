@@ -9,6 +9,7 @@ if [ $1 == 0 ]; then
     kitty -- fish -c upgrade &
 else
     pkill -USR1 -x sxhkd
+    ibus restart &
 fi
 
 #### MONITORS ####
