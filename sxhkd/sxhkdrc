@@ -28,7 +28,7 @@ super + shift + Delete
 	powermenu logout
 
 super + {u,i,o}
-	ibus engine {xkb:ru::rus,xkb:us::eng,skk}
+	ibus engine {xkb:ru::rus,xkb:us::eng,anthy}
 
 {_, shift +, ctrl +} Print
 	screenshot {full,window,selection}
