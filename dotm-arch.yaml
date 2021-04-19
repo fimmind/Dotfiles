@@ -66,7 +66,8 @@ rules:
         pip: pylatexenc
 
   input_method:
-    - pkgs: { pacman: ibus ibus-anthy }
+    - pkgs: { pacman: ibus ibus-anthy ibus-table }
+    - pkgs: { aur: ibus-table-others }
 
   pr_langs:
     - deps: >-
