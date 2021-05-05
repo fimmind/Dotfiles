@@ -41,7 +41,6 @@ rules:
         pacman: >-
           bspwm xdo playerctl xclip xorg-xsetroot xsecurelock feh
           zenity unclutter maim
-        pip: safeeyes
     - links:
         bspwm: ~/.config/bspwm
 
