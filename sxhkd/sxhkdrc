@@ -30,10 +30,10 @@ super + shift + Delete
 super + {u,i,o}
 	ibus engine {xkb:ru::rus,xkb:us::eng,anthy}
 
+# Switching xkb layout to `us` is needed because otherwise IPA layout may
+# not work in case if, for example, presvious layout was russian or
+# japanese.
 super + y
-    # Switching xkb layout to `us` is needed because otherwise IPA layout may
-    # not work in case if, for example, presvious layout was russian or
-    # japanese.
     ibus engine xkb:us::eng; \
     ibus engine table:ipa-x-sampa
 
