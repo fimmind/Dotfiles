@@ -60,6 +60,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'vim-pandoc/vim-pandoc-syntax'
   Plug 'hylang/vim-hy'
   Plug 'kovetskiy/sxhkd-vim'
+  Plug 'leafgarland/typescript-vim'
 
   " Rust
   Plug 'rust-lang/rust.vim'
