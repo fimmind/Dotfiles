@@ -24,16 +24,20 @@ settings:
   url.searchengines:
     global:
       DEFAULT: https://www.google.com/search?q={}
-      duckduckgo: https://duckduckgo.com/?q={}
+      duckd: https://duckduckgo.com/?q={}
       google: https://www.google.com/search?q={}
       jisho: https://jisho.org/search/{}
       merriam: https://www.merriam-webster.com/dictionary/{}
-      multitran: https://www.multitran.com/m.exe?s={}
+      multi: https://www.multitran.com/m.exe?s={}
       ojad: http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/sortprefix:accent/word:{}
-      tae-kim-guide: http://www.guidetojapanese.org/learn/search_gcse/?q={}
+      tae-kim: http://www.guidetojapanese.org/learn/search_gcse/?q={}
       tofugu: https://www.tofugu.com/?s={}
       wiki: https://en.wikipedia.org/w/index.php?search={}
-      wiktionary: https://en.wiktionary.org/wiki/{}
+      wikt: https://en.wiktionary.org/wiki/{}
       yandex: https://yandex.ru/search/?text={}
+      gdict: https://www.google.com/search?q=dictionary#dobs={}
+      camb: https://dictionary.cambridge.org/us/dictionary/english/{}
+      context-jp: https://context.reverso.net/translation/russian-japanese/{}
+      context-en: https://context.reverso.net/translation/russian-english/{}
   url.start_pages:
     global: https://start.duckduckgo.com
