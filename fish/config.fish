@@ -60,15 +60,3 @@ set -x PATH "$PATH:$XDG_DATA_HOME/nvim/plugged/vim-iced/bin"
 
 set -x MANPATH "$MANPATH:/usr/local/texlive/2019/texmf-dist/doc/man"
 set -x INFOPATH "$INFOPATH:/usr/local/texlive/2019/texmf-dist/doc/info"
-
-# Automatically start X11 in tty1
-# -------------------------------
-if systemctl -q is-active graphical.target \
-   && test   -z "$DISPLAY" \
-      -a     $XDG_VTNR -eq 1
-  amixer sset Master 50% on
-  exec startx
-end
-
-# Autorun
-# -------
