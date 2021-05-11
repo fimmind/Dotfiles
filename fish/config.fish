@@ -40,6 +40,7 @@ set -x TERMINAL "kitty"
 set -x XDG_CONFIG_HOME "$HOME/.config"
 set -x XDG_DATA_HOME "$HOME/.local/share"
 set -x PASSWORD_STORE_DIR "$HOME/.pass"
+set -x DOTM_DOTFILES_DIR (dirname (readlink -m (status dirname)))
 
 set -x _JAVA_AWT_WM_NONREPARENTING 1
 set -x ANDROID_SDK "$HOME/Android/Sdk"
