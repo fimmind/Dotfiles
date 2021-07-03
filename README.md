@@ -4,7 +4,7 @@
 
 ! ATTENTION ! This script isn't meant to be used by anyone but me. There is
 absolutely no guarantee that it won't break your system or something like that.
-Be very careful using it
+Be very careful using it.
 
 ```shell
 git clone https://github.com/fimmind/Dotfiles ~/Dotfiles
