@@ -20,6 +20,15 @@ Use `lxappearance`:
 - Icon: Papirus
 - Mouse cursor: Breeze
 
+### KataGo
+
+1. Install [katago-cpu](https://aur.archlinux.org/packages/katago-cpu/) or [katago-opencli](https://aur.archlinux.org/packages/katago-opencl/). Use OpenCL if you have any good or decent GPU. Otherwise CPU version is preferable.
+2. [Setup](https://github.com/lightvector/KataGo#how-to-use) the engine.
+3. Add KataGo to Sabaki at `File > Preferences > Engines`:
+   - Path: `/usr/bin/katago`;
+   - Arguments: `gtp`;
+   - Initial commands: `time_settings 0 5 1`.
+
 ## Fixes for some problems
 
 ### Enable automatic bluetooth activation
