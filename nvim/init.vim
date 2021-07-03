@@ -317,7 +317,7 @@ let g:pandoc#syntax#conceal#use = 0
 
 " Build & Run {{{1
 nnoremap <leader>pr :call build_and_run#run()<CR>
-nnoremap <leader>pb :call build_and_run#build()<CR>
+nnoremap <leader>pc :call build_and_run#build()<CR>
 
 " }}}1
 
