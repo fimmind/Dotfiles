@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# Prevent GTK apps from starting enormously slow
+# Souce: https://bbs.archlinux.org/viewtopic.php?pid=1705410#p1705410
+dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
+
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
