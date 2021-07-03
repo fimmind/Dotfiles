@@ -28,7 +28,10 @@ rules:
     - shell: sudo ldconfig
 
   default:
-    - deps: DE pr_langs texlive android_dev
+    - deps: lts_kernel DE pr_langs texlive android_dev
+
+  lts_kernel:
+    - pkgs: { pacman: linux-lts }
 
   DE:
     - deps: >-
