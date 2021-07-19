@@ -41,7 +41,7 @@ settings:
       camb: https://dictionary.cambridge.org/us/search/english/?q={}
       oxford: https://www.oxfordlearnersdictionaries.com/search/english/?q={}
       urban: https://www.urbandictionary.com/define.php?term={}
-      context-jp: https://context.reverso.net/translation/russian-japanese/{}
+      context-jp: https://context.reverso.net/translation/japanese-english/{}
       context-en: https://context.reverso.net/translation/russian-english/{}
       images: https://www.google.com/search?q={}&sxsrf=ALeKk03k3xvUmsqr42atH-mbAOMgyNJ8yg:1624637495103&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjPz6KmlrPxAhXCiIsKHdG2BAcQ_AUoAXoECAEQBA&cshid=1624637524560614&biw=1522&bih=1004
   url.start_pages:
