@@ -34,6 +34,7 @@ settings:
       tae-kim: http://www.guidetojapanese.org/learn/search_gcse/?q={}
       tofugu: https://www.tofugu.com/?s={}
       wiki: https://en.wikipedia.org/w/index.php?search={}
+      jwiki: https://ja.wikipedia.org/w/index.php?search={}
       wikt: https://en.wiktionary.org/wiki/{}
       yandex: https://yandex.ru/search/?text={}
       gdict: https://www.google.com/search?q=dictionary#dobs={}
