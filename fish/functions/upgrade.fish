@@ -12,6 +12,8 @@ function upgrade_no_sudo
     brew upgrade
     stack update
     doom --yes upgrade
+    rustup update stable
+    rustup update nightly
 
     nvim -u "~/Dotfiles/nvim/plugins.vim" -c "call UpdateVimPlug() | :PlugUpdate | :qa"
 end
