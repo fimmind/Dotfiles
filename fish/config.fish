@@ -24,6 +24,7 @@ alias x="startx >~/.startx_log.txt 2>&1"
 
 alias dmenu="dmenu -nb '#18191d' -nf '#bbbbbb' -sb '#005577' -sf '#eeeeee' -fn 'DejaVu Sans Mono:size=10'"
 alias apl="apl --noColor --silent"
+alias J="j9 -c"
 
 if [ "`uname -o`" = "Android" ]
   alias chroot="termux-chroot && exit"

@@ -24,6 +24,9 @@ super + z
 super + c
 	kitty --class=float -- qalc
 
+super + shift + c
+	kitty --class=float -- fish -c J
+
 super + shift + p
 	powermenu
 
