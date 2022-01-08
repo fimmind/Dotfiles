@@ -329,6 +329,9 @@ rules:
   j_lang:
     - pkgs: { aur: j9-git }
 
+  dyalog:
+    - pkgs: { aur: ncurses5-compat-libs dyalog-bin }
+
   flatpak:
     - pkgs: { pacman: flatpak }
 
