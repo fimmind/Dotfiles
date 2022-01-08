@@ -56,6 +56,7 @@ rules:
           qalculate-gtk libreoffice-fresh libreoffice-fresh-ru
           gnome-mplayer rogue nethack cmus deluge deluge-gtk
           opera chromium firefox anki gcolor2 gimp pcmanfm
+        aur: teams
 
   utils:
     - deps: broot git nvim brew tmux
