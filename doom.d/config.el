@@ -14,7 +14,8 @@
       company-show-numbers t
       default-input-method "japanese-skk"
       git-commit-summary-max-length 80
-      ispell-dictionary "en")
+      ispell-dictionary "en"
+      geiser-chicken-binary "chicken-csi")
 
 (after! rustic
   (setq rustic-lsp-server 'rust-analyzer))
@@ -35,6 +36,20 @@
      t charset (font-spec :family "Source Han Serif JP"))))
 
 (add-to-list 'auto-mode-alist '("\\.tsx\\'" . typescript-tsx-mode))
+
+(after! lispyville
+  (lispyville-set-key-theme
+   '((operators normal)
+     (prettify insert)
+     (atom-movement normal visual)
+     additional
+     additional-insert
+     text-objects
+     additional-wrap
+     additional-motions
+     slurp/barf-lispy
+     c-w)
+   ))
 
 ;; Here are some additional functions/macros that could help you configure Doom:
 ;;

@@ -43,6 +43,9 @@ set -x XDG_DATA_HOME "$HOME/.local/share"
 set -x PASSWORD_STORE_DIR "$HOME/.pass"
 set -x DOTM_DOTFILES_DIR (dirname (readlink -m (status dirname)))
 
+set -x CSC_PROGRAM "chicken-csc"
+set -x CSI_PROGRAM "chicken-csi"
+
 set -x _JAVA_AWT_WM_NONREPARENTING 1
 set -x ANDROID_SDK "$HOME/Android/Sdk"
 set -x ANDROID_HOME $HOME/Android/Sdk

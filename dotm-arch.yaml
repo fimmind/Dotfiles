@@ -304,6 +304,13 @@ rules:
   nodejs:
     - pkgs: { pacman: nodejs npm yarn }
 
+  chicken:
+    - pkgs: { pacman: chicken }
+    - shell: |
+        chicken-install -s apropos chicken-doc srfi-18 srfi-1
+        cd `chicken-csi -R chicken.platform -p '(chicken-home)'`
+        curl https://3e8.org/pub/chicken-doc/chicken-doc-repo-5.tgz | sudo tar zx
+
   typescript:
     - deps: nodejs
     - pkgs: { npm: typescript ts-node }
