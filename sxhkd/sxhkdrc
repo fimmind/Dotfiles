@@ -18,8 +18,8 @@ super + d
 super + e
 	emacs
 
-super + f
-	anki
+super + z
+	zathura
 
 super + c
 	kitty --class=float -- qalc
