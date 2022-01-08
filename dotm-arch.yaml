@@ -76,7 +76,7 @@ rules:
         rust clojure haskell ruby python nodejs
         typescript
     - pkgs:
-        pacman: clisp php go dotnet-sdk guile scala
+        pacman: clisp php go dotnet-sdk guile scala gnu-apl
 
   xorg:
     - pkgs: { pacman: xorg xorg-xinit }

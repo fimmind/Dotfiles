@@ -23,6 +23,7 @@ alias gi="add-gitignore"
 alias x="startx >~/.startx_log.txt 2>&1"
 
 alias dmenu="dmenu -nb '#18191d' -nf '#bbbbbb' -sb '#005577' -sf '#eeeeee' -fn 'DejaVu Sans Mono:size=10'"
+alias apl="apl --noColor --silent"
 
 if [ "`uname -o`" = "Android" ]
   alias chroot="termux-chroot && exit"
