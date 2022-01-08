@@ -2,6 +2,7 @@
 
 (setq user-full-name "Serafim Vinogrondskiy"
       user-mail-address "fimmind@mail.ru"
+      require-final-newline nil
       doom-theme 'doom-nord
       doom-font (font-spec :family "Source Code Pro" :size 13)
       org-directory "~/org/"
