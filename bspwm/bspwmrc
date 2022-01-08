@@ -6,6 +6,7 @@ xsetroot -cursor_name left_ptr
 if [ $1 == 0 ]; then
     sxhkd &
     polybar main &
+    set_layout "default"
     kitty -- fish -c upgrade &
 else
     pkill -USR1 -x sxhkd

@@ -30,15 +30,8 @@ super + shift + p
 super + shift + Delete
 	powermenu logout
 
-super + {u,i,o}
-	ibus engine {xkb:ru::rus,xkb:us::eng,anthy}
-
-# Switching xkb layout to `us` is needed because otherwise IPA layout may
-# not work in case if, for example, presvious layout was russian or
-# japanese.
-super + y
-    ibus engine xkb:us::eng; \
-    ibus engine table:ipa-x-sampa
+super + {y,u,i,shift+i,o,shift+o}
+	set_layout {ipa,ru,en,latex,ja,apl}
 
 {_, shift +, ctrl +} Print
 	screenshot {full,window,selection}

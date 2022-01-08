@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+case "$1" in
+    "en" | "" | "default")
+        engine="xkb:us::eng"
+        layout="us"
+        ;;
+    "ru")
+        engine="xkb:ru::rus"
+        layout="ru"
+        ;;
+    "ja")
+        engine="anthy"
+        layout="ja"
+        ;;
+    "ipa")
+        engine="table:ipa-x-sampa"
+        layout="us"
+        ;;
+    "latex")
+        engine="table:latex"
+        layout="us"
+        ;;
+    "apl")
+        engine="xkb:us::eng"
+        layout="us,apl -option grp:rctrl_switch"
+        ;;
+    *)
+        echo "Wrong layout name: $1"
+        exit 1
+        ;;
+esac
+
+ibus engine $engine
+setxkbmap -option
+setxkbmap -layout $layout
