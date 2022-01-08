@@ -338,7 +338,7 @@ rules:
   emacs:
     - deps: rust rust_analyzer
     - pkgs:
-        pacman: emacs aspell aspell-en ghostscript ccls ctags
+        pacman: emacs aspell aspell-en ghostscript ccls ctags texlab
         pip: pipenv black isort mypy
         npm: prettier bash-language-server
     - shell: |
