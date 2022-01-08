@@ -28,6 +28,9 @@ settings:
       google: https://www.google.com/search?q={}
       youtube: https://www.youtube.com/results?search_query={}
       jisho: https://jisho.org/search/{}
+      goo: https://dictionary.goo.ne.jp/srch/en/{}/m1u/
+      goo-jp: https://dictionary.goo.ne.jp/srch/jn/{}/m1u/
+      takoboto: https://takoboto.jp/?q={}
       merriam: https://www.merriam-webster.com/dictionary/{}
       multi: https://www.multitran.com/m.exe?s={}
       ojad: http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/sortprefix:accent/word:{}
