@@ -9,7 +9,11 @@ case "$1" in
         engine="xkb:ru::rus"
         layout="ru"
         ;;
-    "ja")
+    "ja-skk")
+        engine="skk"
+        layout="ja"
+        ;;
+    "ja-anthy")
         engine="anthy"
         layout="ja"
         ;;
