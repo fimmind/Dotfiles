@@ -3,7 +3,6 @@ function upgrade_sudo
     pacman -Syyuu --noconfirm
     tlmgr update --self --all --reinstall-forcibly-removed
     npm upgrade
-    npm install -g npm
     updatedb
 end
 
