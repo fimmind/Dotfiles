@@ -55,8 +55,8 @@ rules:
         pacman: >-
           qalculate-gtk libreoffice-fresh libreoffice-fresh-ru
           gnome-mplayer rogue nethack cmus deluge deluge-gtk
-          opera chromium firefox anki gcolor2 gimp pcmanfm
-        aur: teams
+          opera chromium firefox gcolor2 gimp pcmanfm
+        aur: teams anki-official-binary-bundle
 
   utils:
     - deps: broot git nvim brew tmux
@@ -69,7 +69,7 @@ rules:
         pip: pylatexenc
 
   input_method:
-    - pkgs: { pacman: ibus ibus-anthy ibus-table }
+    - pkgs: { pacman: ibus ibus-anthy ibus-skk ibus-table }
     - pkgs: { aur: ibus-table-others }
 
   pr_langs:
