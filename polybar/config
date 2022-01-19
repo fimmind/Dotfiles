@@ -19,7 +19,7 @@ background = ${self.black}
 foreground = ${self.white}
 
 [bar/main]
-monitor = HDMI1
+monitor = HDMI2
 background = ${colors.background}
 foreground = ${colors.foreground}
 width = 100%
