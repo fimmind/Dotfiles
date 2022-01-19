@@ -1,7 +1,7 @@
 configuration {
 	modi: "window,drun,combi";
-	display-window: "";
-	display-drun: "";
-	display-combi: "";
+	display-window: "window: ";
+	display-drun: "drun: ";
+	display-combi: "combi: ";
 }
 @theme "sidebar"
