@@ -18,6 +18,12 @@ super + d
 super + e
 	emacs
 
+super + q
+	qutebrowser
+
+super + a
+	anki
+
 super + z
 	zathura
 
