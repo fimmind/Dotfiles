@@ -102,6 +102,9 @@ autocmd FileType gitcommit,markdown,tex,text setlocal spell
 " Color scheme {{{1
 colorscheme nordfox
 
+" NERDCommenter {{{1
+let g:NERDSpaceDelims = 1
+
 " }}}1
 
 " vim: fdm=marker
