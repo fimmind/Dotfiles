@@ -110,6 +110,9 @@ nnoremap <leader>gg :G<CR>
 nnoremap <leader>gl :G log<CR>
 nnoremap <leader>gc :Gcd<CR>
 
+" NERDTree {{{1
+nmap <leader>, :NERDTreeToggle<CR>
+
 " }}}1
 
 " vim: fdm=marker
