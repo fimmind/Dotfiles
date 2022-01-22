@@ -119,6 +119,4 @@ let g:splitjoin_join_mapping  = ''
 nmap <leader>J <Plug>SplitjoinJoin
 nmap <leader>j <Plug>SplitjoinSplit
 
-" }}}1
-
-" vim: fdm=marker
+" {{{1 vim: fdm=marker
