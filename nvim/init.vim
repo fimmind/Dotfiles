@@ -105,6 +105,11 @@ colorscheme nordfox
 " NERDCommenter {{{1
 let g:NERDSpaceDelims = 1
 
+" Fugitive (git) {{{1
+nnoremap <leader>gg :G<CR>
+nnoremap <leader>gl :G log<CR>
+nnoremap <leader>gc :Gcd<CR>
+
 " }}}1
 
 " vim: fdm=marker
