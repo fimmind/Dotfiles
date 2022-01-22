@@ -1,3 +1,6 @@
+" Plugins loading {{{1
+exec "source" . stdpath('config') . "/plugins.vim"
+
 " Basic settings {{{1
 set colorcolumn=81
 set textwidth=80
