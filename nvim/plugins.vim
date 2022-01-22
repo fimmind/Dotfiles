@@ -18,6 +18,7 @@ call plug#begin(stdpath('data') . '/plugged')
   " Tools
   Plug 'scrooloose/nerdcommenter'
   Plug 'tpope/vim-fugitive'
+  Plug 'matze/vim-move'
 call plug#end()
 
 " Automatically install missing plugins {{{1
