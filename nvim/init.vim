@@ -99,6 +99,9 @@ nnoremap <leader>sn mm]s1z=`m
 
 autocmd FileType gitcommit,markdown,tex,text setlocal spell
 
+" Color scheme {{{1
+colorscheme nordfox
+
 " }}}1
 
 " vim: fdm=marker

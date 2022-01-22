@@ -12,7 +12,7 @@ endif
 
 " List the plugins {{{1
 call plug#begin(stdpath('data') . '/plugged')
-  " ... 
+  Plug 'EdenEast/nightfox.nvim'
 call plug#end()
 
 " Automatically install missing plugins {{{1
