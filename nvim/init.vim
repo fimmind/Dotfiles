@@ -119,4 +119,8 @@ let g:splitjoin_join_mapping  = ''
 nmap <leader>J <Plug>SplitjoinJoin
 nmap <leader>j <Plug>SplitjoinSplit
 
+" Easy-align {{{1
+nmap <leader>a <Plug>(EasyAlign)
+xmap <leader>a <Plug>(EasyAlign)
+
 " {{{1 vim: fdm=marker

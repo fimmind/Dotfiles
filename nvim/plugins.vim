@@ -29,6 +29,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'tpope/vim-repeat'
   Plug 'cohama/lexima.vim'
   Plug 'wellle/targets.vim'
+  Plug 'junegunn/vim-easy-align'
 call plug#end()
 
 " Automatically install missing plugins {{{1
