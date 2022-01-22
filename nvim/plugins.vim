@@ -22,6 +22,13 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'matze/vim-move'
   Plug 'preservim/nerdtree'
   Plug 'andrewradev/splitjoin.vim'
+  Plug 'nelstrom/vim-visual-star-search'
+  Plug 'michaeljsmith/vim-indent-object'
+  Plug 'markonm/traces.vim' " :substitute preview
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-repeat'
+  Plug 'cohama/lexima.vim'
+  Plug 'wellle/targets.vim'
 call plug#end()
 
 " Automatically install missing plugins {{{1
