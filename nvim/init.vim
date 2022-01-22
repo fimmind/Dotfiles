@@ -113,6 +113,12 @@ nnoremap <leader>gc :Gcd<CR>
 " NERDTree {{{1
 nmap <leader>, :NERDTreeToggle<CR>
 
+" splitjoin {{{1
+let g:splitjoin_split_mapping = ''
+let g:splitjoin_join_mapping  = ''
+nmap <leader>J <Plug>SplitjoinJoin
+nmap <leader>j <Plug>SplitjoinSplit
+
 " }}}1
 
 " vim: fdm=marker

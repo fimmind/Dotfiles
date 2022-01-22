@@ -21,6 +21,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'tpope/vim-fugitive'
   Plug 'matze/vim-move'
   Plug 'preservim/nerdtree'
+  Plug 'andrewradev/splitjoin.vim'
 call plug#end()
 
 " Automatically install missing plugins {{{1
