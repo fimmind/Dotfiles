@@ -18,6 +18,9 @@ super + d
 super + shift + d
 	rofi -show window
 
+super + {_, shift +} n
+	seledit --editor "kitty --class=float -- nvim" --action {write,edit}
+
 super + e
 	emacs
 
