@@ -46,6 +46,10 @@ nnoremap <leader>x :bdelete<CR>
 nnoremap <leader>qq :q<CR>
 nnoremap <leader>w <C-w>
 
+noremap <leader>y "+y
+noremap <leader>p "+p
+noremap <leader>P "+P
+
 nnoremap <leader>d :call DeleteNext(0)<CR>
 nnoremap <leader>D :call DeleteNext(1)<CR>
 function! DeleteNext(prev)
