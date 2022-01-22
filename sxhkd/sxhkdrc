@@ -15,6 +15,9 @@ super + g
 super + d
 	rofi -show drun
 
+super + shift + d
+	rofi -show window
+
 super + e
 	emacs
 
