@@ -31,7 +31,7 @@ syntax on
 syntax sync fromstart
 
 " Custom commands {{{1
-command! Vimrc e ~/Dotfiles/nvim/init.vim
+command! Vimrc exec "e " . stdpath('config') . "/init.vim"
 
 " General mappings {{{1
 let g:maplocalleader=' '
