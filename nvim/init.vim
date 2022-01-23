@@ -127,4 +127,12 @@ nmap <leader>j <Plug>SplitjoinSplit
 nmap <leader>a <Plug>(EasyAlign)
 xmap <leader>a <Plug>(EasyAlign)
 
+" UltiSnips {{{1
+let g:UltiSnipsSnippetDirectories = ['UltiSnips']
+let g:UltiSnipsUsePythonVersion   = 3
+
+let g:UltiSnipsExpandTrigger       = "<tab>"
+let g:UltiSnipsJumpForwardTrigger  = "<tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
+
 " {{{1 vim: fdm=marker

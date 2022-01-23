@@ -31,6 +31,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'cohama/lexima.vim'
   Plug 'wellle/targets.vim'
   Plug 'junegunn/vim-easy-align'
+  Plug 'sirver/UltiSnips'
 
   " Filetype
   Plug 'kovetskiy/sxhkd-vim'
