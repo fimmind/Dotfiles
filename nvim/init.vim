@@ -116,7 +116,7 @@ nnoremap <leader>gl :G log<CR>
 nnoremap <leader>gc :Gcd<CR>
 
 " NERDTree {{{1
-nmap <leader>, :NERDTreeToggle<CR>
+nmap <leader>, :NERDTreeFocus<CR>
 
 " splitjoin {{{1
 let g:splitjoin_split_mapping = ''
