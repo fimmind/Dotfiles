@@ -32,6 +32,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'wellle/targets.vim'
   Plug 'junegunn/vim-easy-align'
   Plug 'sirver/UltiSnips'
+  Plug 'aperezdc/vim-template'
 
   " Filetype
   Plug 'kovetskiy/sxhkd-vim'

@@ -143,4 +143,8 @@ call lexima#add_rule({
       \ 'input_after': '<CR>endsnippet'
       \ })
 
+" vim-template {{{1
+let g:templates_directory = stdpath("config") . "/templates"
+let g:templates_no_builtin_templates = 1
+
 " {{{1 vim: fdm=marker
