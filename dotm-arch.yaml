@@ -160,7 +160,7 @@ rules:
 
   kitty:
     - pkgs:
-        pacman: kitty
+        pacman: kitty ttf-fira-code
     - links:
         kitty: ~/.config/kitty
     - shell: |
