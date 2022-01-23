@@ -42,13 +42,14 @@ nnoremap k gk
 nnoremap gj j
 nnoremap gk k
 
-nnoremap <leader>x :bdelete<CR>
+nnoremap <leader>bd :bdelete<CR>
 nnoremap <leader>qq :q<CR>
 nnoremap <leader>w <C-w>
 
 noremap <leader>y "+y
 noremap <leader>p "+p
 noremap <leader>P "+P
+noremap <leader>x "+x
 
 nnoremap <leader>d :call DeleteNext(0)<CR>
 nnoremap <leader>D :call DeleteNext(1)<CR>
