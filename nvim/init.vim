@@ -136,4 +136,11 @@ let g:UltiSnipsExpandTrigger       = "<tab>"
 let g:UltiSnipsJumpForwardTrigger  = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
+call lexima#add_rule({
+      \ 'char': '<CR>',
+      \ 'filetype': 'snippets',
+      \ 'at': '^snippet.*\%#\s*$',
+      \ 'input_after': '<CR>endsnippet'
+      \ })
+
 " {{{1 vim: fdm=marker
