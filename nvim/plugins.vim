@@ -30,6 +30,9 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'cohama/lexima.vim'
   Plug 'wellle/targets.vim'
   Plug 'junegunn/vim-easy-align'
+
+  " Filetype
+  Plug 'kovetskiy/sxhkd-vim'
 call plug#end()
 
 " Automatically install missing plugins {{{1
