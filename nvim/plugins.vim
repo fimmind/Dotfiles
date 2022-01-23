@@ -10,7 +10,8 @@ if empty(glob(s:vim_plug_file))
   call UpdateVimPlug()
 endif
 
-" List the plugins {{{1
+" }}}1
+
 call plug#begin(stdpath('data') . '/plugged')
   " Coloring
   Plug 'EdenEast/nightfox.nvim'
