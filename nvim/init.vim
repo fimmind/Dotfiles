@@ -197,7 +197,7 @@ set updatetime=300
 set shortmess+=c
 set signcolumn=yes
 
-let g:coc_global_extensions = ["coc-json", "coc-git"]
+let g:coc_global_extensions = ["coc-json", "coc-git", "coc-ultisnips"]
 function InstallCocExtensions()
   exec "CocInstall -sync " . join(g:coc_global_extensions)
 endfunction
