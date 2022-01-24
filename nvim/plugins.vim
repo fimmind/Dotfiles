@@ -37,6 +37,7 @@ call plug#begin(stdpath('data') . '/plugged')
   " Filetype
   Plug 'kovetskiy/sxhkd-vim'
   Plug 'dag/vim-fish'
+  Plug 'lervag/vimtex'
 call plug#end()
 
 " Automatically install missing plugins {{{1

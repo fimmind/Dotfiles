@@ -35,7 +35,9 @@ command! Vimrc exec "e " . stdpath('config') . "/init.vim"
 
 " General mappings {{{1
 let g:maplocalleader=' '
+let maplocalleader=' '
 let g:mapleader=' '
+let mapleader=' '
 
 nnoremap j gj
 nnoremap k gk
@@ -146,5 +148,8 @@ call lexima#add_rule({
 " vim-template {{{1
 let g:templates_directory = stdpath("config") . "/templates"
 let g:templates_no_builtin_templates = 1
+
+" VimTeX {{{1
+let g:vimtex_view_method = 'zathura'
 
 " {{{1 vim: fdm=marker
