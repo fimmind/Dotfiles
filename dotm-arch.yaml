@@ -195,6 +195,7 @@ rules:
         npm: neovim
         gem: neovim
     - shell: nvim -u nvim/plugins.vim -c qa
+    - shell: nvim -c ":call InstallCocExtensions() | :qa!"
     - shell: xdg-mime default nvim.desktop text/markdown
 
   texlive:

@@ -161,6 +161,11 @@ set updatetime=300
 set shortmess+=c
 set signcolumn=yes
 
+let g:coc_global_extensions = []
+function InstallCocExtensions()
+  exec "CocInstall -sync " . join(g:coc_global_extensions)
+endfunction
+
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
 
