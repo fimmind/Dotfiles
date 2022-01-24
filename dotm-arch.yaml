@@ -191,14 +191,11 @@ rules:
         nvim: ~/.config/nvim
     - pkgs: { pacman: neovim }
     - pkgs:
-        pacman: inkscape
-        pip: pynvim unicode sympy inkscape-figures
-        npm: neovim browser-sync
+        pip: pynvim
+        npm: neovim
         gem: neovim
-    - shell: |
-        nvim -u "nvim/plugins.vim" -c ":qa"
-        nvim -c ":call InstallCocExtensions() | :qa"
-        xdg-mime default nvim.desktop text/markdown
+    - shell: nvim -u nvim/plugins.vim -c qa
+    - shell: xdg-mime default nvim.desktop text/markdown
 
   texlive:
     - shell: |
