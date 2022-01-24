@@ -34,10 +34,10 @@ syntax sync fromstart
 command! Vimrc exec "e " . stdpath('config') . "/init.vim"
 
 " General mappings {{{1
-let g:maplocalleader=' '
-let maplocalleader=' '
+let g:maplocalleader=','
 let g:mapleader=' '
-let mapleader=' '
+let maplocalleader=g:maplocalleader
+let mapleader=g:mapleader
 
 nnoremap j gj
 nnoremap k gk
