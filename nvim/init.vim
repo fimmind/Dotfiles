@@ -152,4 +152,77 @@ let g:templates_no_builtin_templates = 1
 " VimTeX {{{1
 let g:vimtex_view_method = 'zathura'
 
+" coc.nvim {{{1
+set encoding=utf-8
+set hidden
+set nobackup
+set nowritebackup
+set updatetime=300
+set shortmess+=c
+set signcolumn=yes
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight symbol under cursor on CursorMoved
+autocmd CursorMoved * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+command! Rename normal <Plug>(coc-rename)
+nnoremap <leader>lr :Rename<CR>
+
+" Remap for format selected region
+xmap <leader>ls  <Plug>(coc-format-selected)
+vmap <leader>ls  <Plug>(coc-format-selected)
+nmap <leader>ls  mmvip<leader>ls`m
+
+" Remap for format whole file
+nmap <leader>lf  <Plug>(coc-format)
+
+" Remap for format & save
+nmap <leader>lw  <Plug>(coc-format):w<CR>
+
+augroup mygroup
+  autocmd!
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of current line
+nmap <leader>la  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>lq  <Plug>(coc-fix-current)
+
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+
+" Remap for CocList
+nnoremap <silent> <leader>lla  :<C-u>CocList diagnostics<cr>
+nnoremap <silent> <leader>lle  :<C-u>CocList extensions<cr>
+nnoremap <silent> <leader>llc  :<C-u>CocList commands<cr>
+nnoremap <silent> <leader>llo  :<C-u>CocList outline<cr>
+nnoremap <silent> <leader>lls  :<C-u>CocList -I symbols<cr>
+
 " {{{1 vim: fdm=marker

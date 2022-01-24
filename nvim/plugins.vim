@@ -17,6 +17,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'EdenEast/nightfox.nvim'
 
   " Tools
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
   Plug 'scrooloose/nerdcommenter'
   Plug 'tpope/vim-fugitive'
