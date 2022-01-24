@@ -106,6 +106,43 @@ nnoremap <leader>sn mm]s1z=`m
 
 autocmd FileType gitcommit,markdown,tex,text setlocal spell
 
+" Status line {{{1
+function s:left_block()
+  let l:mode = mode()
+  let l:branch = FugitiveHead(7)
+  let l:fname = '%f%m'
+
+  return [l:mode, l:branch, l:fname]
+endfunction
+
+function s:right_block()
+  let l:ftype = &filetype
+  let l:lines = '≡%L'
+  let l:cursor = '%l-%c'
+
+  return [l:ftype, l:lines, l:cursor]
+endfunction
+
+function s:join_modules(modules)
+  return a:modules
+        \ ->filter('strlen(v:val) > 0')
+        \ ->join(' · ')
+endfunction
+
+function s:join_blocks(blocks)
+  return a:blocks
+        \ ->map('s:join_modules(v:val)')
+        \ ->join('%=')
+endfunction
+
+function Statusline()
+  return ' ' . s:join_blocks([
+        \ s:left_block(),
+        \ s:right_block()
+      \ ]) . ' '
+endfunction
+set statusline=%!Statusline()
+
 " Color scheme {{{1
 colorscheme nordfox
 
@@ -129,7 +166,6 @@ nmap <leader>j <Plug>SplitjoinSplit
 " Easy-align {{{1
 nmap <leader>a <Plug>(EasyAlign)
 xmap <leader>a <Plug>(EasyAlign)
-
 " UltiSnips {{{1
 let g:UltiSnipsSnippetDirectories = ['UltiSnips']
 let g:UltiSnipsUsePythonVersion   = 3
