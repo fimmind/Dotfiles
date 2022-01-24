@@ -34,6 +34,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'junegunn/vim-easy-align'
   Plug 'sirver/UltiSnips'
   Plug 'aperezdc/vim-template'
+  Plug 'dense-analysis/ale'
 
   " Filetype
   Plug 'kovetskiy/sxhkd-vim'

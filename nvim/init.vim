@@ -268,4 +268,18 @@ nnoremap <silent> <leader>llc  :<C-u>CocList commands<cr>
 nnoremap <silent> <leader>llo  :<C-u>CocList outline<cr>
 nnoremap <silent> <leader>lls  :<C-u>CocList -I symbols<cr>
 
+" ALE {{{1
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+      \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \ }
+let g:ale_fix_on_save_ignore = {
+      \ 'snippets': ['trim_whitespace']
+      \ }
+
+let g:ale_linters_explicit = 1
+let g:ale_linters = {}
+
+let g:ale_sign_warning = ">>"
+
 " {{{1 vim: fdm=marker
