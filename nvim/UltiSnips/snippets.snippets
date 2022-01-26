@@ -1,0 +1,14 @@
+snippet sec "Section comment" b
+##`!p snip.rv = '#' * len(t[1])`##
+# $1 #
+##`!p snip.rv = '#' * len(t[1])`##$0
+endsnippet
+
+snippet vis "VISUAL placeholder" i
+\${${1:0}:\${VISUAL}}
+endsnippet
+
+context "'tex' == vim.eval('expand(\'%:t:r\')')"
+snippet math "Math context snippet" bA
+context "math()"
+endsnippet
