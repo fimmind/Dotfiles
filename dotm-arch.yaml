@@ -191,7 +191,7 @@ rules:
         nvim: ~/.config/nvim
     - pkgs: { pacman: neovim }
     - pkgs:
-        pip: pynvim
+        pip: pynvim unidecode
         npm: neovim
         gem: neovim
     - shell: nvim -u nvim/plugins.vim -c qa
