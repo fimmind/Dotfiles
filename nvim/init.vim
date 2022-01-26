@@ -45,7 +45,6 @@ nnoremap gj j
 nnoremap gk k
 
 nnoremap <leader>bd :bdelete<CR>
-nnoremap <leader>qq :q<CR>
 nnoremap <leader>w <C-w>
 
 noremap <leader>y "+y
