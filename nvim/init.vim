@@ -278,7 +278,9 @@ let g:ale_fix_on_save_ignore = {
       \ }
 
 let g:ale_linters_explicit = 1
-let g:ale_linters = {}
+let g:ale_linters = {
+      \ 'tex': ['chktex', 'lacheck']
+      \ }
 
 let g:ale_sign_warning = ">>"
 
