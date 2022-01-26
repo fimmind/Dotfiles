@@ -156,6 +156,15 @@ nnoremap <leader>gc :Gcd<CR>
 " NERDTree {{{1
 nmap <leader>, :NERDTreeFocus<CR>
 
+" lexima {{{1
+for i in [')', '}', ']']
+  call lexima#add_rule({
+        \ 'char': i,
+        \ 'at': '\%#\s*'.i,
+        \ 'input': '<esc>f'.i.'a'
+        \ })
+endfor
+
 " splitjoin {{{1
 let g:splitjoin_split_mapping = ''
 let g:splitjoin_join_mapping  = ''
