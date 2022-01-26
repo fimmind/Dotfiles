@@ -166,9 +166,11 @@ nmap <leader>j <Plug>SplitjoinSplit
 " Easy-align {{{1
 nmap <leader>a <Plug>(EasyAlign)
 xmap <leader>a <Plug>(EasyAlign)
+
 " UltiSnips {{{1
 let g:UltiSnipsSnippetDirectories = ['UltiSnips']
 let g:UltiSnipsUsePythonVersion   = 3
+let g:UltiSnipsEditSplit          = "context"
 
 let g:UltiSnipsExpandTrigger       = "<tab>"
 let g:UltiSnipsJumpForwardTrigger  = "<tab>"
