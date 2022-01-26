@@ -18,11 +18,14 @@ super + d
 super + shift + d
 	rofi -show window
 
-super + {_, shift +} n
+super + {_, shift +} v
 	seledit --editor "kitty --class=float -- nvim" --action {write,edit}
 
 super + e
-	emacs
+	seledit --action write --ext tex --editor "kitty -- nvim +start"
+
+super + shift + e
+	seledit --action edit --ext tex --editor "kitty -- nvim"
 
 super + q
 	qutebrowser
