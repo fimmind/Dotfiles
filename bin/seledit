@@ -27,6 +27,9 @@ options:
   --editor editor   Command used to open editor.
                     Defaults to "xdg-open"
 
+  --ext extension   The extension of created temporary file.
+                    Defaults to "txt"
+
   --help            Forces printing help message with description
 "
 }
@@ -39,6 +42,7 @@ exit_usage() {
 action=edit
 sel=clipboard
 editor=xdg-open
+ext=txt
 
 while [ -n "$1" ]; do
   case $1 in
@@ -55,11 +59,14 @@ while [ -n "$1" ]; do
     --editor)
       editor=$2
       shift ;;
+    --ext)
+      ext=$2
+      shift ;;
   esac
   shift
 done
 
-file=$(mktemp --suffix=.txt)
+file=$(mktemp --suffix=.$ext)
 
 case $action in
   edit) xclip -selection $sel -o > $file ;;
