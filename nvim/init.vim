@@ -180,6 +180,12 @@ call lexima#add_rule({
       \ 'at': '^snippet.*\%#\s*$',
       \ 'input_after': '<CR>endsnippet'
       \ })
+call lexima#add_rule({
+      \ 'char': '<CR>',
+      \ 'filetype': 'snippets',
+      \ 'at': '^global.*\%#\s*$',
+      \ 'input_after': '<CR>endglobal'
+      \ })
 
 " vim-template {{{1
 let g:templates_directory = stdpath("config") . "/templates"
