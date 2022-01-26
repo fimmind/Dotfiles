@@ -153,9 +153,6 @@ nnoremap <leader>gg :G<CR>
 nnoremap <leader>gl :G log<CR>
 nnoremap <leader>gc :Gcd<CR>
 
-" NERDTree {{{1
-nmap <leader>, :NERDTreeFocus<CR>
-
 " lexima {{{1
 for i in [')', '}', ']']
   call lexima#add_rule({
@@ -214,7 +211,8 @@ set shortmess+=c
 set signcolumn=yes
 
 let g:coc_global_extensions = [
-      \ "coc-json", "coc-git", "coc-ultisnips", "coc-vimtex", "coc-prettier"
+      \ "coc-json", "coc-git", "coc-ultisnips", "coc-vimtex", "coc-prettier",
+      \ "coc-explorer"
       \ ]
 function InstallCocExtensions()
   exec "CocInstall -sync " . join(g:coc_global_extensions)
@@ -282,6 +280,9 @@ nnoremap <silent> <leader>lle  :<C-u>CocList extensions<cr>
 nnoremap <silent> <leader>llc  :<C-u>CocList commands<cr>
 nnoremap <silent> <leader>llo  :<C-u>CocList outline<cr>
 nnoremap <silent> <leader>lls  :<C-u>CocList -I symbols<cr>
+
+" Remap for coc-explorer
+nmap <silent> <leader>, :CocCommand explorer<CR>
 
 " ALE {{{1
 let g:ale_fix_on_save = 1

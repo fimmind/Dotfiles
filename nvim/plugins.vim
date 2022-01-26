@@ -22,7 +22,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'scrooloose/nerdcommenter'
   Plug 'tpope/vim-fugitive'
   Plug 'matze/vim-move'
-  Plug 'preservim/nerdtree'
   Plug 'andrewradev/splitjoin.vim'
   Plug 'nelstrom/vim-visual-star-search'
   Plug 'michaeljsmith/vim-indent-object'
@@ -47,6 +46,6 @@ if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
    PlugInstall --sync | q
 endif
 
-" }}}1 
+" }}}1
 
 " vim: fdm=marker
