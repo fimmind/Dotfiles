@@ -214,7 +214,7 @@ set shortmess+=c
 set signcolumn=yes
 
 let g:coc_global_extensions = [
-      \ "coc-json", "coc-git", "coc-ultisnips", "coc-vimtex"
+      \ "coc-json", "coc-git", "coc-ultisnips", "coc-vimtex", "coc-prettier"
       \ ]
 function InstallCocExtensions()
   exec "CocInstall -sync " . join(g:coc_global_extensions)
@@ -251,12 +251,11 @@ command! Rename normal <Plug>(coc-rename)
 nnoremap <leader>lr :Rename<CR>
 
 " Remap for format selected region
-xmap <leader>ls  <Plug>(coc-format-selected)
-vmap <leader>ls  <Plug>(coc-format-selected)
-nmap <leader>ls  mmvip<leader>ls`m
+vmap <leader>lf  <Plug>(coc-format-selected)
+nmap <leader>lf  <Plug>(coc-format-selected)
 
 " Remap for format whole file
-nmap <leader>lf  <Plug>(coc-format)
+nmap <leader>lF  <Plug>(coc-format)
 
 " Remap for format & save
 nmap <leader>lw  <Plug>(coc-format):w<CR>
