@@ -7,7 +7,7 @@ endglobal
 # Environments #
 ################
 
-snippet beg "begin{} / end{}" b
+snippet beg "begin{} / end{}" bA
 \\begin{${1:environment}}$2
 	${0:${VISUAL}}
 \\end{$1}
@@ -72,6 +72,7 @@ snippet mK "math" wA
 \]$0
 endsnippet
 
+context "not math()"
 snippet eq "Equation" b
 \begin{equation}
 	\label{eq:$1}
@@ -79,6 +80,7 @@ snippet eq "Equation" b
 \end{equation}
 endsnippet
 
+context "not math()"
 snippet eqnn "Equation without number" bA
 \begin{equation*}
 	${0:${VISUAL}}
@@ -106,6 +108,17 @@ snippet cases "Cases" wA
 \end{cases}$0
 endsnippet
 
+context "math()"
+snippet ,, "Comma in cases" iA
+, & 
+endsnippet
+
+context "math()"
+snippet ,\ "Comma in cases" iA
+, \\\\
+
+endsnippet
+
 priority 10
 context "math()"
 snippet orcases "Set of equations" wA
@@ -127,6 +140,34 @@ endsnippet
 context "math()"
 snippet tt "text" wA
 \text{${1:${VISUAL}}} $0
+endsnippet
+
+#########
+# Paren #
+#########
+context "math()"
+snippet lr( "\left( \right)" wA
+\left( ${1:${VISUAL}} \right)
+endsnippet
+
+context "math()"
+snippet lr[ "\left[ \right]" wA
+\left[ ${1:${VISUAL}} \right]
+endsnippet
+
+context "math()"
+snippet lr{ "\left{ \right}" wA
+\left\\\{ ${1:${VISUAL}} \right\\\}
+endsnippet
+
+context "math()"
+snippet lr< "\left< \right>" wA
+\left< ${1:${VISUAL}} \right>
+endsnippet
+
+context "math()"
+snippet lr| "\left< \right>" wA
+\left\| ${1:${VISUAL}} \right\|
 endsnippet
 
 ############
@@ -217,6 +258,14 @@ snippet pacna "Package without arguments" bA
 \usepackage{$1}$0
 endsnippet
 
+###########
+# Spacing #
+###########
+
+snippet "(?<=\s) q" "\quad" wrA
+\quad 
+endsnippet
+
 #############
 # Fractions #
 #############
@@ -224,6 +273,11 @@ endsnippet
 context "math()"
 snippet // "Fraction" wA
 \\frac{$1}{$2}$0
+endsnippet
+
+context "math() and snip.visual_text"
+snippet / "Fraction" iA
+\\frac{${VISUAL}}{$1}$0
 endsnippet
 
 context "math()"
@@ -261,6 +315,7 @@ snippet '([A-Za-z])_(\d\d)' "auto subscript 2" irA
 `!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`$1} 
 endsnippet
 
+context "math()"
 snippet __ "subscript" iA
 _{${1:${VISUAL}}} $0
 endsnippet
@@ -270,27 +325,27 @@ endsnippet
 ###################
 
 context "math()"
-snippet dint "definite integral" wA
+snippet "(?<!\\)dint" "definite integral" wrA
 \int_{${1:-\infty}}^{${2:\infty}} ${4:${VISUAL}}\: d${3:x} 
 endsnippet
 
 context "math()"
-snippet int "indefinite integral" wA
+snippet "(?<!\\)int" "indefinite integral" wrA
 \int ${1:${VISUAL}}\: d${2:x} 
 endsnippet
 
 context "math()"
-snippet sum "sum" wA
+snippet "(?<!\\)sum" "sum" wrA
 \sum_{${1:i}=${2:0}}^{${3:n}} ${4:${VISUAL}} 
 endsnippet
 
 context "math()"
-snippet prod "product" wA
+snippet "(?<!\\)prod" "product" wrA
 \prod_{${1:n} = ${2:1}}^{${3:\infty}} ${4:${VISUAL}} 
 endsnippet
 
 context "math()"
-snippet lim "limit" wA
+snippet "(?<!\\)lim" "limit" wrA
 \lim_{${1:n} \to ${2:\infty}} ${3:${VISUAL}} 
 endsnippet
 
@@ -369,12 +424,27 @@ endsnippet
 ############
 
 context "math()"
-snippet "(?<!\\)(sim|pi|perp|to|in|iff|star)" "Symbols" rwA
+snippet "(?<!\\)(sim|pi|perp|to|in|iff|star|land|lor|lnot)" "Symbols" rwA
 \\`!p snip.rv = match.group(0)` 
 endsnippet
 
 context "math()"
-snippet prop "proportional to" wA
+snippet "(?<!\\)not" "\not" rwA
+\not 
+endsnippet
+
+context "math()"
+snippet "\\not\s+\\(\w*)\s+" "Remove extra space between \not and the next command" rwA
+\\not\\`!p snip.rv = match.group(1)` 
+endsnippet
+
+context "math()"
+snippet tO "Approaches ... as ... approaches ..." wA
+\underset{${1:x} \to ${2:\infty}}\longrightarrow 
+endsnippet
+
+context "math()"
+snippet "(?<!\\)prop" "proportional to" wrA
 \propto 
 endsnippet
 
@@ -386,11 +456,6 @@ endsnippet
 context "math()"
 snippet -+ "Minus Plus" wA
 \mp 
-endsnippet
-
-context "math()"
-snippet "(?<!\\)deg" "Degrees" irA
-^\circ 
 endsnippet
 
 context "math()"
@@ -419,11 +484,6 @@ snippet ~~ "approx" wA
 endsnippet
 
 context "math()"
-snippet notin "not in" wA
-\not\in 
-endsnippet
-
-context "math()"
 snippet UU "U" wA
 \cup 
 endsnippet
@@ -441,6 +501,11 @@ endsnippet
 context "math()"
 snippet cc "subset" wA
 \subset 
+endsnippet
+
+context "math()"
+snippet ncc "not subset" wA
+\not\subset 
 endsnippet
 
 context "math()"
@@ -474,7 +539,7 @@ snippet CC "Complex" wA
 endsnippet
 
 context "math()"
-snippet set- "set minus" wA
+snippet -set "set minus" wA
 \setminus 
 endsnippet
 
@@ -488,9 +553,16 @@ snippet ooo "\infty" wA
 \infty 
 endsnippet
 
+priority 10
 context "math()"
 snippet EE "exist" wA
 \exists 
+endsnippet
+
+priority 100
+context "math()"
+snippet "\\not\s*EE" "does not exist" wrA
+\nexists 
 endsnippet
 
 context "math()"
@@ -499,12 +571,23 @@ snippet AA "forall" wA
 endsnippet
 
 context "math()"
-snippet "(?<!<)&=>" "implies" wrA
+snippet "(?<!<)=>" "implies" wrA
 \implies 
 endsnippet
 
+context "math()"
 snippet != "not equals" wA
 \neq 
+endsnippet
+
+context "math()"
+snippet "(?<!\\)geq" "less than or equals to" wrA
+\geqslant 
+endsnippet
+
+context "math()"
+snippet "(?<!\\)leq" "greater than or equals to" wrA
+\leqslant 
 endsnippet
 
 context "math()"
@@ -556,13 +639,11 @@ endsnippet
 # Operators #
 #############
 
-priority 100
 context "math()"
-snippet '(?<!\\)(lg|ln|log|exp)' "operators" rwA
+snippet '(?<!\\)(lg|ln|log|exp|deg)' "operators" rwA
 \\`!p snip.rv = match.group(1)` 
 endsnippet
 
-priority 100
 context "math()"
 snippet '(?<!\\)((arc)?(sin|cos|tan|cot|sec|csc)(h)?)' "trigonometry" rwA
 \\`!p snip.rv = match.group(1)` 
@@ -577,25 +658,6 @@ snippet DD "Delta" wA
 \Delta 
 endsnippet
 
-###################
-# Logical symbols #
-###################
-
-context "math()"
-snippet and "Logical and" wA
-\land 
-endsnippet
-
-context "math()"
-snippet or "Logical or" wA
-\lor 
-endsnippet
-
-context "math()"
-snippet not "Logial not" wA
-\lnot 
-endsnippet
-
 #####################
 # Other expressions #
 #####################
@@ -603,4 +665,9 @@ endsnippet
 context "math()"
 snippet Cnk "Binomial coefficient" wA
 C_n^k 
+endsnippet
+
+context "math()"
+snippet fun "a function" wA
+${1:${2:D} \subset \mathbb R} \to ${3:\mathbb R} 
 endsnippet
