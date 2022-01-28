@@ -1,0 +1,197 @@
+#!/usr/bin/env python3
+"""Simple script for converting LeTeX into Anki's apkg files"""
+
+import html
+import re
+import sys
+import textwrap
+
+from driconfig import DriConfig
+import genanki
+from pydantic import BaseModel
+from pydantic import ValidationError
+
+
+class LatexConf(BaseModel):
+    """Anki's LaTeX configuration model"""
+    pre: str = genanki.Model.DEFAULT_LATEX_PRE
+    post: str = genanki.Model.DEFAULT_LATEX_POST
+    svg: bool = False
+
+
+class TemplateConf(BaseModel):
+    """Anki's card template configuration model"""
+    front: str = genanki.CLOZE_MODEL.templates[0]["qfmt"]
+    back: str = genanki.CLOZE_MODEL.templates[0]["afmt"]
+    css: str = genanki.CLOZE_MODEL.css
+
+
+class ModelConf(BaseModel):
+    """genanki.Model configuration model"""
+    template: TemplateConf = TemplateConf()
+    latex: LatexConf = LatexConf()
+    id: int
+    name: str
+
+
+class DeckConf(BaseModel):
+    """Anki's deck identifiers model"""
+    id: int
+    name: str
+
+
+class AppConfig(DriConfig):
+    """Configuration file model"""
+
+    class Config:
+        """Configure DriConfig's file location"""
+        config_folder = "."
+        config_file_name = "tex_to_anki.yaml"
+
+    source_file: str = "main.tex"
+    output_file: str = "out.apkg"
+    deck: DeckConf
+    model: ModelConf
+
+    def __init__(self):
+        try:
+            super().__init__()
+        except ValidationError as exception:
+            print("\033[91merror:\033[0m Failed to parse configuration file: ")
+            for error in exception.errors():
+                path = " -> ".join(error["loc"])
+                msg = error["msg"]
+                print(f'  {path}:\t {msg}')
+            sys.exit(1)
+
+
+CONFIG = AppConfig()
+
+
+class NoteModel(genanki.Model):
+    """A wrapper for genanki.Model"""
+    latexsvg: bool
+
+    def __init__(self):
+        super().__init__(
+            model_id=CONFIG.model.id,
+            name=CONFIG.model.name,
+            fields=[{
+                'name': name
+            } for name in ['UUID', 'Text', 'Back Extra']],
+            templates=[{
+                'name': 'Cloze',
+                'qfmt': CONFIG.model.template.front,
+                'afmt': CONFIG.model.template.back,
+            }],
+            css=CONFIG.model.template.css,
+            model_type=genanki.Model.CLOZE,
+            latex_pre=CONFIG.model.latex.pre,
+            latex_post=CONFIG.model.latex.post,
+            sort_field_index=0,
+        )
+        self.latexsvg = CONFIG.model.latex.svg
+
+    def to_json(self, timestamp: float, deck_id):
+        res = super().to_json(timestamp, deck_id)
+        res["latexsvg"] = self.latexsvg
+        return res
+
+
+NoteModel = NoteModel()
+
+
+class Note(genanki.Note):
+    """A wapper for genanki.Note"""
+
+    def __init__(
+        self,
+        uuid: str,
+        text: str,
+        back_extra: str = "",
+        *,
+        tags: [str] or None = None,
+    ):
+        super().__init__(
+            model=NoteModel,
+            fields=[uuid, text, back_extra],
+            guid=genanki.guid_for(uuid),
+            tags=tags,
+        )
+
+
+class OutputDeck:
+    """A wrapper around genanki.Deck"""
+    _deck: genanki.Deck
+
+    def __init__(self):
+        self._deck = genanki.Deck(CONFIG.deck.id, CONFIG.deck.name)
+
+    def add_note(self, note: Note):
+        """Add a note to the deck"""
+        self._deck.add_note(note)
+
+    def add_notes(self, notes: [Note]):
+        """Add multiple notes to the deck"""
+        for note in notes:
+            self.add_note(note)
+
+    def write(self):
+        """Write deck to apkg file specified in CONFIG.output_file"""
+        genanki.Package(self._deck) \
+            .write_to_file(CONFIG.output_file)
+
+
+class TeXParser:
+    """TeX input file parser"""
+
+    _cloze_regex = re.compile(
+        r"(?s)\\begin\{cloze\}\{(\d+)\}(.*?)\\end\{cloze\}")
+    _hinted_cloze_regex = re.compile(
+        r"(?s)\\begin\{cloze\}\[(.*?)\]\{(\d+)\}(.*?)\\end\{cloze\}")
+    _note_regex = re.compile(r"(?s)\\begin\{note\}\{(.+?)\}(.*?)" +
+                             r"(?:\\begin\{extra\}(.+?)\\end\{extra\})?\s*" +
+                             r"\\end\{note\}")
+
+    def parse_notes(self) -> [Note]:
+        """Parse all the notes from file specified by CONFIG.source_file"""
+        with open(CONFIG.source_file, "r", encoding="UTF-8") as source_file:
+            source = source_file.read()
+
+        notes = []
+        for [uuid, note, extra] in re.findall(self._note_regex, source):
+            notes.append(
+                Note(
+                    uuid,
+                    self.preprocess_tex(note),
+                    self.preprocess_tex(extra),
+                ))
+        return notes
+
+    def preprocess_tex(self, text: str) -> str:
+        """Ensure that the given piece of TeX conforms Anki's syntax rules"""
+        text = textwrap.dedent(text).strip()
+        if not text:
+            return text
+
+        # https://github.com/kerrickstaley/genanki#my-field-data-is-getting-garbled
+        text = html.escape(text)
+
+        # https://docs.ankiweb.net/math.html#cloze-conflicts
+        text = re.sub(r"(?<=\{)\{", r"<!-- -->{", text)
+        text = re.sub(r"\}(?=\})", r"}<!-- -->", text)
+        text = re.sub(r":(?=:)", r":<!-- -->", text)
+
+        text = re.sub(self._hinted_cloze_regex, r"{{c\2:: \3 :: \1 }}", text)
+        text = re.sub(self._cloze_regex, r"{{c\1:: \2 }}", text)
+
+        text = re.sub(r"\n", r"<br>", text)
+        text = re.sub(r"\s", r"&nbsp;", text)
+
+        return f'[latex]<br>{text}<br>[/latex]'
+
+
+if __name__ == "__main__":
+    deck = OutputDeck()
+    deck.add_notes(TeXParser().parse_notes())
+    deck.write()

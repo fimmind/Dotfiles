@@ -50,13 +50,13 @@ rules:
   DE_apps:
     - deps: >-
         zathura kitty keynav emacs zoom qutebrowser spotify sabaki
-        kgs virtualbox
+        kgs virtualbox anki
     - pkgs:
         pacman: >-
           qalculate-gtk libreoffice-fresh libreoffice-fresh-ru
           gnome-mplayer rogue nethack cmus deluge deluge-gtk
           opera chromium firefox gcolor2 gimp pcmanfm
-        aur: teams anki-official-binary-bundle
+        aur: teams
 
   utils:
     - deps: broot git nvim brew tmux
@@ -152,6 +152,10 @@ rules:
     - shell: |
         sudo systemctl enable cups.service
         sudo systemctl start cups.service
+
+  anki:
+    - pkgs: { aur: anki-official-binary-bundle }
+    - pkgs: { pip: genanki driconfig pydantic } # tex_to_anki's dependecies
 
   zathura:
     - pkgs: { pacman: zathura zathura-pdf-mupdf zathura-djvu }

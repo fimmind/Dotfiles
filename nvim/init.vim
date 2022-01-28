@@ -295,7 +295,8 @@ let g:ale_fix_on_save_ignore = {
 
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
-      \ 'tex': ['chktex', 'lacheck']
+      \ 'tex': ['chktex', 'lacheck'],
+      \ 'python': ['pylint', 'flake8', 'bandit']
       \ }
 
 let g:ale_sign_warning = ">>"

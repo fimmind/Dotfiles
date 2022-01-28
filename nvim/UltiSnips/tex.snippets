@@ -671,3 +671,39 @@ context "math()"
 snippet fun "a function" wA
 ${1:${2:D} \subset \mathbb R} \to ${3:\mathbb R} 
 endsnippet
+
+########
+# Anki #
+########
+
+snippet note "Anki's note" b
+\begin{note}{`!p 
+from uuid import uuid4
+if not snip.c:
+	snip.rv = uuid4().hex
+`}
+	${1:${VISUAL}}
+\end{note}
+endsnippet
+
+context "snip.visual_text"
+snippet clz "Cloze deletion" wA
+\begin{cloze}[${1:1}]$2
+	${VISUAL}
+\end{cloze}
+endsnippet
+
+snippet clz "Cloze deletion" wA
+\begin{cloze}[${1:1}]$2
+	$3
+\end{cloze}
+endsnippet
+
+snippet iclz "Inline cloze deletion" wA
+\begin{cloze}[${1:1}]$2\end{cloze}
+endsnippet
+
+context "snip.visual_text"
+snippet iclz "Inline cloze deletion" wA
+\begin{cloze}[${1:1}]$2${VISUAL}\end{cloze}
+endsnippet
