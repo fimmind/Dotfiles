@@ -212,7 +212,7 @@ set signcolumn=yes
 
 let g:coc_global_extensions = [
       \ "coc-json", "coc-git", "coc-ultisnips", "coc-vimtex", "coc-prettier",
-      \ "coc-explorer"
+      \ "coc-explorer", "coc-jedi"
       \ ]
 function InstallCocExtensions()
   exec "CocInstall -sync " . join(g:coc_global_extensions)
@@ -288,15 +288,17 @@ nmap <silent> <leader>, :CocCommand explorer<CR>
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
       \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \ 'python': ['autopep8', 'yapf']
       \ }
 let g:ale_fix_on_save_ignore = {
       \ 'snippets': ['trim_whitespace']
       \ }
 
+let g:ale_lint_on_text_changed = 'always'
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
       \ 'tex': ['chktex', 'lacheck'],
-      \ 'python': ['pylint', 'flake8', 'bandit']
+      \ 'python': ['flake8', 'bandit', 'pylint']
       \ }
 
 let g:ale_sign_warning = ">>"
