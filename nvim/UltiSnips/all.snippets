@@ -6,3 +6,10 @@ priority 1000
 snippet "No(\d)" "№" irA
 №`!p snip.rv = match.group(1)`
 endsnippet
+
+snippet uuid "generate a UUID (v4)" i
+`!p 
+from uuid import uuid4; 
+if not snip.c:
+  snip.rv = uuid4().hex`
+endsnippet
