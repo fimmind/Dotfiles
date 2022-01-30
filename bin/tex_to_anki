@@ -194,10 +194,7 @@ class TeXParser:
         text = re.sub(self._hinted_cloze_regex, r"{{c\2:: \3 :: \1 }}", text)
         text = re.sub(self._cloze_regex, r"{{c\1:: \2 }}", text)
 
-        text = re.sub(r"\n", r"<br>", text)
-        text = re.sub(r"\s", r"&nbsp;", text)
-
-        return f'[latex]<br>{text}<br>[/latex]'
+        return f'[latex]<pre>{text}</pre>[/latex]'
 
 
 if __name__ == "__main__":
