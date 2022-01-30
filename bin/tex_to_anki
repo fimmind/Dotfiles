@@ -5,8 +5,8 @@ import html
 import re
 import sys
 import textwrap
+import yaml
 
-from driconfig import DriConfig
 import genanki
 from pydantic import BaseModel
 from pydantic import ValidationError
@@ -40,24 +40,33 @@ class DeckConf(BaseModel):
     name: str
 
 
-class AppConfig(DriConfig):
+class ConfigModel(BaseModel):
     """Configuration file model"""
-
-    class Config:
-        """Configure DriConfig's file location"""
-        config_folder = "."
-        config_file_name = "tex_to_anki.yaml"
-
     source_file: str = "main.tex"
     output_file: str = "out.apkg"
     deck: DeckConf
     model: ModelConf
 
-    def __init__(self):
+    @staticmethod
+    def unsafe_load():
+        """Cusotom parsing method without error handling"""
+        with open("tex_to_anki.yaml", "r", encoding="utf8") as config_file:
+            return ConfigModel.parse_obj(
+                yaml.load(
+                    config_file,
+                    Loader=yaml.SafeLoader,
+                ))
+
+    @staticmethod
+    def load():
+        """Cusotom parsing method"""
         try:
-            super().__init__()
+            return ConfigModel.unsafe_load()
         except ValidationError as exception:
-            print("\033[91merror:\033[0m Failed to parse configuration file: ")
+            print(
+                "\033[91merror:\033[0m ",
+                "Failed to parse configuration file:",
+            )
             for error in exception.errors():
                 path = " -> ".join(error["loc"])
                 msg = error["msg"]
@@ -65,7 +74,7 @@ class AppConfig(DriConfig):
             sys.exit(1)
 
 
-CONFIG = AppConfig()
+CONFIG = ConfigModel.load()
 
 
 class NoteModel(genanki.Model):

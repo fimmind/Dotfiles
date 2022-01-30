@@ -155,7 +155,7 @@ rules:
 
   anki:
     - pkgs: { aur: anki-official-binary-bundle }
-    - pkgs: { pip: genanki driconfig pydantic } # tex_to_anki's dependecies
+    - pkgs: { pip: genanki pydantic } # tex_to_anki's dependecies
 
   zathura:
     - pkgs: { pacman: zathura zathura-pdf-mupdf zathura-djvu }
