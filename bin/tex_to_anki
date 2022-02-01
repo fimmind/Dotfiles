@@ -155,9 +155,9 @@ class TeXParser:
     """TeX input file parser"""
 
     _cloze_regex = re.compile(
-        r"(?s)\\begin\{cloze\}\{(\d+)\}(.*?)\\end\{cloze\}")
+        r"(?s)\\begin\{cloze\}\{(\d+)\}.*?\\end\{cloze\}")
     _hinted_cloze_regex = re.compile(
-        r"(?s)\\begin\{cloze\}\[(.*?)\]\{(\d+)\}(.*?)\\end\{cloze\}")
+        r"(?s)\\begin\{cloze\}\[(.*?)\]\{(\d+)\}.*?\\end\{cloze\}")
     _note_regex = re.compile(r"(?s)\\begin\{note\}\{(.+?)\}(.*?)" +
                              r"(?:\\begin\{extra\}(.+?)\\end\{extra\})?\s*" +
                              r"\\end\{note\}")
@@ -191,8 +191,8 @@ class TeXParser:
         text = re.sub(r"\}(?=\})", r"}<!-- -->", text)
         text = re.sub(r":(?=:)", r":<!-- -->", text)
 
-        text = re.sub(self._hinted_cloze_regex, r"{{c\2:: \3 :: \1 }}", text)
-        text = re.sub(self._cloze_regex, r"{{c\1:: \2 }}", text)
+        text = re.sub(self._hinted_cloze_regex, r"{{c\2::\g<0>:: \1 }}", text)
+        text = re.sub(self._cloze_regex, r"{{c\1::\g<0><!-- -->}}", text)
 
         return f'[latex]<pre>{text}</pre>[/latex]'
 
