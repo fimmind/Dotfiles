@@ -52,8 +52,7 @@ noremap <leader>p "+p
 noremap <leader>P "+P
 noremap <leader>x "+x
 
-nnoremap <leader>M :make<space>
-nnoremap <leader>m :make<cr>
+nnoremap <leader>m :!make<cr>
 
 nnoremap <leader>d :call DeleteNext(0)<CR>
 nnoremap <leader>D :call DeleteNext(1)<CR>
