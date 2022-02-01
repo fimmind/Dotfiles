@@ -156,6 +156,8 @@ class TeXParser:
 
     _cloze_regex = re.compile(
         r"(?s)\\begin\{cloze\}\{(\d+)\}.*?\\end\{cloze\}")
+    _inline_cloze_regex = re.compile(
+        r"(?s)\\begin\{icloze\}\{(\d+)\}.*?\\end\{icloze\}")
     _hinted_cloze_regex = re.compile(
         r"(?s)\\begin\{cloze\}\[(.*?)\]\{(\d+)\}.*?\\end\{cloze\}")
     _note_regex = re.compile(r"(?s)\\begin\{note\}\{(.+?)\}(.*?)" +
@@ -193,6 +195,11 @@ class TeXParser:
 
         text = re.sub(self._hinted_cloze_regex, r"{{c\2::\g<0>:: \1 }}", text)
         text = re.sub(self._cloze_regex, r"{{c\1::\g<0><!-- -->}}", text)
+        text = re.sub(
+            self._inline_cloze_regex,
+            r"{{c\1::\g<0><!-- -->}}",
+            text,
+        )
 
         return f'[latex]<pre>{text}</pre>[/latex]'
 
