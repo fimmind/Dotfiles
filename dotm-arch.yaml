@@ -158,6 +158,7 @@ rules:
     - pkgs: { pip: genanki pydantic } # tex_to_anki's dependecies
 
   zathura:
+    - links: { zathura: ~/.config/zathura }
     - pkgs: { pacman: zathura zathura-pdf-mupdf zathura-djvu }
     - shell: |
         xdg-mime default org.pwmt.zathura.desktop application/pdf
