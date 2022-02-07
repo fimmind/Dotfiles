@@ -6,6 +6,7 @@ import re
 import sys
 import textwrap
 import typing
+import warnings
 import yaml
 
 import genanki
@@ -191,6 +192,13 @@ class TeXParser:
 TeXParser = TeXParser()
 
 if __name__ == "__main__":
+    # Ignore genanki's complains about comments being ivalid HTML tags
+    warnings.filterwarnings(
+        "ignore",
+        message=r".*<!-- -->",
+        module="genanki",
+    )
+
     decks = []
     for (deck_id, deck_conf) in CONFIG.decks.items():
         deck = OutputDeck(deck_id, deck_conf.name)
