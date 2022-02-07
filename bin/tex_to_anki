@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Simple script for converting LeTeX into Anki's apkg files"""
+"""Simple script for converting LaTeX into Anki's apkg files"""
 
 import html
 import re
 import sys
 import textwrap
+import typing
 import yaml
 
 import genanki
@@ -36,15 +37,14 @@ class ModelConf(BaseModel):
 
 class DeckConf(BaseModel):
     """Anki's deck identifiers model"""
-    id: int
     name: str
+    source_files: typing.List[str] = []
 
 
 class ConfigModel(BaseModel):
     """Configuration file model"""
-    source_file: str = "main.tex"
+    decks: typing.Dict[int, DeckConf] = {}
     output_file: str = "out.apkg"
-    deck: DeckConf
     model: ModelConf
 
     @staticmethod
@@ -129,26 +129,13 @@ class Note(genanki.Note):
         )
 
 
-class OutputDeck:
+class OutputDeck(genanki.Deck):
     """A wrapper around genanki.Deck"""
-    _deck: genanki.Deck
-
-    def __init__(self):
-        self._deck = genanki.Deck(CONFIG.deck.id, CONFIG.deck.name)
-
-    def add_note(self, note: Note):
-        """Add a note to the deck"""
-        self._deck.add_note(note)
 
     def add_notes(self, notes: [Note]):
         """Add multiple notes to the deck"""
         for note in notes:
             self.add_note(note)
-
-    def write(self):
-        """Write deck to apkg file specified in CONFIG.output_file"""
-        genanki.Package(self._deck) \
-            .write_to_file(CONFIG.output_file)
 
 
 class TeXParser:
@@ -164,11 +151,8 @@ class TeXParser:
                              r"(?:\\begin\{extra\}(.+?)\\end\{extra\})?\s*" +
                              r"\\end\{note\}")
 
-    def parse_notes(self) -> [Note]:
+    def parse_notes(self, source: str) -> [Note]:
         """Parse all the notes from file specified by CONFIG.source_file"""
-        with open(CONFIG.source_file, "r", encoding="UTF-8") as source_file:
-            source = source_file.read()
-
         notes = []
         for [uuid, note, extra] in re.findall(self._note_regex, source):
             notes.append(
@@ -204,7 +188,16 @@ class TeXParser:
         return f'[latex]<pre>{text}</pre>[/latex]'
 
 
+TeXParser = TeXParser()
+
 if __name__ == "__main__":
-    deck = OutputDeck()
-    deck.add_notes(TeXParser().parse_notes())
-    deck.write()
+    decks = []
+    for (deck_id, deck_conf) in CONFIG.decks.items():
+        deck = OutputDeck(deck_id, deck_conf.name)
+        for source_fname in deck_conf.source_files:
+            with open(source_fname, "r", encoding="UTF-8") as source_file:
+                source = source_file.read()
+                notes = TeXParser.parse_notes(source)
+                deck.add_notes(notes)
+        decks.append(deck)
+    genanki.Package(decks).write_to_file(CONFIG.output_file)
