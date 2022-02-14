@@ -183,6 +183,8 @@ nmap <leader>a <Plug>(EasyAlign)
 xmap <leader>a <Plug>(EasyAlign)
 
 " UltiSnips {{{1
+command! UltisnipsRefreshSnippets call UltiSnips#RefreshSnippets()
+
 let g:UltiSnipsSnippetDirectories = ['UltiSnips']
 let g:UltiSnipsUsePythonVersion   = 3
 let g:UltiSnipsEditSplit          = "context"
