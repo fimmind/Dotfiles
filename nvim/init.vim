@@ -43,6 +43,7 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 nnoremap gk k
+inoremap <c-l> <tab>
 
 nnoremap <leader>bd :bdelete<CR>
 nnoremap <leader>w <C-w>
