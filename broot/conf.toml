@@ -6,6 +6,11 @@ shortcut = "e"
 execution = "nvim {file}"
 
 [[verbs]]
+invocation = "zathura"
+shortcut = "z"
+execution = "zathura {file}"
+
+[[verbs]]
 key = "ctrl-c"
 execution = ":quit"
 
