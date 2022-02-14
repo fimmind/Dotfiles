@@ -9,13 +9,13 @@ case "$1" in
         engine="xkb:ru::rus"
         layout="ru"
         ;;
-    "ja-skk")
+    "ja-skk" | "ja")
         engine="skk"
-        layout="ja"
+        layout="jp"
         ;;
     "ja-anthy")
         engine="anthy"
-        layout="ja"
+        layout="jp"
         ;;
     "ipa")
         engine="table:ipa-x-sampa"

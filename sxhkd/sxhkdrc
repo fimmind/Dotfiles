@@ -48,8 +48,8 @@ super + shift + p
 super + shift + Delete
 	powermenu logout
 
-super + {y,u,i,shift+i,o,shift+o}
-	set_layout {ipa,ru,en,latex,ja-skk,apl}
+super + {y,u,i,shift+i,o}
+	set_layout {ipa,ru,en,latex,ja}
 
 {_, shift +, ctrl +} Print
 	screenshot {full,window,selection}
