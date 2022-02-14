@@ -209,6 +209,14 @@ let g:templates_no_builtin_templates = 1
 
 " VimTeX {{{1
 let g:vimtex_view_method = 'zathura'
+let g:vimtex_imaps_leader = ';'
+let g:vimtex_env_toggle_math_map = {
+      \ '$': '\(',
+      \ '\(': '\[',
+      \ '$$': '\[',
+      \ '\[': 'equation',
+      \ 'equation': '\('
+      \ }
 
 " coc.nvim {{{1
 set encoding=utf-8
