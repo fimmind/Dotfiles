@@ -16,9 +16,10 @@ execution = ":quit"
 
 [[verbs]]
 invocation = "create {subpath}"
+shortcut = "a"
 execution = "$EDITOR {directory}/{subpath}"
 
 [[verbs]]
-name = "view"
 invocation = "view"
+shortcut = "v"
 execution = "$PAGER {file}"
