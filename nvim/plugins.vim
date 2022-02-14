@@ -34,6 +34,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'sirver/UltiSnips'
   Plug 'aperezdc/vim-template'
   Plug 'dense-analysis/ale'
+  Plug 'easymotion/vim-easymotion'
 
   " Filetype
   Plug 'kovetskiy/sxhkd-vim'

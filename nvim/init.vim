@@ -326,4 +326,7 @@ let g:ale_linters = {
 
 let g:ale_sign_warning = ">>"
 
+" easymotion {{{1
+nmap <leader>s <Plug>(easymotion-prefix)
+
 " {{{1 vim: fdm=marker
