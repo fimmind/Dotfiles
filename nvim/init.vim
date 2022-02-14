@@ -102,6 +102,9 @@ autocmd FileType cpp,c,python,rust,tex
 " Spell check {{{1
 set spelllang=en,ru_yo
 nnoremap <leader>st :let &spell=!&spell<CR>
+nnoremap <leader>se :setlocal spelllang=en<cr>
+nnoremap <leader>sr :setlocal spelllang=ru_yo<cr>
+nnoremap <leader>sc :setlocal spelllang=en,ru_yo<cr>
 nnoremap <leader>sp mm[s1z=`m
 nnoremap <leader>sn mm]s1z=`m
 
@@ -117,11 +120,15 @@ function s:left_block()
 endfunction
 
 function s:right_block()
+  let l:spelllang = ""
+  if &spell
+    let l:spelllang = &spelllang
+  endif
   let l:ftype = &filetype
   let l:lines = '≡%L'
   let l:cursor = '%l-%c'
 
-  return [l:ftype, l:lines, l:cursor]
+  return [l:spelllang, l:ftype, l:lines, l:cursor]
 endfunction
 
 function s:join_modules(modules)
