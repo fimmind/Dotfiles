@@ -4,7 +4,9 @@ exec "source" . stdpath('config') . "/plugins.vim"
 " Basic settings {{{1
 set colorcolumn=81
 set textwidth=80
-set wrap
+set wrap linebreak
+set scrolloff=10
+set list
 set hlsearch
 set showmatch
 set termencoding=utf-8
@@ -23,6 +25,7 @@ set shell=/bin/bash
 set termguicolors
 set background=dark
 set foldmethod=marker
+set formatoptions-=tc
 set exrc
 set secure
 filetype plugin on
