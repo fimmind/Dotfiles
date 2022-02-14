@@ -2,9 +2,8 @@
 
 [[verbs]]
 invocation = "edit"
-key = "enter"
 shortcut = "e"
-execution = "$EDITOR {file}"
+execution = "nvim {file}"
 
 [[verbs]]
 key = "ctrl-c"
