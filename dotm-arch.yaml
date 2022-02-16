@@ -65,7 +65,7 @@ rules:
           curl cmake htop ranger lm_sensors mlocate tree jq pdftk
           imagemagick neofetch cmatrix cmus dosfstools pass unrar
           pkgfile gnugo bind-tools irssi rlwrap ripgrep figlet
-          optipng
+          optipng gdb
         npm: add-gitignore
         pip: pylatexenc
 
@@ -195,7 +195,7 @@ rules:
   nvim:
     - links:
         nvim: ~/.config/nvim
-    - pkgs: { pacman: neovim }
+    - pkgs: { pacman: neovim ccls }
     - pkgs:
         pip: >-
           pynvim unidecode jedi-language-server autopep8 yapf

@@ -40,6 +40,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'kovetskiy/sxhkd-vim'
   Plug 'dag/vim-fish'
   Plug 'lervag/vimtex'
+  Plug 'bfrg/vim-cpp-modern'
 call plug#end()
 
 " Automatically install missing plugins {{{1
