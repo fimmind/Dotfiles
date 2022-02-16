@@ -124,6 +124,7 @@ function s:left_block()
 endfunction
 
 function s:right_block()
+  let l:coc_status = coc#status()
   let l:spelllang = ""
   if &spell
     let l:spelllang = &spelllang
@@ -132,7 +133,7 @@ function s:right_block()
   let l:lines = '≡%L'
   let l:cursor = '%l-%c'
 
-  return [l:spelllang, l:ftype, l:lines, l:cursor]
+  return [l:coc_status, l:spelllang, l:ftype, l:lines, l:cursor]
 endfunction
 
 function s:join_modules(modules)
