@@ -30,8 +30,10 @@ super + shift + e
 super + q
 	qutebrowser
 
+# See https://forums.ankiweb.net/t/anki-ui-appears-broken-with-newer-versions-of-qt/13684
+# for the explanation on `--no-sandbox`
 super + a
-	anki
+	anki "" --no-sandbox
 
 super + z
 	zathura
