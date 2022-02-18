@@ -141,13 +141,43 @@ endsnippet
 # Paren #
 #########
 context "math()"
-snippet lr "\langle  \rangle" iA
-\langle $1 \rangle 
+snippet lrA "\langle  \rangle" wA
+\left\langle ${VISUAL}$1 \right\rangle 
 endsnippet
 
 context "math()"
-snippet "\(lr(?=\))" "\left( \right)"
+snippet lA "\langle" wA
+\langle 
+endsnippet
 
+context "math()"
+snippet rA "\rangle" wA
+\rangle 
+endsnippet
+
+context "math()"
+snippet lr( "\left( \right)" wA
+\left( ${VISUAL}$1 \right)
+endsnippet
+
+context "math()"
+snippet lr[ "\left[ \right]" wA
+\left[ ${VISUAL}$1 \right]
+endsnippet
+
+context "math()"
+snippet lr{ "\left{ \right}" wA
+\left\{ ${VISUAL}$1 \right\}
+endsnippet
+
+snippet { "{}" iA
+{${VISUAL}$1}
+endsnippet
+snippet ( "()" iA
+(${VISUAL}$1)
+endsnippet
+snippet [ "[]" iA
+[${VISUAL}$1]
 endsnippet
 
 ###############
