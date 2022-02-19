@@ -126,7 +126,7 @@ snippet orcases "Set of equations" wA
 endsnippet
 
 context "math()"
-snippet gath "gathered" b
+snippet gath "gathered" bA
 \begin{gathered}
 	${VISUAL}$1
 \end{gathered}$0
@@ -141,7 +141,12 @@ endsnippet
 # Paren #
 #########
 context "math()"
-snippet lrA "\langle  \rangle" wA
+snippet lra "\langle \rangle" wA
+\langle ${VISUAL}$1 \rangle 
+endsnippet
+
+context "math()"
+snippet lrA "\left\langle \right\rangle" wA
 \left\langle ${VISUAL}$1 \right\rangle 
 endsnippet
 
@@ -190,7 +195,7 @@ endsnippet
 
 priority 100
 context "math()"
-snippet ', ,' "Comma in cases" iA
+snippet ", ?," "Comma in cases" irA
 , & 
 endsnippet
 
@@ -372,14 +377,16 @@ endsnippet
 # Large operators #
 ###################
 
+priority 100
 context "math()"
-snippet "(?<!\\)dint" "definite integral" wrA
-\int_{${1:-\infty}}^{${2:\infty}} ${VISUAL}$4\: d${3:x} 
+snippet "d\\in t" "definite integral" wrA
+\int_{${1:-\infty}}^{${2:\infty}} ${VISUAL}$3\: ${4:dx} $0
 endsnippet
 
+priority 10
 context "math()"
-snippet "(?<!\\)int" "indefinite integral" wrA
-\int ${VISUAL}$1\: d${2:x} 
+snippet "\\in t" "indefinite integral" wrA
+\int ${VISUAL}$1\: ${2:dx} $0
 endsnippet
 
 context "math()"
@@ -401,13 +408,13 @@ endsnippet
 # Powers and roots #
 ####################
 
-priority 0
+priority 10
 context "math()"
 snippet sr "\sqrt{}" iA
 \sqrt{${VISUAL}$1} 
 endsnippet
 
-priority 1
+priority 100
 context "math()"
 snippet nsr "sqrt" iA
 \sqrt[$1]{${VISUAL}$2} 
@@ -425,7 +432,7 @@ endsnippet
 
 context "math()"
 snippet tp "to the power" iA
-^{$1} 
+^{$1}
 endsnippet
 
 context "math()"
@@ -437,9 +444,16 @@ endsnippet
 # Symmbols #
 ############
 
+priority 10
 context "math()"
 snippet "(?<!\\)(sim|pi|perp|to|in|iff|star|land|lor|lnot|neq)" "Symbols" rwA
 \\`!p snip.rv = match.group(0)` 
+endsnippet
+
+priority 100
+context "math()"
+snippet mto "\mapsto" wA
+\\mapsto 
 endsnippet
 
 context "math()"
@@ -554,12 +568,12 @@ snippet UU "U" wA
 endsnippet
 
 context "math()"
-snippet cA "cap" wA
+snippet CA "cap" wA
 \cap 
 endsnippet
 
 context "math()"
-snippet CA "big cap" wA
+snippet Ca "big cap" wA
 \bigcap_{$1}^{$2} 
 endsnippet
 
@@ -627,7 +641,13 @@ endsnippet
 priority 10
 context "math()"
 snippet set "\{ ... \}" wA
-\\{ ${VISUAL}$1 \\}
+\left\\{ ${VISUAL}$1 \right\\}
+endsnippet
+
+priority 100
+context "math()"
+snippet bset "big \{ ... \}" wA
+\\Big\\{ ${VISUAL}$1 \Big\\}
 endsnippet
 
 context "math()"
@@ -690,12 +710,12 @@ snippet != "not equals" wA
 endsnippet
 
 context "math()"
-snippet "(?<!\\)geq" "less than or equals to" wrA
+snippet "(?<!\\)geq|>=" "less than or equals to" wrA
 \geqslant 
 endsnippet
 
 context "math()"
-snippet "(?<!\\)leq" "greater than or equals to" wrA
+snippet "(?<!\\)leq|<=" "greater than or equals to" wrA
 \leqslant 
 endsnippet
 
@@ -756,6 +776,11 @@ snippet .~ "\tilde" wA
 \tilde 
 endsnippet
 
+context "math()"
+snippet "([A-Z])cl" "\mathcal [A-Z]" rwA
+\mathcal `!p snip.rv = match.group(1)`
+endsnippet
+
 priority 10
 context "math()"
 snippet "(?<!\\)vec" "vector" rwA
@@ -765,9 +790,8 @@ endsnippet
 priority 10
 context "math()"
 snippet BB "Underbrace" wA
-\underbrace{$1}_{$2} 
+\underbrace{${VISUAL}$1}_{$2} 
 endsnippet
-
 
 priority 10
 context "math()"
@@ -797,12 +821,30 @@ snippet BB "Visual underbrace" wA
 \underbrace{${VISUAL}}_{$1} 
 endsnippet
 
+priority 10
+context "math()"
+snippet OO "Overset" wA
+\overset{$1}_{$2}
+endsnippet
+
+priority 100
+context "math()"
+snippet '([\\A-Za-z'_^\d\.=]+)\s*OO' "Overset" irA
+\overset{$1}{`!p snip.rv = match.group(1)`} 
+endsnippet
+
+priority 1000
+context "math() and snip.visual_text"
+snippet OO "Visual overset" wA
+\overset{$1}{${VISUAL}} 
+endsnippet
+
 #############
 # Operators #
 #############
 
 context "math()"
-snippet '(?<!\\)(lg|ln|log|exp|deg|min|max|dim)' "operators" rwA
+snippet '(?<!\\)(lg|ln|log|exp|deg|min|max|dim|ker)' "operators" rwA
 \\`!p snip.rv = match.group(1)` 
 endsnippet
 
@@ -812,8 +854,13 @@ snippet '(?<!\\)rk' "\operatorname{rk}" rwA
 endsnippet
 
 context "math()"
-snippet '(?<!\\)((arc)?(sin|cos|tan|cot|sec|csc)(h)?)' "trigonometry" rwA
+snippet '(?<!\\)((arc)?(sin|cos|tan|cot|sec|csc))' "trigonometry" rwA
 \\`!p snip.rv = match.group(1)` 
+endsnippet
+
+context "math()"
+snippet '\\(sin|cos|tan|cot|sec|csc) h' "hyperbolic trigonometry" rwA
+\\`!p snip.rv = match.group(1)`h 
 endsnippet
 
 #########
