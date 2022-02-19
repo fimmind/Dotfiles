@@ -9,11 +9,17 @@
           "directory": "/tmp/ccls"
         }
       }
+    },
+    "racket": {
+      "command": "racket",
+      "args": ["--lib", "racket-langserver"],
+      "filetypes": ["racket"]
     }
   },
   "git.addedSign.hlGroup": "GitGutterAdd",
   "git.changedSign.hlGroup": "GitGutterChange",
   "git.removedSign.hlGroup": "GitGutterDelete",
   "git.topRemovedSign.hlGroup": "GitGutterDelete",
-  "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete"
+  "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
+  "diagnostic.displayByAle": true
 }

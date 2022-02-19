@@ -21,6 +21,7 @@ conf:
       cargo: cargo
       flatpak: flatpak
       aur: base_pkgs git
+      raco: racket
 
 rules:
   base_pkgs:
@@ -76,7 +77,7 @@ rules:
   pr_langs:
     - deps: >-
         rust clojure haskell ruby python nodejs
-        typescript
+        typescript racket
     - pkgs:
         pacman: clisp php go dotnet-sdk guile scala gnu-apl
 
@@ -322,6 +323,12 @@ rules:
         chicken-install -s apropos chicken-doc srfi-18 srfi-1
         cd `chicken-csi -R chicken.platform -p '(chicken-home)'`
         curl https://3e8.org/pub/chicken-doc/chicken-doc-repo-5.tgz | sudo tar zx
+
+  racket:
+    - pkgs: { pacman: racket }
+    - shell: |
+        raco pkg install --auto --skip-installed -- \
+          racket-langserver
 
   typescript:
     - deps: nodejs

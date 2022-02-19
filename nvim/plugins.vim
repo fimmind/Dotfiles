@@ -35,12 +35,14 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'aperezdc/vim-template'
   Plug 'dense-analysis/ale'
   Plug 'easymotion/vim-easymotion'
+  Plug 'guns/vim-sexp'
 
   " Filetype
   Plug 'kovetskiy/sxhkd-vim'
   Plug 'dag/vim-fish'
   Plug 'lervag/vimtex'
   Plug 'bfrg/vim-cpp-modern'
+  Plug 'wlangstroth/vim-racket'
 call plug#end()
 
 " Automatically install missing plugins {{{1
