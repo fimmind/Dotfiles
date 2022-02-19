@@ -296,7 +296,7 @@ rules:
 
   c++:
     - pkgs: { pacman: cmake clang gdb ccls }
-    - links: { .clang-format: ~/.clang-format }
+    - links: { clang-format: ~/.clang-format }
 
   clojure:
     - pkgs: { pacman: clojure }
