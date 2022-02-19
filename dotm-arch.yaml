@@ -66,7 +66,7 @@ rules:
           curl cmake htop ranger lm_sensors mlocate tree jq pdftk
           imagemagick neofetch cmatrix cmus dosfstools pass unrar
           pkgfile gnugo bind-tools irssi rlwrap ripgrep figlet
-          optipng gdb
+          gdb
         npm: add-gitignore
         pip: pylatexenc
 
@@ -157,7 +157,10 @@ rules:
 
   anki:
     - pkgs: { aur: anki-official-binary-bundle }
-    - pkgs: { pip: genanki pydantic } # tex_to_anki's dependecies
+    - pkgs:
+        pip: genanki pydantic # tex_to_anki's dependecies
+        npm: svgo # for optimizing latex's svgs
+        pacman: optipng # for optimizing latex's pngs
 
   zathura:
     - links: { zathura: ~/.config/zathura }
