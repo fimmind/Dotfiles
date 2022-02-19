@@ -50,7 +50,7 @@ rules:
 
   DE_apps:
     - deps: >-
-        zathura kitty keynav emacs zoom qutebrowser spotify sabaki
+        zathura kitty keynav zoom qutebrowser spotify sabaki
         kgs virtualbox anki
     - pkgs:
         pacman: >-
@@ -359,14 +359,3 @@ rules:
 
   flatpak:
     - pkgs: { pacman: flatpak }
-
-  emacs:
-    - deps: rust rust_analyzer
-    - pkgs:
-        pacman: emacs aspell aspell-en ghostscript ctags texlab
-        pip: pipenv black isort mypy
-        npm: prettier bash-language-server
-    - shell: |
-        git clone --depth 1 https://github.com/hlissner/doom-emacs ~/.emacs.d
-        ~/.emacs.d/bin/doom -y install
-        rustup component add rust-src
