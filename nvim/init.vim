@@ -48,7 +48,6 @@ nnoremap gj j
 nnoremap gk k
 inoremap <c-l> <tab>
 
-nnoremap <leader>bd :bdelete<CR>
 nnoremap <leader>w <C-w>
 
 noremap <leader>y "+y
@@ -56,7 +55,9 @@ noremap <leader>p "+p
 noremap <leader>P "+P
 noremap <leader>x "+x
 
-nnoremap <leader>m :w\|!make<cr>
+nnoremap <silent> <leader>r :w\|!make VIM_CUR_BUF_FILE="%:p" nvim/run<cr>
+nnoremap <silent> <leader>b :w\|!make VIM_CUR_BUF_FILE="%:p" nvim/build<cr>
+nnoremap <silent> <leader>m :w\|!make VIM_CUR_BUF_FILE="%:p"<cr>
 
 nnoremap <leader>d :call DeleteNext(0)<CR>
 nnoremap <leader>D :call DeleteNext(1)<CR>
