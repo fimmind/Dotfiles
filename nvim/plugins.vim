@@ -42,6 +42,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'dag/vim-fish'
   Plug 'lervag/vimtex'
   Plug 'bfrg/vim-cpp-modern'
+  Plug 'rust-lang/rust.vim'
   Plug 'wlangstroth/vim-racket'
 call plug#end()
 

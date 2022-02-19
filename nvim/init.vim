@@ -237,7 +237,7 @@ set signcolumn=yes
 
 let g:coc_global_extensions = [
       \ "coc-json", "coc-git", "coc-ultisnips", "coc-vimtex", "coc-prettier",
-      \ "coc-explorer", "coc-jedi"
+      \ "coc-explorer", "coc-jedi", "coc-rust-analyzer"
       \ ]
 function InstallCocExtensions()
   exec "CocInstall -sync " . join(g:coc_global_extensions)
@@ -313,7 +313,8 @@ nmap <silent> <leader>, :CocCommand explorer<CR>
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
       \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-      \ 'python': ['autopep8', 'yapf']
+      \ 'python': ['autopep8', 'yapf'],
+      \ 'rust': ['rustfmt']
       \ }
 let g:ale_fix_on_save_ignore = {
       \ 'snippets': ['trim_whitespace']
