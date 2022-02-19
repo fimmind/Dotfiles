@@ -63,10 +63,9 @@ rules:
     - deps: broot git nvim brew tmux
     - pkgs:
         pacman: >-
-          curl cmake htop ranger lm_sensors mlocate tree jq pdftk
+          curl htop ranger lm_sensors mlocate tree jq pdftk
           imagemagick neofetch cmatrix cmus dosfstools pass unrar
           pkgfile gnugo bind-tools irssi rlwrap ripgrep figlet
-          gdb
         npm: add-gitignore
         pip: pylatexenc
 
@@ -77,7 +76,7 @@ rules:
   pr_langs:
     - deps: >-
         rust clojure haskell ruby python nodejs
-        typescript racket
+        typescript racket c++
     - pkgs:
         pacman: clisp php go dotnet-sdk guile scala gnu-apl
 
@@ -199,7 +198,7 @@ rules:
   nvim:
     - links:
         nvim: ~/.config/nvim
-    - pkgs: { pacman: neovim ccls }
+    - pkgs: { pacman: neovim }
     - pkgs:
         pip: >-
           pynvim unidecode jedi-language-server autopep8 yapf
@@ -295,6 +294,10 @@ rules:
     - deps: cargo
     - pkgs: { pacman: rust-analyzer }
 
+  c++:
+    - pkgs: { pacman: cmake clang gdb ccls }
+    - links: { .clang-format: ~/.clang-format }
+
   clojure:
     - pkgs: { pacman: clojure }
     - links:
@@ -360,7 +363,7 @@ rules:
   emacs:
     - deps: rust rust_analyzer
     - pkgs:
-        pacman: emacs aspell aspell-en ghostscript ccls ctags texlab
+        pacman: emacs aspell aspell-en ghostscript ctags texlab
         pip: pipenv black isort mypy
         npm: prettier bash-language-server
     - shell: |
