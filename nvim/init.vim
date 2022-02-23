@@ -215,6 +215,26 @@ call lexima#add_rule({
 let g:templates_directory = stdpath("config") . "/templates"
 let g:templates_no_builtin_templates = 1
 
+let g:templates_user_variables = [
+      \ ["TEX_PRELUDE", "FindTexPrelude"]
+      \ ]
+
+" Finds the closest `prelude.tex` file and returns its path relative to the
+" current file. Returns an empty string if no `prelude.tex` is found in any of
+" the parent directories
+let g:tex_prelude_fname = "prelude.tex"
+function! FindTexPrelude()
+  let l:source_dir = expand("%:p:h") . "/"
+  let l:search_dir = ""
+  while isdirectory(l:source_dir . l:search_dir)
+    if filereadable(l:source_dir . l:search_dir . g:tex_prelude_fname)
+      return l:search_dir . g:tex_prelude_fname
+    endif
+    let l:search_dir = l:search_dir . "../"
+  endwhile
+  return ""
+endfunction
+
 " VimTeX {{{1
 let g:vimtex_view_method = 'zathura'
 let g:vimtex_imaps_leader = ';'
