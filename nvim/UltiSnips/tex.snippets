@@ -151,6 +151,11 @@ snippet lrA "\left\langle \right\rangle" wA
 endsnippet
 
 context "math()"
+snippet lr| "\left| \right|" wA
+\left| ${VISUAL}$1 \right| 
+endsnippet
+
+context "math()"
 snippet lA "\langle" wA
 \langle 
 endsnippet
@@ -160,6 +165,7 @@ snippet rA "\rangle" wA
 \rangle 
 endsnippet
 
+# TODO : make this work with lexima
 context "math()"
 snippet lr( "\left( \right)" wA
 \left( ${VISUAL}$1 \right)
@@ -173,16 +179,6 @@ endsnippet
 context "math()"
 snippet lr{ "\left{ \right}" wA
 \left\{ ${VISUAL}$1 \right\}
-endsnippet
-
-snippet { "{}" iA
-{${VISUAL}$1}
-endsnippet
-snippet ( "()" iA
-(${VISUAL}$1)
-endsnippet
-snippet [ "[]" iA
-[${VISUAL}$1]
 endsnippet
 
 ###############
