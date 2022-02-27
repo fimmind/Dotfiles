@@ -37,7 +37,7 @@ syntax sync fromstart
 command! Vimrc exec "e " . stdpath('config') . "/init.vim"
 
 " General mappings {{{1
-let g:maplocalleader='\'
+let g:maplocalleader=' z'
 let g:mapleader=' '
 let maplocalleader=g:maplocalleader
 let mapleader=g:mapleader
