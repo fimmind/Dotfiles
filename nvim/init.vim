@@ -55,8 +55,8 @@ noremap <leader>p "+p
 noremap <leader>P "+P
 noremap <leader>x "+x
 
-nnoremap <silent> <leader>r :w\|!make VIM_CUR_BUF_FILE="%:p" nvim/run<cr>
-nnoremap <silent> <leader>b :w\|!make VIM_CUR_BUF_FILE="%:p" nvim/build<cr>
+nnoremap <silent> <leader>r :w\|!make -f nvim.mk VIM_CUR_BUF_FILE="%:p" nvim/run<cr>
+nnoremap <silent> <leader>b :w\|!make -f nvim.mk VIM_CUR_BUF_FILE="%:p" nvim/build<cr>
 nnoremap <silent> <leader>m :w\|!make VIM_CUR_BUF_FILE="%:p"<cr>
 
 nnoremap <leader>d :call DeleteNext(0)<CR>
