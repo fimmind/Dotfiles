@@ -59,16 +59,8 @@ nnoremap <silent> <leader>r :w\|!make -f nvim.mk VIM_CUR_BUF_FILE="%:p" nvim/run
 nnoremap <silent> <leader>b :w\|!make -f nvim.mk VIM_CUR_BUF_FILE="%:p" nvim/build<cr>
 nnoremap <silent> <leader>m :w\|!make VIM_CUR_BUF_FILE="%:p"<cr>
 
-nnoremap <leader>d :call DeleteNext(0)<CR>
-nnoremap <leader>D :call DeleteNext(1)<CR>
-function! DeleteNext(prev)
-  if a:prev
-    let l:motion = 'F'
-  else
-    let l:motion = 'f'
-  endif
-  exe "normal! mm" . l:motion . nr2char(getchar()) . "x`m"
-endfunction
+nnoremap <silent> <leader>d :exe "normal! mmf" . nr2char(getchar()) . "x`m"<cr>
+nnoremap <silent> <leader>D :exe "normal! mmF" . nr2char(getchar()) . "x`m"<cr>
 
 command Wc call EchoWordsCount("-w", " words")
 function EchoWordsCount(wc_args, postfix) range
