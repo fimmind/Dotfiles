@@ -75,7 +75,7 @@ super + shift + {q,x}
 	bspc node -{c,k}
 
 # alternate between the tiled and monocle layout
-super + m
+super + w
 	bspc desktop -l next
 
 # rotate split
