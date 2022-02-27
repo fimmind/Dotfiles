@@ -237,6 +237,10 @@ let g:vimtex_env_toggle_math_map = {
       \ '\[': 'equation',
       \ 'equation': '\('
       \ }
+let g:vimtex_quickfix_ignore_filters = [
+      \ 'Underfull',
+      \ 'Overfull',
+      \ ]
 
 " coc.nvim {{{1
 set encoding=utf-8
