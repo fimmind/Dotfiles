@@ -42,10 +42,10 @@ let g:mapleader=' '
 let maplocalleader=g:maplocalleader
 let mapleader=g:mapleader
 
-nnoremap j gj
-nnoremap k gk
-nnoremap gj j
-nnoremap gk k
+noremap j gj
+noremap k gk
+noremap gj j
+noremap gk k
 inoremap <c-l> <tab>
 
 nnoremap <leader>w <C-w>
