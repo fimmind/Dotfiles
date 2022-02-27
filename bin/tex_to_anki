@@ -39,6 +39,7 @@ class ModelConf(BaseModel):
 class DeckConf(BaseModel):
     """Anki's deck identifiers model"""
     name: str
+    description: str = ""
     source_files: typing.List[str] = []
 
 
@@ -201,7 +202,7 @@ if __name__ == "__main__":
 
     decks = []
     for (deck_id, deck_conf) in CONFIG.decks.items():
-        deck = OutputDeck(deck_id, deck_conf.name)
+        deck = OutputDeck(deck_id, deck_conf.name, deck_conf.description)
         for source_fname in deck_conf.source_files:
             with open(source_fname, "r", encoding="UTF-8") as source_file:
                 source = source_file.read()
