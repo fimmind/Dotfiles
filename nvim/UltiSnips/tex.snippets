@@ -31,6 +31,12 @@ snippet item "Itemize" b
 \end{itemize}
 endsnippet
 
+snippet cntr "Center" bA
+\begin{center}
+	${VISUAL}$0
+\end{center}
+endsnippet
+
 snippet desc "Description" b
 \begin{description}
 	\item[$1] ${VISUAL}$0
@@ -133,7 +139,7 @@ snippet gath "gathered" bA
 endsnippet
 
 context "math()"
-snippet tt "text" wA
+snippet TT "text" wA
 \text{${VISUAL}$1} $0
 endsnippet
 
@@ -364,9 +370,26 @@ snippet __ "subscript" iA
 _{${VISUAL}$1} 
 endsnippet
 
+priority 10
 context "math()"
 snippet "([a-zA-Z'])([ijklmn])\2" "letter subscript" irA
 `!p snip.rv = match.group(1) + "_" + match.group(2)` 
+endsnippet
+
+priority 100
+context "math()"
+snippet eL "\ell" iA
+\ell 
+endsnippet
+
+context "math()"
+snippet ++ "_+" iA
+_+ 
+endsnippet
+
+context "math()"
+snippet -- "_-" iA
+_- 
 endsnippet
 
 ###################
@@ -429,11 +452,6 @@ endsnippet
 context "math()"
 snippet tp "to the power" iA
 ^{$1}
-endsnippet
-
-context "math()"
-snippet TT "Transposed" iA
-^T 
 endsnippet
 
 ############
@@ -680,7 +698,7 @@ snippet "(?<!<)=>" "implies" wrA
 endsnippet
 
 context "math()"
-snippet "(?<!\\)impl" "implies" wrA
+snippet "(?<!\\)ipl" "implies" wrA
 \implies 
 endsnippet
 
@@ -713,6 +731,17 @@ endsnippet
 context "math()"
 snippet "(?<!\\)leq|<=" "greater than or equals to" wrA
 \leqslant 
+endsnippet
+
+context "math()"
+snippet "!\s*-" "monotonic (increasing)" wrA
+ \!\!\nearrow 
+endsnippet
+
+priority 1000
+context "math()"
+snippet "\\!\\!\\nearrow\s*-" "monotonic (strictly increasing)" wrA
+\!\!\nearrow\!\nearrow 
 endsnippet
 
 ###############
@@ -840,13 +869,13 @@ endsnippet
 #############
 
 context "math()"
-snippet '(?<!\\)(lg|ln|log|exp|deg|min|max|dim|ker)' "operators" rwA
+snippet '(?<!\\)(lg|ln|log|exp|deg|min|max|dim|ker|det)' "operators" rwA
 \\`!p snip.rv = match.group(1)` 
 endsnippet
 
 context "math()"
-snippet '(?<!\\)rk' "\operatorname{rk}" rwA
-\operatorname{rk} 
+snippet '(?<!\\)(rk|tr|sgn|(?<!d)im)' "\operatorname{...}" rwA
+\operatorname{`!p snip.rv = match.group(1)`} 
 endsnippet
 
 context "math()"
@@ -916,4 +945,17 @@ endsnippet
 context "snip.visual_text"
 snippet iclz "Inline cloze deletion" wA
 \begin{icloze}{${1:1}}${VISUAL}\end{icloze}
+endsnippet
+
+snippet Iclz "Inline cloze deletion with newlines" wA
+\begin{icloze}{${1:1}}
+	$2
+\end{icloze}
+endsnippet
+
+context "snip.visual_text"
+snippet Iclz "Inline cloze deletion with newlines" wA
+\begin{icloze}{${1:1}}
+	${VISUAL}
+\end{icloze}
 endsnippet
