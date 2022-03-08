@@ -115,6 +115,8 @@ NoteModel = NoteModel()
 class Note(genanki.Note):
     """A wapper for genanki.Note"""
 
+    _due_counter = 0
+
     def __init__(
         self,
         uuid: str,
@@ -123,11 +125,13 @@ class Note(genanki.Note):
         *,
         tags: [str] or None = None,
     ):
+        Note._due_counter += 1
         super().__init__(
             model=NoteModel,
             fields=[uuid, text, back_extra],
             guid=genanki.guid_for(uuid),
             tags=tags,
+            due=Note._due_counter,
         )
 
 
