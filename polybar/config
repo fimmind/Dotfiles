@@ -35,8 +35,8 @@ padding-left = 0
 padding-right = 1
 
 module-margin = 2
-modules-left = wm xkeyboard spotify
-modules-center = time
+modules-left = wm xkeyboard time
+modules-center = xwindow
 modules-right = cpu ram rom volume network
 
 tray-position = right
@@ -69,20 +69,14 @@ label-indicator-on-capslock = ↑
 label-indicator-on-numlock = ²
 label-indicator-on-scrolllock = ⤓
 
-[module/spotify]
-type = custom/script
-interval = 0.1
-exec = python ~/.config/polybar/spotify_status.py -t 42 -p '▶,■' -f '{play_pause} {artist}: {song}'
-click-left = playerctl play-pause -p spotify
-click-right = xdo activate -N Spotify
-scroll-down = playerctl next -p spotify
-scroll-up = playerctl previous -p spotify
-
 [module/time]
 type = internal/date
 interval = 5
 date = "%A, %B %d, %I:%M%P"
 label = "%{A1:kitty -- fish -C weather:}%date%%{A}"
+
+[module/xwindow]
+type = internal/xwindow
 
 [module/cpu]
 type = internal/cpu
