@@ -31,6 +31,10 @@ snippet item "Itemize" b
 \end{itemize}
 endsnippet
 
+snippet itt "\item" bA
+\item
+endsnippet
+
 snippet cntr "Center" bA
 \begin{center}
 	${VISUAL}$0
@@ -44,17 +48,22 @@ snippet desc "Description" b
 endsnippet
 
 context "math()"
-snippet "(p|b|v|V|B|small)mat" "Smart Matrix" wrA
+snippet "(p|b|v|V|B)mat" "Smart Matrix" wrA
 \begin{`!p snip.rv = match.group(1)`matrix}
-	${VISUAL}$1
+	${VISUAL}${1:\ldots}
 \end{`!p snip.rv = match.group(1)`matrix}
-$0
 endsnippet
 
 priority 1
 context "not math()"
 snippet mk "Inline math" wA
-\( ${VISUAL}$1 \) $0
+\( ${VISUAL}$1 \)
+endsnippet
+
+priority 10
+context "not math()"
+snippet bmk "Inline math enclosed in braces" wA
+\(\{ ${VISUAL}$1 \}\)
 endsnippet
 
 priority 100
@@ -97,6 +106,13 @@ snippet align "Align" bA
 endsnippet
 
 context "not math()"
+snippet align "Align" bA
+\begin{align*}
+	${VISUAL}$1
+\end{align*}
+endsnippet
+
+context "not math()"
 snippet mult "Multline" bA
 \begin{multline*}
 	${VISUAL}$1
@@ -105,12 +121,17 @@ endsnippet
 
 context "math()"
 snippet == "Equal in align" wA
-&= 
+&=
+endsnippet
+
+context "math()"
+snippet :: ":=" wA
+\coloneqq
 endsnippet
 
 context "math()"
 snippet "&= >" "Implies in align" wA
-&\implies 
+&\implies
 endsnippet
 
 priority 1
@@ -135,89 +156,82 @@ context "math()"
 snippet gath "gathered" bA
 \begin{gathered}
 	${VISUAL}$1
-\end{gathered}$0
+\end{gathered}
+endsnippet
+
+context "not math()"
+snippet gath "gather" bA
+\begin{gather*}
+	${VISUAL}$1
+\end{gather*}
 endsnippet
 
 context "math()"
 snippet TT "text" wA
-\text{${VISUAL}$1} $0
+\text{${VISUAL}$1}
+endsnippet
+
+snippet bf "textbf" w
+\textbf{${VISUAL}$1}
+endsnippet
+
+snippet it "textit" w
+\textit{${VISUAL}$1}
 endsnippet
 
 #########
 # Paren #
 #########
 context "math()"
-snippet lra "\langle \rangle" wA
-\langle ${VISUAL}$1 \rangle 
+snippet lra "\langle \rangle" iA
+\langle ${VISUAL}$1 \rangle
 endsnippet
 
 context "math()"
-snippet lrA "\left\langle \right\rangle" wA
-\left\langle ${VISUAL}$1 \right\rangle 
+snippet lrA "\left\langle \right\rangle" iA
+\left\langle ${VISUAL}$1 \right\rangle
 endsnippet
 
 context "math()"
-snippet lr| "\left| \right|" wA
-\left| ${VISUAL}$1 \right| 
+snippet lA "\langle" iA
+\langle
 endsnippet
 
 context "math()"
-snippet lA "\langle" wA
-\langle 
+snippet rA "\rangle" iA
+\rangle
 endsnippet
 
 context "math()"
-snippet rA "\rangle" wA
-\rangle 
+snippet lrm "\left| \right|" iA
+\left| ${VISUAL}$1 \right|
 endsnippet
 
-# TODO : make this work with lexima
 context "math()"
-snippet lr( "\left( \right)" wA
+snippet lrp "\left( \right)" iA
 \left( ${VISUAL}$1 \right)
 endsnippet
 
 context "math()"
-snippet lr[ "\left[ \right]" wA
+snippet lrb "\left[ \right]" iA
 \left[ ${VISUAL}$1 \right]
 endsnippet
 
 context "math()"
-snippet lr{ "\left{ \right}" wA
-\left\{ ${VISUAL}$1 \right\}
+snippet lrB "\left{ \right}" iA
+\left\\{ ${VISUAL}$1 \right\\}
 endsnippet
 
-###############
-# Punctuation #
-###############
-priority 10
-snippet "\s*(?<!\d)," ", " irA
-, 
-endsnippet
-
-priority 100
+##############
+# Puctuation #
+##############
 context "math()"
-snippet ", ?," "Comma in cases" irA
-, & 
+snippet ,, "Comma in cases" iA
+, &
 endsnippet
 
-priority 10
-snippet "(?<=\S)\s*(?<!\d)\." "." wrA
-. 
-endsnippet
-
-snippet "(?<=\S)\s*\?" "Question mark" wrA
-? 
-endsnippet
-
-snippet "(?<=\S)\s*!" "Bang" wrA
-! 
-endsnippet
-
-priority 100
-context "math()"
-snippet '\.\. \.' "\dots" irA
- \ldots 
+snippet ... "\dots" iA
+\ldots
 endsnippet
 
 ############
@@ -227,72 +241,76 @@ endsnippet
 snippet prt "Part" b
 \part{$1}
 \label{prt:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
-$0
+
 endsnippet
 
 snippet cha "Chapter" b
 \chapter{$1}
 \label{cha:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
-$0
+
 endsnippet
 
 snippet sc "Section" b
 \section{$1}
 \label{sec:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
-$0
+
 endsnippet
 
 snippet sub "Subsection" b
 \subsection{$1}
 \label{sub:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
-$0
+
 endsnippet
 
 snippet ssub "Subsubsection" b
 \subsubsection{$1}
 \label{ssub:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
-$0
+
 endsnippet
 
 snippet par "Paragraph" b
 \paragraph{$1}
 \label{par:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
-$0
+
 endsnippet
 
 snippet subp "Subparagraph" b
 \subparagraph{$1}
 \label{par:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
-$0
+
 endsnippet
 
 
 snippet prtnl "Part no label" bA
-\part{$1}$0
+\part{$1}
 endsnippet
 
 snippet chanl "Chapter no label" ibA
-\chapter{$1}$0
+\chapter{$1}
 endsnippet
 
 snippet scnl "Section no label" bA
-\section{$1}$0
+\section{$1}
 endsnippet
 
 snippet subnl "Subsection no label" bA
-\subsection{$1}$0
+\subsection{$1}
 endsnippet
 
 snippet ssubnl "Subsubsection no label" bA
-\subsubsection{$1}$0
+\subsubsection{$1}
 endsnippet
 
 snippet parnl "Paragraph no label" bA
-\paragraph{$1}$0
+\paragraph{$1}
 endsnippet
 
 snippet subpnl "Subparagraph no label" bA
-\subparagraph{$1}$0
+\subparagraph{$1}
+endsnippet
+
+snippet lbl "label" bA
+\label{$1}
 endsnippet
 
 ############
@@ -301,19 +319,46 @@ endsnippet
 
 snippet pac "Package" b
 \usepackage[${1:options}]{${2:package}}
-$0
 endsnippet
 
 snippet pacna "Package without arguments" bA
-\usepackage{$1}$0
+\usepackage{$1}
 endsnippet
 
 ###########
 # Spacing #
 ###########
 
-snippet "(?<!^)\s+ q" "\quad" wrA
- \quad 
+snippet "(\S\s+)\sq" "\quad" wrA
+`!p snip.rv = match.group(1)`\quad
+endsnippet
+
+snippet "(\S\s+)\s:" "\quad" wrA
+`!p snip.rv = match.group(1)`\:
+endsnippet
+
+snippet \quadq "\qquad" wA
+\\qquad
+endsnippet
+
+snippet pph "\phantom{...}" wA
+\\phantom{$1}
+endsnippet
+
+snippet hfl "\hfill" wA
+\\hfill
+endsnippet
+
+priority 100
+snippet \= "\\ =" iA
+\\\\
+&${1:=}
+endsnippet
+
+priority 1000
+snippet \\= "\\\\ =" iA
+\\\\\\\\
+=
 endsnippet
 
 #############
@@ -321,23 +366,23 @@ endsnippet
 #############
 
 context "math()"
-snippet // "Fraction" wA
-\\frac{$1}{$2} 
+snippet // "Fraction" iA
+\\frac{$1}{$2}
 endsnippet
 
 context "math() and snip.visual_text"
 snippet / "Fraction" iA
-\\frac{${VISUAL}}{$1} 
+\\frac{${VISUAL}}{$1}
 endsnippet
 
 context "math()"
 snippet '([\\A-Za-z'_^\d\.]+)/' "Fraction" irA
-\\frac{`!p snip.rv = match.group(1)`}{$1} 
+\\frac{`!p snip.rv = match.group(1)`}{$1}
 endsnippet
 
 priority 1000
 context "math()"
-snippet '(^.*\))\s*/' "() Fraction" irA
+snippet '(^.*\))/' "() Fraction" irA
 `!p
 stripped = match.group(1)
 depth = 0
@@ -362,34 +407,34 @@ endsnippet
 
 context "math()"
 snippet "([A-Za-z'])_(\d\d)" "auto subscript 2" irA
-`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`$1} 
+`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`$1}
 endsnippet
 
 context "math()"
 snippet __ "subscript" iA
-_{${VISUAL}$1} 
+_{${VISUAL}$1}
 endsnippet
 
 priority 10
 context "math()"
 snippet "([a-zA-Z'])([ijklmn])\2" "letter subscript" irA
-`!p snip.rv = match.group(1) + "_" + match.group(2)` 
+`!p snip.rv = match.group(1) + "_" + match.group(2)`
 endsnippet
 
 priority 100
 context "math()"
 snippet eL "\ell" iA
-\ell 
+\ell
 endsnippet
 
 context "math()"
 snippet ++ "_+" iA
-_+ 
+_+
 endsnippet
 
 context "math()"
 snippet -- "_-" iA
-_- 
+_-
 endsnippet
 
 ###################
@@ -398,14 +443,13 @@ endsnippet
 
 priority 100
 context "math()"
-snippet "d\\in t" "definite integral" wrA
-\int_{${1:-\infty}}^{${2:\infty}} ${VISUAL}$3\: ${4:dx} $0
+snippet "d\\int" "definite integral" wrA
+\int_{${1:-\infty}}^{${2:\infty}} $0
 endsnippet
 
-priority 10
 context "math()"
-snippet "\\in t" "indefinite integral" wrA
-\int ${VISUAL}$1\: ${2:dx} $0
+snippet "(?<!\\:)(?<=\S)(\s*d\w?)\." "\: dx" wrA
+\:`!p snip.rv = match.group(1)`
 endsnippet
 
 context "math()"
@@ -430,23 +474,23 @@ endsnippet
 priority 10
 context "math()"
 snippet sr "\sqrt{}" iA
-\sqrt{${VISUAL}$1} 
+\sqrt{${VISUAL}$1}
 endsnippet
 
 priority 100
 context "math()"
 snippet nsr "sqrt" iA
-\sqrt[$1]{${VISUAL}$2} 
+\sqrt[$1]{${VISUAL}$2}
 endsnippet
 
 context "math()"
 snippet sq "^2" iA
-^2 
+^2
 endsnippet
 
 context "math()"
 snippet qb "^3" iA
-^3 
+^3
 endsnippet
 
 context "math()"
@@ -461,195 +505,200 @@ endsnippet
 priority 10
 context "math()"
 snippet "(?<!\\)(sim|pi|perp|to|in|iff|star|land|lor|lnot|neq)" "Symbols" rwA
-\\`!p snip.rv = match.group(0)` 
+\\`!p snip.rv = match.group(0)`
 endsnippet
 
 priority 100
 context "math()"
 snippet mto "\mapsto" wA
-\\mapsto 
+\\mapsto
 endsnippet
 
 context "math()"
 snippet "\sim eq" "\simeq" wA
-\simeq 
+\simeq
 endsnippet
 
 context "math()"
 snippet "(?<!\\)not" "\not" rwA
-\not 
+\not
 endsnippet
 
 context "math()"
-snippet "\\not\s+\\(\w*)\s+" "Remove extra space between \not and the next command" rwA
-\\not\\`!p snip.rv = match.group(1)` 
-endsnippet
-
-context "math()"
-snippet tO "Approaches ... as ... approaches ..." wA
-\underset{${1:x} \to ${2:\infty}}\longrightarrow 
+snippet tto "Approaches ... as ... approaches ..." wA
+\underset{${1:x} \to ${2:\infty}}\longrightarrow
 endsnippet
 
 context "math()"
 snippet jJ "function composition (\circ)" wA
-\circ 
+\circ
 endsnippet
 
 priority 10
 context "math()"
 snippet <| "\triangleleft" wA
-\triangleleft 
+\triangleleft
 endsnippet
 
 priority 100
 context "math()"
-snippet "\\not\s*<\|" "\ntriangleleft" wrA
-\ntriangleleft 
+snippet "\\not\<\|" "\ntriangleleft" wrA
+\ntriangleleft
 endsnippet
 
 priority 10
 context "math()"
 snippet |> "\triangleright" wA
-\triangleright 
+\triangleright
 endsnippet
 
 priority 100
 context "math()"
-snippet "\\not\s*\|>" "\ntriangleright" wrA
-\ntriangleright 
+snippet "\\not\|>" "\ntriangleright" wrA
+\ntriangleright
 endsnippet
 
 context "math()"
 snippet o+ "\oplus" wA
-\oplus 
+\oplus
 endsnippet
 
 context "math()"
 snippet "(?<!\\)prop" "proportional to" wrA
-\propto 
+\propto
 endsnippet
 
 context "math()"
 snippet +- "Plus Minus" wA
-\pm 
+\pm
 endsnippet
 
 context "math()"
 snippet -+ "Minus Plus" wA
-\mp 
+\mp
 endsnippet
 
 context "math()"
 snippet xx "Times" wA
-\times 
+\times
 endsnippet
 
 priority 10
 context "math()"
 snippet ** "cdot" wA
-\cdot 
+\cdot
 endsnippet
 
 context "math()"
-snippet "*. ." "cdots" wA
-\cdots 
+snippet *.. "cdots" wA
+\cdots
 endsnippet
 
 priority 100
 context "math()"
 snippet V** "\dot V_{} ()" wA
-\dot V_{${1:\delta}} (${2:a}) 
+\dot V_{${1:\delta}}(${2:a})
 endsnippet
 
 context "math()"
 snippet VV "V_{} ()" wA
-V_{${1:delta}} (${2:a}) 
+V_{${1:delta}}(${2:a})
 endsnippet
 
 context "math()"
 snippet ~= "approx" wA
-\approx 
+\approx
 endsnippet
 
 context "math()"
 snippet uu "U" wA
-\cup 
+\cup
 endsnippet
 
 context "math()"
 snippet UU "U" wA
-\bigcup_{$1}^{$2} 
+\bigcup_{$1}^{$2}
 endsnippet
 
 context "math()"
 snippet CA "cap" wA
-\cap 
+\cap
 endsnippet
 
 context "math()"
 snippet Ca "big cap" wA
-\bigcap_{$1}^{$2} 
+\bigcap_{$1}^{$2}
 endsnippet
 
 context "math()"
 snippet || "mid" wA
-\mid 
+\mid
 endsnippet
 
 context "math()"
 snippet cc "subset" wA
-\subset 
+\subset
 endsnippet
 
 context "math()"
 snippet ncc "not subset" wA
-\not\subset 
+\not\subset
 endsnippet
 
 context "math()"
 snippet NN "Natural" wA
-\mathbb N 
+\mathbb N
 endsnippet
 
 context "math()"
 snippet ZZ "Integer" wA
-\mathbb Z 
+\mathbb Z
 endsnippet
 
 context "math()"
 snippet QQ "Rational" wA
-\mathbb Q 
+\mathbb Q
 endsnippet
 
 context "math()"
 snippet RR "Real" wA
-\mathbb R 
+\mathbb R
 endsnippet
 
 context "math()"
 snippet II "Irrational" wA
-\mathbb I 
+\mathbb I
 endsnippet
 
 context "math()"
 snippet CC "Complex" wA
-\mathbb C 
+\mathbb C
 endsnippet
 
 context "math()"
 snippet LL "Linear span" wA
-\mathscr L (${VISUAL}$1) 
+\mathscr L (${VISUAL}$1)
+endsnippet
+
+context "math()"
+snippet PP "Antiderivatives set" wA
+\mathscr P_${1:f}
+endsnippet
+
+context "math()"
+snippet FF "A field" wA
+\mathrm F
 endsnippet
 
 context "math()"
 snippet scr "\mathscr" wA
-\mathscr 
+\mathscr
 endsnippet
 
 priority 100
 context "math()"
 snippet mset "set minus" wA
-\setminus 
+\setminus
 endsnippet
 
 priority 10
@@ -666,82 +715,88 @@ endsnippet
 
 context "math()"
 snippet prl "parallel" wA
-\parallel 
+\parallel
 endsnippet
 
 context "math()"
 snippet oo "\infty" wA
-\infty 
+\infty
 endsnippet
 
 priority 10
 context "math()"
 snippet EE "exist" wA
-\exists 
+\exists
 endsnippet
 
 priority 100
 context "math()"
-snippet "\\not\s*EE" "does not exist" wrA
-\nexists 
+snippet "\\notEE" "does not exist" wrA
+\nexists
 endsnippet
 
 context "math()"
 snippet AA "forall" wA
-\forall 
+\forall
 endsnippet
 
 priority 10
 context "math()"
 snippet "(?<!<)=>" "implies" wrA
-\implies 
+\implies
+endsnippet
+
+priority 10
+context "math()"
+snippet "(?<!<)=<" "implied by" wrA
+\impliedby
 endsnippet
 
 context "math()"
-snippet "(?<!\\)ipl" "implies" wrA
-\implies 
+snippet "(?<!\\)impl" "implies" wrA
+\implies
 endsnippet
 
-context "math()" 
-snippet "\\implies\s*def" "implies by definition" wrA
-\overset{\!\!\text{\tiny def}}\implies 
+context "math()"
+snippet \\impliesdef "implies by definition" wA
+\overset{\!\!\text{\tiny def}}\implies
 endsnippet
 
 priority 100
 context "math()"
-snippet "\\iff\s*def" "if and only iff (by definition)" wrA
-\overset{\hspace{-1pt}\text{\tiny def}}\iff 
+snippet \\iffdef "if and only iff (by definition)" wA
+\overset{\hspace{-1pt}\text{\tiny def}}\iff
 endsnippet
 
 context "math()"
-snippet "=\s*def" "equals by definition" wrA
-\overset{\text{def}}= 
+snippet =def "equals by definition" wA
+\overset{\text{def}}=
 endsnippet
 
 context "math()"
 snippet != "not equals" wA
-\neq 
+\neq
 endsnippet
 
 context "math()"
 snippet "(?<!\\)geq|>=" "less than or equals to" wrA
-\geqslant 
+\geqslant
 endsnippet
 
 context "math()"
 snippet "(?<!\\)leq|<=" "greater than or equals to" wrA
-\leqslant 
+\leqslant
 endsnippet
 
 context "math()"
-snippet "!\s*-" "monotonic (increasing)" wrA
- \!\!\nearrow 
+snippet "!-" "monotonic (increasing)" wrA
+\!\!\nearrow
 endsnippet
 
 priority 1000
 context "math()"
-snippet "\\!\\!\\nearrow\s*-" "monotonic (strictly increasing)" wrA
-\!\!\nearrow\!\nearrow 
+snippet "\\!\\!\\nearrow-" "monotonic (strictly increasing)" wrA
+\!\!\nearrow\!\nearrow
 endsnippet
 
 ###############
@@ -751,54 +806,54 @@ endsnippet
 priority 100
 context "math()"
 snippet "([\\A-Za-z'_^\d\.]+(?<!\\))bar" "bar" rwA
-\overline{`!p snip.rv = match.group(1)`} 
+\overline{`!p snip.rv = match.group(1)`}
 endsnippet
 
 priority 10
 context "math()"
 snippet "(?<!\\)bar" "bar" rwA
-\overline{${VISUAL}$1} 
+\overline{${VISUAL}$1}
 endsnippet
 
 priority 100
 context "math()"
 snippet "([\\A-Za-z'_^\d\.]+(?<!\\))hat" "vector" rwA
-\hat{`!p snip.rv = match.group(1)`} 
+\hat{`!p snip.rv = match.group(1)`}
 endsnippet
 
 priority 10
 context "math()"
 snippet "(?<!\\)hat" "hat" rwA
-\hat{${VISUAL}$1} 
+\hat{${VISUAL}$1}
 endsnippet
 
 priority 100
 context "math()"
 snippet "([\\A-Za-z'_^\d\.]+(?<!\\))vec" "vector" rwA
-\overrightarrow{`!p snip.rv = match.group(1)`} 
+\overrightarrow{`!p snip.rv = match.group(1)`}
 endsnippet
 
 priority 100
 context "math()"
-snippet "(?<!\\widetilde )(?<![\\A-Za-z])(\\?[A-Za-z]+\s?)~" "tilde" rwA
+snippet "(?<!\\widetilde )(?<![\\A-Za-z])(\\?[A-Za-z]+)~" "tilde" rwA
 \tilde `!p snip.rv = match.group(1)`
 endsnippet
 
 priority 1000
 context "math()"
-snippet "\\tilde (\\?[A-Za-z]+\s?)~" "widetilde" rwA
+snippet "\\tilde (\\?[A-Za-z]+)~" "widetilde" rwA
 \widetilde `!p snip.rv = match.group(1)`
 endsnippet
 
 priority 10
 context "math()"
 snippet ~~ "\widetilde" wA
-\widetilde 
+\widetilde
 endsnippet
 
 context "math()"
 snippet .~ "\tilde" wA
-\tilde 
+\tilde
 endsnippet
 
 context "math()"
@@ -806,27 +861,37 @@ snippet "([A-Z])cl" "\mathcal [A-Z]" rwA
 \mathcal `!p snip.rv = match.group(1)`
 endsnippet
 
+context "math()"
+snippet "([A-Za-z]+)fk" "\mathfrak ..." rwA
+\mathfrak{`!p snip.rv = match.group(1)`}
+endsnippet
+
+context "math()"
+snippet "([A-Za-z]+)bf" "\mathbf ..." rwA
+\mathbf{`!p snip.rv = match.group(1)`}
+endsnippet
+
 priority 10
 context "math()"
 snippet "(?<!\\)vec" "vector" rwA
-\overrightarrow{${VISUAL}$1} 
+\overrightarrow{${VISUAL}$1}
 endsnippet
 
 priority 10
 context "math()"
-snippet BB "Underbrace" wA
-\underbrace{${VISUAL}$1}_{$2} 
+snippet bU "Underbrace" wA
+\underbrace{${VISUAL}$1}_{$2}
 endsnippet
 
 priority 10
 context "math()"
-snippet '([\\A-Za-z'_^\d\.]+)\s*BB' "Underbrace" irA
-\underbrace{`!p snip.rv = match.group(1)`}_{$1} 
+snippet '([\\A-Za-z'_^\d\.]+)bU' "Underbrace" irA
+\underbrace{`!p snip.rv = match.group(1)`}_{$1}
 endsnippet
 
 priority 100
 context "math()"
-snippet '(^.*\))\s*BB' "() Underbrace" irA
+snippet '(^.*\))bU' "() Underbrace" irA
 `!p
 stripped = match.group(1)
 depth = 0
@@ -843,25 +908,43 @@ endsnippet
 priority 1000
 context "math() and snip.visual_text"
 snippet BB "Visual underbrace" wA
-\underbrace{${VISUAL}}_{$1} 
+\underbrace{${VISUAL}}_{$1}
 endsnippet
 
 priority 10
 context "math()"
-snippet OO "Overset" wA
+snippet ove "Overset" wA
 \overset{$1}_{$2}
 endsnippet
 
 priority 100
 context "math()"
-snippet '([\\A-Za-z'_^\d\.=]+)\s*OO' "Overset" irA
-\overset{$1}{`!p snip.rv = match.group(1)`} 
+snippet '([\\A-Za-z'_^\d\.=]+)ove' "Overset" irA
+\overset{$1}{`!p snip.rv = match.group(1)`}
 endsnippet
 
 priority 1000
 context "math() and snip.visual_text"
-snippet OO "Visual overset" wA
-\overset{$1}{${VISUAL}} 
+snippet ove "Visual overset" wA
+\overset{$1}{${VISUAL}}
+endsnippet
+
+priority 10
+context "math()"
+snippet und "Underset" wA
+\underset{$1}_{$2}
+endsnippet
+
+priority 100
+context "math()"
+snippet '([\\A-Za-z'_^\d\.=]+)und' "Underset" irA
+\underset{$1}{`!p snip.rv = match.group(1)`}
+endsnippet
+
+priority 1000
+context "math() and snip.visual_text"
+snippet und "Visual underset" wA
+\underset{$1}{${VISUAL}}
 endsnippet
 
 #############
@@ -870,22 +953,24 @@ endsnippet
 
 context "math()"
 snippet '(?<!\\)(lg|ln|log|exp|deg|min|max|dim|ker|det)' "operators" rwA
-\\`!p snip.rv = match.group(1)` 
+\\`!p snip.rv = match.group(1)`
 endsnippet
 
 context "math()"
-snippet '(?<!\\)(rk|tr|sgn|(?<!d)im)' "\operatorname{...}" rwA
-\operatorname{`!p snip.rv = match.group(1)`} 
+snippet "\\?([A-Za-z]+)O" "\operatorname {...}" wrA
+\operatorname{`!p snip.rv = match.group(1)`}
 endsnippet
 
+priority 100
 context "math()"
 snippet '(?<!\\)((arc)?(sin|cos|tan|cot|sec|csc))' "trigonometry" rwA
-\\`!p snip.rv = match.group(1)` 
+\\`!p snip.rv = match.group(1)`
 endsnippet
 
+priority 1000
 context "math()"
-snippet '\\(sin|cos|tan|cot|sec|csc) h' "hyperbolic trigonometry" rwA
-\\`!p snip.rv = match.group(1)`h 
+snippet '\\?(a(sin|cos|tan|cot|sec|csc))' "inverse trigonometry" rwA
+\\arc`!p snip.rv = match.group(2)`
 endsnippet
 
 #########
@@ -894,7 +979,7 @@ endsnippet
 
 context "math()"
 snippet DD "Delta" wA
-\Delta 
+\Delta
 endsnippet
 
 #####################
@@ -903,12 +988,12 @@ endsnippet
 
 context "math()"
 snippet Cnk "Binomial coefficient" wA
-C_n^k 
+C_n^k
 endsnippet
 
 context "math()"
 snippet fun "a function" wA
-${1:${2:D} \subset \mathbb R} \to ${3:\mathbb R} 
+${1:${2:D} \subset \mathbb R} \to ${3:\mathbb R}
 endsnippet
 
 ########
@@ -916,7 +1001,7 @@ endsnippet
 ########
 
 snippet note "Anki's note" b
-\begin{note}{`!p 
+\begin{note}{`!p
 from uuid import uuid4
 if not snip.c:
 	snip.rv = uuid4().hex
