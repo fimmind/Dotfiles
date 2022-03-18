@@ -1,2 +1,2 @@
-autocmd CursorHoldI,InsertLeave,TextChanged
+autocmd InsertLeave,TextChanged
       \ <buffer> silent write
