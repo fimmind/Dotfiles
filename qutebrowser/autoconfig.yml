@@ -31,11 +31,13 @@ settings:
       goo: https://dictionary.goo.ne.jp/srch/en/{}/m1u/
       goo-jp: https://dictionary.goo.ne.jp/srch/jn/{}/m1u/
       takoboto: https://takoboto.jp/?q={}
+      mr: https://www.merriam-webster.com/dictionary/{}
       merriam: https://www.merriam-webster.com/dictionary/{}
       multi: https://www.multitran.com/m.exe?s={}
       ojad: http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/sortprefix:accent/word:{}
       tae-kim: http://www.guidetojapanese.org/learn/search_gcse/?q={}
       tofugu: https://www.tofugu.com/?s={}
+      wk: https://www.wikiwand.com/en/{}
       wiki: https://www.wikiwand.com/en/{}
       jwiki: https://www.wikiwand.com/ja/{}
       rwiki: https://www.wikiwand.com/ru/{}
