@@ -19,15 +19,15 @@ super + shift + d
 	rofi -show window
 
 super + {_, shift +} v
-	seledit --editor "kitty --class=float -- nvim" --action {write,edit}
+	seledit --editor "kitty --class=float -- nvim" --action {edit,write}
 
 super + e
-	seledit --action write --ext tex --editor "kitty -- nvim +start"
+	seledit --action edit --ext tex --editor "kitty -- nvim +start"
 
 super + shift + e
-	seledit --action edit --ext tex --editor "kitty -- nvim"
+	seledit --action write --ext tex --editor "kitty -- nvim"
 
-super + q
+super + b
 	qutebrowser
 
 # See https://forums.ankiweb.net/t/anki-ui-appears-broken-with-newer-versions-of-qt/13684
@@ -87,7 +87,7 @@ super + shift + Return
 	bspc node -s biggest.window.local
 
 # set the window state
-super + {t,space,shift + space,f}
+super + {t,s,shift + s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,\~fullscreen}
 
 # focus the next/previous window in the current desktop
@@ -100,7 +100,7 @@ super + shift + {h,j,k,l}
 
 
 # focus the node for the given path jump
-super + {p,b,comma,period}
+super + {p,n,comma,period}
 	bspc node -f @{parent,brother,first,second}
 
 # focus the next/previous desktop in the current monitor
