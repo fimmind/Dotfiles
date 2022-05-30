@@ -111,6 +111,13 @@ nnoremap <leader>sn mm]s1z=`m
 
 autocmd FileType gitcommit,markdown,tex,text setlocal spell
 
+" Terminal {{{1
+tnoremap <Esc> <C-\><C-n>
+autocmd TermOpen * setlocal nonumber norelativenumber
+
+command! Shell split term://fish | startinsert
+nnoremap <leader>os :Shell<CR>
+
 " Status line {{{1
 function s:left_block()
   let l:mode = mode()
