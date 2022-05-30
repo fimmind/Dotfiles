@@ -60,7 +60,7 @@ super + {y,u,i,shift+i,o}
   amixer sset Master {5%-,5%+,toggle-mute}
 
 {XF86AudioPlay,XF86AudioPause,XF86AudioPrev,XF86AudioNext}
-  playerctl {play-pause,pause,previous,next} -p spotify
+  playerctl {play-pause,pause,previous,next} -p cmus
 
 #
 # bspwm hotkeys
