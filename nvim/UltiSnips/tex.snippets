@@ -13,6 +13,12 @@ snippet beg "begin{} / end{}" bA
 \\end{$1}
 endsnippet
 
+snippet tab "Tabular" bA
+\\begin{tabular}{${1:r|l}}
+	${VISUAL}$0
+\\end{tabular}
+endsnippet
+
 snippet enum "Enumerate" b
 \begin{enumerate}
 	\item ${VISUAL}$0
@@ -35,8 +41,17 @@ snippet itt "\item" bA
 \item
 endsnippet
 
-snippet cntr "Center" bA
+priority 10
+snippet cnt "Center" bA
 \begin{center}
+	${VISUAL}$0
+\end{center}
+endsnippet
+
+priority 100
+snippet tcnt "Center + \tiny" bA
+\begin{center}
+	\tiny
 	${VISUAL}$0
 \end{center}
 endsnippet
@@ -57,12 +72,6 @@ endsnippet
 priority 1
 context "not math()"
 snippet mk "Inline math" wA
-\( ${VISUAL}$1 \)
-endsnippet
-
-priority 10
-context "not math()"
-snippet bmk "Inline math enclosed in braces" wA
 \(\{ ${VISUAL}$1 \}\)
 endsnippet
 
@@ -81,6 +90,11 @@ snippet mK "math" wA
 \[
 	${VISUAL}$1
 \]$0
+endsnippet
+
+priority 10
+snippet mV "\verb|...|" wA
+\verb|$1|
 endsnippet
 
 context "not math()"
@@ -130,7 +144,7 @@ snippet :: ":=" wA
 endsnippet
 
 context "math()"
-snippet "&= >" "Implies in align" wA
+snippet "&=>" "Implies in align" wA
 &\implies
 endsnippet
 
@@ -166,9 +180,51 @@ snippet gath "gather" bA
 \end{gather*}
 endsnippet
 
+snippet def "definition" b
+\begin{definition}
+	${VISUAL}$1
+\end{definition}
+endsnippet
+
+snippet thm "theorem" b
+\begin{theorem}
+	${VISUAL}$1
+\end{theorem}
+endsnippet
+
+snippet cor "corollary" b
+\begin{corollary}
+	${VISUAL}$1
+\end{corollary}
+endsnippet
+
+snippet lem "lemma" b
+\begin{lemma}
+	${VISUAL}$1
+\end{lemma}
+endsnippet
+
+snippet prop "proposition" b
+\begin{proposition}
+	${VISUAL}$1
+\end{proposition}
+endsnippet
+
+snippet proof "proof" b
+\begin{proof}
+	${VISUAL}$1
+\end{proof}
+endsnippet
+
 context "math()"
 snippet TT "text" wA
 \text{${VISUAL}$1}
+endsnippet
+
+priority 100
+context "math()"
+snippet \inv "inverse" iA
+^{-1}
 endsnippet
 
 snippet bf "textbf" w
@@ -204,7 +260,12 @@ endsnippet
 
 context "math()"
 snippet lrm "\left| \right|" iA
-\left| ${VISUAL}$1 \right|
+\left\lvert ${VISUAL}$1 \right\rvert
+endsnippet
+
+context "math()"
+snippet lrM "\left|| \right||" iA
+\left\lVert ${VISUAL}$1 \right\rVert
 endsnippet
 
 context "math()"
@@ -213,7 +274,7 @@ snippet lrp "\left( \right)" iA
 endsnippet
 
 context "math()"
-snippet lrb "\left[ \right]" iA
+snippet "lr(b|P)" "\left[ \right]" irA
 \left[ ${VISUAL}$1 \right]
 endsnippet
 
@@ -228,6 +289,10 @@ endsnippet
 context "math()"
 snippet ,, "Comma in cases" iA
 , &
+endsnippet
+
+snippet ,: "Comma with space" iA
+,\:
 endsnippet
 
 snippet ... "\dots" iA
@@ -361,6 +426,11 @@ snippet \\= "\\\\ =" iA
 =
 endsnippet
 
+context "math()"
+snippet dD "\displaystyle" wA
+\displaystyle
+endsnippet
+
 #############
 # Fractions #
 #############
@@ -437,18 +507,28 @@ snippet -- "_-" iA
 _-
 endsnippet
 
+context "math()"
+snippet "(?<!{|\^|\*)\*\*" "^*" irA
+^*
+endsnippet
+
+context "math()"
+snippet ^** "^{**}" iA
+^{**$1}
+endsnippet
+
 ###################
 # Large operators #
 ###################
 
 priority 100
 context "math()"
-snippet "d\\int" "definite integral" wrA
-\int_{${1:-\infty}}^{${2:\infty}} $0
+snippet "d\\int|dnt" "definite integral" wrA
+\int_{$1}^{$2} $0
 endsnippet
 
 context "math()"
-snippet "(?<!\\:)(?<=\S)(\s*d\w?)\." "\: dx" wrA
+snippet "(?<!\\:)(?<=\S)(\s*d(\w|\\\w+)?)\." "\: dx" wrA
 \:`!p snip.rv = match.group(1)`
 endsnippet
 
@@ -515,11 +595,6 @@ snippet mto "\mapsto" wA
 endsnippet
 
 context "math()"
-snippet "\sim eq" "\simeq" wA
-\simeq
-endsnippet
-
-context "math()"
 snippet "(?<!\\)not" "\not" rwA
 \not
 endsnippet
@@ -559,6 +634,8 @@ snippet "\\not\|>" "\ntriangleright" wrA
 endsnippet
 
 context "math()"
+
+context "math()"
 snippet o+ "\oplus" wA
 \oplus
 endsnippet
@@ -585,29 +662,44 @@ endsnippet
 
 priority 10
 context "math()"
-snippet ** "cdot" wA
+snippet *. "cdot" wA
 \cdot
 endsnippet
 
 context "math()"
-snippet *.. "cdots" wA
+snippet \cdot. "cdots" wA
 \cdots
+endsnippet
+
+context "math()"
+snippet "([cdv])d\*" "[cdv]dots" rwA
+\\`!p snip.rv = match.group(1)`dots
 endsnippet
 
 priority 100
 context "math()"
-snippet V** "\dot V_{} ()" wA
+snippet V*. "\dot V_{} ()" wA
 \dot V_{${1:\delta}}(${2:a})
 endsnippet
 
 context "math()"
 snippet VV "V_{} ()" wA
-V_{${1:delta}}(${2:a})
+V_{${1:\\delta}}(${2:a})
 endsnippet
 
 context "math()"
 snippet ~= "approx" wA
 \approx
+endsnippet
+
+context "math()"
+snippet ~- "simeq" wA
+\simeq
+endsnippet
+
+context "math()"
+snippet =- "equiv" wA
+\equiv
 endsnippet
 
 context "math()"
@@ -742,34 +834,35 @@ endsnippet
 
 priority 10
 context "math()"
-snippet "(?<!<)=>" "implies" wrA
+snippet "(?<!\\)impl|(?<!<)=>" "implies" wrA
 \implies
 endsnippet
 
-priority 10
+priority 11
 context "math()"
-snippet "(?<!<)=<" "implied by" wrA
+snippet "(?<!\\)rimpl|(?<!<)=<" "implied by" wrA
 \impliedby
 endsnippet
 
+priority 11
 context "math()"
-snippet "(?<!\\)impl" "implies" wrA
-\implies
+snippet "(\\not|(?<!\\)n)(impl|(?<!<)=>)" "does not imply" wrA
+\:\not\!\!\!\implies
 endsnippet
 
 context "math()"
-snippet \\impliesdef "implies by definition" wA
+snippet \impliesdf "implies by definition" wA
 \overset{\!\!\text{\tiny def}}\implies
 endsnippet
 
 priority 100
 context "math()"
-snippet \\iffdef "if and only iff (by definition)" wA
+snippet \iffdf "if and only iff (by definition)" wA
 \overset{\hspace{-1pt}\text{\tiny def}}\iff
 endsnippet
 
 context "math()"
-snippet =def "equals by definition" wA
+snippet =df "equals by definition" wA
 \overset{\text{def}}=
 endsnippet
 
@@ -799,6 +892,16 @@ snippet "\\!\\!\\nearrow-" "monotonic (strictly increasing)" wrA
 \!\!\nearrow\!\nearrow
 endsnippet
 
+context "math()"
+snippet "(?<!\\)(false|bot)" "\bot" wrA
+\bot
+endsnippet
+
+context "math()"
+snippet "(?<!\\)(true|top)" "\bot" wrA
+\top
+endsnippet
+
 ###############
 # Oversymbols #
 ###############
@@ -825,6 +928,23 @@ priority 10
 context "math()"
 snippet "(?<!\\)hat" "hat" rwA
 \hat{${VISUAL}$1}
+endsnippet
+
+priority 1000
+context "math()"
+snippet "([\\A-Za-z'_^\d\.]+(?<!\\))rin" "\mathring" rwA
+\mathring{`!p snip.rv = match.group(1)`}
+endsnippet
+
+priority 100
+context "math()"
+snippet "(?<!\\)rin" "\mathring" rwA
+\mathring{${VISUAL}$1}
+endsnippet
+
+context "math()"
+snippet "(?<!\\)wht" "widehat" rwA
+\widehat{${VISUAL}$1}
 endsnippet
 
 priority 100
@@ -932,7 +1052,7 @@ endsnippet
 priority 10
 context "math()"
 snippet und "Underset" wA
-\underset{$1}_{$2}
+\underset{$1}{$2}
 endsnippet
 
 priority 100
@@ -952,7 +1072,7 @@ endsnippet
 #############
 
 context "math()"
-snippet '(?<!\\)(lg|ln|log|exp|deg|min|max|dim|ker|det)' "operators" rwA
+snippet '(?<!\\)(lg|ln|log|exp|deg|min|max|dim|ker|det|sup)' "operators" rwA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
@@ -1000,7 +1120,7 @@ endsnippet
 # Anki #
 ########
 
-snippet note "Anki's note" b
+snippet "note|ntoe" "Anki's note" br
 \begin{note}{`!p
 from uuid import uuid4
 if not snip.c:
@@ -1023,24 +1143,35 @@ snippet clz "Cloze deletion" wA
 \end{cloze}
 endsnippet
 
+priority 10
 snippet iclz "Inline cloze deletion" wA
 \begin{icloze}{${1:1}}$2\end{icloze}
 endsnippet
 
+priority 10
 context "snip.visual_text"
 snippet iclz "Inline cloze deletion" wA
 \begin{icloze}{${1:1}}${VISUAL}\end{icloze}
 endsnippet
 
-snippet Iclz "Inline cloze deletion with newlines" wA
+priority 100
+snippet iiclz "Inline cloze deletion with newlines" wA
 \begin{icloze}{${1:1}}
 	$2
 \end{icloze}
 endsnippet
 
+priority 100
 context "snip.visual_text"
-snippet Iclz "Inline cloze deletion with newlines" wA
+snippet iiclz "Inline cloze deletion with newlines" wA
 \begin{icloze}{${1:1}}
 	${VISUAL}
 \end{icloze}
+endsnippet
+
+###########
+# Phrases #
+###########
+snippet rpf? "В чём основная идея доказательства?" wA
+В чём основная идея доказательства$1?
 endsnippet
