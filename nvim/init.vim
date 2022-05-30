@@ -349,9 +349,7 @@ let g:ale_fixers = {
       \ 'python': ['autopep8', 'yapf'],
       \ 'rust': ['rustfmt']
       \ }
-let g:ale_fix_on_save_ignore = {
-      \ 'snippets': ['trim_whitespace']
-      \ }
+let g:ale_fix_on_save_ignore = {}
 
 let g:ale_lint_on_text_changed = 'always'
 let g:ale_linters_explicit = 1
