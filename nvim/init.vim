@@ -49,6 +49,7 @@ noremap gk k
 inoremap <c-l> <tab>
 
 nnoremap <leader>w <C-w>
+nnoremap <leader>fs :write<cr>
 
 noremap <leader>y "+y
 noremap <leader>p "+p
