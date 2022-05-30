@@ -253,6 +253,9 @@ rules:
   sabaki:
     - pkgs: { aur: sabaki }
 
+  lizzie:
+    - pkgs: { aur: lizzie-improve }
+
   kgs:
     - pkgs: { aur: cgoban }
 
