@@ -36,6 +36,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'dense-analysis/ale'
   Plug 'easymotion/vim-easymotion'
   Plug 'guns/vim-sexp'
+  Plug 'dkarter/bullets.vim'
 
   " Filetype
   Plug 'kovetskiy/sxhkd-vim'
