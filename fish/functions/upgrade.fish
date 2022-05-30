@@ -10,7 +10,6 @@ function upgrade_no_sudo
     brew update
     brew upgrade
     stack update
-    doom --yes upgrade
     rustup update stable
     rustup update nightly
 
