@@ -4,6 +4,7 @@ set window-title-basename true
 set statusbar-home-tilde  true
 set selection-clipboard   clipboard
 set page-padding          1
+set render-loading        false
 
 # LAYOUT SETTINGS
 # ---------------
