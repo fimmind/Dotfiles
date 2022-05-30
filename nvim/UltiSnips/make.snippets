@@ -1,0 +1,17 @@
+snippet template-cmake "Default preset for cmake"
+default: build
+
+cmake: CMakeLists.txt
+	cmake -B build .
+	test ! -f compile_commands.json || rm compile_commands.json
+	cp build/compile_commands.json .
+
+build: main.cpp
+	cmake --build build -- --no-print-directory
+
+run: build build/main
+	build/main
+
+nvim/build: build
+nvim/run: run
+endsnippet
