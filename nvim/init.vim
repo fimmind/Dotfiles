@@ -348,4 +348,10 @@ let g:ale_sign_warning = ">>"
 " easymotion {{{1
 map <leader>e <Plug>(easymotion-prefix)
 
+" Goyo & limelight {{{1
+nmap <silent> <leader>fa :Goyo<cr>:Limelight!!<cr>
+nmap <silent> <leader>fq :Goyo!<cr>:Limelight!<cr>
+nmap <silent> <leader>fl :Limelight!!<cr>
+nmap <silent> <leader>fg :Goyo<cr>
+
 " {{{1 vim: fdm=marker

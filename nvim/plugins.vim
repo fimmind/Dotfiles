@@ -15,6 +15,8 @@ endif
 call plug#begin(stdpath('data') . '/plugged')
   " Coloring
   Plug 'EdenEast/nightfox.nvim'
+  Plug 'junegunn/limelight.vim'
+  Plug 'junegunn/goyo.vim'
 
   " Tools
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
