@@ -63,15 +63,6 @@ nnoremap <silent> <leader>m :w\|split term://make VIM_CUR_BUF_FILE='%:p'<cr>
 nnoremap <silent> <leader>d :exe "normal! mmf" . nr2char(getchar()) . "x`m"<cr>
 nnoremap <silent> <leader>D :exe "normal! mmF" . nr2char(getchar()) . "x`m"<cr>
 
-command Wc call EchoWordsCount("-w", " words")
-function EchoWordsCount(wc_args, postfix) range
-  echo trim(
-        \ system(
-          \ 'echo ' . shellescape(join(getline(a:firstline, a:lastline), "\n"))
-          \ .'| wc ' . a:wc_args))
-        \ . a:postfix
-endfunction
-
 " Tabs {{{1
 nnoremap <leader>tn :tabnext<CR>
 nnoremap <leader>tp :tabprevious<CR>
@@ -119,12 +110,21 @@ command! Shell split term://fish | startinsert
 nnoremap <leader>os :Shell<CR>
 
 " Status line {{{1
+function s:wordcount_status()
+  let l:wordcount = wordcount()
+  let l:res = "wc " . l:wordcount.words
+  if has_key(l:wordcount, "visual_words")
+    let l:res = l:res . " (" . l:wordcount.visual_words . ")"
+  endif
+  return l:res
+endfunction
+
 function s:left_block()
   let l:mode = mode()
-  let l:branch = FugitiveHead(7)
   let l:fname = '%f%m'
+  let l:wordcount = s:wordcount_status()
 
-  return [l:mode, l:branch, l:fname]
+  return [l:mode, l:fname, l:wordcount]
 endfunction
 
 function s:right_block()
