@@ -256,10 +256,8 @@ let g:vimtex_env_toggle_math_map = {
       \ '\[': 'equation',
       \ 'equation': '\('
       \ }
-let g:vimtex_quickfix_ignore_filters = [
-      \ 'Underfull',
-      \ 'Overfull',
-      \ ]
+" Do not open quickfix window automatically
+let g:vimtex_quickfix_mode = 0
 
 " coc.nvim {{{1
 set encoding=utf-8
