@@ -88,6 +88,10 @@ nnoremap <leader>tgl :-1tabmove<CR>
 filetype indent on
 set autoindent
 set expandtab
+
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 autocmd FileType *
       \ set tabstop=2
       \ | set shiftwidth=2
