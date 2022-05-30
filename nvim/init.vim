@@ -180,6 +180,14 @@ for i in [')', '}', ']']
         \ })
 endfor
 
+" LaTeX {{{2
+" Disable all the rules for ' in LaTeX files
+call lexima#add_rule({
+      \ 'char': "'",
+      \ 'filetype': 'tex'
+      \ })
+" }}}
+
 " splitjoin {{{1
 let g:splitjoin_split_mapping = ''
 let g:splitjoin_join_mapping  = ''
