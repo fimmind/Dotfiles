@@ -56,9 +56,9 @@ noremap <leader>p "+p
 noremap <leader>P "+P
 noremap <leader>x "+x
 
-nnoremap <silent> <leader>r :w\|!make -f nvim.mk VIM_CUR_BUF_FILE="%:p" nvim/run<cr>
-nnoremap <silent> <leader>b :w\|!make -f nvim.mk VIM_CUR_BUF_FILE="%:p" nvim/build<cr>
-nnoremap <silent> <leader>m :w\|!make VIM_CUR_BUF_FILE="%:p"<cr>
+nnoremap <silent> <leader>r :w\|split term://make VIM_CUR_BUF_FILE='%:p' nvim/run<cr>
+nnoremap <silent> <leader>b :w\|split term://make VIM_CUR_BUF_FILE='%:p' nvim/build<cr>
+nnoremap <silent> <leader>m :w\|split term://make VIM_CUR_BUF_FILE='%:p'<cr>
 
 nnoremap <silent> <leader>d :exe "normal! mmf" . nr2char(getchar()) . "x`m"<cr>
 nnoremap <silent> <leader>D :exe "normal! mmF" . nr2char(getchar()) . "x`m"<cr>
