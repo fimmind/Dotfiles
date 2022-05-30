@@ -44,7 +44,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'bfrg/vim-cpp-modern'
   Plug 'rust-lang/rust.vim'
   Plug 'wlangstroth/vim-racket'
-  Plug 'stephpy/vim-yaml'
 call plug#end()
 
 " Automatically install missing plugins {{{1
