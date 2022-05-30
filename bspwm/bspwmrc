@@ -61,3 +61,4 @@ bspc rule -a jetbrains-studio state=floating
 bspc rule -a Ibus-setup state=floating
 bspc rule -a Ibus-setup-skk state=floating
 bspc rule -a "IBus Table Preferences" state=floating
+bspc rule -a Pavucontrol state=floating
