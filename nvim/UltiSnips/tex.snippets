@@ -378,6 +378,10 @@ snippet lbl "label" bA
 \label{$1}
 endsnippet
 
+snippet "\s*rf" "\ref" rwA
+~\ref{$1}
+endsnippet
+
 ############
 # Packages #
 ############
@@ -487,7 +491,7 @@ endsnippet
 
 priority 10
 context "math()"
-snippet "([a-zA-Z'])([ijklmn])\2" "letter subscript" irA
+snippet "([a-zA-Z'\)])([ijklmn])\2" "letter subscript" irA
 `!p snip.rv = match.group(1) + "_" + match.group(2)`
 endsnippet
 
@@ -576,6 +580,11 @@ endsnippet
 context "math()"
 snippet tp "to the power" iA
 ^{$1}
+endsnippet
+
+context "math()"
+snippet tP "sub" iA
+_{$1}
 endsnippet
 
 ###########
@@ -698,8 +707,18 @@ snippet ~- "simeq" wA
 endsnippet
 
 context "math()"
+snippet is- "isomorphic" wA
+\simeq
+endsnippet
+
+context "math()"
 snippet =- "equiv" wA
 \equiv
+endsnippet
+
+context "math()"
+snippet equiv "equiv (mod n)" wA
+\equiv$1 \pmod{$2}
 endsnippet
 
 context "math()"
@@ -767,6 +786,10 @@ snippet CC "Complex" wA
 \mathbb C
 endsnippet
 
+snippet SS "Circle group" wA
+\mathbb S^1
+endsnippet
+
 context "math()"
 snippet alph "aleph" wA
 \aleph
@@ -785,6 +808,16 @@ endsnippet
 context "math()"
 snippet FF "A field" wA
 \mathrm F
+endsnippet
+
+context "math()"
+snippet ddf "partial derivative" wA
+\frac{\partial ${1:f}}{\partial ${2:e}}
+endsnippet
+
+context "math()"
+snippet par "\partial" wA
+\partial
 endsnippet
 
 context "math()"
@@ -877,13 +910,23 @@ snippet != "not equals" wA
 endsnippet
 
 context "math()"
-snippet "(?<!\\)geq|>=" "less than or equals to" wrA
+snippet "(?<!\\)geq|>=" "greater than or equals to" wrA
 \geqslant
 endsnippet
 
 context "math()"
-snippet "(?<!\\)leq|<=" "greater than or equals to" wrA
+snippet "(?<!\\)leq|<=" "less than or equals to" wrA
 \leqslant
+endsnippet
+
+context "math()"
+snippet gq "greater than or equals to" wA
+\geq
+endsnippet
+
+context "math()"
+snippet lq "less than or equals to" wA
+\leq
 endsnippet
 
 context "math()"
@@ -992,7 +1035,7 @@ snippet "([A-Za-z]+)fk" "\mathfrak ..." rwA
 endsnippet
 
 context "math()"
-snippet "([A-Za-z]+)bf" "\mathbf ..." rwA
+snippet "([A-Za-z]+)bl" "\mathbf ..." rwA
 \mathbf{`!p snip.rv = match.group(1)`}
 endsnippet
 
@@ -1077,7 +1120,7 @@ endsnippet
 #############
 
 context "math()"
-snippet '(?<!\\)(lg|ln|log|exp|deg|min|max|dim|ker|det|sup)' "operators" rwA
+snippet '(?<!\\)(lg|ln|log|exp|deg|min|max|dim|ker|det|sup|gcd|lcd)' "operators" rwA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
@@ -1107,6 +1150,11 @@ snippet DD "Delta" wA
 \Delta
 endsnippet
 
+context "math()"
+snippet nD "nabla" wA
+\nabla
+endsnippet
+
 #####################
 # Other expressions #
 #####################
@@ -1119,6 +1167,11 @@ endsnippet
 context "math()"
 snippet fun "a function" wA
 ${1:${2:D} \subset \mathbb R} \to ${3:\mathbb R}
+endsnippet
+
+context "math()"
+snippet :R "E \subset \mathbb R^{n} \to \mathbb R^{m}" wA
+: E \subset \mathbb R^{n} \to \mathbb R^{m}
 endsnippet
 
 ########
@@ -1160,7 +1213,7 @@ snippet iclz "Inline cloze deletion" wA
 endsnippet
 
 priority 100
-snippet iiclz "Inline cloze deletion with newlines" wA
+snippet nclz "Inline cloze deletion with newlines" wA
 \begin{icloze}{${1:1}}
 	$2
 \end{icloze}
@@ -1168,7 +1221,7 @@ endsnippet
 
 priority 100
 context "snip.visual_text"
-snippet iiclz "Inline cloze deletion with newlines" wA
+snippet nclz "Inline cloze deletion with newlines" wA
 \begin{icloze}{${1:1}}
 	${VISUAL}
 \end{icloze}
@@ -1178,5 +1231,9 @@ endsnippet
 # Phrases #
 ###########
 snippet rpf? "В чём основная идея доказательства?" wA
-В чём основная идея доказательства$1?
+В чём ключевая идея доказательства$1?
+endsnippet
+
+snippet pf? "What is the key idea in the proof?" wA
+What is the key idea in the proof$1?
 endsnippet
