@@ -12,6 +12,7 @@ conf:
       cargo: cargo install %pkg
       flatpak: flatpak install -y %pkg
       aur: ./bin/aur_build %pkg
+      raco: raco pkg install --auto --skip-installed -- %pkg
     deps:
       brew: brew
       gem: ruby
