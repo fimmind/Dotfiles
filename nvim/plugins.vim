@@ -47,6 +47,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'bfrg/vim-cpp-modern'
   Plug 'rust-lang/rust.vim'
   Plug 'wlangstroth/vim-racket'
+  Plug 'guersam/vim-j'
 call plug#end()
 
 " Automatically install missing plugins {{{1
