@@ -21,11 +21,8 @@ super + shift + d
 super + {_, shift +} v
 	seledit --editor "kitty --class=float -- nvim" --action {edit,write}
 
-super + e
-	seledit --action edit --ext tex --editor "kitty -- nvim +start"
-
-super + shift + e
-	seledit --action write --ext tex --editor "kitty -- nvim"
+super + {_, shift +} e
+	seledit --action {write,edit} --ext tex --editor "kitty -- nvim"
 
 super + b
 	qutebrowser
@@ -38,11 +35,8 @@ super + a
 super + z
 	zathura
 
-super + c
-	kitty --class=float -- qalc
-
-super + shift + c
-	kitty --class=float -- fish -c J
+super {_,+ shift} + c
+	kitty --class=float -- {fish -c J,qalc}
 
 super + shift + p
 	powermenu
@@ -73,10 +67,6 @@ super + Delete
 # close and kill
 super + shift + {q,x}
 	bspc node -{c,k}
-
-# alternate between the tiled and monocle layout
-super + w
-	bspc desktop -l next
 
 # rotate split
 super + r
