@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 #### AUTORUN ####
-xsetroot -solid \#303030
+scriptDir=$(dirname -- "$(readlink -f -- "$BASH_SOURCE")")
+feh --bg-scale $scriptDir/background.png
 xsetroot -cursor_name left_ptr
 
 if [ $1 == 0 ]; then
