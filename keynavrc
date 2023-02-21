@@ -32,10 +32,10 @@ shift+d move-right
 shift+q end
 
 # scroll
-1 warp, click 6 # left
-2 warp, click 5 # up
-3 warp, click 4 # down
-4 warp, click 7 # right
+2 warp, click 6 # left
+3 warp, click 5 # up
+4 warp, click 4 # down
+5 warp, click 7 # right
 
 t warp, click 1
 g warp, click 3
