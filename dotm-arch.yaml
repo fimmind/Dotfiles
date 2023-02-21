@@ -107,7 +107,7 @@ rules:
   fonts:
     - pkgs:
         pacman: >-
-          adobe-source-han-serif-jp-fonts
+          noto-fonts noto-fonts-cjk
           adobe-source-code-pro-fonts
           ttf-dejavu
 
