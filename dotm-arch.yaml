@@ -45,14 +45,15 @@ rules:
     - pkgs:
         pacman: >-
           bspwm xdo playerctl xclip xorg-xsetroot xsecurelock feh
-          zenity unclutter maim
+          zenity unclutter maim gnome-control-center mutter
+          dmenu
     - links:
         bspwm: ~/.config/bspwm
 
   DE_apps:
     - deps: >-
         zathura kitty keynav zoom qutebrowser spotify sabaki
-        kgs virtualbox anki
+        kgs virtualbox anki pinta
     - pkgs:
         pacman: >-
           qalculate-gtk libreoffice-fresh libreoffice-fresh-ru
@@ -67,9 +68,9 @@ rules:
           curl htop ranger lm_sensors mlocate tree jq pdftk
           imagemagick neofetch cmatrix cmus dosfstools pass unrar
           pkgfile gnugo bind-tools irssi rlwrap ripgrep figlet
-          id3v2
+          id3v2 android-file-transfer
         npm: add-gitignore
-        pip: pylatexenc
+        pip: pylatexenc fasttyper
 
   input_method:
     - pkgs: { pacman: ibus ibus-anthy ibus-skk ibus-table }
@@ -157,11 +158,16 @@ rules:
         sudo systemctl start cups.service
 
   anki:
-    - pkgs: { aur: anki-official-binary-bundle }
+    - pkgs: { aur: anki-bin }
     - pkgs:
         pip: genanki pydantic # tex_to_anki's dependecies
         npm: svgo # for optimizing latex's svgs
         pacman: optipng # for optimizing latex's pngs
+
+  pinta:
+    - pkgs: { pacman: pinta }
+    - shell: |
+        xdg-mime default pinta.desktop image/\*
 
   zathura:
     - links: { zathura: ~/.config/zathura }
@@ -303,6 +309,10 @@ rules:
     - pkgs: { pacman: cmake clang gdb ccls }
     - links: { clang-format: ~/.clang-format }
 
+  Qt:
+    - deps: c++
+    - pkgs: { pacman: qt5-base qt6-base qtcreator }
+
   clojure:
     - pkgs: { pacman: clojure }
     - links:
@@ -325,6 +335,11 @@ rules:
   python:
     - pkgs: { pacman: python3 python-pip }
 
+  tensorflow:
+    - deps: python
+    - pkgs:
+        pip: tensorflow-cpu
+
   nodejs:
     - pkgs: { pacman: nodejs npm yarn }
 
@@ -339,7 +354,7 @@ rules:
     - pkgs: { pacman: racket }
     - shell: |
         raco pkg install --auto --skip-installed -- \
-          racket-langserver
+          racket-langserver sicp
 
   typescript:
     - deps: nodejs

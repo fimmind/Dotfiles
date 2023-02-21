@@ -21,10 +21,12 @@ alias gs="git status"
 alias gd="git diff"
 alias gi="add-gitignore"
 alias x="startx >~/.startx_log.txt 2>&1"
+alias ff="fasttyper -n -rp 20 -sm 100"
 
 alias dmenu="dmenu -nb '#18191d' -nf '#bbbbbb' -sb '#005577' -sf '#eeeeee' -fn 'DejaVu Sans Mono:size=10'"
 alias apl="apl --noColor --silent"
 alias J="j9 -c"
+alias sicp="racket -I sicp"
 
 if [ "`uname -o`" = "Android" ]
   alias chroot="termux-chroot && exit"
@@ -44,6 +46,7 @@ set -x XDG_CONFIG_HOME "$HOME/.config"
 set -x XDG_DATA_HOME "$HOME/.local/share"
 set -x PASSWORD_STORE_DIR "$HOME/.pass"
 set -x DOTM_DOTFILES_DIR (dirname (readlink -m (status dirname)))
+set -x TF_CPP_MIN_LOG_LEVEL 1
 
 set -x CSC_PROGRAM "chicken-csc"
 set -x CSI_PROGRAM "chicken-csi"
