@@ -8,6 +8,10 @@ config_version: 2
 settings:
   auto_save.session:
     global: true
+  bindings.commands:
+    global:
+      normal:
+        pd: download-open
   content.blocking.enabled:
     global: false
   content.blocking.method:
@@ -35,23 +39,26 @@ settings:
       goo: https://dictionary.goo.ne.jp/srch/en/{}/m1u/
       goo-jp: https://dictionary.goo.ne.jp/srch/jn/{}/m1u/
       google: https://www.google.com/search?q={}
-      images: https://www.google.com/search?q={}&sxsrf=ALeKk03k3xvUmsqr42atH-mbAOMgyNJ8yg:1624637495103&source=lnms&tbm=isch&sa=X&ved=2ahUKEwjPz6KmlrPxAhXCiIsKHdG2BAcQ_AUoAXoECAEQBA&cshid=1624637524560614&biw=1522&bih=1004
+      images: https://www.google.com/search?q={}&tbm=isch
       jisho: https://jisho.org/search/{}
-      jwiki: https://www.wikiwand.com/ja/{}
+      jwiki: https://ja.wikipedia.org/wiki/{}
+      jwikt: https://ja.wiktionary.org/wiki/{}
       merriam: https://www.merriam-webster.com/dictionary/{}
       mr: https://www.merriam-webster.com/dictionary/{}
       multi: https://www.multitran.com/m.exe?s={}
       ojad: http://www.gavo.t.u-tokyo.ac.jp/ojad/search/index/sortprefix:accent/word:{}
       oxford: https://www.oxfordlearnersdictionaries.com/search/english/?q={}
-      rwiki: https://www.wikiwand.com/ru/{}
+      rwiki: https://ru.wikipedia.org/wiki/{}
       tae-kim: http://www.guidetojapanese.org/learn/search_gcse/?q={}
       takoboto: https://takoboto.jp/?q={}
+      tk: https://takoboto.jp/?q={}
       tofugu: https://www.tofugu.com/?s={}
       urban: https://www.urbandictionary.com/define.php?term={}
-      wiki: https://www.wikiwand.com/en/{}
+      wiki: https://en.wikipedia.org/wiki/{}
       wikt: https://en.wiktionary.org/wiki/{}
-      wk: https://www.wikiwand.com/en/{}
       yandex: https://yandex.ru/search/?text={}
       youtube: https://www.youtube.com/results?search_query={}
   url.start_pages:
     global: https://start.duckduckgo.com
+  zoom.default:
+    global: 150%
