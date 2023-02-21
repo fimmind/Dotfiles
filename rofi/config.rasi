@@ -3,5 +3,6 @@ configuration {
 	display-window: "window: ";
 	display-drun: "drun: ";
 	display-combi: "combi: ";
+  dpi: 144;
 }
 @theme "sidebar"

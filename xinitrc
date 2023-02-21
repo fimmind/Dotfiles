@@ -4,6 +4,8 @@
 # Souce: https://bbs.archlinux.org/viewtopic.php?pid=1705410#p1705410
 dbus-update-activation-environment --systemd DBUS_SESSION_BUS_ADDRESS DISPLAY XAUTHORITY
 
+xrandr --dpi 144
+
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources
