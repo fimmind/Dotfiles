@@ -63,6 +63,10 @@ nnoremap <silent> <leader>m :w\|split term://make VIM_CUR_BUF_FILE='%:p'<cr>
 nnoremap <silent> <leader>d :exe "normal! mmf" . nr2char(getchar()) . "x`m"<cr>
 nnoremap <silent> <leader>D :exe "normal! mmF" . nr2char(getchar()) . "x`m"<cr>
 
+command! Autosave autocmd InsertLeave,CursorHoldI,TextChanged <buffer> silent write
+
+digraph o+ 8853 " ⊕  Circled Plus
+
 " Tabs {{{1
 nnoremap <leader>tn :tabnext<CR>
 nnoremap <leader>tp :tabprevious<CR>
@@ -270,7 +274,8 @@ set signcolumn=yes
 
 let g:coc_global_extensions = [
       \ "coc-json", "coc-git", "coc-ultisnips", "coc-vimtex", "coc-prettier",
-      \ "coc-explorer", "coc-jedi", "coc-rust-analyzer"
+      \ "coc-explorer", "coc-jedi", "coc-rust-analyzer", "coc-tabnine",
+      \ "coc-tsserver"
       \ ]
 function InstallCocExtensions()
   exec "CocInstall -sync " . join(g:coc_global_extensions)
@@ -278,6 +283,11 @@ endfunction
 
 " Use <c-space> to trigger completion.
 inoremap <silent><expr> <c-space> coc#refresh()
+
+" Make <CR> to accept selected completion item or notify coc.nvim to format
+inoremap <silent><expr> <CR>
+      \ coc#pum#visible() ? coc#pum#confirm()
+      \ : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
 " Use `[g` and `]g` to navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -349,16 +359,22 @@ let g:ale_fixers = {
       \ 'python': ['autopep8', 'yapf'],
       \ 'rust': ['rustfmt']
       \ }
-let g:ale_fix_on_save_ignore = {}
+let g:ale_fix_on_save_ignore = {
+    \ 'markdown': ['trim_whitespace']
+    \ }
 
 let g:ale_lint_on_text_changed = 'always'
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
-      \ 'tex': ['chktex', 'lacheck'],
-      \ 'python': ['flake8', 'bandit', 'pylint']
+      \ 'tex': ['chktex', 'lacheck', 'proselint'],
+      \ 'python': ['flake8', 'bandit', 'pylint'],
+      \ 'markdown': ['proselint']
       \ }
 
 let g:ale_sign_warning = ">>"
+
+nmap <silent> [a <Plug>(ale_previous_wrap)
+nmap <silent> ]a <Plug>(ale_next_wrap)
 
 " easymotion {{{1
 map <leader>e <Plug>(easymotion-prefix)
@@ -368,5 +384,23 @@ nmap <silent> <leader>fa :Goyo<cr>:Limelight!!<cr>
 nmap <silent> <leader>fq :Goyo!<cr>:Limelight!<cr>
 nmap <silent> <leader>fl :Limelight!!<cr>
 nmap <silent> <leader>fg :Goyo<cr>
+
+" racket {{{1
+autocmd FileType scip set ft=racket
+
+" nvim-treesitter {{{1
+lua << EOF
+require'nvim-treesitter.configs'.setup {
+  indent = {
+    enable = false,
+  },
+  highlight = {
+    enable = false,
+  },
+}
+EOF
+
+" emmet {{{1
+let g:user_emmet_leader_key='<c-e>'
 
 " {{{1 vim: fdm=marker

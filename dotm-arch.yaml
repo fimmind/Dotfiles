@@ -204,7 +204,7 @@ rules:
     - pkgs:
         pip: >-
           pynvim unidecode jedi-language-server autopep8 yapf
-          flake8 hacking bandit pylint
+          flake8 hacking bandit pylint proselint
         npm: neovim
         gem: neovim
     - shell: nvim -u nvim/plugins.vim -c qa

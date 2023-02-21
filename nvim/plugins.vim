@@ -23,6 +23,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
   Plug 'scrooloose/nerdcommenter'
   Plug 'tpope/vim-fugitive'
+  Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
+  Plug 'theniceboy/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
   Plug 'matze/vim-move'
   Plug 'andrewradev/splitjoin.vim'
   Plug 'nelstrom/vim-visual-star-search'
@@ -39,6 +41,9 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'easymotion/vim-easymotion'
   Plug 'guns/vim-sexp'
   Plug 'dkarter/bullets.vim'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'lukas-reineke/indent-blankline.nvim'
+  Plug 'mattn/emmet-vim'
 
   " Filetype
   Plug 'kovetskiy/sxhkd-vim'
@@ -46,7 +51,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'lervag/vimtex'
   Plug 'bfrg/vim-cpp-modern'
   Plug 'rust-lang/rust.vim'
-  Plug 'wlangstroth/vim-racket'
+  Plug 'benknoble/vim-racket'
   Plug 'guersam/vim-j'
 call plug#end()
 

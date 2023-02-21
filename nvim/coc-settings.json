@@ -21,5 +21,10 @@
   "git.removedSign.hlGroup": "GitGutterDelete",
   "git.topRemovedSign.hlGroup": "GitGutterDelete",
   "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
-  "diagnostic.displayByAle": true
+  "diagnostic.displayByAle": true,
+  "prettier.proseWrap": "never",
+  "coc.preferences.formatOnSaveFiletypes": ["markdown"],
+  "coc.preferences.jumpCommand": "vsplit",
+  "suggest.languageSourcePriority": 10,
+  "tabnine.priority": 0
 }

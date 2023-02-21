@@ -12,6 +12,9 @@ cd Dotfiles
 ./setup.sh
 ```
 
+_Note_: to make coc.nvim works better with Tabnine, add `"ignore_all_lsp": true`
+to config file of Tabnine (use `:CocCommand tabnine.openConfig` to open it).
+
 ### GTK theme
 
 Use `lxappearance`:
@@ -22,7 +25,10 @@ Use `lxappearance`:
 
 ### KataGo
 
-1. Install [katago-cpu](https://aur.archlinux.org/packages/katago-cpu/) or [katago-opencli](https://aur.archlinux.org/packages/katago-opencl/). Use OpenCL if you have any good or decent GPU. Otherwise CPU version is preferable.
+1. Install [katago-cpu](https://aur.archlinux.org/packages/katago-cpu/) or
+   [katago-opencli](https://aur.archlinux.org/packages/katago-opencl/). Use
+   OpenCL if you have any good or decent GPU. Otherwise CPU version is
+   preferable.
 2. [Setup](https://github.com/lightvector/KataGo#how-to-use) the engine.
 3. Add KataGo to Sabaki at `File > Preferences > Engines`:
    - Path: `/usr/bin/katago`;
@@ -32,7 +38,9 @@ Use `lxappearance`:
 ## Fixes for some problems
 
 ### Enable automatic bluetooth activation
+
 Set following in `/etc/bluetooth/main.conf`:
+
 ```conf
 [Policy]
 AutoEnable=true
@@ -50,8 +58,10 @@ hkp-cacert /usr/share/gnupg/sks-keyservers.netCA.pem
 ```
 
 ### Make functional keys default on Logitech k380
+
 Use this: https://github.com/jergusg/k380-function-keys-conf
 
 ## TODO
+
 - Exhaustive dotfiles documentation (At least short description)
 - System installation instructions
