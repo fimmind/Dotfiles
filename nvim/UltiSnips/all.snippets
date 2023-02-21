@@ -8,15 +8,15 @@ snippet "No(\d)" "№" irA
 endsnippet
 
 snippet uuid "generate a UUID (v4)" i
-`!p 
-from uuid import uuid4; 
+`!p
+from uuid import uuid4;
 if not snip.c:
   snip.rv = uuid4().hex`
 endsnippet
 
 snippet anki-id "generate an ID for genanki" i
 `!p
-import random; 
+import random;
 if not snip.c:
 	snip.rv = random.randrange(1 << 30, 1 << 31)`
 endsnippet
