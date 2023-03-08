@@ -77,19 +77,10 @@ endsnippet
 
 priority 100
 context "not math()"
-snippet mK "math" bA
+snippet mK "math" A
 \[
 	${VISUAL}$1
-\]
-endsnippet
-
-priority 10
-context "not math()"
-snippet mK "math" wA
-
-\[
-	${VISUAL}$1
-\]$0
+\] $0
 endsnippet
 
 priority 10
@@ -217,7 +208,7 @@ snippet proof "proof" b
 endsnippet
 
 context "math()"
-snippet tt "text" wA
+snippet tT "text" wA
 \text{${VISUAL}$1}
 endsnippet
 
@@ -604,12 +595,17 @@ endsnippet
 ####################
 
 context "math()"
-snippet nsr "sqrt" iA
+snippet Sr "sqrt[n]" iA
 \sqrt`!p
 snip.rv = "[" if t[1] else ""
 `${1:n}`!p
 snip.rv = "]" if t[1] else ""
 `{${VISUAL}$2}
+endsnippet
+
+context "math()"
+snippet sr "sqrt" iA
+\sqrt{${VISUAL}$1}
 endsnippet
 
 context "math()"
@@ -672,12 +668,6 @@ snippet in "\in" wA
 \in
 endsnippet
 
-priority 10
-context "math()"
-snippet sim "\sim" wA
-\sim
-endsnippet
-
 context "math()"
 snippet has "\#" wA
 \#
@@ -685,7 +675,7 @@ endsnippet
 
 priority 10
 context "math()"
-snippet "(?<!\\)(pi|perp|iff|star|land|lor|neq|star)" "Symbols" rwA
+snippet "(?<!\\)(sim|pi|perp|iff|star|land|lor|neq|star)" "Symbols" rwA
 \\`!p snip.rv = match.group(0)`
 endsnippet
 
@@ -918,6 +908,11 @@ endsnippet
 context "math()"
 snippet || "mid" wA
 \mid
+endsnippet
+
+context "math()"
+snippet B| "\Big |" wA
+\Big |_{$1}^{$2} $0
 endsnippet
 
 context "math()"
@@ -1201,6 +1196,18 @@ snippet "(?<!\\)ht" "hat" rwA
 \hat{${VISUAL}$1}
 endsnippet
 
+priority 100
+context "math()"
+snippet "([\\A-Za-z'_^\d\.]+(?<!\\))dt" "time derivative" rwA
+\dot{`!p snip.rv = match.group(1)`}
+endsnippet
+
+priority 10
+context "math()"
+snippet "(?<!\\)dt" "time derivative" rwA
+\dot{${VISUAL}$1}
+endsnippet
+
 priority 1000
 context "math()"
 snippet "([\\A-Za-z'_^\d\.]+(?<!\\))ring" "\mathring" rwA
@@ -1460,14 +1467,14 @@ snippet "\?\s*cl" "Cloze deletion that follows a question" irA
 endsnippet
 
 priority 100
-snippet Clz "The usual cloze deletion" wA
-{{c${1:1}::$2${VISUAL}}}
+snippet cz "The usual cloze deletion" wA
+{{c${1:1}::$2`!p snip.rv = re.sub(r"}(?=})", r"} ", snip.v.text)`}}
 endsnippet
 
 priority 1000
 context "math()"
-snippet Clz "The usual cloze deletion within a math block" wA
-{{c${1:1}::$2${VISUAL}::\dots}}
+snippet cz "The usual cloze deletion within a math block" wA
+{{c${1:1}::$2`!p snip.rv = re.sub(r"}(?=})", r"} ", snip.v.text)`::\dots}}
 endsnippet
 
 ###########
