@@ -55,6 +55,9 @@ noremap <leader>y "+y
 noremap <leader>p "+p
 noremap <leader>P "+P
 noremap <leader>x "+x
+noremap <leader>gp ggVG"+p
+noremap <leader>gy ggVG"+y
+noremap <leader>gx ggVGx
 
 nnoremap <silent> <leader>r :w\|split term://make VIM_CUR_BUF_FILE='%:p' nvim/run<cr>
 nnoremap <silent> <leader>b :w\|split term://make VIM_CUR_BUF_FILE='%:p' nvim/build<cr>
