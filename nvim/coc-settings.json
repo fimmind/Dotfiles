@@ -25,6 +25,5 @@
   "prettier.proseWrap": "never",
   "coc.preferences.formatOnSaveFiletypes": ["markdown"],
   "coc.preferences.jumpCommand": "vsplit",
-  "suggest.languageSourcePriority": 10,
-  "tabnine.priority": 0
+  "suggest.languageSourcePriority": 10
 }

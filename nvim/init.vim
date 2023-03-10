@@ -277,7 +277,7 @@ set signcolumn=yes
 
 let g:coc_global_extensions = [
       \ "coc-json", "coc-git", "coc-ultisnips", "coc-vimtex", "coc-prettier",
-      \ "coc-explorer", "coc-jedi", "coc-rust-analyzer", "coc-tabnine",
+      \ "coc-explorer", "coc-jedi", "coc-rust-analyzer",
       \ "coc-tsserver"
       \ ]
 function InstallCocExtensions()

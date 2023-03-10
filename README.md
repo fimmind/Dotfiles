@@ -2,18 +2,13 @@
 
 ## Installation
 
-! ATTENTION ! This script isn't meant to be used by anyone but me. There is
-absolutely no guarantee that it won't break your system or something like that.
-Be very careful using it.
+! ATTENTION ! This script isn't meant to be used by anyone but me. There is absolutely no guarantee that it won't break your system or something like that. Be very careful using it.
 
 ```shell
 git clone https://github.com/fimmind/Dotfiles ~/Dotfiles
 cd Dotfiles
 ./setup.sh
 ```
-
-_Note_: to make coc.nvim works better with Tabnine, add `"ignore_all_lsp": true`
-to config file of Tabnine (use `:CocCommand tabnine.openConfig` to open it).
 
 ### GTK theme
 
@@ -25,10 +20,7 @@ Use `lxappearance`:
 
 ### KataGo
 
-1. Install [katago-cpu](https://aur.archlinux.org/packages/katago-cpu/) or
-   [katago-opencli](https://aur.archlinux.org/packages/katago-opencl/). Use
-   OpenCL if you have any good or decent GPU. Otherwise CPU version is
-   preferable.
+1. Install [katago-cpu](https://aur.archlinux.org/packages/katago-cpu/) or [katago-opencli](https://aur.archlinux.org/packages/katago-opencl/). Use OpenCL if you have any good or decent GPU. Otherwise CPU version is preferable.
 2. [Setup](https://github.com/lightvector/KataGo#how-to-use) the engine.
 3. Add KataGo to Sabaki at `File > Preferences > Engines`:
    - Path: `/usr/bin/katago`;
