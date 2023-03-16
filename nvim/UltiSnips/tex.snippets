@@ -530,8 +530,20 @@ endsnippet
 
 priority 100
 context "math()"
-snippet "dint|dnt" "definite integral" wrA
+snippet "dint" "definite integral" wrA
 \int_{$1}^{$2} $0
+endsnippet
+
+priority 100
+context "math()"
+snippet "dnt" "definite integral" wrA
+\int_{$1} $0
+endsnippet
+
+priority 101
+context "math()"
+snippet "ddnt" "definite integral" wrA
+\iint_{$1} $0
 endsnippet
 
 context "math()"
@@ -1182,6 +1194,18 @@ priority 10
 context "math()"
 snippet "(?<!\\)bar" "bar" rwA
 \overline{${VISUAL}$1}
+endsnippet
+
+priority 100
+context "math()"
+snippet "([\\A-Za-z'_^\d\.]+(?<!\\))Bar" "underline" rwA
+\underline{`!p snip.rv = match.group(1)`}
+endsnippet
+
+priority 10
+context "math()"
+snippet "(?<!\\)Bar" "underline" rwA
+\underline{${VISUAL}$1}
 endsnippet
 
 priority 100
