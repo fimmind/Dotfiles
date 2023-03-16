@@ -21,7 +21,7 @@ set relativenumber
 set ignorecase
 set smartcase
 set mouse=a
-set shell=/bin/bash
+set shell=bash
 set termguicolors
 set background=dark
 set foldmethod=marker
@@ -55,13 +55,17 @@ noremap <leader>y "+y
 noremap <leader>p "+p
 noremap <leader>P "+P
 noremap <leader>x "+x
-noremap <leader>gp ggVG"+p
-noremap <leader>gy ggVG"+y
-noremap <leader>gx ggVGx
+noremap <leader>gp ggVG"+pG$
+noremap <leader>gy gg0vG$h"+y
+noremap <leader>gx gg0vG$hx
 
-nnoremap <silent> <leader>r :w\|split term://make VIM_CUR_BUF_FILE='%:p' nvim/run<cr>
-nnoremap <silent> <leader>b :w\|split term://make VIM_CUR_BUF_FILE='%:p' nvim/build<cr>
-nnoremap <silent> <leader>m :w\|split term://make VIM_CUR_BUF_FILE='%:p'<cr>
+nnoremap <silent> <leader>r :make VIM_CUR_BUF_FILE='%:p' nvim/run<cr>
+nnoremap <silent> <leader>b :make VIM_CUR_BUF_FILE='%:p' nvim/build<cr>
+nnoremap <silent> <leader>m :make VIM_CUR_BUF_FILE='%:p'<cr>
+
+nnoremap <silent> <leader>R :w\|split term://make VIM_CUR_BUF_FILE='%:p' nvim/run<cr>
+nnoremap <silent> <leader>B :w\|split term://make VIM_CUR_BUF_FILE='%:p' nvim/build<cr>
+nnoremap <silent> <leader>M :w\|split term://make VIM_CUR_BUF_FILE='%:p'<cr>
 
 nnoremap <silent> <leader>d :exe "normal! mmf" . nr2char(getchar()) . "x`m"<cr>
 nnoremap <silent> <leader>D :exe "normal! mmF" . nr2char(getchar()) . "x`m"<cr>
@@ -254,7 +258,9 @@ function! FindTexPrelude()
 endfunction
 
 " VimTeX {{{1
-let g:vimtex_view_method = 'zathura'
+if !has("android")
+  let g:vimtex_view_method = 'zathura'
+endif
 let g:vimtex_imaps_leader = ';'
 let g:vimtex_env_toggle_math_map = {
       \ '$': '\(',

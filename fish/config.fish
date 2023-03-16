@@ -64,6 +64,7 @@ set -x PATH "$PATH:$HOME/Dotfiles/bin"
 set -x PATH "$PATH:$HOME/.cargo/bin"
 set -x PATH "$PATH:$HOME/.gem/ruby/2.7.0/bin"
 set -x PATH "$PATH:/usr/local/texlive/2019/bin/x86_64-linux"
+set -x PATH "$PATH:$PREFIX/bin/texlive"
 set -x PATH "$PATH:/home/linuxbrew/.linuxbrew/bin"
 set -x PATH "$PATH:$XDG_DATA_HOME/nvim/plugged/vim-iced/bin"
 
