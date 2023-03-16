@@ -233,6 +233,8 @@ rules:
           -O texlive.tar.gz
         tar -xf texlive.tar.gz
         cd `ls | grep install-tl-*` && sudo ./install-tl -profile ../../texlive.profile
+    - shell: |
+        tlmgr install collection-langcyrillic
 
   zoom:
     - pkgs:
