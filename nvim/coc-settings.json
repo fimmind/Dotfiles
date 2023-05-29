@@ -25,5 +25,6 @@
   "prettier.proseWrap": "never",
   "coc.preferences.formatOnSaveFiletypes": ["markdown"],
   "coc.preferences.jumpCommand": "vsplit",
-  "suggest.languageSourcePriority": 10
+  "suggest.languageSourcePriority": 10,
+  "rust-analyzer.server.path": "rust-analyzer"
 }
