@@ -267,7 +267,8 @@ let g:vimtex_env_toggle_math_map = {
       \ '\(': '\[',
       \ '$$': '\[',
       \ '\[': 'equation',
-      \ 'equation': '\('
+      \ 'equation': 'align*',
+      \ 'align': '\('
       \ }
 " Do not open quickfix window automatically
 let g:vimtex_quickfix_mode = 0
