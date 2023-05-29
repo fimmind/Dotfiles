@@ -13,6 +13,12 @@ snippet beg "begin{} / end{}" bA
 \\end{$1}
 endsnippet
 
+snippet hmin "half minipage" bA
+\begin{minipage}{${1:.5\textwidth}}
+	${VISUAL}$0
+\end{minipage}
+endsnippet
+
 snippet tab "Tabular" bA
 \\begin{tabular}{${1:r|l}}
 	${VISUAL}$0
@@ -214,7 +220,7 @@ endsnippet
 
 priority 100
 context "math()"
-snippet iv "inverse" iA
+snippet iV "inverse" iA
 ^{-1}
 endsnippet
 
@@ -222,6 +228,7 @@ snippet bl "textbf" w
 \textbf{${VISUAL}$1}
 endsnippet
 
+context "math()"
 snippet it "textit" w
 \textit{${VISUAL}$1}
 endsnippet
@@ -253,11 +260,21 @@ endsnippet
 
 context "math()"
 snippet lrm "\left| \right|" iA
+\lvert ${VISUAL}$1 \rvert
+endsnippet
+
+context "math()"
+snippet lrM "\left| \right|" iA
 \left\lvert ${VISUAL}$1 \right\rvert
 endsnippet
 
 context "math()"
-snippet lrM "\left|| \right||" iA
+snippet lrn "\left|| \right||" iA
+\lVert ${VISUAL}$1 \rVert
+endsnippet
+
+context "math()"
+snippet lrN "\left|| \right||" iA
 \left\lVert ${VISUAL}$1 \right\rVert
 endsnippet
 
@@ -293,6 +310,7 @@ snippet ,: "Comma with space" iA
 ,\:
 endsnippet
 
+context "math()"
 snippet ... "\dots" iA
 \ldots
 endsnippet
@@ -424,7 +442,7 @@ endsnippet
 priority 100
 snippet \= "\\ =" iA
 \\\\
-&${1:=}
+&=
 endsnippet
 
 priority 1000
@@ -494,8 +512,8 @@ endsnippet
 
 priority 10
 context "math()"
-snippet "([a-zA-Z'\)])([ijklmn])\2" "letter subscript" irA
-`!p snip.rv = match.group(1) + "_" + match.group(2)`
+snippet "(?<=\S)(iI|jJ|kK|lL|mM|nN)" "letter subscript" irA
+`!p snip.rv = "_" + match.group(1)[0]`
 endsnippet
 
 priority 100
@@ -530,20 +548,25 @@ endsnippet
 
 priority 100
 context "math()"
-snippet "dint" "definite integral" wrA
+snippet dint "definite integral" wA
 \int_{$1}^{$2} $0
 endsnippet
 
 priority 100
 context "math()"
-snippet "dnt" "definite integral" wrA
+snippet dnt "definite integral" wA
 \int_{$1} $0
 endsnippet
 
 priority 101
 context "math()"
-snippet "ddnt" "definite integral" wrA
+snippet ddnt "definite integral" wA
 \iint_{$1} $0
+endsnippet
+
+context "math()"
+snippet ont "closed integral" wA
+\oint_{$1} $0
 endsnippet
 
 context "math()"
@@ -552,16 +575,36 @@ snippet "(?<!\\:)(?<=\S)(\s*d(\w|\\\w+)?)\." "\: dx" wrA
 endsnippet
 
 context "math()"
-snippet "(?<!\\)Sum" "smart sum" wrA
-\sum`!p
-snip.rv = "_{" if t[1] else ""
-`${1:n=1}`!p
-snip.rv = "}" if t[1] else ""
-``!p
-snip.rv = "^{" if t[2] else ""
-`${2:\infty}`!p
-snip.rv = "}" if t[2] else ""
-` ${VISUAL}$0
+snippet dbs "d{\boldsymbol{\sigma}}" wA
+d{\boldsymbol{\sigma}}
+endsnippet
+
+context "math()"
+snippet " md([a-z])" "|dr|" wrA
+\: |d`!p snip.rv = match.group(1)`|
+endsnippet
+
+context "math()"
+snippet ;, "\: " iA
+\: $0
+endsnippet
+
+priority 1000
+context "math()"
+snippet 0sum "sum from 0 to infinity" wA
+\sum_{n=0}^{\infty}
+endsnippet
+
+priority 1000
+context "math()"
+snippet 1sum "sum from 1 to infinity" wA
+\sum_{n=1}^{\infty}
+endsnippet
+
+priority 1000
+context "math()"
+snippet osum "sum from 0 to infinity" wA
+\sum_{n=-\infty}^{+\infty}
 endsnippet
 
 context "math()"
@@ -592,6 +635,7 @@ snip.rv = "}" if t[1] else ""
 ` ${VISUAL}$0
 endsnippet
 
+priority 100
 context "math()"
 snippet "(?<!\\)sum" "sum" wrA
 \sum
@@ -608,11 +652,7 @@ endsnippet
 
 context "math()"
 snippet Sr "sqrt[n]" iA
-\sqrt`!p
-snip.rv = "[" if t[1] else ""
-`${1:n}`!p
-snip.rv = "]" if t[1] else ""
-`{${VISUAL}$2}
+\sqrt[$1]{${VISUAL}$2}
 endsnippet
 
 context "math()"
@@ -687,7 +727,7 @@ endsnippet
 
 priority 10
 context "math()"
-snippet "(?<!\\)(sim|pi|perp|iff|star|land|lor|neq|star)" "Symbols" rwA
+snippet "(?<!\\)(sim|pi|perp|iff|star|ast|land|lor|neq|star)" "Symbols" rwA
 \\`!p snip.rv = match.group(0)`
 endsnippet
 
@@ -745,6 +785,30 @@ snippet "(?<!\\|\w)not" "\not" rwA
 \not
 endsnippet
 
+priority 10
+context "math()"
+snippet .J "cdot" wA
+\cdot
+endsnippet
+
+priority 100
+context "math()"
+snippet ,J. "cdot placeholder" iA
+\,\cdot\,
+endsnippet
+
+priority 10
+snippet *o "odot" wA
+\odot
+endsnippet
+
+context "math()"
+snippet \cdot. "cdots" wA
+\cdots
+endsnippet
+
+
+priority 5
 context "math()"
 snippet jJ "function composition (\circ)" wA
 \circ
@@ -824,36 +888,14 @@ snippet x|  "Left times" wA
 \rtimes
 endsnippet
 
-priority 10
 context "math()"
-snippet *. "cdot" wA
-\cdot
-endsnippet
-
-priority 100
-context "math()"
-snippet ,*. "cdot placeholder" iA
-\,\cdot\,
-endsnippet
-
-priority 10
-snippet *o "odot" wA
-\odot
-endsnippet
-
-context "math()"
-snippet \cdot. "cdots" wA
-\cdots
-endsnippet
-
-context "math()"
-snippet "([cdv])d\*" "[cdv]dots" rwA
+snippet "([cdv])J" "[cdv]dots" rwA
 \\`!p snip.rv = match.group(1)`dots
 endsnippet
 
 priority 100
 context "math()"
-snippet V*. "\dot V_{} ()" wA
+snippet VJ. "\dot V_{} ()" wA
 \dot V_{${1:\delta}}(${2:a})
 endsnippet
 
@@ -965,11 +1007,6 @@ endsnippet
 context "math()"
 snippet RR "Real" iA
 \mathbb R
-endsnippet
-
-context "math()"
-snippet II "Irrational" iA
-\mathbb I
 endsnippet
 
 context "math()"
@@ -1144,7 +1181,7 @@ snippet lq "less than or equals to" wA
 endsnippet
 
 context "math()"
-snippet "!-" "monotonic (increasing)" wrA
+snippet "!/" "monotonic (increasing)" wrA
 \!\!\nearrow
 endsnippet
 
@@ -1158,9 +1195,9 @@ snippet ser "South-east arrow" wA
 \searrow
 endsnippet
 
-priority 1000
+priority 10000
 context "math()"
-snippet "\\!\\!\\nearrow-" "monotonic (strictly increasing)" wrA
+snippet "\\!\\!\\nearrow/" "monotonic (strictly increasing)" wrA
 \!\!\nearrow\!\nearrow
 endsnippet
 
@@ -1223,7 +1260,7 @@ endsnippet
 priority 100
 context "math()"
 snippet "([\\A-Za-z'_^\d\.]+(?<!\\))dt" "time derivative" rwA
-\dot{`!p snip.rv = match.group(1)`}
+\dot `!p snip.rv = match.group(1)`
 endsnippet
 
 priority 10
@@ -1279,22 +1316,27 @@ snippet .~ "\tilde" wA
 endsnippet
 
 context "math()"
-snippet "([A-Z])bb" "\mathbb [A-Z]" rwA
+snippet "(?<!\\)([A-Z])bb" "\mathbb [A-Z]" rwA
 \mathbb `!p snip.rv = match.group(1)`
 endsnippet
 
 context "math()"
-snippet "([A-Z])cl" "\mathcal [A-Z]" rwA
+snippet "(?<!\\)([A-Z])cl" "\mathcal [A-Z]" rwA
 \mathcal `!p snip.rv = match.group(1)`
 endsnippet
 
 context "math()"
-snippet "([A-Za-z]+)fk" "\mathfrak ..." rwA
+snippet "(?<!\\)([A-Za-z]+)sf" "\mathfrak ..." rwA
+\mathsf{`!p snip.rv = match.group(1)`}
+endsnippet
+
+context "math()"
+snippet "(?<!\\)([A-Za-z]+)fk" "\mathfrak ..." rwA
 \mathfrak{`!p snip.rv = match.group(1)`}
 endsnippet
 
 context "math()"
-snippet "([A-Za-z0-9]+)bl" "\mathbf ..." rwA
+snippet "(?<!\\)([A-Za-z0-9]+)bl" "\mathbf ..." rwA
 \mathbf{`!p snip.rv = match.group(1)`}
 endsnippet
 
@@ -1401,6 +1443,10 @@ snippet '(?<!\w)\\?(a(sin|cos|tan|cot|sec|csc))' "inverse trigonometry" rwA
 \\arc`!p snip.rv = match.group(2)`
 endsnippet
 
+snippet cncl "\cancel" iA
+\cancel{${VISUAL}$1}$0
+endsnippet
+
 #########
 # Greek #
 #########
@@ -1447,6 +1493,10 @@ endsnippet
 context "math()"
 snippet :Rm "E \subset \mathbb R^{n} \to \mathbb R" wA
 : E \subset \mathbb R \to \mathbb R^{m}
+endsnippet
+
+snippet rOBP "Introducing probabalistic space" wA
+Пусть \({ (\Omega, \mathfrak{B}, \mathsf{P}) }\) - вероятностное пространство.
 endsnippet
 
 ########
@@ -1539,10 +1589,10 @@ endsnippet
 
 context "not math()"
 snippet lcm "the least common multiple" wA
-l.c.m.\ $0
+l.c.m.
 endsnippet
 
 context "not math()"
 snippet gcd "the geatest common divisor" wA
-g.c.d.\ $0
+g.c.d.
 endsnippet
