@@ -12,6 +12,8 @@ endif
 
 " }}}1
 
+
+
 call plug#begin(stdpath('data') . '/plugged')
   " Coloring
   Plug 'EdenEast/nightfox.nvim'
@@ -35,6 +37,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'cohama/lexima.vim'
   Plug 'wellle/targets.vim'
   Plug 'junegunn/vim-easy-align'
+  Plug 'Exafunction/codeium.vim', {'do': ':Codeium Auth', 'branch': 'main'}
   Plug 'sirver/UltiSnips'
   Plug 'aperezdc/vim-template'
   Plug 'dense-analysis/ale'
@@ -44,6 +47,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'mattn/emmet-vim'
+  Plug 'junegunn/vim-peekaboo'
 
   " Filetype
   Plug 'kovetskiy/sxhkd-vim'
