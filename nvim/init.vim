@@ -35,6 +35,7 @@ syntax sync fromstart
 
 " Custom commands {{{1
 command! Vimrc exec "e " . stdpath('config') . "/init.vim"
+command! RemoveClozes %s/{{c\d::\(\_.\{-}\)\(::.\{-}\)\?}}/\1/g
 
 " General mappings {{{1
 let g:maplocalleader=' z'
