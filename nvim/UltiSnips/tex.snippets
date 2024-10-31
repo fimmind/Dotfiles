@@ -13,9 +13,28 @@ snippet beg "begin{} / end{}" bA
 \\end{$1}
 endsnippet
 
+snippet frame "a frame" b
+\begin{frame}
+	\frametitle{$1}
+	${VISUAL}$0
+\end{frame}
+endsnippet
+
 snippet hmin "half minipage" bA
 \begin{minipage}{${1:.5\textwidth}}
 	${VISUAL}$0
+\end{minipage}
+endsnippet
+
+snippet Hmin "two half minipages" wA
+\begin{minipage}{.45\textwidth}
+	${VISUAL}$1
+\end{minipage}
+%
+\hfill
+%
+\begin{minipage}{.45\textwidth}
+	$0
 \end{minipage}
 endsnippet
 
@@ -77,7 +96,7 @@ endsnippet
 
 priority 1
 context "not math()"
-snippet mk "Inline math" wA
+snippet mk "Inline math" iA
 \(\{ ${VISUAL}$1 \}\)
 endsnippet
 
@@ -86,7 +105,7 @@ context "not math()"
 snippet mK "math" A
 \[
 	${VISUAL}$1
-\] $0
+\]$0
 endsnippet
 
 priority 10
@@ -213,9 +232,20 @@ snippet proof "proof" b
 \end{proof}
 endsnippet
 
+snippet exer "proposition" b
+\begin{exercise}
+	${VISUAL}$1
+\end{exercise}
+endsnippet
+
 context "math()"
 snippet tT "text" wA
 \text{${VISUAL}$1}
+endsnippet
+
+context "math()"
+snippet "[а-яА-ЯёЁ]" "russian text" irA
+\text{`!p snip.rv = match.group(0)`$1}$0
 endsnippet
 
 priority 100
@@ -289,6 +319,11 @@ snippet "lr(b|P)" "\left[ \right]" irA
 endsnippet
 
 context "math()"
+snippet lrll "\llbracket \\rrbracket" wA
+\left[\!\left[ ${VISUAL}$1 \right]\!\right]
+endsnippet
+
+context "math()"
 snippet lrB "\left{ \right}" iA
 \left\\{ ${VISUAL}$1 \right\\}
 endsnippet
@@ -301,6 +336,11 @@ endsnippet
 context "math()"
 snippet lrf "\left\lfloor \right\rfloor" iA
 \left\lfloor ${VISUAL}$1 \right\rfloor
+endsnippet
+
+context "math()"
+snippet red "red text" i
+{\color{red} ${VISUAL}$1}
 endsnippet
 
 ###############
@@ -496,7 +536,7 @@ endsnippet
 #############
 
 context "math()"
-snippet "([A-Za-bd-z']|(?<!\{\{)c)(\d)" "auto subscript" irA
+snippet "([A-Za-bd-z'\}]|(?<!\{\{)c)(\d)" "auto subscript" irA
 `!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
 endsnippet
 
@@ -608,16 +648,13 @@ snippet osum "sum from 0 to infinity" wA
 endsnippet
 
 context "math()"
-snippet "(?<!\\)Prod" "product" wrA
-\prod`!p
-snip.rv = "_{" if t[1] else ""
-`${1:n=1}`!p
-snip.rv = "}" if t[1] else ""
-``!p
-snip.rv = "^{" if t[2] else ""
-`${2:\infty}`!p
-snip.rv = "}" if t[2] else ""
-` ${VISUAL}$0
+snippet prd "product" wA
+\prod
+endsnippet
+
+context "math()"
+snippet cprd "product" wA
+\coprod
 endsnippet
 
 context "math()"
@@ -639,11 +676,6 @@ priority 100
 context "math()"
 snippet "(?<!\\)sum" "sum" wrA
 \sum
-endsnippet
-
-context "math()"
-snippet "(?<!\\)prod" "prod" wrA
-\prod
 endsnippet
 
 ####################
@@ -676,7 +708,7 @@ snippet tp "to the power" iA
 endsnippet
 
 context "math()"
-snippet tP "sub" iA
+snippet "\s+pp" "sub" irA
 _{$1}
 endsnippet
 
@@ -727,8 +759,18 @@ endsnippet
 
 priority 10
 context "math()"
-snippet "(?<!\\)(sim|pi|perp|iff|star|ast|land|lor|neq|star)" "Symbols" rwA
+snippet "(?<![\\a-zA-Z])(sim|div|pi|perp|iff|star|ast|land|lor|neq|star)" "Symbols" rwA
 \\`!p snip.rv = match.group(0)`
+endsnippet
+
+context "math()"
+snippet Land "bigwedge" wA
+\bigwedge${1:\nolimits}
+endsnippet
+
+context "math()"
+snippet Lor "bigvee" wA
+\bigvee
 endsnippet
 
 context "math()"
@@ -787,13 +829,13 @@ endsnippet
 
 priority 10
 context "math()"
-snippet .J "cdot" wA
+snippet .j "cdot" wA
 \cdot
 endsnippet
 
 priority 100
 context "math()"
-snippet ,J. "cdot placeholder" iA
+snippet ,j. "cdot placeholder" iA
 \,\cdot\,
 endsnippet
 
@@ -853,6 +895,21 @@ context "math()"
 context "math()"
 snippet o+ "\oplus" wA
 \oplus
+endsnippet
+
+context "math()"
+snippet O+ "\bigoplus" wA
+\bigoplus
+endsnippet
+
+context "math()"
+snippet oxx "\otimes" wA
+\otimes
+endsnippet
+
+context "math()"
+snippet ixx "interior multiplication" wA
+\boldsymbol{\iota}_{${1:X}}\,
 endsnippet
 
 context "math()"
@@ -920,7 +977,7 @@ snippet ~= "congruent" wA
 endsnippet
 
 context "math()"
-snippet is= "isomorphic" wA
+snippet iS "isomorphic" wA
 \cong
 endsnippet
 
@@ -929,9 +986,18 @@ snippet "(=-|-=)" "equiv" wrA
 \equiv
 endsnippet
 
+snippet =~ "\approx" wA
+\approx
+endsnippet
+
 context "math()"
 snippet equiv "equiv (mod n)" wA
 \equiv$1 \pmod{$2}
+endsnippet
+
+context "math()"
+snippet pmd "\pmod{}" wA
+\pmod{$1}
 endsnippet
 
 context "math()"
@@ -939,9 +1005,33 @@ snippet uu "U" wA
 \cup
 endsnippet
 
+snippet cuu "small coprod" wA
+\amalg
+endsnippet
+
 context "math()"
 snippet UU "U" wA
 \bigcup_{$1}^{$2}
+endsnippet
+
+context "math()"
+snippet xU "big times" wA
+\mathop{\Large\times\normalsize}
+endsnippet
+
+context "math()"
+snippet oxU "\bigotimes" wA
+\bigotimes
+endsnippet
+
+context "math()"
+snippet +U "big plus" wA
+\mathop{\Large+\normalsize}
+endsnippet
+
+context "math()"
+snippet \oplusU "\bigoplus" wA
+\bigoplus
 endsnippet
 
 context "math()"
@@ -1014,13 +1104,12 @@ snippet CC "Complex" iA
 \mathbb C
 endsnippet
 
-snippet SS "Circle group" wA
-\mathbb S^1
+snippet SS "Sphere" wA
+\mathbb S
 endsnippet
 
-priority 1000
-snippet OO "Zero operator" wA
-\mathbb O
+snippet TT "Torus" wA
+\mathbb T
 endsnippet
 
 snippet BB "{T, F}" wA
@@ -1171,6 +1260,16 @@ snippet "(?<!\\)leq|<=" "less than or equals to" wrA
 endsnippet
 
 context "math()"
+snippet << "\ll" wA
+\ll
+endsnippet
+
+context "math()"
+snippet >> "\gg" wA
+\gg
+endsnippet
+
+context "math()"
 snippet l< "a normal subgroup" wA
 \unlhd
 endsnippet
@@ -1252,42 +1351,54 @@ endsnippet
 
 priority 100
 context "math()"
-snippet "([\\A-Za-z'_^\d\.]+(?<!\\))ht" "vector" rwA
+snippet "([\\A-Za-z'_^\d\.]+(?<!\\))hT" "vector" rwA
 \hat{`!p snip.rv = match.group(1)`}
 endsnippet
 
 priority 10
 context "math()"
-snippet "(?<!\\)ht" "hat" rwA
+snippet "(?<!\\)hT" "hat" rwA
 \hat{${VISUAL}$1}
 endsnippet
 
 priority 100
 context "math()"
-snippet "([\\A-Za-z'_^\d\.]+(?<!\\))dt" "time derivative" rwA
+snippet "([A-Za-z])dT" "time derivative" rwA
 \dot `!p snip.rv = match.group(1)`
 endsnippet
 
 priority 10
 context "math()"
-snippet "(?<!\\)dot" "time derivative" rwA
+snippet "(?<!\\)dT" "time derivative" rwA
 \dot{${VISUAL}$1}
+endsnippet
+
+priority 100
+context "math()"
+snippet "([\\A-Za-z'_^\d\.]+(?<!\\))Dt" "second time derivative" rwA
+\ddot `!p snip.rv = match.group(1)`
+endsnippet
+
+priority 10
+context "math()"
+snippet "(?<!\\)Dt" "time derivative" rwA
+\ddot{${VISUAL}$1}
 endsnippet
 
 priority 1000
 context "math()"
-snippet "([\\A-Za-z'_^\d\.]+(?<!\\))ring" "\mathring" rwA
+snippet "([\\A-Za-z'_^\d\.]+(?<!\\))rG" "\mathring" rwA
 \mathring{`!p snip.rv = match.group(1)`}
 endsnippet
 
 priority 100
 context "math()"
-snippet "(?<!\\)ring" "\mathring" rwA
+snippet "(?<!\\)rG" "\mathring" rwA
 \mathring{${VISUAL}$1}
 endsnippet
 
 context "math()"
-snippet "(?<!\\)wht" "widehat" rwA
+snippet "(?<!\\)wH" "widehat" rwA
 \widehat{${VISUAL}$1}
 endsnippet
 
@@ -1321,7 +1432,7 @@ snippet .~ "\tilde" wA
 endsnippet
 
 context "math()"
-snippet "(?<!\\)([A-Z])bb" "\mathbb [A-Z]" rwA
+snippet "(?<!\\)([A-Z0-9])bb" "\mathbb [A-Z]" rwA
 \mathbb `!p snip.rv = match.group(1)`
 endsnippet
 
@@ -1340,6 +1451,13 @@ snippet "(?<!\\)([A-Za-z]+)fk" "\mathfrak ..." rwA
 \mathfrak{`!p snip.rv = match.group(1)`}
 endsnippet
 
+priority 100
+context "math()"
+snippet "(\\[A-Za-z0-9]+)bl" "\mathbf ..." rwA
+\boldsymbol{`!p snip.rv = match.group(1)`}
+endsnippet
+
+priority 10
 context "math()"
 snippet "(?<!\\)([A-Za-z0-9]+)bl" "\mathbf ..." rwA
 \mathbf{`!p snip.rv = match.group(1)`}
@@ -1388,7 +1506,7 @@ endsnippet
 priority 10
 context "math()"
 snippet ove "Overset" wA
-\overset{$1}_{$2}
+\overset{$1}{$2}
 endsnippet
 
 priority 100
@@ -1438,7 +1556,7 @@ endsnippet
 
 priority 100
 context "math()"
-snippet '(?<!\\|\w)((arc)?(sin|cos|tan|cot|sec|csc))' "trigonometry" rwA
+snippet '(?<!\\|\w)((arc)?(sin|cos|tan|cot|sec|csc|sh|ch))' "trigonometry" rwA
 \\`!p snip.rv = match.group(1)`
 endsnippet
 
@@ -1600,4 +1718,9 @@ endsnippet
 context "not math()"
 snippet gcd "the geatest common divisor" wA
 g.c.d.
+endsnippet
+
+context "math()"
+snippet complex "a differential complex" b
+\cdots \longrightarrow ${1:C}^{q-1} \overset{d}{\longrightarrow} $1^{q} \overset{d}{\longrightarrow} $1^{q+1} \longrightarrow \cdots
 endsnippet
