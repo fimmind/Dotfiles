@@ -234,18 +234,20 @@ call lexima#add_rule({
       \ })
 
 " codeium {{{1
-let g:codeium_disable_bindings = 1
+if !has('android')
+  let g:codeium_disable_bindings = 1
 
-imap <script><silent><nowait><expr> <C-j> codeium#Accept()
-imap <script><silent><nowait><expr> <C-k> codeium#AcceptNextWord()
-imap <script><silent><nowait><expr> <C-m> codeium#AcceptNextLine()
-imap <C-;>   <Cmd>call codeium#CycleCompletions(1)<CR>
-imap <C-,>   <Cmd>call codeium#CycleCompletions(-1)<CR>
-imap <C-x>   <Cmd>call codeium#Clear()<CR>
+  imap <script><silent><nowait><expr> <C-j> codeium#Accept()
+  imap <script><silent><nowait><expr> <C-k> codeium#AcceptNextWord()
+  imap <script><silent><nowait><expr> <C-m> codeium#AcceptNextLine()
+  imap <C-;>   <Cmd>call codeium#CycleCompletions(1)<CR>
+  imap <C-,>   <Cmd>call codeium#CycleCompletions(-1)<CR>
+  imap <C-x>   <Cmd>call codeium#Clear()<CR>
 
-let g:codeium_filetypes = {
-      \ 'tex': 0
-      \ }
+  let g:codeium_filetypes = {
+        \ 'tex': 0
+        \ }
+end
 
 " vim-template {{{1
 let g:templates_directory = stdpath("config") . "/templates"
