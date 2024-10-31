@@ -1,3 +1,4 @@
 sources/**
 !sources/README.md
 doom.d/flycheck_config.el
+nvim/spell
