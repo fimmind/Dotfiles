@@ -58,7 +58,7 @@ noremap <leader>P "+P
 noremap <leader>x "+x
 noremap <leader>gp ggVG"+pG$
 noremap <leader>gy gg0vG$h"+y
-noremap <leader>gx gg0vG$hx
+noremap <leader>gx :%s/\($\n\)*\%$//<cr>gg0vG$h"+x:noh<cr>
 
 nnoremap <silent> <leader>r :make VIM_CUR_BUF_FILE='%:p' nvim/run<cr>
 nnoremap <silent> <leader>b :make VIM_CUR_BUF_FILE='%:p' nvim/build<cr>
