@@ -7,6 +7,9 @@ function upgrade_sudo
 end
 
 function upgrade_no_sudo
+    paccache -r
+    paccache -ruk0
+
     brew update
     brew upgrade
     stack update
