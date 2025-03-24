@@ -7,3 +7,7 @@ case $1 in
   window)    maim -i $(xdotool getactivewindow) $file;;
   selection) maim -s                            $file;;
 esac
+
+if [ -f $file ]; then
+  xclip -selection clipboard -t image/png -i $file
+fi
