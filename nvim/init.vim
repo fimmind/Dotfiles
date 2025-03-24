@@ -239,7 +239,7 @@ if !has('android')
   let g:codeium_disable_bindings = 1
 
   imap <script><silent><nowait><expr> <C-j> codeium#Accept()
-  imap <script><silent><nowait><expr> <C-k> codeium#AcceptNextWord()
+  imap <script><silent><nowait><expr> <C-n> codeium#AcceptNextWord()
   imap <script><silent><nowait><expr> <C-m> codeium#AcceptNextLine()
   imap <C-;>   <Cmd>call codeium#CycleCompletions(1)<CR>
   imap <C-,>   <Cmd>call codeium#CycleCompletions(-1)<CR>
