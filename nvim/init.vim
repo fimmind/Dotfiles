@@ -290,6 +290,9 @@ let g:vimtex_env_toggle_math_map = {
 " Do not open quickfix window automatically
 let g:vimtex_quickfix_mode = 0
 
+" img-clip.vim {{{
+nnoremap <leader>ip :PasteImage<cr>
+
 " coc.nvim {{{1
 set encoding=utf-8
 set hidden

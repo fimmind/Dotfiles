@@ -47,6 +47,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'mattn/emmet-vim'
   Plug 'junegunn/vim-peekaboo'
+  Plug 'HakonHarnes/img-clip.nvim'
 
   if !has('android')
     Plug 'Exafunction/codeium.vim', {'do': ':Codeium Auth', 'branch': 'main'}
