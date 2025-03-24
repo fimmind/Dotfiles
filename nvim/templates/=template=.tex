@@ -11,6 +11,7 @@
 \usepackage{mathrsfs}
 \usepackage{mathtools}
 \usepackage{booktabs}
+\usepackage[bottom]{footmisc}
 
 \usepackage[
     colorlinks=true,
@@ -18,17 +19,14 @@
     urlcolor=blue,
 ]{hyperref}
 
-\renewcommand{\thesection}{}
-\renewcommand{\thesubsection}{}
-\renewcommand{\thesubsubsection}{}
-\renewcommand{\theparagraph}{}
-\setlength{\parindent}{0pt}
-
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{corollary}{Corollary}[theorem]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
+
+\theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
 
 \begin{document}
 %HERE%
