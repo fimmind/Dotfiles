@@ -19,20 +19,33 @@ settings:
   content.cookies.accept:
     https://ticktick.com/#p/6137bf4044ae33c07c03a341/tasks/65201ac7a464cf237666bc23: all
     https://ticktick.com/webapp/#p/6137bf4044ae33c07c03a341/tasks/65201ac7a464cf237666bc23: all
+  content.desktop_capture:
+    https://telemost.yandex.ru: true
   content.geolocation:
     https://www.google.com: true
+  content.javascript.clipboard:
+    https://www.deepl.com: access-paste
+  content.media.audio_capture:
+    https://telemost.yandex.ru: true
+  content.media.audio_video_capture:
+    https://telemost.yandex.ru: true
+  content.media.video_capture:
+    https://telemost.yandex.ru: true
   content.notifications.enabled:
     https://83.farcaleniom.com: false
+    https://mail.yandex.ru: false
     https://novate.ru: false
     https://onlinemultfilmy.ru: false
     https://webchat.freenode.net: true
     https://www.mos.ru: false
     https://www.reddit.com: false
+  content.register_protocol_handler:
+    https://mail.yandex.ru?mailto=%25s: false
   fonts.default_family:
     global: Source Code Pro
   url.searchengines:
     global:
-      DEFAULT: https://www.google.com/search?q={}
+      DEFAULT: https://www.google.com/search?q={}&udm=14
       camb: https://dictionary.cambridge.org/us/search/english/?q={}
       context-en: https://context.reverso.net/translation/russian-english/{}
       context-jp: https://context.reverso.net/translation/japanese-english/{}
@@ -41,8 +54,10 @@ settings:
       gdict: https://www.google.com/search?q=dictionary#dobs={}
       goo: https://dictionary.goo.ne.jp/srch/en/{}/m1u/
       goo-jp: https://dictionary.goo.ne.jp/srch/jn/{}/m1u/
-      google: https://www.google.com/search?q={}
-      images: https://www.google.com/search?q={}&tbm=isch
+      google: https://www.google.com/search?q={}&udm=14
+      google-jp: https://www.google.co.jp/search?q={}&hl=ja&udm=14
+      img: https://www.google.com/search?q={}&tbm=isch
+      img-jp: https://www.google.co.jp/search?q={}&hl=ja&tbm=isch
       jisho: https://jisho.org/search/{}
       jwiki: https://ja.wikipedia.org/wiki/{}
       jwikt: https://ja.wiktionary.org/wiki/{}
