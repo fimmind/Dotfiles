@@ -68,7 +68,8 @@ rules:
           curl htop ranger lm_sensors mlocate tree jq pdftk
           imagemagick neofetch cmatrix cmus dosfstools pass unrar
           pkgfile gnugo bind-tools irssi rlwrap ripgrep figlet
-          id3v2 android-file-transfer yt-dlp
+          id3v2 android-file-transfer yt-dlp pacman-contrib
+          easytag
         npm: add-gitignore
         pip: pylatexenc fasttyper
 
