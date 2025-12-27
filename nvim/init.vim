@@ -9,7 +9,6 @@ set scrolloff=10
 set list
 set hlsearch
 set showmatch
-set termencoding=utf-8
 set fileencodings=utf-8,cp1251
 set cmdheight=1
 set title
