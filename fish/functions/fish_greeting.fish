@@ -1,3 +1,3 @@
 function fish_greeting
-cal -n 2
+cal -3
 end
