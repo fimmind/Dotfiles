@@ -421,7 +421,7 @@ autocmd FileType scip set ft=racket
 
 " nvim-treesitter {{{1
 lua << EOF
-require'nvim-treesitter.configs'.setup {
+require'nvim-treesitter'.setup {
   indent = {
     enable = false,
   },

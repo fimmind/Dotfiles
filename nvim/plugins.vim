@@ -43,7 +43,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'easymotion/vim-easymotion'
   Plug 'guns/vim-sexp'
   Plug 'dkarter/bullets.vim'
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'branch': 'main'}
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'mattn/emmet-vim'
   Plug 'junegunn/vim-peekaboo'
