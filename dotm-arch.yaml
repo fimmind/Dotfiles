@@ -335,7 +335,7 @@ rules:
     - shell: gem install irb
 
   python:
-    - pkgs: { pacman: python3 python-pip }
+    - pkgs: { pacman: python3 python-pip pyenv }
 
   tensorflow:
     - deps: python
