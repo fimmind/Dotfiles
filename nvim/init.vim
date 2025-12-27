@@ -389,6 +389,8 @@ let g:ale_fixers = {
       \ 'rust': ['rustfmt'],
       \ 'tex': ['latexindent']
       \ }
+let g:ale_python_autopep8_options = '-aa'
+
 let g:ale_fix_on_save_ignore = {
     \ 'markdown': ['trim_whitespace']
     \ }
