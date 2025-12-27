@@ -1,0 +1,25 @@
+#!/usr/bin/env fish
+
+function turn_on
+  xset s off -dpms
+  echo Turned DPMS off
+
+  xrandr --output HDMI2 --mode 1920x1080
+  echo Changed resolution to 1920x1080
+end
+
+function turn_off
+  xset s on +dpms
+  echo Turned DPMS on
+
+  xrandr --output HDMI2 --mode 3840x2160
+  echo Changed resolution to 3840x2160
+end
+
+function int_handler --on-signal INT
+  echo; turn_off; exit
+end
+
+turn_on
+read -l -P 'Print anything get things back...'
+turn_off
