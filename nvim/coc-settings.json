@@ -23,8 +23,11 @@
   "git.changeRemovedSign.hlGroup": "GitGutterChangeDelete",
   "diagnostic.displayByAle": true,
   "prettier.proseWrap": "never",
-  "coc.preferences.formatOnSaveFiletypes": ["markdown"],
+  "coc.preferences.formatOnSaveFiletypes": ["dart"],
   "coc.preferences.jumpCommand": "vsplit",
   "suggest.languageSourcePriority": 10,
-  "rust-analyzer.server.path": "rust-analyzer"
+  "rust-analyzer.server.path": "rust-analyzer",
+  "snippet.highlight": true,
+  "diagnostic.refreshOnInsertMode": true,
+  "diagnostic.autoRefresh": true
 }

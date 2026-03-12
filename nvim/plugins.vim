@@ -48,10 +48,8 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'mattn/emmet-vim'
   Plug 'junegunn/vim-peekaboo'
   Plug 'HakonHarnes/img-clip.nvim'
-
-  if !has('android')
-    Plug 'Exafunction/codeium.vim', {'do': ':Codeium Auth', 'branch': 'main'}
-  end
+  Plug 'Olical/conjure'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
 
   " Filetype
   Plug 'kovetskiy/sxhkd-vim'
@@ -61,6 +59,9 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'rust-lang/rust.vim'
   Plug 'benknoble/vim-racket'
   Plug 'guersam/vim-j'
+  Plug 'sogaiu/tree-sitter-clojure'
+  Plug 'dart-lang/dart-vim-plugin'
+  Plug 'udalov/kotlin-vim'
 call plug#end()
 
 " Automatically install missing plugins {{{1

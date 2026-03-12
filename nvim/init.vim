@@ -148,6 +148,12 @@ function s:right_block()
   let l:lines = '≡%L'
   let l:cursor = '%l-%c'
 
+  if l:ftype == "python"
+    let l:ftype = l:ftype . " ("
+          \ . fnamemodify(system("echo -n $VIRTUAL_ENV"), ':t')
+          \ . ")"
+  endif
+
   return [l:coc_status, l:spelllang, l:ftype, l:lines, l:cursor]
 endfunction
 
@@ -283,8 +289,7 @@ let g:vimtex_env_toggle_math_map = {
       \ '\(': '\[',
       \ '$$': '\[',
       \ '\[': 'equation',
-      \ 'equation': 'align*',
-      \ 'align': '\('
+      \ 'equation': '\('
       \ }
 " Do not open quickfix window automatically
 let g:vimtex_quickfix_mode = 0
@@ -304,7 +309,8 @@ set signcolumn=yes
 let g:coc_global_extensions = [
       \ "coc-json", "coc-git", "coc-ultisnips", "coc-vimtex", "coc-prettier",
       \ "coc-explorer", "coc-jedi", "coc-rust-analyzer",
-      \ "coc-tsserver"
+      \ "coc-tsserver", "coc-clojure", "coc-conjure", "coc-flutter-tools",
+      \ "coc-kotlin"
       \ ]
 function InstallCocExtensions()
   exec "CocInstall -sync " . join(g:coc_global_extensions)
@@ -365,6 +371,9 @@ augroup end
 nmap <leader>la  <Plug>(coc-codeaction)
 " Fix autofix problem of current line
 nmap <leader>lq  <Plug>(coc-fix-current)
+
+nmap <silent> <leader>lh :CocCommand document.toggleInlayHint<cr>
+nmap <silent> <leader>le :CocList diagnostics<cr>
 
 xmap af <Plug>(coc-funcobj-a)
 omap af <Plug>(coc-funcobj-a)
@@ -434,5 +443,22 @@ EOF
 
 " emmet {{{1
 let g:user_emmet_leader_key='<c-e>'
+
+" cljd {{{1
+au! BufRead,BufNewFile *.cljd setfiletype clojure
+
+" conjure {{{1
+let g:conjure#mapping#doc_word = v:false
+
+" bullets.vim {{{1
+let g:bullets_mapping_leader = '<M-b>'
+nnoremap <silent> <M-o> :InsertNewBullet<cr>
+inoremap <silent> <M-CR> <c-o>:InsertNewBullet<cr>
+
+" markdown-preview.nvim {{{1
+function OpenMarkdownPreview (url)
+  execute "silent ! chromium --password-store=basic --app='" . a:url . "' &"
+endfunction
+let g:mkdp_browserfunc = 'OpenMarkdownPreview'
 
 " {{{1 vim: fdm=marker
