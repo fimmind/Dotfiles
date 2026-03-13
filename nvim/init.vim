@@ -390,6 +390,8 @@ nnoremap <silent> <leader>lls  :<C-u>CocList -I symbols<cr>
 " Remap for coc-explorer
 nmap <silent> <leader>, :CocCommand explorer<CR>
 
+autocmd User CocStatusChange redrawstatus
+
 " ALE {{{1
 let g:ale_fix_on_save = 1
 let g:ale_fixers = {
