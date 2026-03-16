@@ -98,7 +98,7 @@ autocmd FileType *
       \ set tabstop=2
       \ | set shiftwidth=2
       \ | set softtabstop=2
-autocmd FileType cpp,c,python,rust,tex
+autocmd FileType cpp,c,python,rust,tex,kotlin
       \ set tabstop=4
       \ | set shiftwidth=4
       \ | set softtabstop=4
