@@ -293,8 +293,7 @@ set signcolumn=yes
 let g:coc_global_extensions = [
       \ "coc-json", "coc-git", "coc-ultisnips", "coc-vimtex", "coc-prettier",
       \ "coc-explorer", "coc-jedi", "coc-rust-analyzer",
-      \ "coc-tsserver", "coc-clojure", "coc-conjure", "coc-flutter-tools",
-      \ "coc-kotlin"
+      \ "coc-clojure", "coc-conjure", "coc-flutter-tools", "coc-kotlin"
       \ ]
 function InstallCocExtensions()
   exec "CocInstall -sync " . join(g:coc_global_extensions)
