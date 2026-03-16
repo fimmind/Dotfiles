@@ -160,7 +160,7 @@ rules:
         sudo systemctl start cups.service
 
   anki:
-    - pkgs: { aur: anki-bin }
+    - pkgs: { pip: aqt }
     - pkgs:
         pip: genanki pydantic # tex_to_anki's dependecies
         npm: svgo # for optimizing latex's svgs
