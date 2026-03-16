@@ -71,3 +71,7 @@ set -x PATH "$PATH:$XDG_DATA_HOME/nvim/plugged/vim-iced/bin"
 
 set -x MANPATH "$MANPATH:/usr/local/texlive/2019/texmf-dist/doc/man"
 set -x INFOPATH "$INFOPATH:/usr/local/texlive/2019/texmf-dist/doc/info"
+
+# pyenv
+# -----
+pyenv init --no-rehash - fish | source
