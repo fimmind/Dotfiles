@@ -27,6 +27,15 @@ super + {_, shift +} e
 super + b
 	qutebrowser
 
+super + m
+	Telegram
+
+super + shift + m
+	ticktick
+
+super + shift + n
+	kitty -- cmus
+
 # See https://forums.ankiweb.net/t/anki-ui-appears-broken-with-newer-versions-of-qt/13684
 # for the explanation on `--no-sandbox`
 super + a
@@ -35,8 +44,8 @@ super + a
 super + z
 	zathura
 
-super {_,+ shift} + c
-	kitty --class=float -- {fish -c J,qalc}
+super + c
+	kitty --class=float -- qalc
 
 super + shift + p
 	powermenu
@@ -80,18 +89,21 @@ super + shift + Return
 super + {t,s,shift + s,f}
 	bspc node -t {tiled,pseudo_tiled,floating,\~fullscreen}
 
-# focus the next/previous window in the current desktop
-super + {j,k}
-	bspc node -f {next,prev}.local.!hidden.window
-
-# move the node in the given direction
-super + shift + {h,j,k,l}
-	bspc node -s {west,south,north,east}
-
+# Change focused node and move node
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}.local
 
 # focus the node for the given path jump
-super + {p,n,comma,period}
-	bspc node -f @{parent,brother,first,second}
+super + {p,n}
+	bspc node -f @{parent,first}
+
+super + {comma,period}
+	bspc node -f {prev,next}.local.!hidden.window
+
+super + q
+	bspc node 'focused.floating#next.local.!hidden.floating' -f \
+	    || bspc node 'last.local.!focused.!hidden.floating' -f \
+	    || bspc node  'any.local.!focused.!hidden.floating' -f
 
 # focus the next/previous desktop in the current monitor
 super + bracket{left,right}
