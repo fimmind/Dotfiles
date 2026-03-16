@@ -16,9 +16,10 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 [[ -f "$userresources" ]] && xrdb -merge "$userresources"
 [[ -f "$usermodmap"    ]] && xmodmap "$usermodmap"
 
-export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
+export GTK_IM_MODULE='ibus'
+export XMODIFIERS='@im=ibus'
+export QT_IM_MODULE='ibus'
+export GLFW_IM_MODULE='ibus'
 ibus-daemon -rx &
 
 keynav &
