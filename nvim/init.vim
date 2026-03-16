@@ -391,6 +391,7 @@ let g:ale_fix_on_save_ignore = {
     \ }
 
 let g:ale_lint_on_text_changed = 'always'
+let g:ale_lint_on_insert_leave = 1
 let g:ale_linters_explicit = 1
 let g:ale_linters = {
       \ 'tex': ['lacheck', 'proselint'],
