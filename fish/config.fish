@@ -25,7 +25,6 @@ alias ff="fasttyper -n -rp 20 -sm 100"
 
 alias dmenu="dmenu -nb '#18191d' -nf '#bbbbbb' -sb '#005577' -sf '#eeeeee' -fn 'DejaVu Sans Mono:size=10'"
 alias apl="apl --noColor --silent"
-alias J="j9 -c"
 alias sicp="racket -I sicp"
 alias angband="angband -mgcu"
 
