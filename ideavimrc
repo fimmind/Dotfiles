@@ -1,0 +1,63 @@
+" Plugins {{{1
+Plug 'scrooloose/nerdcommenter'
+Plug 'michaeljsmith/vim-indent-object'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tommcdo/vim-exchange'
+Plug 'tpope/vim-commentary'
+
+set functiontextobj
+set peekaboo
+set ideajoin
+set ideaput
+
+" Basic settings {{{1
+set relativenumber
+
+" General mappings {{{1
+let g:mapleader=' '
+let mapleader=g:mapleader
+
+noremap j gj
+noremap k gk
+noremap gj j
+noremap gk k
+inoremap <c-l> <tab>
+
+nnoremap <leader>w <C-w>
+nnoremap <leader>fs :write<cr>
+
+noremap <leader>y "+y
+noremap <leader>p "+p
+noremap <leader>P "+P
+noremap <leader>x "+x
+noremap <leader>gp ggVG"+pG$
+noremap <leader>gy gg0vG$h"+y
+noremap <leader>gx :%s/\($\n\)*\%$//<cr>gg0vG$h"+x:noh<cr>
+
+" Tabs {{{1
+nnoremap <leader>tn :tabnext<CR>
+nnoremap <leader>tp :tabprevious<CR>
+nnoremap <leader>ta :tabnew<CR>
+nnoremap <leader>tf :tabfirst<CR>
+nnoremap <leader>tl :tablast<CR>
+nnoremap <leader>ts :tabs<CR>
+nnoremap <leader>tq :tabclose<CR>
+nnoremap <leader>to :tabonly<CR>
+nnoremap <leader>tgr :2tabmove<CR>
+nnoremap <leader>tgl :-1tabmove<CR>
+
+" NERDCommenter {{{1
+let g:NERDSpaceDelims = 1
+
+" IdeaMappings {{{1
+nmap <leader>r <Action>(Run)
+
+" Commentary {{{1
+xmap <leader>c  <Plug>Commentary
+nmap <leader>c  <Plug>Commentary
+omap <leader>c  <Plug>Commentary
+nmap <leader>cc <Plug>CommentaryLine
+nmap <leader>cu <Plug>Commentary<Plug>Commentary
+
+" {{{1 vim: fdm=marker

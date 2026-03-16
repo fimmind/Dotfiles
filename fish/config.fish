@@ -57,10 +57,14 @@ set -x CSI_PROGRAM "chicken-csi"
 set -x _JAVA_AWT_WM_NONREPARENTING 1
 set -x ANDROID_SDK "$HOME/Android/Sdk"
 set -x ANDROID_HOME $HOME/Android/Sdk
+set -x ANDROID_AVD_HOME $HOME/.config/.android/avd
 set -x PATH "$PATH:$ANDROID_HOME/emulator"
 set -x PATH "$PATH:$ANDROID_HOME/tools"
 set -x PATH "$PATH:$ANDROID_HOME/tools/bin"
 set -x PATH "$PATH:$ANDROID_HOME/platform-tools"
+
+set -x JAVA_HOME /usr/lib/jvm/default
+set -x PATH "$PATH:$JAVA_HOME/bin"
 
 set -x PATH "$PATH:$HOME/.local/bin"
 set -x PATH "$PATH:$HOME/Dotfiles/bin"

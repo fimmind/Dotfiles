@@ -375,8 +375,14 @@ rules:
           android-sdk-build-tools android-sdk-platform-tools
           android-platform
 
+  kotlin:
+    - pkgs:
+        pacman: jdk17-openjdk kotlin gradle
+
+  intellij:
+    - pkgs: { pacman : intellij-idea-community-edition }
+
   android_dev:
-    - deps: react
     - pkgs:
         pacman: android-tools
         aur: android-studio
