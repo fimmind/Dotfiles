@@ -388,6 +388,23 @@ rules:
         aur: android-studio
         brew: watchman
 
+  # kotlin 2.1.0 is needed for compatibility with kotlin-language-server
+  kotlin-termux:
+    - shell: |
+        mkdir -vp ~/.local/share
+        mkdir -vp ~/.local/bin
+        cd ~/.local/share/
+        if [ ! -d "./kotlinc" ]; then
+            zipName="kotlin-compiler-2.1.0.zip"
+            wget "https://github.com/JetBrains/kotlin/releases/download/v2.1.0/$zipName"
+            unzip "$zipName"
+            rm "$zipName"
+        fi
+        for file in ~/.local/share/kotlinc/bin/*; do
+            if [ -f "$file" ] && [ -x "$file" ]; then
+                ln -s "$file" ~/.local/bin/
+            fi
+        done
 
   dyalog:
     - pkgs: { aur: ncurses5-compat-libs dyalog-bin }

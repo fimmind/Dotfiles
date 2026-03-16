@@ -31,10 +31,15 @@ alias angband="angband -mgcu"
 alias bcl="bluetoothctl"
 alias timer="clock-rs timer"
 
-if [ "`uname -o`" = "Android" ]
+if [ (uname -o) = "Android" ]
   alias chroot="termux-chroot && exit"
   alias hugs="termux-chroot hugs"
   alias runhugs="termux-chroot runhugs"
+
+  set -x KOTLIN_HOME "~/.local/share/kotlinc"
+
+  alias kotlinc='kotlinc -J-Dlibrary.jansi.path=$PREFIX/lib/jansi'
+  alias kotlin='kotlin -J-Dlibrary.jansi.path=$PREFIX/lib/jansi'
 end
 
 # Environment
