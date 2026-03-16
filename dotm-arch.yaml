@@ -57,9 +57,9 @@ rules:
     - pkgs:
         pacman: >-
           qalculate-gtk libreoffice-fresh libreoffice-fresh-ru
-          gnome-mplayer rogue nethack cmus deluge deluge-gtk
+          gnome-mplayer rogue angband cmus deluge deluge-gtk
           opera chromium firefox gcolor2 gimp pcmanfm
-        aur: teams
+        aur: ticktick
 
   utils:
     - deps: broot git nvim brew tmux
@@ -69,9 +69,10 @@ rules:
           imagemagick neofetch cmatrix cmus dosfstools pass unrar
           pkgfile gnugo bind-tools irssi rlwrap ripgrep figlet
           id3v2 android-file-transfer yt-dlp pacman-contrib
-          easytag
+          easytag rsync pv
         npm: add-gitignore
         pip: pylatexenc fasttyper
+        cargo: clock-rs
 
   input_method:
     - pkgs: { pacman: ibus ibus-anthy ibus-skk ibus-table }
@@ -147,7 +148,7 @@ rules:
         gitconfig: ~/.gitconfig
 
   bluetooth:
-    - pkgs: { pacman: bluez bluez-utils }
+    - pkgs: { pacman: bluez bluez-utils bluetui }
     - shell: |
         sudo systemctl enable bluetooth
         sudo systemctl start bluetooth
@@ -270,9 +271,6 @@ rules:
   kgs:
     - pkgs: { aur: cgoban }
 
-  rocketchat:
-    - pkgs: { aur: rocketchat-client-bin }
-
   virtualbox:
     - pkgs:
         pacman: >-
@@ -380,3 +378,6 @@ rules:
 
   flatpak:
     - pkgs: { pacman: flatpak }
+
+  typing:
+    - pkgs: { aur: typespeed typeracer-bin }

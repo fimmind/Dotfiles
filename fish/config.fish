@@ -27,6 +27,7 @@ alias dmenu="dmenu -nb '#18191d' -nf '#bbbbbb' -sb '#005577' -sf '#eeeeee' -fn '
 alias apl="apl --noColor --silent"
 alias sicp="racket -I sicp"
 alias angband="angband -mgcu"
+alias timer="clock-rs timer"
 
 if [ "`uname -o`" = "Android" ]
   alias chroot="termux-chroot && exit"
