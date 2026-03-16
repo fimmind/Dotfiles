@@ -362,6 +362,19 @@ rules:
     - deps: nodejs
     - pkgs: { npm: react }
 
+  jvm17:
+    - pkgs: { pacman: java-runtime-common }
+    - shell: |
+        sudo archlinux-java set java-17-openjdk
+
+  flutter:
+    - deps: jvm17
+    - pkgs:
+        aur: >-
+          flutter android-sdk android-sdk-cmdline-tools-latest
+          android-sdk-build-tools android-sdk-platform-tools
+          android-platform
+
   android_dev:
     - deps: react
     - pkgs:
