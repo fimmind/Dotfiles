@@ -4,7 +4,6 @@ conf:
   pkg_managers:
     install_cmds:
       pacman: sudo pacman -S --needed --noconfirm %pkg
-      brew: /home/linuxbrew/.linuxbrew/bin/brew install %pkg
       gem: gem install %pkg
       pip: pip3 install %pkg
       stack: stack install %pkg
@@ -14,7 +13,6 @@ conf:
       aur: ./bin/aur_build %pkg
       raco: raco pkg install --auto --skip-installed -- %pkg
     deps:
-      brew: brew
       gem: ruby
       pip: python
       stack: haskell
@@ -30,7 +28,7 @@ rules:
     - shell: sudo ldconfig
 
   default:
-    - deps: lts_kernel DE pr_langs texlive android_dev
+    - deps: lts_kernel DE pr_langs texlive
 
   lts_kernel:
     - pkgs: { pacman: linux-lts }
@@ -62,7 +60,7 @@ rules:
         aur: ticktick
 
   utils:
-    - deps: broot git nvim brew tmux
+    - deps: broot git nvim tmux
     - pkgs:
         pacman: >-
           curl htop ranger lm_sensors mlocate tree jq pdftk
@@ -242,12 +240,6 @@ rules:
     - pkgs:
         flatpak: https://flathub.org/repo/appstream/us.zoom.Zoom.flatpakref
 
-  brew:
-    - in_temp: |
-        wget https://raw.githubusercontent.com/Homebrew/install/master/install.sh \
-          -O install.sh
-        echo | bash ./install.sh
-
   qutebrowser:
     - links:
         qutebrowser: ~/.config/qutebrowser
@@ -368,25 +360,23 @@ rules:
         sudo archlinux-java set java-17-openjdk
 
   flutter:
-    - deps: jvm17
+    - deps: android_dev jvm17
     - pkgs:
-        aur: >-
-          flutter android-sdk android-sdk-cmdline-tools-latest
-          android-sdk-build-tools android-sdk-platform-tools
-          android-platform
+        aur: flutter
 
   kotlin:
     - pkgs:
         pacman: jdk17-openjdk kotlin gradle
 
-  intellij:
-    - pkgs: { pacman : intellij-idea-community-edition }
-
+  # Android studio must be installed manually
+  # Either throught jetbrains-toolbox or:
+  #   https://developer.android.com/studio/install#linux
   android_dev:
     - pkgs:
         pacman: android-tools
-        aur: android-studio
-        brew: watchman
+        aur: jetbrains-toolbox watchman-bin
+    - links:
+        ideavimrc: ~/.ideavimrc
 
   # kotlin 2.1.0 is needed for compatibility with kotlin-language-server
   kotlin-termux:

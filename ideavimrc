@@ -1,5 +1,4 @@
 " Plugins {{{1
-Plug 'scrooloose/nerdcommenter'
 Plug 'michaeljsmith/vim-indent-object'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
@@ -25,15 +24,6 @@ noremap gk k
 inoremap <c-l> <tab>
 
 nnoremap <leader>w <C-w>
-nnoremap <leader>fs :write<cr>
-
-noremap <leader>y "+y
-noremap <leader>p "+p
-noremap <leader>P "+P
-noremap <leader>x "+x
-noremap <leader>gp ggVG"+pG$
-noremap <leader>gy gg0vG$h"+y
-noremap <leader>gx :%s/\($\n\)*\%$//<cr>gg0vG$h"+x:noh<cr>
 
 " Tabs {{{1
 nnoremap <leader>tn :tabnext<CR>
@@ -46,9 +36,6 @@ nnoremap <leader>tq :tabclose<CR>
 nnoremap <leader>to :tabonly<CR>
 nnoremap <leader>tgr :2tabmove<CR>
 nnoremap <leader>tgl :-1tabmove<CR>
-
-" NERDCommenter {{{1
-let g:NERDSpaceDelims = 1
 
 " IdeaMappings {{{1
 nmap <leader>r <Action>(Run)

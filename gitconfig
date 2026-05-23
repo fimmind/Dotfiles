@@ -4,6 +4,7 @@
 	name = fimmind
 [core]
 	editor = nvim
+	autocrlf = input
 [gpg]
 	program = gpg
 

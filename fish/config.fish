@@ -61,12 +61,14 @@ set -x CSI_PROGRAM "chicken-csi"
 
 set -x _JAVA_AWT_WM_NONREPARENTING 1
 set -x ANDROID_SDK "$HOME/Android/Sdk"
+set -x ANDROID_SDK_ROOT "$HOME/Android/Sdk"
 set -x ANDROID_HOME $HOME/Android/Sdk
 set -x ANDROID_AVD_HOME $HOME/.config/.android/avd
 set -x PATH "$PATH:$ANDROID_HOME/emulator"
 set -x PATH "$PATH:$ANDROID_HOME/tools"
 set -x PATH "$PATH:$ANDROID_HOME/tools/bin"
 set -x PATH "$PATH:$ANDROID_HOME/platform-tools"
+set -x LD_BIND_NOW 1
 
 set -x JAVA_HOME /usr/lib/jvm/default
 set -x PATH "$PATH:$JAVA_HOME/bin"
@@ -77,7 +79,6 @@ set -x PATH "$PATH:$HOME/.cargo/bin"
 set -x PATH "$PATH:$HOME/.gem/ruby/2.7.0/bin"
 set -x PATH "$PATH:/usr/local/texlive/2019/bin/x86_64-linux"
 set -x PATH "$PATH:$PREFIX/bin/texlive"
-set -x PATH "$PATH:/home/linuxbrew/.linuxbrew/bin"
 set -x PATH "$PATH:$XDG_DATA_HOME/nvim/plugged/vim-iced/bin"
 
 set -x MANPATH "$MANPATH:/usr/local/texlive/2019/texmf-dist/doc/man"
