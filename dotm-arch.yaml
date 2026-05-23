@@ -317,6 +317,13 @@ rules:
     - pkgs: { pacman: stack ghc-libs ghc-static }
     - shell: cd ~; stack setup
 
+  J:
+    - shell: |
+        curl -fsSL jsoftware.com/download/j9.7/jinstall.sh | sudo sh -s -- -p /usr -q none
+
+  kona:
+    - pkgs: { aur: kona-git }
+
   ruby:
     - pkgs: { pacman: ruby }
     - shell: gem install irb
