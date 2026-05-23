@@ -208,9 +208,8 @@ rules:
         nvim: ~/.config/nvim
     - pkgs: { pacman: neovim }
     - pkgs:
-        pip: >-
-          pynvim unidecode jedi-language-server autopep8 yapf
-          flake8 hacking bandit pylint proselint
+        pacman: python-unidecode python-pynvim tree-sitter tree-sitter-cli
+        pip: autopep8 yapf flake8 hacking bandit pylint proselint
         npm: neovim
         gem: neovim
     - shell: nvim -u nvim/plugins.vim -c qa
