@@ -306,15 +306,12 @@ rules:
     - pkgs: { pacman: qt5-base qt6-base qtcreator }
 
   clojure:
-    - pkgs: { pacman: clojure }
+    - pkgs:
+        pacman: clojure leiningen
+        aur: joker-bin
     - links:
         profiles.clj: ~/.lein/profiles.clj
         cljstyle: ~/.cljstyle
-    - shell: |
-        wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein \
-          -O ~/.local/bin/lein
-        chmod +x ~/.local/bin/lein
-        ~/.local/bin/lein
 
   haskell:
     - pkgs: { pacman: stack ghc-libs ghc-static }
