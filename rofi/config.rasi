@@ -5,4 +5,5 @@ configuration {
 	display-combi: "combi: ";
   dpi: 144;
 }
-@theme "sidebar"
+
+@theme "/usr/share/rofi/themes/dmenu.rasi"
