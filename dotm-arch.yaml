@@ -407,3 +407,12 @@ rules:
 
   typing:
     - pkgs: { aur: typespeed typeracer-bin }
+
+  # c.f. https://github.com/amnezia-vpn/amnezia-client/issues/792#issuecomment-2508097498
+  # for the meaning of the shell script
+  amnezia:
+    - pkgs: { aur: amneziavpn-bin }
+    - shell: |
+        sudo systemctl enable systemd-resolved.service
+        sudo systemctl start systemd-resolved.service
+        sudo ln -sf ../run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
