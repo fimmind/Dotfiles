@@ -24,27 +24,49 @@ super + {_, shift +} v
 super + {_, shift +} e
 	seledit --action {write,edit} --ext tex --editor "kitty -- nvim"
 
-super + b
-	qutebrowser
+super + shift + b
+	chromium
 
 super + m
-	Telegram
+	xdo activate -n Telegram; Telegram
+
+super + {n, b}
+	set prog {ticktick,qutebrowser}; \
+	if pgrep $prog; xdo activate -n $prog; else $prog; end
 
 super + shift + m
-	ticktick
+	if pgrep cmus; \
+		xdo activate -n cmus; \
+	else \
+		kitty --class=cmus -- cmus; \
+	end
 
 super + shift + n
-	kitty -- cmus
+	xdo activate -n AmneziaVPN; AmneziaVPN
 
 # See https://forums.ankiweb.net/t/anki-ui-appears-broken-with-newer-versions-of-qt/13684
 # for the explanation on `--no-sandbox`
+#
+# Window id is found by the title name containing " - Anki" so as to only
+# auto-focus the main Anki window
 super + a
-	anki "" --no-sandbox
+	if set id (xdotool search --name " - Anki"); \
+		xdo activate $id; \
+	else; \
+		bspc desktop -f ^6; \
+		anki "" --no-sandbox; \
+	end
 
 super + z
 	zathura
 
+super + shift + z
+	kitty --class=float -- fish -c xdg_fzf
+
 super + c
+	kitty --class=float ijconsole.sh
+
+super + shift + c
 	kitty --class=float -- qalc
 
 super + shift + p
