@@ -419,3 +419,9 @@ rules:
         sudo systemctl enable systemd-resolved.service
         sudo systemctl start systemd-resolved.service
         sudo ln -sf ../run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
+
+  codex:
+    - pkgs: { npm: codex }
+    - shell: |
+        npx skills add -g -y Meet-Miyani/compose-skill
+        npx skills add -y -g pbakaus/impeccable
