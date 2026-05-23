@@ -56,7 +56,7 @@ rules:
         pacman: >-
           qalculate-gtk libreoffice-fresh libreoffice-fresh-ru
           gnome-mplayer rogue angband cmus deluge deluge-gtk
-          opera chromium firefox gcolor2 gimp pcmanfm
+          opera chromium gcolor2 gimp pcmanfm
         aur: ticktick
 
   utils:
