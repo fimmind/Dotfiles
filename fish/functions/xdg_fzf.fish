@@ -2,8 +2,8 @@
 
 function xdg_fzf
   set fname (fzf)
-  if [ -n "$fname" ]
-    nohup xdg-open "$fname" &> /dev/null &
-    disown
-  end
+  test -n "$fname"
+  or return
+
+  setsid xdg-open "$fname" >/dev/null 2>&1 </dev/null &
 end
