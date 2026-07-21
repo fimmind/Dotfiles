@@ -54,8 +54,8 @@ settings:
       gdict: https://www.google.com/search?q=dictionary#dobs={}
       goo: https://dictionary.goo.ne.jp/srch/en/{}/m1u/
       goo-jp: https://dictionary.goo.ne.jp/srch/jn/{}/m1u/
-      google: https://www.google.com/search?q={}&udm=14
-      google-jp: https://www.google.co.jp/search?q={}&hl=ja&udm=14
+      google: https://www.google.com/search?q={} -site:*?tl=ja&udm=14
+      google-jp: https://www.google.co.jp/search?q={} -site:*?tl=ja&hl=ja&udm=14
       img: https://www.google.com/search?q={}&tbm=isch
       img-jp: https://www.google.co.jp/search?q={}&hl=ja&tbm=isch
       jisho: https://jisho.org/search/{}
