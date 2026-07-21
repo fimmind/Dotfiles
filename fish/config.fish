@@ -70,8 +70,10 @@ set -x PATH "$PATH:$ANDROID_HOME/tools/bin"
 set -x PATH "$PATH:$ANDROID_HOME/platform-tools"
 set -x LD_BIND_NOW 1
 
-set -x JAVA_HOME /usr/lib/jvm/default
-set -x PATH "$PATH:$JAVA_HOME/bin"
+if [ ! (uname -o) = "Android" ]
+  set -x JAVA_HOME /usr/lib/jvm/default
+  set -x PATH "$PATH:$JAVA_HOME/bin"
+end
 
 set -x PATH "$PATH:$HOME/.local/bin"
 set -x PATH "$PATH:$HOME/Dotfiles/bin"
