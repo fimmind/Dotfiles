@@ -44,13 +44,10 @@ super + shift + m
 super + shift + n
 	xdo activate -n AmneziaVPN; AmneziaVPN
 
-# See https://forums.ankiweb.net/t/anki-ui-appears-broken-with-newer-versions-of-qt/13684
-# for the explanation on `--no-sandbox`
-#
-# Window id is found by the title name containing " - Anki" so as to only
+# Window id is found by the title name containing "Anki" so as to only
 # auto-focus the main Anki window
 super + a
-	if set id (xdotool search --name " - Anki"); \
+	if set id (xdotool search --all --class --name Anki); \
 		xdo activate $id; \
 	else; \
 		bspc desktop -f ^6; \
