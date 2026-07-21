@@ -313,6 +313,17 @@ rules:
         profiles.clj: ~/.lein/profiles.clj
         cljstyle: ~/.cljstyle
 
+  clojure-termux:
+    - in_temp: |
+        curl -L -O https://github.com/clojure/brew-install/releases/latest/download/linux-install.sh
+        chmod +x linux-install.sh
+        ./linux-install.sh --prefix $PREFIX
+    - shell: |
+        wget https://raw.githubusercontent.com/technomancy/leiningen/stable/bin/lein \
+          -O ~/.local/bin/lein
+        chmod +x ~/.local/bin/lein
+        ~/.local/bin/lein
+
   haskell:
     - pkgs: { pacman: stack ghc-libs ghc-static }
     - shell: cd ~; stack setup
