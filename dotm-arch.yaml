@@ -410,6 +410,13 @@ rules:
             fi
         done
 
+  # You should run `codex login` afterwards
+  codex-termux:
+    - shell: |
+        pkg update && pkg upgrade -y
+        pkg install nodejs-lts ripgrep -y
+        npm install -g @mmmbuto/codex-cli-termux@latest
+
   dyalog:
     - pkgs: { aur: ncurses5-compat-libs dyalog-bin }
 
