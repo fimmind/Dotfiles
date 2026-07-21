@@ -45,7 +45,7 @@ settings:
     global: Source Code Pro
   url.searchengines:
     global:
-      DEFAULT: https://www.google.com/search?q={}&udm=14
+      DEFAULT: https://duckduckgo.com/?q={}
       camb: https://dictionary.cambridge.org/us/search/english/?q={}
       context-en: https://context.reverso.net/translation/russian-english/{}
       context-jp: https://context.reverso.net/translation/japanese-english/{}
