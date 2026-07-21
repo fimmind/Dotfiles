@@ -88,4 +88,6 @@ set -x INFOPATH "$INFOPATH:/usr/local/texlive/2019/texmf-dist/doc/info"
 
 # pyenv
 # -----
-pyenv init --no-rehash - fish | source
+if [ ! (uname -o) = "Android" ]
+  pyenv init --no-rehash - fish | source
+end
