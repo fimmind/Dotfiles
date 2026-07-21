@@ -12,3 +12,5 @@
   insteadOf = "aur:"
 [url "ssh://aur@aur.archlinux.org/"]
   pushInsteadOf = "aur:"
+[init]
+	defaultBranch = master
