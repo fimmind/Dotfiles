@@ -34,7 +34,7 @@ syntax sync fromstart
 
 " Custom commands {{{1
 command! Vimrc exec "e " . stdpath('config') . "/init.vim"
-command! RemoveClozes %s/{{c\d::\(\_.\{-}\)\(::.\{-}\)\?}}/\1/g
+command! RemoveClozes %s/{{c\d::\(\_.\{-}\)\(::.\{-}\)\?}}/\1/g | noh
 
 " General mappings {{{1
 let g:maplocalleader=' z'
@@ -49,7 +49,7 @@ noremap gk k
 inoremap <c-l> <tab>
 
 nnoremap <leader>w <C-w>
-nnoremap <leader>fs :write<cr>
+nnoremap <leader>v :write<cr>
 
 noremap <leader>y "+y
 noremap <leader>p "+p
