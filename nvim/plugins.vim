@@ -23,7 +23,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'scrooloose/nerdcommenter'
   Plug 'tpope/vim-fugitive'
   Plug 'junegunn/fzf', {'dir': '~/.fzf', 'do': './install --all'}
-  Plug 'theniceboy/fzf-gitignore', {'do': ':UpdateRemotePlugins'}
   Plug 'matze/vim-move'
   Plug 'andrewradev/splitjoin.vim'
   Plug 'nelstrom/vim-visual-star-search'
@@ -57,7 +56,6 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'rust-lang/rust.vim'
   Plug 'benknoble/vim-racket'
   Plug 'guersam/vim-j'
-  Plug 'sogaiu/tree-sitter-clojure'
   Plug 'dart-lang/dart-vim-plugin'
   Plug 'udalov/kotlin-vim'
 call plug#end()
