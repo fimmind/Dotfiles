@@ -38,15 +38,16 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'aperezdc/vim-template'
   Plug 'dense-analysis/ale'
   Plug 'easymotion/vim-easymotion'
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'branch': 'main'}
   Plug 'guns/vim-sexp'
   Plug 'dkarter/bullets.vim'
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate', 'branch': 'main'}
   Plug 'lukas-reineke/indent-blankline.nvim'
   Plug 'mattn/emmet-vim'
   Plug 'junegunn/vim-peekaboo'
   Plug 'HakonHarnes/img-clip.nvim'
-  Plug 'Olical/conjure'
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
+  Plug 'liquidz/vim-iced', {'for': 'clojure'}
+  Plug 'liquidz/vim-iced-coc-source', {'for': 'clojure'}
 
   " Filetype
   Plug 'kovetskiy/sxhkd-vim'

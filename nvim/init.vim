@@ -293,7 +293,7 @@ set signcolumn=yes
 let g:coc_global_extensions = [
       \ "coc-json", "coc-git", "coc-ultisnips", "coc-vimtex", "coc-prettier",
       \ "coc-explorer", "coc-jedi", "coc-rust-analyzer",
-      \ "coc-clojure", "coc-conjure", "coc-flutter-tools", "coc-kotlin"
+      \ "coc-flutter-tools", "coc-kotlin"
       \ ]
 function InstallCocExtensions()
   exec "CocInstall -sync " . join(g:coc_global_extensions)
@@ -418,13 +418,9 @@ autocmd FileType scip set ft=racket
 " nvim-treesitter {{{1
 lua << EOF
 require'nvim-treesitter'.setup {
-  indent = {
-    enable = false,
-  },
-  highlight = {
-    enable = false,
-  },
+  install_dir = vim.fn.stdpath('data') .. '/site'
 }
+require'nvim-treesitter'.install { 'clojure', 'scheme' } -- This is used by vim-sexp
 EOF
 
 " emmet {{{1
@@ -433,8 +429,12 @@ let g:user_emmet_leader_key='<c-e>'
 " cljd {{{1
 au! BufRead,BufNewFile *.cljd setfiletype clojure
 
-" conjure {{{1
-let g:conjure#mapping#doc_word = v:false
+" vim-iced {{{1
+let g:iced_default_key_mapping_leader = "<localleader>"
+let g:iced_enable_default_key_mappings = v:true
+
+nmap <localleader>x <Plug>(iced_connect)
+nmap <localleader>X <Plug>(iced_jack_in)
 
 " bullets.vim {{{1
 let g:bullets_mapping_leader = '<M-b>'
