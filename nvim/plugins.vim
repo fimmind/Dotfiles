@@ -9,10 +9,7 @@ endfunction
 if empty(glob(s:vim_plug_file))
   call UpdateVimPlug()
 endif
-
 " }}}1
-
-
 
 call plug#begin(stdpath('data') . '/plugged')
   " Coloring
