@@ -437,7 +437,7 @@ nmap <localleader>x <Plug>(iced_connect)
 nmap <localleader>X <Plug>(iced_jack_in)
 
 " bullets.vim {{{1
-let g:bullets_mapping_leader = '<M-b>'
+let g:bullets_mapping_leader = '<C-b>'
 nnoremap <silent> <M-o> :InsertNewBullet<cr>
 inoremap <silent> <M-CR> <c-o>:InsertNewBullet<cr>
 
