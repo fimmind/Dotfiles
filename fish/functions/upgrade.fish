@@ -2,7 +2,6 @@ function upgrade_sudo
     # pacman-key --refresh-keys
     pacman -Syyuu --noconfirm
     tlmgr update --self --all --reinstall-forcibly-removed
-    npm upgrade -g
     updatedb
 end
 
