@@ -275,9 +275,13 @@ rules:
         sudo depmod -a
 
   tmux:
+    - deps: fish
     - links:
         tmux.conf: ~/.tmux.conf
     - pkgs: { pacman: tmux }
+    - shell: |
+        git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+        fisher install budimanjojo/tmux.fish
 
   cargo:
     - pkgs: { pacman: rustup cargo }
