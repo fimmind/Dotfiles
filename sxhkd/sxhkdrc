@@ -81,8 +81,11 @@ super + {y,u,i,shift+i,o}
 {_, shift +, ctrl +} Print
 	screenshot {full,window,selection}
 
-{XF86AudioLowerVolume,XF86AudioRaiseVolume,XF86AudioMute}
-  amixer sset Master {5%-,5%+,toggle-mute}
+{XF86AudioLowerVolume,XF86AudioRaiseVolume}
+    wpctl set-volume @DEFAULT_AUDIO_SINK@ {4%-,4%+}
+
+XF86AudioMute
+    wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
 
 {XF86AudioPlay,XF86AudioPause,XF86AudioPrev,XF86AudioNext}
   playerctl {play-pause,pause,previous,next} -p cmus
