@@ -54,6 +54,9 @@ super + a
 		anki "" --no-sandbox; \
 	end
 
+super + shift + a
+	chatgpt
+
 super + z
 	zathura
 

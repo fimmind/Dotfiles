@@ -68,6 +68,7 @@ bspc rule -a Emulator state=floating
 bspc rule -a AmneziaVPN state=pseudo_tiled
 
 bspc rule -a qutebrowser desktop=^1 follow=on
+bspc rule -a Chatgpt desktop=^3 follow=on
 bspc rule -a cmus desktop=^7 follow=on
 bspc rule -a AmneziaVPN desktop=^8 follow=on
 for i in Telegram, TelegramDesktop; do
