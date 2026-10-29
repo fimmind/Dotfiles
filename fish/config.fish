@@ -91,3 +91,11 @@ set -x INFOPATH "$INFOPATH:/usr/local/texlive/2019/texmf-dist/doc/info"
 if [ ! (uname -o) = "Android" ]
   pyenv init --no-rehash - fish | source
 end
+
+# tmux
+# ----
+if status is-interactive; and not set -q TMUX
+    if not string match -qr '^/dev/tty[0-9]+$' (tty)
+        exec tmux
+    end
+end
