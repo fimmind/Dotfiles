@@ -474,8 +474,8 @@ snippet "\s+rf" "\ref" rwA
 ~\ref{$1}
 endsnippet
 
-snippet (rf "(\ref{})" iA
-(\ref{$1}
+snippet "\s+erf" "\eqref{}" rwA
+~\eqref{$1}
 endsnippet
 
 ############
@@ -701,19 +701,41 @@ snippet cprd "product" wA
 \coprod
 endsnippet
 
+priority 50
 context "math()"
-snippet "(?<!\\)(i|s)?lim" "limit (sup | inf)" wrA
+snippet "(?<!\\)lim" "\\lim" wrA
+\lim
+endsnippet
+
+priority 10
+context "math()"
+snippet "\\lim(i|s)" "limit (sup | inf)" wrA
 \lim`!p
 g = match.group(1)
 if g == "i":
 	snip.rv = "inf"
 elif g == "s":
 	snip.rv = "sup"
-``!p
-snip.rv = "_{" if t[1] else ""
-`${1:n \to \infty}`!p
-snip.rv = "}" if t[1] else ""
-` ${VISUAL}$0
+`
+endsnippet
+
+priority 100
+context "math()"
+snippet "(?<!\\)(u|s)lim" "limit (uniform | strong)" wrA
+`!p
+g = match.group(1)
+snip.rv = "\\operatorname{" + g + "-lim}"
+`
+endsnippet
+
+priority 10000
+snippet wlim "weak limit" wA
+\operatorname{w-lim}
+endsnippet
+
+priority 10000
+snippet Wlim "weak* limit" wA
+\operatorname{w*-lim}
 endsnippet
 
 priority 10000
@@ -804,8 +826,20 @@ endsnippet
 
 priority 100
 context "math()"
+snippet Uto "weak* convergence" wA
+\stackrel{*}{\rightharpoonup}
+endsnippet
+
+priority 100
+context "math()"
 snippet bto "\leftrightarrow" wA
 \leftrightarrow
+endsnippet
+
+priority 100
+context "math()"
+snippet wto "weak convergence of random variables" wA
+\Rightarrow
 endsnippet
 
 priority 10
@@ -970,8 +1004,6 @@ snippet "\\not\|>" "\ntriangleright" wrA
 endsnippet
 
 context "math()"
-
-context "math()"
 snippet o+ "\oplus" wA
 \oplus
 endsnippet
@@ -1085,6 +1117,11 @@ snippet rel "rel" wA
 endsnippet
 
 context "math()"
+snippet cup "cup product" wA
+\\smile
+endsnippet
+
+context "math()"
 snippet uu "U" wA
 \cup
 endsnippet
@@ -1186,6 +1223,11 @@ endsnippet
 context "math()"
 snippet CC "Complex" iA
 \mathbb C
+endsnippet
+
+context "math()"
+snippet HH "Quaternions" wA
+\mathbb H
 endsnippet
 
 snippet SS "Sphere" wA
@@ -1385,8 +1427,13 @@ snippet lq "less than or equals to" wA
 endsnippet
 
 context "math()"
-snippet "!/" "monotonic (increasing)" wrA
+snippet !/ "increasing" wA
 \!\!\nearrow
+endsnippet
+
+context "math()"
+snippet !\ "decreasing" wA
+\!\!\searrow
 endsnippet
 
 context "math()"
@@ -1550,7 +1597,7 @@ snippet .~ "\tilde" wA
 endsnippet
 
 context "math()"
-snippet "(?<!\\)([A-Z0-9])bB" "\mathbb [A-Z]" rwA
+snippet "(?<!\\)([A-Z0-9])bb" "\mathbb [A-Z]" rwA
 \mathbb `!p snip.rv = match.group(1)`
 endsnippet
 
@@ -1673,8 +1720,13 @@ endsnippet
 #############
 
 context "math()"
-snippet '(?<!\\|\w)(lg|ln|log|exp|deg|min|max|dim|ker|det|sup|gcd|lcd)' "operators" rwA
+snippet '(?<!\\|\w)(lg|ln|log|exp|deg|min|max|dim|ker|det|sup|gcd|lcd|asymp)' "operators" rwA
 \\`!p snip.rv = match.group(1)`
+endsnippet
+
+context "math()"
+snippet asy "\asymp" wA
+\\asymp
 endsnippet
 
 context "math()"
