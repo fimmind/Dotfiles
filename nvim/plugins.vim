@@ -47,6 +47,7 @@ call plug#begin(stdpath('data') . '/plugged')
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npx --yes yarn install' }
   Plug 'liquidz/vim-iced', {'for': 'clojure'}
   Plug 'liquidz/vim-iced-coc-source', {'for': 'clojure'}
+  Plug 'aserowy/tmux.nvim'
   Plug 'folke/snacks.nvim'
   Plug 'sonv/latex-preview.nvim'
 
