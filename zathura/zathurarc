@@ -10,7 +10,6 @@ set render-loading        false
 # ---------------
 set statusbar-h-padding 0
 set statusbar-v-padding 0
-set show-scrollbars     false
 
 # NORD THEME
 # ----------
