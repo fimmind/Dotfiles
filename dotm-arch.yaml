@@ -210,7 +210,7 @@ rules:
     - pkgs:
         pacman: python-unidecode python-pynvim tree-sitter tree-sitter-cli
         pip: autopep8 yapf flake8 hacking bandit pylint proselint
-        npm: neovim
+        npm: neovim @mathjax/src@4
         gem: neovim
     - shell: nvim -u nvim/plugins.vim -c qa
     - shell: nvim -c ":call InstallCocExtensions() | :qa!"

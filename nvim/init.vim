@@ -447,4 +447,34 @@ function OpenMarkdownPreview (url)
 endfunction
 let g:mkdp_browserfunc = 'OpenMarkdownPreview'
 
+" latex-preview {{{1
+lua << EOF
+require("snacks").setup({
+  image = {
+    enabled = true,
+  },
+
+  styles = {
+    snacks_image = {
+      wo = {
+        winhighlight = "Normal:Normal,NormalFloat:Normal",
+      },
+    },
+  },
+})
+
+require("latex-preview").setup({
+  setup_keymap = true,
+  hover = {
+    auto_open = false,
+  },
+  cache = true,
+  cache_dir = "aux",
+  render = {
+    font_size = 10,
+    display_font_size = 10,
+  }
+})
+EOF
+
 " {{{1 vim: fdm=marker
