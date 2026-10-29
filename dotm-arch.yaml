@@ -439,7 +439,7 @@ rules:
         sudo ln -sf ../run/systemd/resolve/stub-resolv.conf /etc/resolv.conf
 
   codex:
-    - pkgs: { npm: codex }
+    - pkgs: { pacman: openai-codex }
     - shell: |
         npx skills add -g -y Meet-Miyani/compose-skill
         npx skills add -y -g pbakaus/impeccable
