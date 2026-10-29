@@ -45,9 +45,9 @@ end
 # Environment
 # -----------
 set -x QT_QPA_PLATFORMTHEME "qt5ct"
-set -x EDITOR "/usr/bin/nvim"
+set -x EDITOR "env nvim"
 set -x GTK2_RC_FILES "$HOME/.gtkrc-2.0"
-set -x BROWSER "/usr/bin/qutebrowser"
+set -x BROWSER "xdg-open"
 set -x PAGER "less"
 set -x TERMINAL "kitty"
 set -x XDG_CONFIG_HOME "$HOME/.config"
